@@ -448,7 +448,7 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LabsDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="LabsDBEntities" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="LabDBEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Answers" EntityType="LabsDBModel.Answer" />
           <EntitySet Name="DiscussionAs" EntityType="LabsDBModel.DiscussionA" />
           <EntitySet Name="DiscussionAFeedbacks" EntityType="LabsDBModel.DiscussionAFeedback" />
@@ -929,7 +929,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LabsDBModelStoreContainer" CdmEntityContainer="LabsDBEntities">
+        <EntityContainerMapping StorageEntityContainer="LabsDBModelStoreContainer" CdmEntityContainer="LabDBEntities">
           <EntitySetMapping Name="Answers">
             <EntityTypeMapping TypeName="LabsDBModel.Answer">
               <MappingFragment StoreEntitySet="Answers">
