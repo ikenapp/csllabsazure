@@ -1,0 +1,1087 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LabsDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="LabsDBModelStoreContainer">
+          <EntitySet Name="Answers" EntityType="LabsDBModel.Store.Answers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DiscussionA" EntityType="LabsDBModel.Store.DiscussionA" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DiscussionAFeedback" EntityType="LabsDBModel.Store.DiscussionAFeedback" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DiscussionB" EntityType="LabsDBModel.Store.DiscussionB" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Labs" EntityType="LabsDBModel.Store.Labs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Questions" EntityType="LabsDBModel.Store.Questions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ScaleAnswers" EntityType="LabsDBModel.Store.ScaleAnswers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Status" EntityType="LabsDBModel.Store.Status" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Survey" EntityType="LabsDBModel.Store.Survey" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="LabsDBModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Answers_Labs" Association="LabsDBModel.Store.FK_Answers_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answers_Questions" Association="LabsDBModel.Store.FK_Answers_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answers_Survey" Association="LabsDBModel.Store.FK_Answers_Survey">
+            <End Role="Survey" EntitySet="Survey" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answers_Users" Association="LabsDBModel.Store.FK_Answers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionA_DiscussionA" Association="LabsDBModel.Store.FK_DiscussionA_DiscussionA">
+            <End Role="DiscussionA" EntitySet="DiscussionA" />
+            <End Role="DiscussionA1" EntitySet="DiscussionA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionA_Labs" Association="LabsDBModel.Store.FK_DiscussionA_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="DiscussionA" EntitySet="DiscussionA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionA_Users" Association="LabsDBModel.Store.FK_DiscussionA_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DiscussionA" EntitySet="DiscussionA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionAFeedback_DiscussionA" Association="LabsDBModel.Store.FK_DiscussionAFeedback_DiscussionA">
+            <End Role="DiscussionA" EntitySet="DiscussionA" />
+            <End Role="DiscussionAFeedback" EntitySet="DiscussionAFeedback" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionB_Labs" Association="LabsDBModel.Store.FK_DiscussionB_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="DiscussionB" EntitySet="DiscussionB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionB_Users" Association="LabsDBModel.Store.FK_DiscussionB_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DiscussionB" EntitySet="DiscussionB" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_Questions" Association="LabsDBModel.Store.FK_Questions_Questions">
+            <End Role="Survey" EntitySet="Survey" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScaleAnswers_Labs" Association="LabsDBModel.Store.FK_ScaleAnswers_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="ScaleAnswers" EntitySet="ScaleAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScaleAnswers_Questions" Association="LabsDBModel.Store.FK_ScaleAnswers_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="ScaleAnswers" EntitySet="ScaleAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScaleAnswers_Survey" Association="LabsDBModel.Store.FK_ScaleAnswers_Survey">
+            <End Role="Survey" EntitySet="Survey" />
+            <End Role="ScaleAnswers" EntitySet="ScaleAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScaleAnswers_Users" Association="LabsDBModel.Store.FK_ScaleAnswers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ScaleAnswers" EntitySet="ScaleAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_Labs" Association="LabsDBModel.Store.FK_Status_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_Users" Association="LabsDBModel.Store.FK_Status_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Labs" Association="LabsDBModel.Store.FK_Survey_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="Survey" EntitySet="Survey" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Labs" Association="LabsDBModel.Store.FK_Users_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Answers">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="labid" Type="int" Nullable="false" />
+          <Property Name="surveyid" Type="int" Nullable="false" />
+          <Property Name="qid" Type="int" Nullable="false" />
+          <Property Name="studentid" Type="int" Nullable="false" />
+          <Property Name="contents" Type="nvarchar" Nullable="false" MaxLength="1000" />
+          <Property Name="phase" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="opinions" Type="nvarchar" MaxLength="1000" />
+          <Property Name="links" Type="nvarchar" MaxLength="1000" />
+          <Property Name="rank" Type="int" />
+          <Property Name="optionid" Type="int" />
+        </EntityType>
+        <EntityType Name="DiscussionA">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="labid" Type="int" Nullable="false" />
+          <Property Name="groupid" Type="int" Nullable="false" />
+          <Property Name="topic" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="topicid" Type="int" />
+          <Property Name="student_id" Type="int" Nullable="false" />
+          <Property Name="time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="DiscussionAFeedback">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="discuss_id" Type="int" Nullable="false" />
+          <Property Name="sid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="student_id" Type="int" Nullable="false" />
+          <Property Name="gfeedback" Type="nvarchar" MaxLength="1" />
+          <Property Name="qfeedback" Type="nvarchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="DiscussionB">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="labid" Type="int" Nullable="false" />
+          <Property Name="groupid" Type="int" Nullable="false" />
+          <Property Name="topic" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="student_id" Type="int" Nullable="false" />
+          <Property Name="time" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Labs">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="desc" Type="nvarchar" MaxLength="250" />
+          <Property Name="currentPhase" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="begin" Type="date" Nullable="false" />
+          <Property Name="end" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Questions">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="question" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="survryid" Type="int" Nullable="false" />
+          <Property Name="no" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ScaleAnswers">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="labid" Type="int" Nullable="false" />
+          <Property Name="surveyid" Type="int" Nullable="false" />
+          <Property Name="qid" Type="int" Nullable="false" />
+          <Property Name="studentid" Type="int" Nullable="false" />
+          <Property Name="rank" Type="int" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="labid" Type="int" Nullable="false" />
+          <Property Name="phase" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="studentid" Type="int" Nullable="false" />
+          <Property Name="done" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="phase" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="type" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="scale" Type="nvarchar" MaxLength="10" />
+          <Property Name="surveyid" Type="int" Nullable="false" />
+          <Property Name="labid" Type="int" Nullable="false" />
+          <Property Name="desc" Type="nvarchar" MaxLength="500" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="12" />
+          <Property Name="nickname" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="passsword" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="group" Type="nvarchar" Nullable="false" MaxLength="10" />
+          <Property Name="school" Type="nvarchar" MaxLength="50" />
+          <Property Name="dept" Type="nvarchar" MaxLength="50" />
+          <Property Name="labid" Type="int" Nullable="false" />
+          <Property Name="student_id" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="groupid" Type="int" />
+          <Property Name="gender" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <Association Name="FK_Answers_Labs">
+          <End Role="Labs" Type="LabsDBModel.Store.Labs" Multiplicity="1" />
+          <End Role="Answers" Type="LabsDBModel.Store.Answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answers_Questions">
+          <End Role="Questions" Type="LabsDBModel.Store.Questions" Multiplicity="1" />
+          <End Role="Answers" Type="LabsDBModel.Store.Answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="qid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answers_Survey">
+          <End Role="Survey" Type="LabsDBModel.Store.Survey" Multiplicity="1" />
+          <End Role="Answers" Type="LabsDBModel.Store.Answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="surveyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answers_Users">
+          <End Role="Users" Type="LabsDBModel.Store.Users" Multiplicity="1" />
+          <End Role="Answers" Type="LabsDBModel.Store.Answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="studentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionA_DiscussionA">
+          <End Role="DiscussionA" Type="LabsDBModel.Store.DiscussionA" Multiplicity="0..1" />
+          <End Role="DiscussionA1" Type="LabsDBModel.Store.DiscussionA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiscussionA">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionA1">
+              <PropertyRef Name="topicid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionA_Labs">
+          <End Role="Labs" Type="LabsDBModel.Store.Labs" Multiplicity="1" />
+          <End Role="DiscussionA" Type="LabsDBModel.Store.DiscussionA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionA">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionA_Users">
+          <End Role="Users" Type="LabsDBModel.Store.Users" Multiplicity="1" />
+          <End Role="DiscussionA" Type="LabsDBModel.Store.DiscussionA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionA">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionAFeedback_DiscussionA">
+          <End Role="DiscussionA" Type="LabsDBModel.Store.DiscussionA" Multiplicity="1" />
+          <End Role="DiscussionAFeedback" Type="LabsDBModel.Store.DiscussionAFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiscussionA">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionAFeedback">
+              <PropertyRef Name="discuss_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionB_Labs">
+          <End Role="Labs" Type="LabsDBModel.Store.Labs" Multiplicity="1" />
+          <End Role="DiscussionB" Type="LabsDBModel.Store.DiscussionB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionB">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionB_Users">
+          <End Role="Users" Type="LabsDBModel.Store.Users" Multiplicity="1" />
+          <End Role="DiscussionB" Type="LabsDBModel.Store.DiscussionB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionB">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_Questions">
+          <End Role="Survey" Type="LabsDBModel.Store.Survey" Multiplicity="1" />
+          <End Role="Questions" Type="LabsDBModel.Store.Questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="survryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScaleAnswers_Labs">
+          <End Role="Labs" Type="LabsDBModel.Store.Labs" Multiplicity="1" />
+          <End Role="ScaleAnswers" Type="LabsDBModel.Store.ScaleAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="ScaleAnswers">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScaleAnswers_Questions">
+          <End Role="Questions" Type="LabsDBModel.Store.Questions" Multiplicity="1" />
+          <End Role="ScaleAnswers" Type="LabsDBModel.Store.ScaleAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="ScaleAnswers">
+              <PropertyRef Name="qid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScaleAnswers_Survey">
+          <End Role="Survey" Type="LabsDBModel.Store.Survey" Multiplicity="1" />
+          <End Role="ScaleAnswers" Type="LabsDBModel.Store.ScaleAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="ScaleAnswers">
+              <PropertyRef Name="surveyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScaleAnswers_Users">
+          <End Role="Users" Type="LabsDBModel.Store.Users" Multiplicity="1" />
+          <End Role="ScaleAnswers" Type="LabsDBModel.Store.ScaleAnswers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="ScaleAnswers">
+              <PropertyRef Name="studentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_Labs">
+          <End Role="Labs" Type="LabsDBModel.Store.Labs" Multiplicity="1" />
+          <End Role="Status" Type="LabsDBModel.Store.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_Users">
+          <End Role="Users" Type="LabsDBModel.Store.Users" Multiplicity="1" />
+          <End Role="Status" Type="LabsDBModel.Store.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="studentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Survey_Labs">
+          <End Role="Labs" Type="LabsDBModel.Store.Labs" Multiplicity="1" />
+          <End Role="Survey" Type="LabsDBModel.Store.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Labs">
+          <End Role="Labs" Type="LabsDBModel.Store.Labs" Multiplicity="1" />
+          <End Role="Users" Type="LabsDBModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LabsDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="LabsDBEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Answers" EntityType="LabsDBModel.Answer" />
+          <EntitySet Name="DiscussionAs" EntityType="LabsDBModel.DiscussionA" />
+          <EntitySet Name="DiscussionAFeedbacks" EntityType="LabsDBModel.DiscussionAFeedback" />
+          <EntitySet Name="DiscussionBs" EntityType="LabsDBModel.DiscussionB" />
+          <EntitySet Name="Labs" EntityType="LabsDBModel.Lab" />
+          <EntitySet Name="Questions" EntityType="LabsDBModel.Question" />
+          <EntitySet Name="ScaleAnswers" EntityType="LabsDBModel.ScaleAnswer" />
+          <EntitySet Name="Status" EntityType="LabsDBModel.Status" />
+          <EntitySet Name="Surveys" EntityType="LabsDBModel.Survey" />
+          <EntitySet Name="Users" EntityType="LabsDBModel.User" />
+          <AssociationSet Name="FK_Answers_Labs" Association="LabsDBModel.FK_Answers_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answers_Questions" Association="LabsDBModel.FK_Answers_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answers_Survey" Association="LabsDBModel.FK_Answers_Survey">
+            <End Role="Survey" EntitySet="Surveys" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answers_Users" Association="LabsDBModel.FK_Answers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionA_DiscussionA" Association="LabsDBModel.FK_DiscussionA_DiscussionA">
+            <End Role="DiscussionA" EntitySet="DiscussionAs" />
+            <End Role="DiscussionA1" EntitySet="DiscussionAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionA_Labs" Association="LabsDBModel.FK_DiscussionA_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="DiscussionA" EntitySet="DiscussionAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionA_Users" Association="LabsDBModel.FK_DiscussionA_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DiscussionA" EntitySet="DiscussionAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionAFeedback_DiscussionA" Association="LabsDBModel.FK_DiscussionAFeedback_DiscussionA">
+            <End Role="DiscussionA" EntitySet="DiscussionAs" />
+            <End Role="DiscussionAFeedback" EntitySet="DiscussionAFeedbacks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionB_Labs" Association="LabsDBModel.FK_DiscussionB_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="DiscussionB" EntitySet="DiscussionBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DiscussionB_Users" Association="LabsDBModel.FK_DiscussionB_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="DiscussionB" EntitySet="DiscussionBs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScaleAnswers_Labs" Association="LabsDBModel.FK_ScaleAnswers_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="ScaleAnswers" EntitySet="ScaleAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_Labs" Association="LabsDBModel.FK_Status_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Survey_Labs" Association="LabsDBModel.FK_Survey_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="Survey" EntitySet="Surveys" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Labs" Association="LabsDBModel.FK_Users_Labs">
+            <End Role="Labs" EntitySet="Labs" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Questions_Questions" Association="LabsDBModel.FK_Questions_Questions">
+            <End Role="Survey" EntitySet="Surveys" />
+            <End Role="Questions" EntitySet="Questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScaleAnswers_Questions" Association="LabsDBModel.FK_ScaleAnswers_Questions">
+            <End Role="Questions" EntitySet="Questions" />
+            <End Role="ScaleAnswers" EntitySet="ScaleAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScaleAnswers_Survey" Association="LabsDBModel.FK_ScaleAnswers_Survey">
+            <End Role="Survey" EntitySet="Surveys" />
+            <End Role="ScaleAnswers" EntitySet="ScaleAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ScaleAnswers_Users" Association="LabsDBModel.FK_ScaleAnswers_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="ScaleAnswers" EntitySet="ScaleAnswers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_Users" Association="LabsDBModel.FK_Status_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Answer">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="labid" Type="Int32" Nullable="false" />
+          <Property Name="surveyid" Type="Int32" Nullable="false" />
+          <Property Name="qid" Type="Int32" Nullable="false" />
+          <Property Name="studentid" Type="Int32" Nullable="false" />
+          <Property Name="contents" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="phase" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="opinions" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="links" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="rank" Type="Int32" />
+          <Property Name="optionid" Type="Int32" />
+          <NavigationProperty Name="Lab" Relationship="LabsDBModel.FK_Answers_Labs" FromRole="Answers" ToRole="Labs" />
+          <NavigationProperty Name="Question" Relationship="LabsDBModel.FK_Answers_Questions" FromRole="Answers" ToRole="Questions" />
+          <NavigationProperty Name="Survey" Relationship="LabsDBModel.FK_Answers_Survey" FromRole="Answers" ToRole="Survey" />
+          <NavigationProperty Name="User" Relationship="LabsDBModel.FK_Answers_Users" FromRole="Answers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="DiscussionA">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="labid" Type="Int32" Nullable="false" />
+          <Property Name="groupid" Type="Int32" Nullable="false" />
+          <Property Name="topic" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="topicid" Type="Int32" />
+          <Property Name="student_id" Type="Int32" Nullable="false" />
+          <Property Name="time" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DiscussionA1" Relationship="LabsDBModel.FK_DiscussionA_DiscussionA" FromRole="DiscussionA" ToRole="DiscussionA1" />
+          <NavigationProperty Name="DiscussionA2" Relationship="LabsDBModel.FK_DiscussionA_DiscussionA" FromRole="DiscussionA1" ToRole="DiscussionA" />
+          <NavigationProperty Name="Lab" Relationship="LabsDBModel.FK_DiscussionA_Labs" FromRole="DiscussionA" ToRole="Labs" />
+          <NavigationProperty Name="User" Relationship="LabsDBModel.FK_DiscussionA_Users" FromRole="DiscussionA" ToRole="Users" />
+          <NavigationProperty Name="DiscussionAFeedbacks" Relationship="LabsDBModel.FK_DiscussionAFeedback_DiscussionA" FromRole="DiscussionA" ToRole="DiscussionAFeedback" />
+        </EntityType>
+        <EntityType Name="DiscussionAFeedback">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="discuss_id" Type="Int32" Nullable="false" />
+          <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="student_id" Type="Int32" Nullable="false" />
+          <Property Name="gfeedback" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="qfeedback" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="DiscussionA" Relationship="LabsDBModel.FK_DiscussionAFeedback_DiscussionA" FromRole="DiscussionAFeedback" ToRole="DiscussionA" />
+        </EntityType>
+        <EntityType Name="DiscussionB">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="labid" Type="Int32" Nullable="false" />
+          <Property Name="groupid" Type="Int32" Nullable="false" />
+          <Property Name="topic" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="student_id" Type="Int32" Nullable="false" />
+          <Property Name="time" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Lab" Relationship="LabsDBModel.FK_DiscussionB_Labs" FromRole="DiscussionB" ToRole="Labs" />
+          <NavigationProperty Name="User" Relationship="LabsDBModel.FK_DiscussionB_Users" FromRole="DiscussionB" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Lab">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="desc" Type="String" MaxLength="250" Unicode="true" FixedLength="false" />
+          <Property Name="currentPhase" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="begin" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="end" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Answers" Relationship="LabsDBModel.FK_Answers_Labs" FromRole="Labs" ToRole="Answers" />
+          <NavigationProperty Name="DiscussionAs" Relationship="LabsDBModel.FK_DiscussionA_Labs" FromRole="Labs" ToRole="DiscussionA" />
+          <NavigationProperty Name="DiscussionBs" Relationship="LabsDBModel.FK_DiscussionB_Labs" FromRole="Labs" ToRole="DiscussionB" />
+          <NavigationProperty Name="ScaleAnswers" Relationship="LabsDBModel.FK_ScaleAnswers_Labs" FromRole="Labs" ToRole="ScaleAnswers" />
+          <NavigationProperty Name="Status" Relationship="LabsDBModel.FK_Status_Labs" FromRole="Labs" ToRole="Status" />
+          <NavigationProperty Name="Surveys" Relationship="LabsDBModel.FK_Survey_Labs" FromRole="Labs" ToRole="Survey" />
+          <NavigationProperty Name="Users" Relationship="LabsDBModel.FK_Users_Labs" FromRole="Labs" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="question1" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="survryid" Type="Int32" Nullable="false" />
+          <Property Name="no" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Answers" Relationship="LabsDBModel.FK_Answers_Questions" FromRole="Questions" ToRole="Answers" />
+          <NavigationProperty Name="Survey" Relationship="LabsDBModel.FK_Questions_Questions" FromRole="Questions" ToRole="Survey" />
+          <NavigationProperty Name="ScaleAnswers" Relationship="LabsDBModel.FK_ScaleAnswers_Questions" FromRole="Questions" ToRole="ScaleAnswers" />
+        </EntityType>
+        <EntityType Name="ScaleAnswer">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="labid" Type="Int32" Nullable="false" />
+          <Property Name="surveyid" Type="Int32" Nullable="false" />
+          <Property Name="qid" Type="Int32" Nullable="false" />
+          <Property Name="studentid" Type="Int32" Nullable="false" />
+          <Property Name="rank" Type="Int32" />
+          <NavigationProperty Name="Lab" Relationship="LabsDBModel.FK_ScaleAnswers_Labs" FromRole="ScaleAnswers" ToRole="Labs" />
+          <NavigationProperty Name="Question" Relationship="LabsDBModel.FK_ScaleAnswers_Questions" FromRole="ScaleAnswers" ToRole="Questions" />
+          <NavigationProperty Name="Survey" Relationship="LabsDBModel.FK_ScaleAnswers_Survey" FromRole="ScaleAnswers" ToRole="Survey" />
+          <NavigationProperty Name="User" Relationship="LabsDBModel.FK_ScaleAnswers_Users" FromRole="ScaleAnswers" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="labid" Type="Int32" Nullable="false" />
+          <Property Name="phase" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="studentid" Type="Int32" Nullable="false" />
+          <Property Name="done" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Lab" Relationship="LabsDBModel.FK_Status_Labs" FromRole="Status" ToRole="Labs" />
+          <NavigationProperty Name="User" Relationship="LabsDBModel.FK_Status_Users" FromRole="Status" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Survey">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="phase" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="scale" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="surveyid" Type="Int32" Nullable="false" />
+          <Property Name="labid" Type="Int32" Nullable="false" />
+          <Property Name="desc" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="title" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Answers" Relationship="LabsDBModel.FK_Answers_Survey" FromRole="Survey" ToRole="Answers" />
+          <NavigationProperty Name="Lab" Relationship="LabsDBModel.FK_Survey_Labs" FromRole="Survey" ToRole="Labs" />
+          <NavigationProperty Name="Questions" Relationship="LabsDBModel.FK_Questions_Questions" FromRole="Survey" ToRole="Questions" />
+          <NavigationProperty Name="ScaleAnswers" Relationship="LabsDBModel.FK_ScaleAnswers_Survey" FromRole="Survey" ToRole="ScaleAnswers" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="nickname" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="passsword" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="group" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="school" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="dept" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="labid" Type="Int32" Nullable="false" />
+          <Property Name="student_id" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="groupid" Type="Int32" />
+          <Property Name="gender" Type="String" MaxLength="5" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Answers" Relationship="LabsDBModel.FK_Answers_Users" FromRole="Users" ToRole="Answers" />
+          <NavigationProperty Name="DiscussionAs" Relationship="LabsDBModel.FK_DiscussionA_Users" FromRole="Users" ToRole="DiscussionA" />
+          <NavigationProperty Name="DiscussionBs" Relationship="LabsDBModel.FK_DiscussionB_Users" FromRole="Users" ToRole="DiscussionB" />
+          <NavigationProperty Name="Lab" Relationship="LabsDBModel.FK_Users_Labs" FromRole="Users" ToRole="Labs" />
+          <NavigationProperty Name="ScaleAnswers" Relationship="LabsDBModel.FK_ScaleAnswers_Users" FromRole="Users" ToRole="ScaleAnswers" />
+          <NavigationProperty Name="Status" Relationship="LabsDBModel.FK_Status_Users" FromRole="Users" ToRole="Status" />
+        </EntityType>
+        <Association Name="FK_Answers_Labs">
+          <End Role="Labs" Type="LabsDBModel.Lab" Multiplicity="1" />
+          <End Role="Answers" Type="LabsDBModel.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answers_Questions">
+          <End Role="Questions" Type="LabsDBModel.Question" Multiplicity="1" />
+          <End Role="Answers" Type="LabsDBModel.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="qid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answers_Survey">
+          <End Role="Survey" Type="LabsDBModel.Survey" Multiplicity="1" />
+          <End Role="Answers" Type="LabsDBModel.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="surveyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answers_Users">
+          <End Role="Users" Type="LabsDBModel.User" Multiplicity="1" />
+          <End Role="Answers" Type="LabsDBModel.Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="studentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionA_DiscussionA">
+          <End Role="DiscussionA" Type="LabsDBModel.DiscussionA" Multiplicity="0..1" />
+          <End Role="DiscussionA1" Type="LabsDBModel.DiscussionA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiscussionA">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionA1">
+              <PropertyRef Name="topicid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionA_Labs">
+          <End Role="Labs" Type="LabsDBModel.Lab" Multiplicity="1" />
+          <End Role="DiscussionA" Type="LabsDBModel.DiscussionA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionA">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionA_Users">
+          <End Role="Users" Type="LabsDBModel.User" Multiplicity="1" />
+          <End Role="DiscussionA" Type="LabsDBModel.DiscussionA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionA">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionAFeedback_DiscussionA">
+          <End Role="DiscussionA" Type="LabsDBModel.DiscussionA" Multiplicity="1" />
+          <End Role="DiscussionAFeedback" Type="LabsDBModel.DiscussionAFeedback" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DiscussionA">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionAFeedback">
+              <PropertyRef Name="discuss_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionB_Labs">
+          <End Role="Labs" Type="LabsDBModel.Lab" Multiplicity="1" />
+          <End Role="DiscussionB" Type="LabsDBModel.DiscussionB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionB">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DiscussionB_Users">
+          <End Role="Users" Type="LabsDBModel.User" Multiplicity="1" />
+          <End Role="DiscussionB" Type="LabsDBModel.DiscussionB" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="DiscussionB">
+              <PropertyRef Name="student_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScaleAnswers_Labs">
+          <End Role="Labs" Type="LabsDBModel.Lab" Multiplicity="1" />
+          <End Role="ScaleAnswers" Type="LabsDBModel.ScaleAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="ScaleAnswers">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_Labs">
+          <End Role="Labs" Type="LabsDBModel.Lab" Multiplicity="1" />
+          <End Role="Status" Type="LabsDBModel.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Survey_Labs">
+          <End Role="Labs" Type="LabsDBModel.Lab" Multiplicity="1" />
+          <End Role="Survey" Type="LabsDBModel.Survey" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Survey">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Labs">
+          <End Role="Labs" Type="LabsDBModel.Lab" Multiplicity="1" />
+          <End Role="Users" Type="LabsDBModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Labs">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="labid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Questions_Questions">
+          <End Role="Survey" Type="LabsDBModel.Survey" Multiplicity="1" />
+          <End Role="Questions" Type="LabsDBModel.Question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Questions">
+              <PropertyRef Name="survryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScaleAnswers_Questions">
+          <End Role="Questions" Type="LabsDBModel.Question" Multiplicity="1" />
+          <End Role="ScaleAnswers" Type="LabsDBModel.ScaleAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Questions">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="ScaleAnswers">
+              <PropertyRef Name="qid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScaleAnswers_Survey">
+          <End Role="Survey" Type="LabsDBModel.Survey" Multiplicity="1" />
+          <End Role="ScaleAnswers" Type="LabsDBModel.ScaleAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Survey">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="ScaleAnswers">
+              <PropertyRef Name="surveyid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ScaleAnswers_Users">
+          <End Role="Users" Type="LabsDBModel.User" Multiplicity="1" />
+          <End Role="ScaleAnswers" Type="LabsDBModel.ScaleAnswer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="ScaleAnswers">
+              <PropertyRef Name="studentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_Users">
+          <End Role="Users" Type="LabsDBModel.User" Multiplicity="1" />
+          <End Role="Status" Type="LabsDBModel.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="studentid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LabsDBModelStoreContainer" CdmEntityContainer="LabsDBEntities">
+          <EntitySetMapping Name="Answers">
+            <EntityTypeMapping TypeName="LabsDBModel.Answer">
+              <MappingFragment StoreEntitySet="Answers">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="labid" ColumnName="labid" />
+                <ScalarProperty Name="surveyid" ColumnName="surveyid" />
+                <ScalarProperty Name="qid" ColumnName="qid" />
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+                <ScalarProperty Name="contents" ColumnName="contents" />
+                <ScalarProperty Name="phase" ColumnName="phase" />
+                <ScalarProperty Name="opinions" ColumnName="opinions" />
+                <ScalarProperty Name="links" ColumnName="links" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+                <ScalarProperty Name="optionid" ColumnName="optionid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiscussionAs">
+            <EntityTypeMapping TypeName="LabsDBModel.DiscussionA">
+              <MappingFragment StoreEntitySet="DiscussionA">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="labid" ColumnName="labid" />
+                <ScalarProperty Name="groupid" ColumnName="groupid" />
+                <ScalarProperty Name="topic" ColumnName="topic" />
+                <ScalarProperty Name="topicid" ColumnName="topicid" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="time" ColumnName="time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiscussionAFeedbacks">
+            <EntityTypeMapping TypeName="LabsDBModel.DiscussionAFeedback">
+              <MappingFragment StoreEntitySet="DiscussionAFeedback">
+                <ScalarProperty Name="discuss_id" ColumnName="discuss_id" />
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="gfeedback" ColumnName="gfeedback" />
+                <ScalarProperty Name="qfeedback" ColumnName="qfeedback" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DiscussionBs">
+            <EntityTypeMapping TypeName="LabsDBModel.DiscussionB">
+              <MappingFragment StoreEntitySet="DiscussionB">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="labid" ColumnName="labid" />
+                <ScalarProperty Name="groupid" ColumnName="groupid" />
+                <ScalarProperty Name="topic" ColumnName="topic" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="time" ColumnName="time" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Labs">
+            <EntityTypeMapping TypeName="LabsDBModel.Lab">
+              <MappingFragment StoreEntitySet="Labs">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="currentPhase" ColumnName="currentPhase" />
+                <ScalarProperty Name="begin" ColumnName="begin" />
+                <ScalarProperty Name="end" ColumnName="end" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="LabsDBModel.Question">
+              <MappingFragment StoreEntitySet="Questions">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="question1" ColumnName="question" />
+                <ScalarProperty Name="survryid" ColumnName="survryid" />
+                <ScalarProperty Name="no" ColumnName="no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ScaleAnswers">
+            <EntityTypeMapping TypeName="LabsDBModel.ScaleAnswer">
+              <MappingFragment StoreEntitySet="ScaleAnswers">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="labid" ColumnName="labid" />
+                <ScalarProperty Name="surveyid" ColumnName="surveyid" />
+                <ScalarProperty Name="qid" ColumnName="qid" />
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+                <ScalarProperty Name="rank" ColumnName="rank" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="LabsDBModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="labid" ColumnName="labid" />
+                <ScalarProperty Name="phase" ColumnName="phase" />
+                <ScalarProperty Name="studentid" ColumnName="studentid" />
+                <ScalarProperty Name="done" ColumnName="done" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Surveys">
+            <EntityTypeMapping TypeName="LabsDBModel.Survey">
+              <MappingFragment StoreEntitySet="Survey">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phase" ColumnName="phase" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="scale" ColumnName="scale" />
+                <ScalarProperty Name="surveyid" ColumnName="surveyid" />
+                <ScalarProperty Name="labid" ColumnName="labid" />
+                <ScalarProperty Name="desc" ColumnName="desc" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="LabsDBModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="nickname" ColumnName="nickname" />
+                <ScalarProperty Name="passsword" ColumnName="passsword" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="group" ColumnName="group" />
+                <ScalarProperty Name="school" ColumnName="school" />
+                <ScalarProperty Name="dept" ColumnName="dept" />
+                <ScalarProperty Name="labid" ColumnName="labid" />
+                <ScalarProperty Name="student_id" ColumnName="student_id" />
+                <ScalarProperty Name="groupid" ColumnName="groupid" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
