@@ -144,19 +144,19 @@ public partial class Admin_GroupCSettings : System.Web.UI.Page
     private void clearSurveys()
     {
         int lab_id = int.Parse(this.labid);
-        using (LabsDBModel.LabsDBEntities db = new LabsDBModel.LabsDBEntities())
+        using (LabsDBEntities db = new LabsDBEntities())
         {
             int surveyid = -1;
             foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid==5))
             {
                 surveyid = s.sid;
-                db.Surveys.DeleteObject(s);
+                db.Surveys.Remove(s);
                 
             }
             foreach (var q in db.Questions.Where(c => c.survryid == surveyid))
             {
 
-                db.Questions.DeleteObject(q);
+                db.Questions.Remove(q);
 
             }
             db.SaveChanges();
