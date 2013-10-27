@@ -18,7 +18,9 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
             Grouping.PostBackUrl += labid;
             ExerciseSettings.PostBackUrl += labid;
             SelfEvalSettings.PostBackUrl += labid;
-            String paras = "&title=後測&phase=Final";
+            ExerciseSettings2.PostBackUrl += labid;
+            SelfEvalSettings2.PostBackUrl += labid;
+            String paras = "&title=Post&phase=Final";
             //paras = Server.UrlEncode(paras);
             PostTestSettings.PostBackUrl += labid+paras;
             GroupCSettings.PostBackUrl += labid;

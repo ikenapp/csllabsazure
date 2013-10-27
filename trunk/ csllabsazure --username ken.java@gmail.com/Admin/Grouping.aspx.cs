@@ -32,7 +32,7 @@ public partial class Admin_Grouping : System.Web.UI.Page
                 try
                 {
                     var lab = db.Labs.Where(c => c.sid == lab_id).First();
-                    LabInfo.Text = String.Format("場次 : {0} [ {1} ] , 時間 : {2:yyyy-MM-dd} ~ {3:yyyy-MM-dd}.", lab.name, lab.desc, lab.begin, lab.end);
+                    LabInfo.Text = String.Format("場次 : {0} [ {1} ] , 時間 : {2:yyyy-MM-dd} ~ {3:yyyy-MM-dd}.<br>學生群組列表", lab.name, lab.desc, lab.begin, lab.end);
                 }
                 catch (Exception ex)
                 {

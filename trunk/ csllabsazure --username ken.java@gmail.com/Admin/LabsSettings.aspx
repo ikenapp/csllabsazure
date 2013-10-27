@@ -13,17 +13,8 @@
     
     .funButtonStyle
     {
-        width : 150px;
-        height : 50px;
-        background : lightblue;
-        /*color : white;*/
-        font-size :14px;
-    }
-    
-    .funButtonStyle1
-    {
         width : 120px;
-        height : 50px;
+        height : 35px;
         background : lightblue;
         /*color : white;*/
         font-size :14px;
@@ -54,40 +45,52 @@
     </span>
     </fieldset>
     <fieldset class="login">
-                    <legend>實驗相關設定</legend> 
+                    <legend>第一階段設定</legend> 
     <span class="cell">
-    <asp:Button ID="ExerciseSettings" runat="server" Text="線上習作設定" CssClass="funButtonStyle1" 
-                        PostBackUrl="~/Admin/Survey.aspx" />
+    <asp:Button ID="ExerciseSettings" runat="server" Text="線上習作設定" CssClass="funButtonStyle" 
+                        PostBackUrl="~/Admin/Phase1/Survey.aspx" />
     </span>
     <span class="cell">
-    <asp:Button ID="SelfEvalSettings" runat="server" Text="學習自評設定" CssClass="funButtonStyle1" 
-                        PostBackUrl="~/Admin/Scale.aspx" Enabled="False" />
+    <asp:Button ID="SelfEvalSettings" runat="server" Text="學習自評設定" CssClass="funButtonStyle" 
+                        PostBackUrl="~/Admin/Phase1/Scale.aspx" Enabled="False" />
+    </span>
+    
+    </fieldset>
+        <fieldset class="login">
+                    <legend>第二階段設定</legend> 
+    <span class="cell">
+    <asp:Button ID="ExerciseSettings2" runat="server" Text="線上習作設定" CssClass="funButtonStyle" 
+                        PostBackUrl="~/Admin/Phase2/Survey.aspx" />
     </span>
     <span class="cell">
-    <asp:Button ID="GroupCSettings" runat="server" Text="C組 Q&A 設定" CssClass="funButtonStyle1" 
-                        PostBackUrl="~/Admin/GroupCSettings.aspx"  />
+    <asp:Button ID="SelfEvalSettings2" runat="server" Text="學習自評設定" CssClass="funButtonStyle" 
+                        PostBackUrl="~/Admin/Phase2/Scale.aspx" Enabled="False" />
     </span>
     <span class="cell">
-    <asp:Button ID="PostTestSettings" runat="server" Text="後測設定" CssClass="funButtonStyle1" 
-                        PostBackUrl="~/Admin/PostTest.aspx" />
+   <asp:Button ID="GroupCSettings" runat="server" Text="C組 Q&A 設定" CssClass="funButtonStyle" 
+                        PostBackUrl="~/Admin/Phase2/GroupCSettings.aspx"  />
+    </span>
+            <span class="cell">
+    <asp:Button ID="PostTestSettings" runat="server" Text="後測設定" CssClass="funButtonStyle" 
+                        PostBackUrl="~/Admin/Phase2/PostTest.aspx" />
     </span>
     </fieldset>
      <fieldset class="login">
                     <legend>實驗階段切換</legend> 
     <span class="cell">
-    <asp:Button ID="FirstPhase" runat="server" Text="第一階段" CssClass="funButtonStyle1" 
+    <asp:Button ID="FirstPhase" runat="server" Text="第一階段" CssClass="funButtonStyle" 
                         onclick="FirstPhase_Click" />
     </span>
     <span class="cell">
-    <asp:Button ID="SecondPhase1" runat="server" Text="第二階段-1" CssClass="funButtonStyle1" 
+    <asp:Button ID="SecondPhase1" runat="server" Text="第二階段-1" CssClass="funButtonStyle" 
                         onclick="FirstPhase_Click" TabIndex="11" />
     </span>
     <span class="cell">
-    <asp:Button ID="SecondPhase2" runat="server" Text="第二階段-2" CssClass="funButtonStyle1" 
+    <asp:Button ID="SecondPhase2" runat="server" Text="第二階段-2" CssClass="funButtonStyle" 
                         onclick="FirstPhase_Click" TabIndex="12" />
     </span>
     <span class="cell">
-    <asp:Button ID="ThirdPhase" runat="server" Text="第三階段-後測" CssClass="funButtonStyle1" 
+    <asp:Button ID="ThirdPhase" runat="server" Text="第三階段-後測" CssClass="funButtonStyle" 
                         onclick="FirstPhase_Click" TabIndex="2" />
     </span>
     </fieldset>
