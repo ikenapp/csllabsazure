@@ -18,7 +18,10 @@ public partial class LabsDBEntities : DbContext
     {
     }
 
-    
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
+        throw new UnintentionalCodeFirstException();
+    }
 
     public DbSet<Answer> Answers { get; set; }
     public DbSet<DiscussionA> DiscussionAs { get; set; }
