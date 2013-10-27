@@ -31,7 +31,7 @@ public partial class Admin_PreviewSurvey : System.Web.UI.Page
             }
             BackLink.NavigateUrl = "~/Admin/Scale.aspx?labid=" + labid + qStr;
             int lab_id = int.Parse(this.labid);
-            using (LabsDBModel.LabsDBEntities db = new LabsDBModel.LabsDBEntities())
+            using (LabsDBEntities db = new LabsDBEntities())
             {
                 try
                 {
