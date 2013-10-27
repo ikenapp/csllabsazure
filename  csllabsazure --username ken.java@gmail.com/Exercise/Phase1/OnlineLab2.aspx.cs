@@ -17,7 +17,7 @@ public partial class Execise_OnlineLab2 : System.Web.UI.Page
             return;
         }
         BackLink.Visible = true;
-        BackLink.NavigateUrl = "~/Exercise/OnlineLab.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"];
+        BackLink.NavigateUrl = "~/Exercise/Phase1/OnlineLab.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"];
             
         if (!Page.IsPostBack)
         {
@@ -35,7 +35,7 @@ public partial class Execise_OnlineLab2 : System.Web.UI.Page
                         {
                             try
                             {
-                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid ==1).First();
+                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid ==11).First();
                                 //var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
                                 //Part1Title.Text = "一、" + question1.question1;
                                 var question2 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 200).First();

@@ -27,7 +27,7 @@ public partial class Execise_Phase1 : System.Web.UI.Page
                         {
                             try
                             {
-                                var survey = db.Surveys.Where(c => c.labid == u.labid).First();
+                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 24).First();
                                 PostTest.PostBackUrl = "~/Exercise/PostTest.aspx?labid=" + lab_id + "&surveyid=" + survey.sid;
                                 isError = false;
 

@@ -112,6 +112,37 @@ public partial class Exercise_PostTest2 : System.Web.UI.Page
             {
                 isShow = false;
                 message = "";
+                if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+                {
+                    if (Session["USER_DATA"] != null)
+                    {
+                        User u = Session["USER_DATA"] as User;
+                        if (u != null)
+                        {
+                            try
+                            {
+
+                                var status = db.Status.Where(c => c.labid == lab_id && c.studentid == u.sid && c.phase == "Final").First();
+                                status.done = true;
+                            }
+                            catch (Exception ex)
+                            {
+
+                                Status ans = new Status
+                                {
+                                    labid = lab_id,
+                                    studentid = u.sid,
+                                    phase = "Final",
+                                    done = true
+                                    
+                                };
+                                db.Status.Add(ans);
+                            }
+                        }
+
+                    }
+
+                }
                 db.SaveChanges();
                 Response.Redirect("~/Exercise/PostTest3.aspx?surveyid=" + surveyid + "&labid=" + labid);
             }
