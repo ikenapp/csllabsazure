@@ -13,7 +13,7 @@
     }
     .centerBTN
     {
-        border: 1px bolid #CCC;
+        border: 1px solid #CCC;
         width: 180px;
         height:80px;
         font-size : 18px;

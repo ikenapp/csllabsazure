@@ -7,7 +7,7 @@
 <style type="text/css">
     #createPanel
     {
-        text-align:center;
+        text-align:left;
     }
     .acctinfo
     {
