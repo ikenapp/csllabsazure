@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="OnlineLab.aspx.cs" Inherits="Execise_OnlineLab" %>
 
+
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 <style type="text/css">
     #myheader td
@@ -13,7 +15,7 @@
     }
     .centerBTN
     {
-        border: 1px bolid #CCC;
+        border: 1px solid #CCC;
         width: 180px;
         height:80px;
         font-size : 18px;
@@ -42,7 +44,7 @@
      }
      .Next
     {
-        border: 1px bolid #CCC;
+        border: 1px solid #CCC;
         width: 180px;
         height:80px;
         font-size : 18px;
@@ -66,10 +68,9 @@
         <h3>第一部分:</h3>
         <h3><asp:Label ID="Part1Title" runat="server" CssClass="login" Text="Label"></asp:Label>
         </h3>
-        <asp:ScriptManager ID="ScriptManager1" runat="server">
-                 </asp:ScriptManager>
+     <%--   <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>
+            <ContentTemplate>--%>
                
         <div style="text-align:left;">
             <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
@@ -90,11 +91,11 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法1:</h3> <br>認同強度<asp:DropDownList ID="DropDownList1" runat="server">
-                            <asp:ListItem>0</asp:ListItem>
                             <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
                             <asp:ListItem>4</asp:ListItem>
+                            <asp:ListItem>5</asp:ListItem>
                         </asp:DropDownList>
                         分
                      
@@ -131,12 +132,12 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法2:</h3> <br>認同強度<asp:DropDownList ID="DropDownList2" runat="server">
-                            <asp:ListItem>0</asp:ListItem>
-                            <asp:ListItem>1</asp:ListItem>
+                             <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
                             <asp:ListItem>4</asp:ListItem>
-                        </asp:DropDownList>
+                            <asp:ListItem>5</asp:ListItem>
+                    </asp:DropDownList>
                         分
                      
                         <br />
@@ -172,12 +173,12 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法3:</h3> <br>認同強度<asp:DropDownList ID="DropDownList3" runat="server">
-                            <asp:ListItem>0</asp:ListItem>
-                            <asp:ListItem>1</asp:ListItem>
+                             <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
                             <asp:ListItem>4</asp:ListItem>
-                        </asp:DropDownList>
+                            <asp:ListItem>5</asp:ListItem>
+                  </asp:DropDownList>
                         分
                      
                         <br />
@@ -212,11 +213,11 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法4:</h3> <br>認同強度<asp:DropDownList ID="DropDownList4" runat="server">
-                            <asp:ListItem>0</asp:ListItem>
                             <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
                             <asp:ListItem>4</asp:ListItem>
+                            <asp:ListItem>5</asp:ListItem>
                         </asp:DropDownList>
                         分
                      
@@ -252,12 +253,12 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法5:</h3> <br>認同強度<asp:DropDownList ID="DropDownList5" runat="server">
-                            <asp:ListItem>0</asp:ListItem>
                             <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
                             <asp:ListItem>4</asp:ListItem>
-                        </asp:DropDownList>
+                            <asp:ListItem>5</asp:ListItem>
+                  </asp:DropDownList>
                         分
                      
                         <br />
@@ -292,11 +293,11 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法6:</h3> <br>認同強度<asp:DropDownList ID="DropDownList6" runat="server">
-                            <asp:ListItem>0</asp:ListItem>
-                            <asp:ListItem>1</asp:ListItem>
+                           <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
                             <asp:ListItem>4</asp:ListItem>
+                            <asp:ListItem>5</asp:ListItem>
                         </asp:DropDownList>
                         分
                      
@@ -333,11 +334,11 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法7:</h3> <br>認同強度<asp:DropDownList ID="DropDownList7" runat="server">
-                            <asp:ListItem>0</asp:ListItem>
-                            <asp:ListItem>1</asp:ListItem>
+                           <asp:ListItem>1</asp:ListItem>
                             <asp:ListItem>2</asp:ListItem>
                             <asp:ListItem>3</asp:ListItem>
                             <asp:ListItem>4</asp:ListItem>
+                            <asp:ListItem>5</asp:ListItem>
                         </asp:DropDownList>
                         分
                      
@@ -368,8 +369,8 @@
         <br />
     
     
-            </ContentTemplate>
-        </asp:UpdatePanel>
+   <%--         </ContentTemplate>
+        </asp:UpdatePanel>--%>
 
          <script type="text/javascript" language="javascript">
     if(<%= "'"+isShow+"'" %> == 'True'){
