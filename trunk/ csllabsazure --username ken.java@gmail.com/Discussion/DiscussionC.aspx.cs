@@ -40,7 +40,7 @@ public partial class Discussion_DiscussionC : System.Web.UI.Page
                         {
                             try
                             {
-                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 5).First();
+                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 23).First();
                                 //var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
                                 //Part1Title.Text = "一、" + question1.question1;
                                
@@ -187,7 +187,7 @@ public partial class Discussion_DiscussionC : System.Web.UI.Page
                     }
                 }
             }
-            Response.Redirect("~/Exercise/Phase2Done.aspx");
+            Response.Redirect("~/Exercise/Phase2/Phase2Done.aspx");
         }
 
     }
