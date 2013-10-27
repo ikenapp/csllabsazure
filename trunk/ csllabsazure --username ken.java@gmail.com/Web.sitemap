@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/Default.aspx" title="首頁"  description="首頁">
+    <siteMapNode url="~/Exercise/Phase1.aspx" title="第一階段"  description="第一階段" >
+    </siteMapNode>
+    <siteMapNode url="~/Exercise/Phase2.aspx" title="第二階段"  description="第二階段" >
+    </siteMapNode>
+    <siteMapNode url="~/Exercise/Phase3.aspx" title="第三階段"  description="第三階段" >
+    </siteMapNode>
+    <siteMapNode url="~/PersonalSettings.aspx" title="個人設定"  description="個人設定" >
+    </siteMapNode>
+    <siteMapNode url="~/Admin/AdminSettings.aspx" title="管理者設定"  description="管理者設定" >
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>
+
