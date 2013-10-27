@@ -26,7 +26,7 @@
         min-height:450px;
         max-height:100%;
         border: 1px solid #ccc;
-        padding:20px;
+        padding:10px;
         background : #eee;
      }
      .myarea
@@ -60,10 +60,10 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 
     <div style="text-align:left;width:100%;">
-        <asp:HyperLink ID="BackLink" runat="server">返回上一頁</asp:HyperLink>
+        <asp:HyperLink ID="BackLink" runat="server" Visible="false">返回上一頁</asp:HyperLink>
         <br />
         <asp:Label ID="LabInfo" runat="server" CssClass="login" Text="Label"></asp:Label>
-        <h2>第一部分:</h2>
+        <h3>第一部分:</h3>
         <h3><asp:Label ID="Part1Title" runat="server" CssClass="login" Text="Label"></asp:Label>
         </h3>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -361,7 +361,7 @@
             <br/>
             <div style="text-align:center;width:100%">
        <asp:Button ID="NextButton" runat="server" Text="第二部分 >>" CssClass="Next" 
-                    PostBackUrl="~/Exercise/OnlineLab2.aspx" onclick="NextButton_Click" 
+                    PostBackUrl="~/Exercise/Phase1/OnlineLab2.aspx" onclick="NextButton_Click" 
              />
              </div>
         </div>

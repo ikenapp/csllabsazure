@@ -18,7 +18,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
             LabInfo.Text = "網路發生不可預期錯誤.請重新登入再試!";
             return;
         }
-        BackLink.Visible = true;
+        //BackLink.Visible = true;
         BackLink.NavigateUrl = "~/Exercise/Phase1/Phase1.aspx?labid=" + labid;
             
         if (!Page.IsPostBack)
@@ -113,7 +113,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
                             }
                             catch (Exception)
                             {
-                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 21).First();
+                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 11).First();
                                 var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
                                 Answer ans = new Answer
                                 {
