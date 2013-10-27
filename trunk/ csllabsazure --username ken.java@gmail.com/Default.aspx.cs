@@ -23,7 +23,7 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-            NicknameLabel.Text = "請用帳號(學號),密碼(出生西元年月日)登入!";
+            NicknameLabel.Text = "請用帳號(學號)/密碼(學號)登入!";
         }
 
     }
