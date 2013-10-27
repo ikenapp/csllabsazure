@@ -41,7 +41,7 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             int lid = int.Parse(lab_id);
-            using (LabsDBModel.LabsDBEntities db = new LabsDBModel.LabsDBEntities())
+            using (LabsDBEntities db = new LabsDBEntities())
             {
                 try
                 {
@@ -117,7 +117,7 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
             return;
         }
         int lid = int.Parse(lab_id);
-        using (LabsDBModel.LabsDBEntities db = new LabsDBModel.LabsDBEntities())
+        using (LabsDBEntities db = new LabsDBEntities())
         {
             try
             {

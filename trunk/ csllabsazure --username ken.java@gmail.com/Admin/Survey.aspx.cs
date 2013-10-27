@@ -19,7 +19,7 @@ public partial class Admin_Survey : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             int lab_id = int.Parse(labid);
-            using (LabsDBModel.LabsDBEntities db = new LabsDBModel.LabsDBEntities())
+            using (LabsDBEntities db = new LabsDBEntities())
             {
                 foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 1))
                 {
@@ -66,14 +66,14 @@ public partial class Admin_Survey : System.Web.UI.Page
         bool isError = false;
         clearSurveys();
         int surveyId = -1;
-        using (LabsDBModel.LabsDBEntities db = new LabsDBModel.LabsDBEntities())
+        using (LabsDBEntities db = new LabsDBEntities())
         {
             using (StreamReader sr = new StreamReader(Server.MapPath(@"~/Upload/Lab_" + labid + "_Survey.csv"), System.Text.Encoding.Default))
             {
                 //讀取文字檔
                 string txt = sr.ReadToEnd().Trim();
                 string[] data = txt.Split('\n');
-                LabsDBModel.Survey survey = new LabsDBModel.Survey
+                Survey survey = new Survey
                 {
                     name = "線上習作",
                     phase = "All",
@@ -82,7 +82,7 @@ public partial class Admin_Survey : System.Web.UI.Page
                     surveyid = 1
 
                 };
-                db.Surveys.AddObject(survey);
+                db.Surveys.Add(survey);
                 db.SaveChanges();
                 surveyId = survey.sid;
                 for (int i = 1; i < data.Length; i++)
@@ -104,14 +104,14 @@ public partial class Admin_Survey : System.Web.UI.Page
                                 questionStr = questionStr.Substring(0, questionStr.Length - 1);
                             }
 
-                            LabsDBModel.Question q = new LabsDBModel.Question
+                            Question q = new Question
                             {
                                 no = int.Parse(noStr),
                                 question1 = questionStr,
                                 survryid = survey.sid
                                 
                             };
-                            db.Questions.AddObject(q);
+                            db.Questions.Add(q);
                         }
                     }
                     catch (Exception ex)
@@ -144,19 +144,19 @@ public partial class Admin_Survey : System.Web.UI.Page
     private void clearSurveys()
     {
         int lab_id = int.Parse(this.labid);
-        using (LabsDBModel.LabsDBEntities db = new LabsDBModel.LabsDBEntities())
+        using (LabsDBEntities db = new LabsDBEntities())
         {
             int surveyid = -1;
             foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid==1))
             {
                 surveyid = s.sid;
-                db.Surveys.DeleteObject(s);
+                db.Surveys.Remove(s);
                 
             }
             foreach (var q in db.Questions.Where(c => c.survryid == surveyid))
             {
 
-                db.Questions.DeleteObject(q);
+                db.Questions.Remove(q);
 
             }
             db.SaveChanges();
