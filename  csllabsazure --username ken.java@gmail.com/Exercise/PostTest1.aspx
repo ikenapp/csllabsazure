@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="PostTest1.aspx.cs" Inherits="Exercise_PostTest1"  %>
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 <style type="text/css">
     .myheader td
@@ -16,13 +16,13 @@
     }
     .Next
     {
-        border: 1px bolid #CCC;
+        border: 1px solid #CCC;
         width: 180px;
         height:80px;
         font-size : 18px;
         background : pink;
     }
-    .title
+    .title{
     
         font-weight : bold;
         font-size: 14px;
@@ -36,13 +36,7 @@
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
- <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server">
-                <Scripts>
-                    <asp:ScriptReference Path="~/Scripts/jquery-1.6.4.min.js" />
-                    <asp:ScriptReference Path="~/Scripts/specialTables.js" />
-                    <asp:ScriptReference Path="~/Scripts/jquery.specialTable.js" />
-                </Scripts>
-                </asp:ToolkitScriptManager>
+
     <div style="width:100%;">
         <asp:Label ID="LabInfo" runat="server" CssClass="login title" Text="Label"></asp:Label><br>
     <h3 ><asp:Label ID="Tiele" runat="server" Text="第一部分:"></asp:Label></h3>

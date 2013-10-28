@@ -76,7 +76,7 @@ public partial class Execise_OnlineLab2 : System.Web.UI.Page
     {
         if (e.CommandName == "ROW_SAVE")
         {
-            Response.Write(e.CommandName + ":" + e.CommandArgument);
+            //Response.Write(e.CommandName + ":" + e.CommandArgument);
         }
         //Response.Write(e.CommandName + ":" + e.CommandArgument);
     }

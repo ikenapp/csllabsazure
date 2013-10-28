@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="OnlineLab.aspx.cs" Inherits="Execise_OnlineLab" %>
 
 
-
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 <style type="text/css">
     #myheader td
@@ -68,9 +67,9 @@
         <h3>第一部分:</h3>
         <h3><asp:Label ID="Part1Title" runat="server" CssClass="login" Text="Label"></asp:Label>
         </h3>
-     <%--   <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-            <ContentTemplate>--%>
+            <ContentTemplate>
                
         <div style="text-align:left;">
             <asp:MultiView ID="MultiView1" runat="server" ActiveViewIndex="0">
@@ -368,12 +367,12 @@
         </div>
         <br />
     
-    
-   <%--         </ContentTemplate>
-        </asp:UpdatePanel>--%>
+     
+            </ContentTemplate>
+        </asp:UpdatePanel>
 
-         <script type="text/javascript" language="javascript">
-    if(<%= "'"+isShow+"'" %> == 'True'){
+         <script type="text/javascript">
+    if('<%= isShow %>' == 'True'){
         alert('<%= message %>');
     }
     </script>
