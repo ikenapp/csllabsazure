@@ -3,11 +3,13 @@
 
 
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
+    
 <style type="text/css">
     #createPanel
     {
-        text-align:left;
+        text-align:center;
     }
     .acctinfo
     {
@@ -16,12 +18,12 @@
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-    <%--<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>--%>
+    
  <div id="createPanel"><asp:HyperLink ID="BackLink" runat="server">返回上一頁</asp:HyperLink>
             <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification" 
                  ValidationGroup="LoginUserValidationGroup" ShowMessageBox="True" ShowSummary="False" />
             <div class="accountInfo" >
-                <fieldset class="login">
+                <fieldset class="login" style="text-align:left;">
                     <legend>新增實驗</legend>
                     
                         <asp:Label ID="LabNameLabel" runat="server" AssociatedControlID="LabName">實驗名稱:</asp:Label>
@@ -66,7 +68,15 @@
                        
                     </p>
                 </fieldset>
-               
+                <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />  
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>  
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+               <script type="text/javascript"> 
+  
+                   $(function () {
+                       $("#<%= BeginDate.ClientID%>").datepicker({ dateFormat: "yy-mm-dd" });
+                       $("#<%= EndDate.ClientID%>").datepicker({ dateFormat: "yy-mm-dd" })
+                   });  </script>
             </div>
             </div>
 </asp:Content>

@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
-    CodeFile="Login.aspx.cs" Inherits="Account_Login" %>
+    CodeFile="Login.aspx.cs" Inherits="Account_MainLogin" %>
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 <style type="text/css">
     #loginPanel
     {
-        text-align:left;
+        text-align:center;
     }
     .acctinfo
     {
@@ -22,7 +22,7 @@
             <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification" 
                  ValidationGroup="LoginUserValidationGroup" ShowMessageBox="True" ShowSummary="False" />
             <div class="accountInfo" >
-                <fieldset class="login">
+                <fieldset class="login"  style="text-align:left;" >
                     <legend>登入資訊</legend>
                     <p>
                         <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">登入帳號:</asp:Label>
