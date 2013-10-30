@@ -45,7 +45,7 @@ public partial class Admin_Survey : System.Web.UI.Page
             return;
         }
 
-        if (FileUpload1.PostedFile.ContentLength <= 3036)
+        if (FileUpload1.PostedFile.ContentLength <= 900000)
         {
             FileUpload1.SaveAs(Server.MapPath(@"~/Upload/Lab_" + labid + "_PostTest.csv"));
             MsgLabel.Text = "檔案上傳成功";
