@@ -361,7 +361,7 @@
             <br/>
             <div style="text-align:center;width:100%">
        <asp:Button ID="NextButton" runat="server" Text="第二部分 >>" CssClass="Next" 
-                    PostBackUrl="~/Exercise/Phase1/OnlineLab2.aspx" onclick="NextButton_Click" 
+                    PostBackUrl="~/Exercise/Phase2/OnlineLab2.aspx" onclick="NextButton_Click" 
              />
              </div>
         </div>

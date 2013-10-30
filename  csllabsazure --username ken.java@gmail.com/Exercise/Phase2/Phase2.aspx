@@ -33,11 +33,11 @@
                     <legend>第二階段</legend> 
     <span class="cell">
     <asp:Button ID="OnlineLab" runat="server" Text="線上習作" CssClass="funButtonStyle" 
-                        PostBackUrl="~/Exercise/OnlineLab.aspx" />
+                        PostBackUrl="~/Exercise/Phase2/OnlineLab.aspx" />
     </span>
     <span class="cell">
     <asp:Button ID="SelfEval" runat="server" Text="學習自評" CssClass="funButtonStyle" 
-                        PostBackUrl="~/Exercise/SelfEvaluation.aspx" />
+                        PostBackUrl="~/Exercise/Phase2/SelfEvaluation.aspx" />
     </span>
     </fieldset>
 </div>

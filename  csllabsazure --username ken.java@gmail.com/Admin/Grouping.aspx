@@ -68,7 +68,7 @@
             DeleteCommand="DELETE FROM [Users] WHERE [sid] = @sid" 
             InsertCommand="INSERT INTO [Users] ([name], [nickname], [passsword], [birthday], [age], [group], [school], [dept], [labid], [student_id], [groupid], [gender]) VALUES (@name, @nickname, @passsword, @birthday, @age, @group, @school, @dept, @labid, @student_id, @groupid, @gender)" 
             SelectCommand="SELECT * FROM [Users] WHERE [labid] = @labid and [group] != 'admin' ORDER BY [group], [groupid]" 
-            UpdateCommand="UPDATE [Users] SET  [group] = @group, [groupid] = @groupid, [gender] = @gender WHERE [sid] = @sid">
+            UpdateCommand="UPDATE [Users] SET  [group] = @group, [groupid] = @groupid WHERE [sid] = @sid">
             <DeleteParameters>
                 <asp:Parameter Name="sid" Type="Int32" />
             </DeleteParameters>

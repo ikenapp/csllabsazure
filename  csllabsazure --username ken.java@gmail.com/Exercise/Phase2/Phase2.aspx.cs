@@ -8,6 +8,7 @@ using System.Web.UI.WebControls;
 public partial class Execise_Phase1 : System.Web.UI.Page
 {
     int lab_id;
+    int survey_id;
     protected void Page_Load(object sender, EventArgs e)
     {
         bool isError = true;
@@ -41,7 +42,8 @@ public partial class Execise_Phase1 : System.Web.UI.Page
                                 }
                                 else if (u.group == "C")
                                 {
-                                    var survey = lab.Surveys.Where(c=>c.surveyid==5).First();
+                                    var survey = lab.Surveys.Where(c=>c.surveyid==23).First();
+                                    survey_id = survey.sid;
                                     url = String.Format("~/Discussion/Discussion{0}.aspx?labid={1}&surveyid={2}&minid=100", u.group, lab_id, survey.sid);
                                 }
                                 Response.Redirect(url);
@@ -50,6 +52,14 @@ public partial class Execise_Phase1 : System.Web.UI.Page
                             else if (lab.currentPhase == "PartB2")
                             {
                                 //習作與自評
+                                var survey = lab.Surveys.Where(c => c.surveyid == 21).First();
+                                survey_id = survey.sid;
+                                ;
+                                OnlineLab.PostBackUrl += "?labid=" + lab_id + "&surveyid=" + survey_id;;
+                                survey = lab.Surveys.Where(c => c.surveyid == 22).First();
+                                survey_id = survey.sid;
+                                ;
+                                SelfEval.PostBackUrl += "?labid=" + lab_id + "&surveyid=" + survey_id; ;
                             }
                         }
                     }
@@ -63,9 +73,7 @@ public partial class Execise_Phase1 : System.Web.UI.Page
                 Response.Write("網路發生不可預期錯誤.請重新登入再試!");
                 return;
             }
-            String labid = "?labid=" + lab_id;
-            OnlineLab.PostBackUrl += labid;
-            SelfEval.PostBackUrl += labid;
+            
         }
 
 

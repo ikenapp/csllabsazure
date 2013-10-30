@@ -21,7 +21,7 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
             return;
         }
         BackLink.Visible = true;
-        BackLink.NavigateUrl = "~/Exercise/Phase1/OnlineLab.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"];
+        BackLink.NavigateUrl = "~/Exercise/Phase2/OnlineLab.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"];
 
         survey_id = int.Parse(Request.QueryString["surveyid"]);
         if (!Page.IsPostBack)
@@ -114,7 +114,7 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
                                 surveyid = survey_id,
                                 studentid = u.sid,
                                 qid = q_id,
-                                phase = "PartB",
+                                phase = "PartB2",
                                 contents = answerText
                             };
                             db.Answers.Add(ans);

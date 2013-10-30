@@ -105,6 +105,7 @@
         </div>
       </ContentTemplate>
         </asp:UpdatePanel>
+    <br>
          <div style="text-align:center;width:100%">
             <asp:Button ID="SaveAll" runat="server" Text="全部儲存" CssClass="centerBTN" 
                  onclick="SaveAll_Click" />
