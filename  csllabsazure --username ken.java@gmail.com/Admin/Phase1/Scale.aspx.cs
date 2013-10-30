@@ -6,31 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
 
-public partial class Admin_Survey : System.Web.UI.Page
+public partial class Admin_Scale : System.Web.UI.Page
 {
     String labid = "";
-    String title = "";
-    String phase = "";
-    String subfix = "";
-    int surveyid = 1;
-    String qStr = "";
     protected void Page_Load(object sender, EventArgs e)
     {
         labid = Request.QueryString["labid"] != null ? Request.QueryString["labid"].ToString() : "";
-        title = Request.QueryString["title"] != null ? Request.QueryString["title"].ToString() : "學習自評";
-        phase = Request.QueryString["phase"] != null ? Request.QueryString["phase"].ToString() : "All";
-        surveyid = Request.QueryString["title"] != null ? 3 : 2;
-        subfix = Request.QueryString["title"] != null ? "_Scale_Sat.csv" : "_Scale_Eval.csv";
-        TitleLabel.Text = title == "學習自評" ? "學習自評" : "後測";
-        if (Request.QueryString["title"] != null)
-        {
-            qStr = "&title=" + Request.QueryString["title"];
-        }
-        if (Request.QueryString["phase"] != null)
-        {
-            qStr += "&phase=" + Request.QueryString["phase"];
-        }
-        ScaleImport.Visible = false;
+        SurveyImport.Visible = false;
         MsgLabel2.Visible = false;
         PreviewLink.Visible = false;
         Preview.Visible = false;
@@ -39,14 +21,16 @@ public partial class Admin_Survey : System.Web.UI.Page
             int lab_id = int.Parse(labid);
             using (LabsDBEntities db = new LabsDBEntities())
             {
-                foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == surveyid))
+                foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 12))
                 {
-                    Preview.NavigateUrl = "~/Admin/Phase1/PreviewScale.aspx?surveyid=" + s.sid + "&labid=" + labid + qStr;
+                    Preview.NavigateUrl = "~/Admin/Phase1/PreviewScale.aspx?surveyid=" + s.sid + "&labid=" + labid + "&preview=true";
                     Preview.Visible = true;
+                    break;
                 }
             }
             BackLink.NavigateUrl = "~/Admin/LabsSettings.aspx?labid=" + labid;
         }
+
     }
     protected void Button1_Click(object sender, EventArgs e)
     {
@@ -64,9 +48,9 @@ public partial class Admin_Survey : System.Web.UI.Page
 
         if (FileUpload1.PostedFile.ContentLength <= 3036)
         {
-            FileUpload1.SaveAs(Server.MapPath(@"~/Upload/Lab_" + labid + subfix));
+            FileUpload1.SaveAs(Server.MapPath(@"~/Upload/Lab_" + labid + "_SelfEval1.csv"));
             MsgLabel.Text = "檔案上傳成功";
-            ScaleImport.Visible = true;
+            SurveyImport.Visible = true;
         }
         else
         {
@@ -74,36 +58,35 @@ public partial class Admin_Survey : System.Web.UI.Page
         }
 
     }
-    protected void ScaleImport_Click(object sender, EventArgs e)
+    protected void SurveyImport_Click(object sender, EventArgs e)
     {
-        ScaleImport.Visible = true;
+        SurveyImport.Visible = true;
         MsgLabel2.Visible = true;
         MsgLabel2.Text = "";
         bool isError = false;
         clearSurveys();
-        int survey_id = -1;
+        int surveyId = -1;
         using (LabsDBEntities db = new LabsDBEntities())
         {
-            using (StreamReader sr = new StreamReader(Server.MapPath(@"~/Upload/Lab_" + labid + subfix), System.Text.Encoding.Default))
+            using (StreamReader sr = new StreamReader(Server.MapPath(@"~/Upload/Lab_" + labid + "_SelfEval1.csv"), System.Text.Encoding.Default))
             {
                 //讀取文字檔
                 string txt = sr.ReadToEnd().Trim();
                 string[] data = txt.Split('\n');
-                String[] surveyFirstLineData = data[0].Split(',');
                 Survey survey = new Survey
                 {
-                    name = title,//學習自評,滿意度調查
-                    phase = "PartA",//All,Final
+                    name = "第一階段學習自評",
+                    phase = "PartA",
                     type = "SCALE",
                     labid = int.Parse(labid),
-                    scale = surveyFirstLineData[1],
-                    surveyid = this.surveyid
+                    surveyid = 12,
+                    scale = "6"
 
                 };
                 db.Surveys.Add(survey);
                 db.SaveChanges();
-                survey_id = survey.sid;
-                for (int i = 2; i < data.Length; i++)
+                surveyId = survey.sid;
+                for (int i = 1; i < data.Length; i++)
                 {
                     try
                     {
@@ -152,8 +135,8 @@ public partial class Admin_Survey : System.Web.UI.Page
         else
         {
             PreviewLink.Visible = true;
+            PreviewLink.PostBackUrl = "~/Admin/Phase1/PreviewScale.aspx?surveyid=" + surveyId + "&labid=" + labid;
             MsgLabel2.Text = "資料匯入完畢";
-            PreviewLink.PostBackUrl = "~/Admin/Phase1/PreviewScale.aspx?surveyid=" + survey_id + "&labid=" + labid + qStr;
         }
 
 
@@ -165,11 +148,11 @@ public partial class Admin_Survey : System.Web.UI.Page
         using (LabsDBEntities db = new LabsDBEntities())
         {
             int surveyid = -1;
-            foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == this.surveyid))
+            foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 12))
             {
                 surveyid = s.sid;
                 db.Surveys.Remove(s);
-                
+
             }
             foreach (var q in db.Questions.Where(c => c.survryid == surveyid))
             {

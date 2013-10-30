@@ -37,7 +37,7 @@
     </span>
     <span class="cell">
     <asp:Button ID="SelfEval" runat="server" Text="學習自評" CssClass="funButtonStyle" 
-                        PostBackUrl="~/Exercise/Phase1/SelfEvaluation.aspx" Enabled="False"/>
+                        PostBackUrl="~/Exercise/Phase1/SelfEvaluation.aspx" />
     </span>
     </fieldset>
 </div>

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Admin_PreviewSurvey : System.Web.UI.Page
+public partial class Admin_PreviewScale : System.Web.UI.Page
 {
     String labid = "";
     String surveyid = "";
@@ -48,7 +48,7 @@ public partial class Admin_PreviewSurvey : System.Web.UI.Page
                 {
                     int survey_id = int.Parse(surveyid);
                     var survey = db.Surveys.Where(c => c.sid == survey_id).First();
-                    ScaleInfo.Text += String.Format("\n {0} [ {1} ] : {2} 點量表 ", survey.name, survey.phase, survey.scale);
+                    ScaleInfo.Text += String.Format("<br> {0} [ {1} ] : {2} 點量表 ", survey.name, survey.phase, survey.scale);
                 }
                 catch (Exception ex)
                 {

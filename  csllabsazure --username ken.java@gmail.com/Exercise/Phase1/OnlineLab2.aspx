@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="OnlineLab2.aspx.cs" Inherits="Execise_OnlineLab2" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-<style type="text/css">
+    <style type="text/css">
     #myheader td
     {
         border : 0px;
@@ -41,7 +41,7 @@
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-<asp:ScriptManager ID="ScriptManager1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
                  </asp:ScriptManager>
 <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
@@ -76,6 +76,7 @@
                             <asp:TextBox ID="Answer" runat="server" Height="100px" Width="800px" TextMode="MultiLine" ></asp:TextBox>
                             <asp:Button ID="RowSave" runat="server" Text="儲存"  CommandName="ROW_SAVE" 
       CommandArgument="<%# ((GridViewRow) Container).RowIndex %>" />
+                                <asp:Label ID="MsgLabel" runat="server" CssClass="failureNotification"></asp:Label>
                             <br />
                             </div>
                         </ItemTemplate>
@@ -101,13 +102,20 @@
                     <asp:QueryStringParameter Name="no" QueryStringField="minid" Type="Int32" />
                 </SelectParameters>
             </asp:SqlDataSource>
-            <div style="text-align:center;width:100%">
-            <asp:Button ID="SaveAll" runat="server" Text="全部儲存" CssClass="centerBTN" />
-            </div>
+           
         </div>
         <br />
     </span> 
             </ContentTemplate>
         </asp:UpdatePanel>
+    <div style="text-align:center;width:100%">
+            <asp:Button ID="SaveAll" runat="server" Text="全部儲存" CssClass="centerBTN" OnClick="SaveAll_Click" />
+            </div>
+           <br>
+          <script type="text/javascript" language="javascript">
+              if(<%= "'"+isShow+"'" %> == 'True'){
+                  alert('<%= message %>');
+              }
+              </script>
 </asp:Content>
 
