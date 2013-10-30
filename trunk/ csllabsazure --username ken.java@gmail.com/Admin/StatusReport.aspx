@@ -20,12 +20,20 @@
                     SortExpression="student_id" ReadOnly="True" />
                 <asp:BoundField DataField="name" HeaderText="姓名" SortExpression="name" 
                     ReadOnly="True" />
-                <asp:TemplateField HeaderText="第一階段-習作與自評" SortExpression="Phase1">
+                <asp:TemplateField HeaderText="第一階段-習作" SortExpression="Phase1">
                     <ItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<%# Eval("Phase1").ToString() == "True"?"已完成":"X" %>'></asp:Label>
                     </ItemTemplate>
                     <EditItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<%# Eval("Phase1") %>'></asp:Label>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+                 <asp:TemplateField HeaderText="第一階段-自評" SortExpression="Phase1E">
+                    <ItemTemplate>
+                        <asp:Label ID="Label1E" runat="server" Text='<%# Eval("Phase1E").ToString() == "True"?"已完成":"X" %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:Label ID="Label1E" runat="server" Text='<%# Eval("Phase1E") %>'></asp:Label>
                     </EditItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="第二階段-討論" SortExpression="Phase21">
@@ -36,12 +44,20 @@
                         <asp:Label ID="Label2" runat="server" Text='<%# Eval("Phase21").ToString() == "True"?"已完成":"X" %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:TemplateField HeaderText="第二階段-習作與自評" SortExpression="Phase22">
+                <asp:TemplateField HeaderText="第二階段-習作" SortExpression="Phase22">
                     <EditItemTemplate>
                         <asp:Label ID="Label3" runat="server" Text='<%# Eval("Phase22") %>'></asp:Label>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label3" runat="server" Text='<%# Eval("Phase22").ToString() == "True"?"已完成":"X" %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="第二階段-自評" SortExpression="Phase22E">
+                    <EditItemTemplate>
+                        <asp:Label ID="Label3E" runat="server" Text='<%# Eval("Phase22E") %>'></asp:Label>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label3E" runat="server" Text='<%# Eval("Phase22E").ToString() == "True"?"已完成":"X" %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="第二階段-後測" SortExpression="Phase23">
@@ -70,7 +86,7 @@
             ConnectionString="<%$ ConnectionStrings:LabsDBConnectionString %>" 
             DeleteCommand="DELETE FROM [Users] WHERE [sid] = @sid" 
             InsertCommand="INSERT INTO [Users] ([name], [nickname], [passsword], [birthday], [age], [group], [school], [dept], [labid], [student_id], [groupid], [gender]) VALUES (@name, @nickname, @passsword, @birthday, @age, @group, @school, @dept, @labid, @student_id, @groupid, @gender)" 
-            SelectCommand="select sid ,school,dept,student_id,name,(select s.done from Status As S where s.studentid = u.sid and labid = @labid and phase='PartA') as Phase1 ,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='PartB1') as Phase21 ,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='PartB2') as Phase22,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='Final') as Phase23 from Users As U where [group]!='admin' and labid= @labid order by student_id" 
+            SelectCommand="select sid ,school,dept,student_id,name,(select s.done from Status As S where s.studentid = u.sid and labid = @labid and phase='PartA') as Phase1 ,(select s.done from Status As S where s.studentid = u.sid and labid = @labid and phase='PartAE') as Phase1E ,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='PartB1') as Phase21 ,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='PartB2') as Phase22,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='PartB2E') as Phase22E,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='Final') as Phase23 from Users As U where [group]!='admin' and labid= @labid order by student_id" 
             UpdateCommand="UPDATE [Users] SET  [group] = @group, [groupid] = @groupid, [gender] = @gender WHERE [sid] = @sid">
             <DeleteParameters>
                 <asp:Parameter Name="sid" Type="Int32" />

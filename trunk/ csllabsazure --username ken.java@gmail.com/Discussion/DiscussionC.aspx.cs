@@ -104,7 +104,7 @@ public partial class Discussion_DiscussionC : System.Web.UI.Page
                     {
                         try
                         {
-                            var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == "PartB2").First();
+                            var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == "PartB1").First();
                             ans.contents = answerText;
                         }
                         catch (Exception)
@@ -166,7 +166,7 @@ public partial class Discussion_DiscussionC : System.Web.UI.Page
                         {
                             try
                             {
-                                var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartB2").First();
+                                var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartB1").First();
                                 ans.done = true;
 
                             }

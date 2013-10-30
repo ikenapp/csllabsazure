@@ -52,7 +52,7 @@
     </span>
     <span class="cell">
     <asp:Button ID="SelfEvalSettings" runat="server" Text="學習自評設定" CssClass="funButtonStyle" 
-                        PostBackUrl="~/Admin/Phase1/Scale.aspx" Enabled="False" />
+                        PostBackUrl="~/Admin/Phase1/Scale.aspx" />
     </span>
     
     </fieldset>
@@ -64,7 +64,7 @@
     </span>
     <span class="cell">
     <asp:Button ID="SelfEvalSettings2" runat="server" Text="學習自評設定" CssClass="funButtonStyle" 
-                        PostBackUrl="~/Admin/Phase2/Scale.aspx" Enabled="False" />
+                        PostBackUrl="~/Admin/Phase2/Scale.aspx" />
     </span>
     <span class="cell">
    <asp:Button ID="GroupCSettings" runat="server" Text="C組 Q&A 設定" CssClass="funButtonStyle" 

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-public partial class Discussion_Discussion : System.Web.UI.Page
+public partial class Discussion_DiscussionB : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {

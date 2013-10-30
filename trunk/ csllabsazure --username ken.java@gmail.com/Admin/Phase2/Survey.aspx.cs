@@ -21,7 +21,7 @@ public partial class Admin_Survey2 : System.Web.UI.Page
             int lab_id = int.Parse(labid);
             using (LabsDBEntities db = new LabsDBEntities())
             {
-                foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 21))
+                foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 12))
                 {
                     Preview.NavigateUrl = "~/Admin/Phase2/PreviewSurvey.aspx?surveyid=" + s.sid + "&labid=" + labid + "&preview=true";
                     Preview.Visible = true;
@@ -79,7 +79,7 @@ public partial class Admin_Survey2 : System.Web.UI.Page
                     phase = "PartB2",
                     type = "SURVEY",
                     labid = int.Parse(labid),
-                    surveyid = 21
+                    surveyid = 12
 
                 };
                 db.Surveys.Add(survey);
@@ -147,7 +147,7 @@ public partial class Admin_Survey2 : System.Web.UI.Page
         using (LabsDBEntities db = new LabsDBEntities())
         {
             int surveyid = -1;
-            foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid==21))
+            foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid==12))
             {
                 surveyid = s.sid;
                 db.Surveys.Remove(s);
