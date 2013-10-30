@@ -76,7 +76,7 @@ public partial class Admin_Scale2 : System.Web.UI.Page
                 Survey survey = new Survey
                 {
                     name = "第二階段學習自評",
-                    phase = "PartB",
+                    phase = "PartB2",
                     type = "SCALE",
                     labid = int.Parse(labid),
                     surveyid = 22,

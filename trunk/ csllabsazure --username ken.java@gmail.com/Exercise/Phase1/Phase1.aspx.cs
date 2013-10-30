@@ -42,7 +42,7 @@ public partial class Execise_Phase1 : System.Web.UI.Page
                     OnlineLab.PostBackUrl += "?surveyid=" + s.sid + "&labid=" + lab_id+"&minid=200" ;
                     break;
                 }
-                foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 21))
+                foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 12))
                 {
                     SelfEval.PostBackUrl += "?surveyid=" + s.sid + "&labid=" + lab_id+ "&minid=200";
                     break;

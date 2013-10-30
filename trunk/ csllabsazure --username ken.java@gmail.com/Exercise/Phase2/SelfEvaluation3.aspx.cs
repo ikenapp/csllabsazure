@@ -101,7 +101,7 @@ public partial class Exercise_Phase2_SelfEvaluation3 : System.Web.UI.Page
                     {
                         try
                         {
-                            var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == "PartAE").First();
+                            var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == "PartB2E").First();
                             ans.contents = answerText;
                         }
                         catch (Exception)
@@ -112,7 +112,7 @@ public partial class Exercise_Phase2_SelfEvaluation3 : System.Web.UI.Page
                                 surveyid = survey_id,
                                 studentid = u.sid,
                                 qid = q_id,
-                                phase = "PartAE",
+                                phase = "PartB2E",
                                 contents = answerText
                             };
                             db.Answers.Add(ans);
@@ -163,7 +163,7 @@ public partial class Exercise_Phase2_SelfEvaluation3 : System.Web.UI.Page
                         {
                             try
                             {
-                                var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartAE").First();
+                                var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartB2E").First();
                                 ans.done = true;
 
                             }
@@ -173,7 +173,7 @@ public partial class Exercise_Phase2_SelfEvaluation3 : System.Web.UI.Page
                                 {
                                     labid = lab_id2,
                                     studentid = u.sid,
-                                    phase = "PartAE",
+                                    phase = "PartB2E",
                                     done = true
                                 };
                                 db.Status.Add(ans);
