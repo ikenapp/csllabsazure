@@ -5,6 +5,16 @@
 <head runat="server">
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <style type="text/css">
+         #blockui
+         {
+             width:100%;
+             height:100%;
+             background:#CCC;
+             display:none;
+         }
+     </style>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -48,8 +58,34 @@
         </div>
         <div class="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
-            
+            <script>
+                $('#MainContent_FinishButton').click(
+                    function(){
+                        //alert("Finish");
+                        showBlockUI()
+                    });
+                $('#MainContent_NextButton').click(
+                    function () {
+                        //alert("Next");
+                        showBlockUI()
+                    });
+                $('#MainContent_SaveAll').click(
+                    function () {
+                        //alert("SaveAll");
+                        showBlockUI()
+                    });
+                $('#blockui').click(
+                    function () {
+
+                    });
+                function showBlockUI() {
+                    $('#blockui').show();
+                }
+            </script> 
         </div>
+        <div id="blockui">
+          
+        </div>       
         <div class="clear">
         </div>
         <div style="width:100%;height:20px;text-align:center;background:black;vertical-align:bottom">
@@ -62,3 +98,4 @@
     </form>
 </body>
 </html>
+ 
