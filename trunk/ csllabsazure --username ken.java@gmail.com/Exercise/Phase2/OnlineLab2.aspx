@@ -95,11 +95,10 @@
             </asp:GridView>
             <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
                 ConnectionString="<%$ ConnectionStrings:LabsDBConnectionString %>" 
-                SelectCommand="SELECT * FROM [Questions] WHERE (([survryid] = @survryid) AND ([no] &gt; @no)) ORDER BY [no]">
+                SelectCommand="SELECT * FROM [Questions] WHERE (([survryid] = @survryid) AND ([no] >200)) ORDER BY [no]">
                 <SelectParameters>
                     <asp:QueryStringParameter Name="survryid" QueryStringField="surveyid" 
                         Type="Int32" />
-                    <asp:QueryStringParameter Name="no" QueryStringField="minid" Type="Int32" />
                 </SelectParameters>
             </asp:SqlDataSource>
            

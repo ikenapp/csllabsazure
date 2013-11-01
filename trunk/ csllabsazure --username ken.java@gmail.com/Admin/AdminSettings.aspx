@@ -1,17 +1,27 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="AdminSettings.aspx.cs" Inherits="Admin_AdminSettings" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-<style type="text/css">
 
-       
-
-    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+    <style type="text/css">
+        a
+        {
+            text-decoration:none;
+        }
+            a:hover
+            {
+                text-decoration:underline;
+            }
+
+
+
+    </style>
     <asp:HyperLink ID="HyperLink1" runat="server" 
         NavigateUrl="~/Admin/CreateLab.aspx">新增實驗</asp:HyperLink>
-       
-    
+    &nbsp;&nbsp;&nbsp;
+    <asp:HyperLink ID="HyperLink3" runat="server" 
+        NavigateUrl="~/Admin/DownloadTemplate.aspx">Excel範本檔下載</asp:HyperLink>
     <br />
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
         CellPadding="4" DataKeyNames="sid" DataSourceID="SqlDataSource1" 
