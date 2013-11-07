@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Lib;
 
 public partial class Execise2_OnlineLab : System.Web.UI.Page
 {
@@ -20,44 +21,38 @@ public partial class Execise2_OnlineLab : System.Web.UI.Page
         }
         //BackLink.Visible = true;
         BackLink.NavigateUrl = "~/Exercise/Phase1/Phase1.aspx?labid=" + labid;
-            
+
         if (!Page.IsPostBack)
         {
             bool isError = false;
             int lab_id = int.Parse(this.labid);
-            if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+
+            User u = UserDAO.GetUserFromSession();
+            if (u != null)
             {
-                if (Session["USER_DATA"] != null)
+                LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
+                using (LabsDBEntities db = new LabsDBEntities())
                 {
-                    User u = Session["USER_DATA"] as User;
-                    if (u != null)
+                    try
                     {
-                        LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
-                        using (LabsDBEntities db = new LabsDBEntities())
-                        {
-                            try
-                            {
-                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid ==21).First();
-                                var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
-                                Part1Title.Text = "一、" + question1.question1;
-                                //var question2 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 200).First();
-                                //Part2Title.Text = "二、" + question2.question1;
-                                String surveyid = Request.QueryString["surveyid"];
-            
-                                NextButton.PostBackUrl += "?surveyid=" + surveyid + "&labid=" + labid+"&minid=200";
-                                isError = false;
-                        
-                            }
-                            catch (Exception)
-                            {
+                        var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 21).First();
+                        var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
+                        Part1Title.Text = "一、" + question1.question1;
+                        //var question2 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 200).First();
+                        //Part2Title.Text = "二、" + question2.question1;
+                        String surveyid = Request.QueryString["surveyid"];
 
+                        NextButton.PostBackUrl += "?surveyid=" + surveyid + "&labid=" + labid + "&minid=200";
+                        isError = false;
 
-                            }
-                        }
                     }
+                    catch (Exception)
+                    {
 
 
+                    }
                 }
+
 
             }
             if (isError)
@@ -92,50 +87,46 @@ public partial class Execise2_OnlineLab : System.Web.UI.Page
         String opinionStr = opinion.Text.Trim();
         if (contentStr.Length != 0 || sourceStr.Length != 0 || opinionStr.Length != 0)
         {
-            if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
-            {
-                if (Session["USER_DATA"] != null)
-                {
-                    User u = Session["USER_DATA"] as User;
-                    if (u != null)
-                    {
-                        int lab_id = int.Parse(labid);
-                        int survey_id = int.Parse(Request.QueryString["surveyid"]); 
-                        using (LabsDBEntities db = new LabsDBEntities())
-                        {
-                            try
-                            {
-                                var answer = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase=="PartB2" && c.optionid == idx).First();
-                                answer.opinions = opinionStr;
-                                answer.contents = contentStr;
-                                answer.links = sourceStr;
-                                answer.rank = rankVal;
-                            }
-                            catch (Exception)
-                            {
-                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 21).First();
-                                var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
-                                Answer ans = new Answer
-                                {
-                                    labid = lab_id,
-                                    surveyid = survey_id,
-                                    studentid = u.sid,
-                                    rank = rankVal,
-                                    contents = contentStr,
-                                    links = sourceStr,
-                                    opinions = opinionStr,
-                                    optionid = idx,
-                                    phase = "PartB2",
-                                    qid = question1.sid
 
-                                };
-                                db.Answers.Add(ans);
-                            }
-                            db.SaveChanges();
-                            msg.Text = "儲存成功";
-                        }
+            User u = UserDAO.GetUserFromSession();
+            if (u != null)
+            {
+                int lab_id = int.Parse(labid);
+                int survey_id = int.Parse(Request.QueryString["surveyid"]);
+                using (LabsDBEntities db = new LabsDBEntities())
+                {
+                    try
+                    {
+                        var answer = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartB2" && c.optionid == idx).First();
+                        answer.opinions = opinionStr;
+                        answer.contents = contentStr;
+                        answer.links = sourceStr;
+                        answer.rank = rankVal;
                     }
+                    catch (Exception)
+                    {
+                        var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 21).First();
+                        var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
+                        Answer ans = new Answer
+                        {
+                            labid = lab_id,
+                            surveyid = survey_id,
+                            studentid = u.sid,
+                            rank = rankVal,
+                            contents = contentStr,
+                            links = sourceStr,
+                            opinions = opinionStr,
+                            optionid = idx,
+                            phase = "PartB2",
+                            qid = question1.sid
+
+                        };
+                        db.Answers.Add(ans);
+                    }
+                    db.SaveChanges();
+                    msg.Text = "儲存成功";
                 }
+
             }
         }
     }

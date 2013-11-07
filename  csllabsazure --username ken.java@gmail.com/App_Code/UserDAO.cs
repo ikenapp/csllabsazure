@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.SessionState;
 
 /// <summary>
 /// Summary description for UserDAO
@@ -46,6 +47,20 @@ namespace Lib
 
 
             }
+        }
+
+        public static User GetUserFromSession()
+        {
+            User ret = null;
+            HttpSessionState Session = HttpContext.Current.Session;
+            if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+            {
+                if (Session["USER_DATA"] != null)
+                {
+                    ret= Session["USER_DATA"] as User;
+                }
+            }
+            return ret;
         }
     }
 }

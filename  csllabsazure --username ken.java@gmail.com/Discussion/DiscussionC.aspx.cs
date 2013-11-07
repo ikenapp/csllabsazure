@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
+using Lib;
 
 public partial class Discussion_DiscussionC : System.Web.UI.Page
 {
@@ -27,40 +28,31 @@ public partial class Discussion_DiscussionC : System.Web.UI.Page
         {
             bool isError = false;
             int lab_id = int.Parse(this.labid);
-            
-            if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+
+            User u = UserDAO.GetUserFromSession();
+            if (u != null)
             {
-                if (Session["USER_DATA"] != null)
+                LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
+                using (LabsDBEntities db = new LabsDBEntities())
                 {
-                    User u = Session["USER_DATA"] as User;
-                    if (u != null)
+                    try
                     {
-                        LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
-                        using (LabsDBEntities db = new LabsDBEntities())
-                        {
-                            try
-                            {
-                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 23).First();
-                                //var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
-                                //Part1Title.Text = "一、" + question1.question1;
-                               
-                                var question2 = db.Questions.Where(c => c.survryid == survey_id && c.no == 100).First();
-                                Part2Title.Text = "一、" + question2.question1;
+                        var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 23).First();
+                        //var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
+                        //Part1Title.Text = "一、" + question1.question1;
 
-                                isError = false;
+                        var question2 = db.Questions.Where(c => c.survryid == survey_id && c.no == 100).First();
+                        Part2Title.Text = "一、" + question2.question1;
 
-                            }
-                            catch (Exception)
-                            {
+                        isError = false;
 
-
-                            }
-                        }
                     }
+                    catch (Exception)
+                    {
 
 
+                    }
                 }
-
             }
             if (isError)
             {
@@ -88,42 +80,36 @@ public partial class Discussion_DiscussionC : System.Web.UI.Page
         GridViewRow gRow = GridView1.Rows[row];
         Label msg = gRow.FindControl("MsgLabel") as Label;
         msg.Text = "";
-        if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+        User u = UserDAO.GetUserFromSession();
+        if (u != null)
         {
-            if (Session["USER_DATA"] != null)
+            HiddenField hf = gRow.FindControl("qid") as HiddenField;
+            int q_id = int.Parse(hf.Value);
+            TextBox answerTB = gRow.FindControl("Answer") as TextBox;
+            string answerText = HttpUtility.HtmlEncode(answerTB.Text);
+            int lab_id = int.Parse(labid);
+            using (LabsDBEntities db = new LabsDBEntities())
             {
-                User u = Session["USER_DATA"] as User;
-                if (u != null)
+                try
                 {
-                    HiddenField hf = gRow.FindControl("qid") as HiddenField;
-                    int q_id = int.Parse(hf.Value);
-                    TextBox answerTB = gRow.FindControl("Answer") as TextBox;
-                    string answerText = HttpUtility.HtmlEncode(answerTB.Text);
-                    int lab_id = int.Parse(labid);
-                    using (LabsDBEntities db = new LabsDBEntities())
-                    {
-                        try
-                        {
-                            var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == "PartB1").First();
-                            ans.contents = answerText;
-                        }
-                        catch (Exception)
-                        {
-                            Answer ans = new Answer
-                            {
-                                labid = lab_id,
-                                surveyid = survey_id,
-                                studentid = u.sid,
-                                qid = q_id,
-                                phase = "PartB1",
-                                contents = answerText
-                            };
-                            db.Answers.Add(ans);
-                        }
-                        db.SaveChanges();
-                        msg.Text = "儲存成功";
-                    }
+                    var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == "PartB1").First();
+                    ans.contents = answerText;
                 }
+                catch (Exception)
+                {
+                    Answer ans = new Answer
+                    {
+                        labid = lab_id,
+                        surveyid = survey_id,
+                        studentid = u.sid,
+                        qid = q_id,
+                        phase = "PartB1",
+                        contents = answerText
+                    };
+                    db.Answers.Add(ans);
+                }
+                db.SaveChanges();
+                msg.Text = "儲存成功";
             }
         }
     }
@@ -154,37 +140,31 @@ public partial class Discussion_DiscussionC : System.Web.UI.Page
         }
         else
         {
-            if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+            User u = UserDAO.GetUserFromSession();
+            if (u != null)
             {
-                if (Session["USER_DATA"] != null)
+                int lab_id2 = int.Parse(labid);
+                using (LabsDBEntities db = new LabsDBEntities())
                 {
-                    User u = Session["USER_DATA"] as User;
-                    if (u != null)
+                    try
                     {
-                        int lab_id2 = int.Parse(labid);
-                        using (LabsDBEntities db = new LabsDBEntities())
-                        {
-                            try
-                            {
-                                var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartB1").First();
-                                ans.done = true;
+                        var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartB1").First();
+                        ans.done = true;
 
-                            }
-                            catch (Exception)
-                            {
-                                Status ans = new Status
-                                {
-                                    labid = lab_id2,
-                                    studentid = u.sid,
-                                    phase = "PartB1",
-                                    done = true
-                                };
-                                db.Status.Add(ans);
-
-                            }
-                            db.SaveChanges();
-                        }
                     }
+                    catch (Exception)
+                    {
+                        Status ans = new Status
+                        {
+                            labid = lab_id2,
+                            studentid = u.sid,
+                            phase = "PartB1",
+                            done = true
+                        };
+                        db.Status.Add(ans);
+
+                    }
+                    db.SaveChanges();
                 }
             }
             Response.Redirect("~/Exercise/Phase2/Phase2Done.aspx");

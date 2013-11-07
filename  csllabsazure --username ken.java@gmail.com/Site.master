@@ -14,6 +14,39 @@
              background:#CCC;
              display:none;
          }
+         .linkBtn
+        {
+            clear:both;
+            text-align:center;
+            width:45px;
+            height:20px;
+            text-decoration:none;
+            background:gray;
+            letter-spacing:2px;
+            color:blue;
+            font-size:16px;
+            padding:10px;
+            border:1px solid black;
+            display:inline-block;
+           
+        }
+
+         .linkBtno
+        {
+            clear:both;
+            text-align:center;
+            width:45px;
+            height:20px;
+            text-decoration:none;
+            background:#CCC;
+            letter-spacing:2px;
+            color:blue;
+            font-size:16px;
+            padding:10px;
+            border:1px solid black;
+            display:inline-block;
+           
+        }
      </style>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
     </asp:ContentPlaceHolder>
@@ -28,7 +61,7 @@
                 </h1>
             </div>
             <div class="loginDisplay">
-                [ <asp:HyperLink ID="LoginLink"  NavigateUrl="~/Login.aspx" runat="server">登入</asp:HyperLink><asp:HyperLink ID="LogoutLink" runat="server" Visible="False" NavigateUrl="~/Logout.aspx">登出</asp:HyperLink> ]
+                <asp:HyperLink ID="LoginLink"  NavigateUrl="~/Login.aspx" runat="server" CssClass="linkBtn">登入</asp:HyperLink><asp:HyperLink ID="LogoutLink" runat="server" Visible="False" NavigateUrl="~/Logout.aspx" CssClass="linkBtno">登出</asp:HyperLink>
                 <%--<asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
                     <AnonymousTemplate>
                         [ <a href="~/Login.aspx" ID="HeadLoginStatus" runat="server">登入</a> ]

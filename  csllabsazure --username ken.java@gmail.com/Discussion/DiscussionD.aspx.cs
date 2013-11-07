@@ -5,11 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
+using Lib;
 
 public partial class Discussion_DiscussionD : System.Web.UI.Page
 {
     String labid = "";
-    int survey_id ;
     public bool isShow = false;
     public String message = "";
     protected void Page_Load(object sender, EventArgs e)
@@ -21,46 +21,35 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
             return;
         }
         //BackLink.Visible = true;
-        //BackLink.NavigateUrl = "~/Exercise/Phase2.aspx?labid=" + labid;
-        survey_id = int.Parse(Request.QueryString["surveyid"]);
+        //BackLink.NavigateUrl = "~/Exercise/Phase1/Phase1.aspx?labid=" + labid;
+
         if (!Page.IsPostBack)
         {
             bool isError = false;
             int lab_id = int.Parse(this.labid);
-            
-            if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+            User u = UserDAO.GetUserFromSession();
+            if (u != null)
             {
-                if (Session["USER_DATA"] != null)
+                LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
+                using (LabsDBEntities db = new LabsDBEntities())
                 {
-                    User u = Session["USER_DATA"] as User;
-                    if (u != null)
+                    try
                     {
-                        LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
-                        using (LabsDBEntities db = new LabsDBEntities())
-                        {
-                            try
-                            {
-                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 23).First();
-                                //var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
-                                //Part1Title.Text = "一、" + question1.question1;
-                               
-                                var question2 = db.Questions.Where(c => c.survryid == survey_id && c.no == 100).First();
-                                Part2Title.Text = "一、" + question2.question1;
+                        var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 11).First();
+                        var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
+                        Part1Title.Text = "一、" + question1.question1;
+                        String surveyid = Request.QueryString["surveyid"];
 
-                                isError = false;
+                        NextButton.PostBackUrl += "?surveyid=" + surveyid + "&labid=" + labid + "&minid=200";
+                        isError = false;
 
-                            }
-                            catch (Exception)
-                            {
-
-
-                            }
-                        }
                     }
+                    catch (Exception)
+                    {
 
 
+                    }
                 }
-
             }
             if (isError)
             {
@@ -70,124 +59,103 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
         }
 
     }
-   
-
-
-    protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+    protected void SaveButton1_Click(object sender, EventArgs e)
     {
-        if (e.CommandName == "ROW_SAVE")
-        {
-            int row = int.Parse(e.CommandArgument.ToString());
-            saveRow(row);
-        }
-        //Response.Write(e.CommandName + ":" + e.CommandArgument);
+        Button btn = sender as Button;
+        int idx = int.Parse(btn.ID.Substring(btn.ID.Length - 1));
+        SaveOpinion(idx);
+        Session["PartB1D"] = null;
+
     }
 
-    private void saveRow(int row)
+    private void SaveOpinion(int idx)
     {
-        GridViewRow gRow = GridView1.Rows[row];
-        Label msg = gRow.FindControl("MsgLabel") as Label;
+        View view = MultiView1.FindControl("View" + idx) as View;
+        DropDownList ddl = view.FindControl("DropDownList" + idx) as DropDownList;
+        TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
+        TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
+        TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
+        Label msg = view.FindControl("MsgLabel" + idx) as Label;
         msg.Text = "";
-        if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+        int rankVal = int.Parse(ddl.SelectedValue);
+        String contentStr = content.Text.Trim();
+        String sourceStr = source.Text.Trim();
+        String opinionStr = opinion.Text.Trim();
+        User u = UserDAO.GetUserFromSession();
+        if (u != null)
         {
-            if (Session["USER_DATA"] != null)
+            int lab_id = int.Parse(labid);
+            int survey_id = int.Parse(Request.QueryString["surveyid"]);
+            using (LabsDBEntities db = new LabsDBEntities())
             {
-                User u = Session["USER_DATA"] as User;
-                if (u != null)
+                try
                 {
-                    HiddenField hf = gRow.FindControl("qid") as HiddenField;
-                    int q_id = int.Parse(hf.Value);
-                    TextBox answerTB = gRow.FindControl("Answer") as TextBox;
-                    string answerText = HttpUtility.HtmlEncode(answerTB.Text);
-                    int lab_id = int.Parse(labid);
-                    using (LabsDBEntities db = new LabsDBEntities())
-                    {
-                        try
-                        {
-                            var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == "PartB2").First();
-                            ans.contents = answerText;
-                        }
-                        catch (Exception)
-                        {
-                            Answer ans = new Answer
-                            {
-                                labid = lab_id,
-                                surveyid = survey_id,
-                                studentid = u.sid,
-                                qid = q_id,
-                                phase = "PartB1",
-                                contents = answerText
-                            };
-                            db.Answers.Add(ans);
-                        }
-                        db.SaveChanges();
-                        msg.Text = "儲存成功";
-                    }
+                    var answer = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartB1D" && c.optionid == idx).First();
+                    answer.opinions = opinionStr;
+                    answer.contents = contentStr;
+                    answer.links = sourceStr;
+                    answer.rank = rankVal;
                 }
-            }
-        }
-    }
-    protected void SaveAll_Click(object sender, EventArgs e)
-    {
-        StringBuilder sb = new StringBuilder();
-        int rows = GridView1.Rows.Count;
-        bool isError = false;
-        for (int i = 0; i < rows; i++)
-        {
-            GridViewRow gRow = GridView1.Rows[i];
-            TextBox answerTB = gRow.FindControl("Answer") as TextBox;
-            if (answerTB.Text.Trim() != "")
-            {
-                saveRow(i);
-            }
-            else
-            {
-                isError = true;
-                sb.Append((i+1) + ", ");
+                catch (Exception)
+                {
+                    var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 11).First();
+                    var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
+                    Answer ans = new Answer
+                    {
+                        labid = lab_id,
+                        surveyid = survey_id,
+                        studentid = u.sid,
+                        rank = rankVal,
+                        contents = contentStr,
+                        links = sourceStr,
+                        opinions = opinionStr,
+                        optionid = idx,
+                        phase = "PartB1D",
+                        qid = question1.sid
 
+                    };
+                    db.Answers.Add(ans);
+                }
+                db.SaveChanges();
+                msg.Text = "儲存成功";
             }
         }
-        if (isError)
+
+    }
+
+
+    protected void NextButton_Click(object sender, EventArgs e)
+    {
+        //Check all
+        int count = 0;
+        for (int idx = 1; idx <= 7; idx++)
+        {
+            View view = MultiView1.FindControl("View" + idx) as View;
+            TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
+            TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
+            TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
+            String contentStr = content.Text.Trim();
+            String sourceStr = source.Text.Trim();
+            String opinionStr = opinion.Text.Trim();
+            if (contentStr.Length != 0 && sourceStr.Length != 0 && opinionStr.Length != 0)
+            {
+                count++;
+            }
+
+        }
+        if (count < 3)
         {
             isShow = true;
-            message = "題號 : " + sb.ToString() + " 請記得填寫!";
+            message = "至少填寫三個想法/意見!";
         }
         else
         {
-            if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+            for (int idx = 1; idx <= 7; idx++)
             {
-                if (Session["USER_DATA"] != null)
-                {
-                    User u = Session["USER_DATA"] as User;
-                    if (u != null)
-                    {
-                        int lab_id2 = int.Parse(labid);
-                        using (LabsDBEntities db = new LabsDBEntities())
-                        {
-                            try
-                            {
-                                var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartB2").First();
-                                ans.done = true;
-
-                            }
-                            catch (Exception)
-                            {
-                                Status ans = new Status
-                                {
-                                    labid = lab_id2,
-                                    studentid = u.sid,
-                                    phase = "PartB1",
-                                    done = true
-                                };
-                                db.Status.Add(ans);
-
-                            }
-                            db.SaveChanges();
-                        }
-                    }
-                }
+                SaveOpinion(idx);
             }
-            Response.Redirect("~/Exercise/Phase2/Phase2Done.aspx");
+            Session["PartB1D"] = null;
+            Response.Redirect("~/Discussion/DiscussionD2.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"] + "&minid=200");
         }
 
     }
