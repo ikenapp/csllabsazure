@@ -38,7 +38,15 @@
          color:blue; 
          font-weight :bold;  
      }
+
 </style>
+    <script type="text/javascript">
+        function openNewWin(){
+            window.open('OnlineLabPreview.aspx', '第一部分看法', config='height=840,width=44<asp:Literal runat="server"></asp:Literal>0')
+
+        }
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -51,7 +59,9 @@
              </div>
              </span>
     <span style="text-align:left;width:680px;">
-        <asp:HyperLink ID="BackLink" runat="server">返回上一頁</asp:HyperLink>
+        <a href="javascript:void" class="previewparta1" onclick="openNewWin()" >
+            檢視上一頁輸入
+        </a>
         <br />
         <asp:Label ID="LabInfo" runat="server" CssClass="login" Text="Label"></asp:Label>
              <h3><asp:Label ID="Part2Title" runat="server" CssClass="login" Text="Label"></asp:Label></h3>

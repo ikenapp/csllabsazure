@@ -252,6 +252,7 @@ div.accountInfo
     float: left;
     text-align: left;
     width: auto;
+    padding: 10px;
 }
 
 .loginDisplay
@@ -259,7 +260,8 @@ div.accountInfo
     font-size: 1.1em;
     display: block;
     text-align: right;
-    padding: 10px;
+    padding-top: 15px;
+    padding-right: 15px;
     color: White;
 }
 
