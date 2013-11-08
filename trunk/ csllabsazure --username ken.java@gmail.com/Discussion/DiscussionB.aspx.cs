@@ -8,6 +8,8 @@ using Lib;
 
 public partial class Discussion_DiscussionB : System.Web.UI.Page
 {
+    string hln = "<br>";
+
     protected void Page_Load(object sender, EventArgs e)
     {
         User u = UserDAO.GetUserFromSession();
@@ -22,11 +24,13 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                 {
                     if (!Page.IsPostBack)
                     {
+                        //From DB?
+                        TitleLabel.Text = "請就您給「最認同的說法」之認同強度評分，說明您最認同的理由與抱持的觀點";
                         var users = db.Users.Where(c => c.groupid == u.groupid && c.group == u.group && c.labid==u.labid).Select(c=> c.nickname);
-                        GroupInfo.Text = "本組成員 : ";
+                        GroupInfo.Text = "本組成員 : " + hln;
                         foreach (var uu in users)
                         {
-                            GroupInfo.Text += uu + " ";
+                            GroupInfo.Text += "&nbsp;&nbsp;" + uu + hln;
                         }
                         isError = false;
                     }
@@ -38,9 +42,10 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                                         let z = db.Users
                                                        .Where(y => y.sid == x.student_id)
                                                        .Select(y => y.nickname).FirstOrDefault()
+                                        where x.labid==u.labid && x.groupid==u.groupid
                                         select new
                                         {
-                                            topic = x.topic,
+                                            topic = "<pre>" + x.topic + "</pre>",
                                             student_id = x.student_id,
                                             time = x.time,
                                             nickname = z
@@ -105,11 +110,12 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                                         let z = db.Users
                                                        .Where(y => y.sid == x.student_id)
                                                        .Select(y => y.nickname).FirstOrDefault()
+                                        where x.labid == u.labid && x.groupid == u.groupid
                                         select new
                                         {
-                                            topic = x.topic,
+                                            topic = "<pre>" + x.topic + "</pre>",
                                             student_id = x.student_id,
-                                            time = x.time,
+                                            time =  x.time ,
                                             nickname = z
                                         };
                             GridView1.DataSource = query.OrderByDescending(c => c.time).ToList();

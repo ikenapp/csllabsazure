@@ -42,7 +42,11 @@
 </style>
     <script type="text/javascript">
         function openNewWin(){
-            window.open('OnlineLabPreview.aspx', '第一部分看法', config='height=840,width=44<asp:Literal runat="server"></asp:Literal>0')
+            openNewWindow('OnlineLabPreview.aspx', '第一部分看法')
+
+        }
+        function openNewWindow(url,title){
+            window.open(url,title, config='height=840,width=440,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
 
         }
 
@@ -59,7 +63,7 @@
              </div>
              </span>
     <span style="text-align:left;width:680px;">
-        <a href="javascript:void" class="previewparta1" onclick="openNewWin()" >
+        <a href="javascript:void(0)" class="previewparta1" onclick="openNewWin()" >
             檢視上一頁輸入
         </a>
         <br />
