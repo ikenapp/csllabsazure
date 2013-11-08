@@ -165,25 +165,7 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
                 int lab_id2 = int.Parse(labid);
                 using (LabsDBEntities db = new LabsDBEntities())
                 {
-                    try
-                    {
-                        var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartB2").First();
-                        ans.done = true;
-
-                    }
-                    catch (Exception)
-                    {
-                        Status ans = new Status
-                        {
-                            labid = lab_id2,
-                            studentid = u.sid,
-                            phase = "PartB2",
-                            done = true
-                        };
-                        db.Status.Add(ans);
-
-                    }
-                    db.SaveChanges();
+                    UserDAO.SaveStatus(u, db, "PartB2");
                 }
             }
             Response.Redirect("~/Exercise/Phase2/OnlineLabDone.aspx");

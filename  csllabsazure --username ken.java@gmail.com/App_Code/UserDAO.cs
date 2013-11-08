@@ -62,5 +62,34 @@ namespace Lib
             }
             return ret;
         }
+
+        public static void SaveStatusB1(global::User u, LabsDBEntities db)
+        {
+            SaveStatus(u, db, "PartB1");
+        }
+
+        public static void SaveStatus(global::User u, LabsDBEntities db, String phaseStr)
+        {
+            try
+            {
+                var ans = db.Status.Where(c => c.labid == u.labid && c.studentid == u.sid && c.phase == phaseStr).First();
+                ans.done = true;
+
+            }
+            catch (Exception)
+            {
+                Status ans = new Status
+                {
+                    labid = u.labid,
+                    studentid = u.sid,
+                    phase = phaseStr,
+                    done = true
+                };
+                db.Status.Add(ans);
+
+            }
+            db.SaveChanges();
+        }
+
     }
 }

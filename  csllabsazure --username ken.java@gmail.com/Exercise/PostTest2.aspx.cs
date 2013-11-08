@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Text;
+using Lib;
 
 public partial class Exercise_PostTest2 : System.Web.UI.Page
 {
@@ -24,39 +25,31 @@ public partial class Exercise_PostTest2 : System.Web.UI.Page
         {
 
             bool isError = true;
-            String surveyid = Request.QueryString["surveyid"]; 
-            if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+            String surveyid = Request.QueryString["surveyid"];
+            User u = UserDAO.GetUserFromSession();
+
+            if (u != null)
             {
-                if (Session["USER_DATA"] != null)
-                {
-                    User u = Session["USER_DATA"] as User;
-                    if (u != null)
-                    {
-                        LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
-                        isError = false;
-                        student_id = u.sid;
-                    }
-                    int svid = int.Parse(surveyid);
-                    using (LabsDBEntities db = new LabsDBEntities())
-                    {
-                        var question = db.Questions.Where(c => c.survryid == svid & c.no == 200).First();
-                        desc.Text = question.question1;
-                    }
-
-                }
-
+                LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
+                isError = false;
+                student_id = u.sid;
             }
+            int svid = int.Parse(surveyid);
+            using (LabsDBEntities db = new LabsDBEntities())
+            {
+                var question = db.Questions.Where(c => c.survryid == svid & c.no == 200).First();
+                desc.Text = question.question1;
+            }
+
+
             if (isError)
             {
                 Response.Write("網路發生不可預期錯誤.請重新登入再試!");
                 return;
             }
-            
-            
+
+
         }
-        
-        
-            
 
     }
     protected void FinishButton_Click(object sender, EventArgs e)
@@ -112,37 +105,12 @@ public partial class Exercise_PostTest2 : System.Web.UI.Page
             {
                 isShow = false;
                 message = "";
-                if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+                User u = UserDAO.GetUserFromSession();
+                if (u != null)
                 {
-                    if (Session["USER_DATA"] != null)
-                    {
-                        User u = Session["USER_DATA"] as User;
-                        if (u != null)
-                        {
-                            try
-                            {
-
-                                var status = db.Status.Where(c => c.labid == lab_id && c.studentid == u.sid && c.phase == "Final").First();
-                                status.done = true;
-                            }
-                            catch (Exception ex)
-                            {
-
-                                Status ans = new Status
-                                {
-                                    labid = lab_id,
-                                    studentid = u.sid,
-                                    phase = "Final",
-                                    done = true
-                                    
-                                };
-                                db.Status.Add(ans);
-                            }
-                        }
-
-                    }
-
+                    UserDAO.SaveStatus(u, db, "Final");
                 }
+
                 db.SaveChanges();
                 Response.Redirect("~/Exercise/PostTest3.aspx?surveyid=" + surveyid + "&labid=" + labid);
             }
