@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -25,13 +26,16 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                     if (!Page.IsPostBack)
                     {
                         //From DB?
-                        TitleLabel.Text = "請就您給「最認同的說法」之認同強度評分，說明您最認同的理由與抱持的觀點";
-                        var users = db.Users.Where(c => c.groupid == u.groupid && c.group == u.group && c.labid==u.labid).Select(c=> c.nickname);
+                        TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_B_Title"];
+                        var users = db.Users.Where(c => c.groupid == u.groupid && c.group == u.group && c.labid == u.labid).Select(c => c.nickname);
                         GroupInfo.Text = "本組成員 : " + hln;
                         foreach (var uu in users)
                         {
                             GroupInfo.Text += "&nbsp;&nbsp;" + uu + hln;
                         }
+
+                        UserDAO.SaveStatusB1(u, db);
+
                         isError = false;
                     }
                     if (String.IsNullOrEmpty(Request.Form[Button1.ClientID]))
@@ -79,6 +83,7 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
 
     }
 
+   
     
     protected void Button1_Click(object sender, EventArgs e)
     {

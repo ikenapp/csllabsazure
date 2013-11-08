@@ -146,25 +146,7 @@ public partial class Discussion_DiscussionC : System.Web.UI.Page
                 int lab_id2 = int.Parse(labid);
                 using (LabsDBEntities db = new LabsDBEntities())
                 {
-                    try
-                    {
-                        var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartB1").First();
-                        ans.done = true;
-
-                    }
-                    catch (Exception)
-                    {
-                        Status ans = new Status
-                        {
-                            labid = lab_id2,
-                            studentid = u.sid,
-                            phase = "PartB1",
-                            done = true
-                        };
-                        db.Status.Add(ans);
-
-                    }
-                    db.SaveChanges();
+                    UserDAO.SaveStatusB1(u,db);
                 }
             }
             Response.Redirect("~/Exercise/Phase2/Phase2Done.aspx");

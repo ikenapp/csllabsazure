@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Lib;
 
 public partial class Exercise_Phase1_SelfEvaluation3 : System.Web.UI.Page
 {
@@ -28,37 +29,30 @@ public partial class Exercise_Phase1_SelfEvaluation3 : System.Web.UI.Page
         {
             bool isError = false;
             int lab_id = int.Parse(this.labid);
-            if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+            User u = UserDAO.GetUserFromSession();
+            if (u != null)
             {
-                if (Session["USER_DATA"] != null)
+                LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
+                using (LabsDBEntities db = new LabsDBEntities())
                 {
-                    User u = Session["USER_DATA"] as User;
-                    if (u != null)
+                    try
                     {
-                        LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
-                        using (LabsDBEntities db = new LabsDBEntities())
-                        {
-                            try
-                            {
-                                var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 21).First();
-                                var question2 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 300).First();
-                                Part2Title.Text = "三、" + question2.question1;
+                        var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 21).First();
+                        var question2 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 300).First();
+                        Part2Title.Text = "三、" + question2.question1;
 
-                                isError = false;
+                        isError = false;
 
-                            }
-                            catch (Exception)
-                            {
-
-
-                            }
-                        }
                     }
+                    catch (Exception)
+                    {
 
 
+                    }
                 }
-
             }
+
+
             if (isError)
             {
                 Response.Write("網路發生不可預期錯誤.請重新登入再試!");

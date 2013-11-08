@@ -81,43 +81,38 @@ public partial class Execise_OnlineLab2 : System.Web.UI.Page
         GridViewRow gRow = GridView1.Rows[row];
         Label msg = gRow.FindControl("MsgLabel") as Label;
         msg.Text = "";
-        if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+
+        User u = UserDAO.GetUserFromSession();
+        if (u != null)
         {
-            if (Session["USER_DATA"] != null)
+            HiddenField hf = gRow.FindControl("qid") as HiddenField;
+            int q_id = int.Parse(hf.Value);
+            TextBox answerTB = gRow.FindControl("Answer") as TextBox;
+            string answerText = HttpUtility.HtmlEncode(answerTB.Text);
+            int lab_id = int.Parse(labid);
+            using (LabsDBEntities db = new LabsDBEntities())
             {
-                User u = Session["USER_DATA"] as User;
-                if (u != null)
+                try
                 {
-                    HiddenField hf = gRow.FindControl("qid") as HiddenField;
-                    int q_id = int.Parse(hf.Value);
-                    TextBox answerTB = gRow.FindControl("Answer") as TextBox;
-                    string answerText = HttpUtility.HtmlEncode(answerTB.Text);
-                    int lab_id = int.Parse(labid);
-                    using (LabsDBEntities db = new LabsDBEntities())
-                    {
-                        try
-                        {
-                            var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == "PartA").First();
-                            ans.contents = answerText;
-                        }
-                        catch (Exception)
-                        {
-                            Answer ans = new Answer
-                            {
-                                labid = lab_id,
-                                surveyid = survey_id,
-                                studentid = u.sid,
-                                qid = q_id,
-                                phase = "PartA",
-                                contents = answerText
-                            };
-                            db.Answers.Add(ans);
-                        }
-                        db.SaveChanges();
-                        msg.Text = "儲存成功";
-                    }
+                    var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == "PartA").First();
+                    ans.contents = answerText;
                 }
-            }
+                catch (Exception)
+                {
+                    Answer ans = new Answer
+                    {
+                        labid = lab_id,
+                        surveyid = survey_id,
+                        studentid = u.sid,
+                        qid = q_id,
+                        phase = "PartA",
+                        contents = answerText
+                    };
+                    db.Answers.Add(ans);
+                }
+                db.SaveChanges();
+                msg.Text = "儲存成功";
+            } 
         }
     }
     protected void SaveAll_Click(object sender, EventArgs e)
@@ -147,40 +142,16 @@ public partial class Execise_OnlineLab2 : System.Web.UI.Page
         }
         else
         {
-            if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
-            {
-                if (Session["USER_DATA"] != null)
-                {
-                    User u = Session["USER_DATA"] as User;
-                    if (u != null)
-                    {
-                        int lab_id2 = int.Parse(labid);
-                        using (LabsDBEntities db = new LabsDBEntities())
-                        {
-                            try
-                            {
-                                var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartA").First();
-                                ans.done = true;
-
-                            }
-                            catch (Exception)
-                            {
-                                Status ans = new Status
-                                {
-                                    labid = lab_id2,
-                                    studentid = u.sid,
-                                    phase = "PartA",
-                                    done = true
-                                };
-                                db.Status.Add(ans);
-
-                            }
-                            db.SaveChanges();
-                        }
-                    }
-                }
-            }
-            Response.Redirect("~/Exercise/Phase1/OnlineLabDone.aspx");
+           User u = UserDAO.GetUserFromSession();
+           if (u != null)
+           {
+               int lab_id2 = int.Parse(labid);
+               using (LabsDBEntities db = new LabsDBEntities())
+               {
+                   UserDAO.SaveStatus(u, db, "PartA");
+               }
+           }
+           Response.Redirect("~/Exercise/Phase1/OnlineLabDone.aspx");
         }
 
     }

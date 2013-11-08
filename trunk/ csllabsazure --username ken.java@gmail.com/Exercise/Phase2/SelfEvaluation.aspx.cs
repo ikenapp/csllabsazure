@@ -5,6 +5,7 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Lib;
 
 public partial class Execise2_SelfEvaluation : System.Web.UI.Page
 {
@@ -25,33 +26,26 @@ public partial class Execise2_SelfEvaluation : System.Web.UI.Page
             bool isError = true;
             String surveyid = Request.QueryString["surveyid"];
             //NextButton.PostBackUrl += "?surveyid=" + surveyid + "&labid=" + labid;
-            if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
+            User u = UserDAO.GetUserFromSession();
+            if (u != null)
             {
-                if (Session["USER_DATA"] != null)
-                {
-                    User u = Session["USER_DATA"] as User;
-                    if (u != null)
-                    {
-                        LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
-                        isError = false;
-                        student_id = u.sid;
-                    }
-                    int svid = int.Parse(surveyid);
-                    using (LabsDBEntities db = new LabsDBEntities())
-                    {
-                        var question = db.Questions.Where(c => c.survryid == svid & c.no == 100).First();
-                        desc.Text = question.question1;
-                    }
-
-                }
-
+                LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
+                isError = false;
+                student_id = u.sid;
             }
+            int svid = int.Parse(surveyid);
+            using (LabsDBEntities db = new LabsDBEntities())
+            {
+                var question = db.Questions.Where(c => c.survryid == svid & c.no == 100).First();
+                desc.Text = question.question1;
+            }
+
+
             if (isError)
             {
                 Response.Write("網路發生不可預期錯誤.請重新登入再試!");
                 return;
             }
-
 
         }
 
