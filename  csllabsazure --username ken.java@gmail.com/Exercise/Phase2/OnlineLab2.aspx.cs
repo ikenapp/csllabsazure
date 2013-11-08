@@ -22,7 +22,7 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
             return;
         }
         BackLink.Visible = true;
-        BackLink.NavigateUrl = "~/Exercise/Phase2/Phase2.aspx";
+        BackLink.NavigateUrl = "javascript:void(0);";
 
         survey_id = int.Parse(Request.QueryString["surveyid"]);
         if (!Page.IsPostBack)
@@ -33,6 +33,22 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
             if (u != null)
             {
                 LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
+
+                if (u.group == "A")
+                {
+                }
+                else if (u.group == "B")
+                {
+                    BackLink.Text = "檢視討論階段內容";
+                    BackLink.NavigateUrl = "javascript:openNewWinB();";
+                }
+                else if (u.group == "C")
+                {
+                }
+                else if (u.group == "D")
+                {
+
+                }
                 using (LabsDBEntities db = new LabsDBEntities())
                 {
                     try
@@ -42,7 +58,7 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
                         //Part1Title.Text = "一、" + question1.question1;
                         var question2 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 200).First();
                         Part2Title.Text = "一、" + question2.question1;
-
+                        
                         isError = false;
 
                     }

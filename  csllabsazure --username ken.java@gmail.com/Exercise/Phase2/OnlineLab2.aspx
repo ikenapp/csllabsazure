@@ -39,6 +39,21 @@
          font-weight :bold;  
      }
 </style>
+   <script type="text/javascript">
+       function openNewWinA(){
+           openNewWindow('DiscussionAPreview.aspx', '討論內容')
+
+       }
+       function openNewWinB(){
+           openNewWindow('DiscussionbPreview.aspx', '討論內容')
+
+       }
+       function openNewWindow(url,title){
+           window.open(url,title, config='height=840,width=440,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+       }
+
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">

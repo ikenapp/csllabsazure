@@ -10,27 +10,48 @@
         {
             display: block;
             border: 1px solid #ccc;
-            width: 900px;
+            width: 850px;
             height: 350px;
             overflow: auto;
             background: white;
-            margin: 20px auto;
+           /* margin: 0px auto;*/
         }
         #sendPanel
         {
             display:block;
             border: 1px solid #ccc;
             width:900px;
-            height:40px;
+            height:60px;
             overflow:auto;
             background:white;
             margin: 20px auto;
             padding:20px;
         }
+        #title
+        {
+            display:block;
+            border: 1px solid #ccc;
+            width:920px;
+            height:40px;
+            background:white;
+            margin: 20px auto;
+            padding:10px;
+        }
+        #mainPanel
+        {
+            display:inline-block;
+        }
+        #memberPanel
+        {
+            border: 1px solid #ccc;
+            width: 100%;
+            height: 350px;
+            
+        }
         .ta
         {
             width:800px;
-            height:20px;
+            height:40px;
             overflow:auto;
             margin: 10px auto;
         }
@@ -67,15 +88,21 @@
     </style>
     
 </head>
-<body>
+<body style="background:#eee">
     <form id="form1" runat="server">
     
     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
-        <div style="text-align: center; margin: 20px;">
-            <a href="../Default.aspx">回首頁</a> &nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="GroupInfo" runat="server" Text="Label"></asp:Label>
+        <table width="900px" style="border:1px solid #000;padding:10px;margin: 20px auto; background:white;border-radius:20px;box-shadow:20px 20px 20px gray">
+            <tr><td colspan="2"><a href="../Default.aspx">回首頁</a><div id="title">
+                <asp:Label ID="TitleLabel" runat="server" Text="Label"></asp:Label></div></td></tr>
+             <tr><td width="100px">
+        <div id="memberPanel">
+            <asp:Label ID="GroupInfo" runat="server" Text="Label" Font-Bold="True"></asp:Label>
         </div>
+                 </td>
+                 <td width="800px">
                 <div id="discussionBoard">
                      <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
@@ -88,10 +115,10 @@
                                 <ItemTemplate>
                                     <div style="background:#ccc">
                                         <span class="leftPanel">
-                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("nickname") %>'></asp:Label>
+                                        <asp:Label ID="Label3" runat="server" Text='<%# Bind("nickname") %>' Font-Bold="True"></asp:Label>
                                         </span>
                                         <span class="rightPanel">
-                                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("time","{0:tt hh:mm:ss}") %>'></asp:Label>
+                                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("time","{0:tt hh:mm:ss}") %>' Font-Bold="True"></asp:Label>
                                          </span>
                                          <span class="Panel">
                                             <asp:Literal ID="Label1" runat="server" Text='<%# Bind("topic") %>'></asp:Literal>
@@ -109,12 +136,17 @@
                      </ContentTemplate>
         </asp:UpdatePanel>
                 </div>
+            </div>
+          </td>
+          </tr>
+        <tr><td colspan="2">
                 <div id="sendPanel">
                     <asp:TextBox ID="TextBox1" runat="server" CssClass="ta" TextMode="MultiLine"></asp:TextBox>
                     <asp:Button ID="Button1" runat="server" Text="訊息送出" OnClick="Button1_Click" />
                 </div>
-          
-    </div>
+            </td>
+          </tr>
+    </table>
     </form>
 </body>
 </html>
