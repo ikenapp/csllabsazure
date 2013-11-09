@@ -5,7 +5,9 @@
 <style type="text/css">
     #loginPanel
     {
+        width:380px;
         text-align:center;
+        margin: 50px auto;
     }
     .acctinfo
     {
@@ -21,7 +23,7 @@
             </span>
             <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification" 
                  ValidationGroup="LoginUserValidationGroup" ShowMessageBox="True" ShowSummary="False" />
-            <div class="accountInfo" >
+            <div class="acctInfo" >
                 <fieldset class="login"  style="text-align:left;" >
                     <legend>登入資訊</legend>
                     <p>

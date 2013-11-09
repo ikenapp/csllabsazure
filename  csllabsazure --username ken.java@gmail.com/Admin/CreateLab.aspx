@@ -9,7 +9,9 @@
 <style type="text/css">
     #createPanel
     {
+        width:360px;
         text-align:center;
+        margin: 50px auto;
     }
     .acctinfo
     {
@@ -22,7 +24,7 @@
  <div id="createPanel"><asp:HyperLink ID="BackLink" runat="server">返回上一頁</asp:HyperLink>
             <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification" 
                  ValidationGroup="LoginUserValidationGroup" ShowMessageBox="True" ShowSummary="False" />
-            <div class="accountInfo" >
+            <div class="acctinfo" >
                 <fieldset class="login" style="text-align:left;">
                     <legend>新增實驗</legend>
                     
