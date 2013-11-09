@@ -30,7 +30,7 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
             {
                 try
                 {
-                    if (!Page.IsPostBack)
+                    //if (!Page.IsPostBack)
                     {
                         //From DB?
                         TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_A_Title"];
