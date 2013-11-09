@@ -10,15 +10,22 @@ using Lib;
 public partial class Discussion_DiscussionB : System.Web.UI.Page
 {
     string hln = "<br>";
-
+    public int timeLeft=89; 
     protected void Page_Load(object sender, EventArgs e)
     {
         User u = UserDAO.GetUserFromSession();
 
         bool isError = true;
-        
         if (u != null)
         {
+            if (Application[u.labid + "_limit"] != null)
+            {
+                DateTime limit = (DateTime)Application[u.labid + "_limit"];
+                if (limit != null)
+                {
+                    timeLeft = (int)((limit - DateTime.Now).TotalSeconds);
+                }
+            }
             using (LabsDBEntities db = new LabsDBEntities())
             {
                 try

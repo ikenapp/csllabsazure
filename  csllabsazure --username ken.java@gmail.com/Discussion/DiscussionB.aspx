@@ -86,7 +86,7 @@
             background:#ccc;
         }
     </style>
-    
+       
 </head>
 <body style="background:#eee">
     <form id="form1" runat="server">
@@ -96,7 +96,32 @@
         </asp:ScriptManager>
         <table width="900px" style="border:1px solid #000;padding:10px;margin: 20px auto; background:white;border-radius:20px;box-shadow:20px 20px 20px gray">
             <tr><td colspan="2"><a href="../Default.aspx">回首頁</a><div id="title">
-                <asp:Label ID="TitleLabel" runat="server" Text="Label"></asp:Label></div></td></tr>
+                <asp:Label ID="TitleLabel" runat="server" Text="Label"></asp:Label>
+                <span style="float:right;color:red;" id="countdownE"></span></div></td></tr>
+            <script type="text/javascript">
+                var minutes, seconds, seconds_left = <%= timeLeft%>
+                var countdownE = document.getElementById("countdownE");
+
+
+
+                var refreshIntervalId = setInterval(intervalFun, 1000);
+
+
+                function intervalFun() {
+
+                    minutes = parseInt(seconds_left / 60);
+                    seconds = parseInt(seconds_left % 60);
+                    countdownE.innerHTML = "剩餘時間 : "+((minutes < 10) ? "0" : "") + minutes + " : " + ((seconds < 10) ? "0" : "") + seconds;
+                    if (seconds_left == 0) {
+                        clearInterval(refreshIntervalId);
+                        alert("時間到!!")
+                    }
+                    seconds_left--;
+               
+
+                }
+
+</script>
              <tr><td width="100px">
         <div id="memberPanel">
             <asp:Label ID="GroupInfo" runat="server" Text="Label" Font-Bold="True"></asp:Label>
