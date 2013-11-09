@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -87,6 +88,18 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
             SecondPhase2.Enabled = true;
             ThirdPhase.Enabled = false;
             phase = "第二階段-A : 討論";
+            String minStr = ConfigurationManager.AppSettings["Discussion_Time"];
+            int min = 30;
+            try
+            {
+                min = int.Parse(minStr);
+            }
+            catch (Exception)
+            {
+                
+                //throw;
+            }
+            Application[lab_id + "_limit"] = DateTime.Now.AddMinutes(min);
         }
         else if (lab.currentPhase == "PartB2")
         {
