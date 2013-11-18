@@ -30,6 +30,7 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                     timeLeft = timeLeft < 0 ? 0 : timeLeft;
                 }
             }
+            
             using (LabsDBEntities db = new LabsDBEntities())
             {
                 try
