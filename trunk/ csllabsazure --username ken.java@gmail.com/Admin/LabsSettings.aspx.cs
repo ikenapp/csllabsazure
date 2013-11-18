@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Lib;
 
 public partial class Admin_AdminSettings : System.Web.UI.Page
 {
@@ -99,7 +100,7 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
                 
                 //throw;
             }
-            Application[lab_id + "_limit"] = DateTime.Now.AddMinutes(min);
+            Application[lab_id + "_limit"] = UserDAO.GetNow().AddMinutes(min);
         }
         else if (lab.currentPhase == "PartB2")
         {
