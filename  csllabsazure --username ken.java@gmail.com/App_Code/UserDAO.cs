@@ -91,5 +91,21 @@ namespace Lib
             db.SaveChanges();
         }
 
+        public static DateTime GetNow()
+        {
+            try
+            {
+                var myTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Taipei Standard Time");
+                var currentDateTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, myTimeZone);
+                return currentDateTime;
+            }
+            catch (Exception)
+            {
+
+                return DateTime.UtcNow;
+            }
+        }
+
     }
+
 }
