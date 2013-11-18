@@ -111,6 +111,9 @@
                  onclick="SaveAll_Click" />
          </div>
          <br>
+     <div style="width:100%;height:20px;text-align:center;background:black;vertical-align:bottom">
+                <small style="color:white;font-size:12px">資元科技顧問有限公司 版權所有 © 2013 BIT Tech. All Rights Reserved.</small>
+            </div>
           <script type="text/javascript" language="javascript">
     if(<%= "'"+isShow+"'" %> == 'True'){
         alert('<%= message %>');

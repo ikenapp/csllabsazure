@@ -9,8 +9,11 @@ using Lib;
 
 public partial class Discussion_DiscussionB : System.Web.UI.Page
 {
+
     string hln = "<br>";
-    public int timeLeft=89; 
+    public int timeLeft=89;
+
+    
     protected void Page_Load(object sender, EventArgs e)
     {
         User u = UserDAO.GetUserFromSession();
@@ -23,14 +26,15 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                 DateTime limit = (DateTime)Application[u.labid + "_limit"];
                 if (limit != null)
                 {
-                    timeLeft = (int)((limit - DateTime.Now).TotalSeconds);
+                    timeLeft = (int)((limit - UserDAO.GetNow()).TotalSeconds);
+                    timeLeft = timeLeft < 0 ? 0 : timeLeft;
                 }
             }
             using (LabsDBEntities db = new LabsDBEntities())
             {
                 try
                 {
-                    //if (!Page.IsPostBack)
+                    
                     {
                         //From DB?
                         TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_B_Title"];
@@ -40,8 +44,8 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                         {
                             GroupInfo.Text += "&nbsp;&nbsp;" + uu + hln;
                         }
-
-                        UserDAO.SaveStatusB1(u, db);
+                        if (!Page.IsPostBack)
+                            UserDAO.SaveStatusB1(u, db);
 
                         isError = false;
                     }
@@ -104,12 +108,13 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                 {
                     try
                     {
+                        DateTime now = UserDAO.GetNow();
                         DiscussionB b = new DiscussionB
                         {
                             labid= u.labid,
                             student_id = u.sid,
                             topic= input,
-                            time=DateTime.Now,
+                            time = now,
                             groupid=(int)u.groupid
                    
                         };

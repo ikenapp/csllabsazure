@@ -24,6 +24,8 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                 if (limit != null)
                 {
                     timeLeft = (int)((limit - DateTime.Now).TotalSeconds);
+
+                    timeLeft = timeLeft < 0 ? 0 : timeLeft;
                 }
             }
             using (LabsDBEntities db = new LabsDBEntities())
@@ -35,7 +37,7 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                         //From DB?
                         TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_A_Title"];
                         var users = db.Users.Where(c => c.groupid == u.groupid && c.group == u.group && c.labid == u.labid).Select(c => c.nickname);
-                        GroupInfo.Text = "本組成員 : " + hln;
+                        GroupInfo.Text = "<br>";//"本組成員 : " + hln;
                         foreach (var uu in users)
                         {
                             GroupInfo.Text += "&nbsp;&nbsp;" + uu + hln;
@@ -45,7 +47,7 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
 
                         isError = false;
                     }
-                    if (String.IsNullOrEmpty(Request.Form[Button1.ClientID]))
+                    //if (String.IsNullOrEmpty(Request.Form[Button1.ClientID]))
                     {
                         //try
                         //{
@@ -92,62 +94,9 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
 
 
 
+
     protected void Button1_Click(object sender, EventArgs e)
     {
-        string input = TextBox1.Text;
-        if (!String.IsNullOrEmpty(input))
-        {
-            User u = UserDAO.GetUserFromSession();
-            if (u != null)
-            {
-                using (LabsDBEntities db = new LabsDBEntities())
-                {
-                    try
-                    {
-                        //DiscussionB b = new DiscussionB
-                        //{
-                        //    labid = u.labid,
-                        //    student_id = u.sid,
-                        //    topic = input,
-                        //    time = DateTime.Now,
-                        //    groupid = (int)u.groupid
 
-                        //};
-                        //db.DiscussionBs.Add(b);
-                        //db.SaveChanges();
-                        //TextBox1.Text = "";
-                        //try
-                        //{
-                        //    var query = from x in db.DiscussionBs
-                        //                let z = db.Users
-                        //                               .Where(y => y.sid == x.student_id)
-                        //                               .Select(y => y.nickname).FirstOrDefault()
-                        //                where x.labid == u.labid && x.groupid == u.groupid
-                        //                select new
-                        //                {
-                        //                    topic = "<pre>" + x.topic + "</pre>",
-                        //                    student_id = x.student_id,
-                        //                    time = x.time,
-                        //                    nickname = z
-                        //                };
-                        //    GridView1.DataSource = query.OrderByDescending(c => c.time).ToList();
-                        //    GridView1.DataBind();
-
-                        //}
-                        //catch (Exception)
-                        //{
-
-
-                        //}
-
-                    }
-                    catch (Exception)
-                    {
-
-
-                    }
-                }
-            }
-        }
     }
 }
