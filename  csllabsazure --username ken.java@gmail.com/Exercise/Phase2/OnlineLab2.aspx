@@ -41,8 +41,8 @@
 </style>
    <script type="text/javascript">
        function openNewWinA(){
-           //openNewWindow('DiscussionAPreview.aspx', '討論內容')
-           window.open('DiscussionAPreview.aspx','討論內容', config='height=840,width=980,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+           openNewWindow('DiscussionAPreview.aspx', '討論內容')
+           //window.open('DiscussionAPreview.aspx','討論內容', config='height=840,width=980,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
 
        }
        function openNewWinB(){
@@ -50,7 +50,7 @@
 
        }
        function openNewWindow(url,title){
-           window.open(url,title, config='height=840,width=440,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+           window.open(url,title, config='height=840,width=980,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
        }
 
 
