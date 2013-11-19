@@ -271,8 +271,8 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                     {
                         foreach (GridViewRow row in GridView1.Rows)
                         {
-                            //GridView GridView2 = (GridView)row.FindControl("GridView2");
-                            Literal fb = (Literal)row.FindControl("Feedback");
+                            GridView GridView2 = (GridView)row.FindControl("GridView2");
+                            //Literal fb = (Literal)row.FindControl("Feedback");
                             HiddenField hf = (HiddenField)row.FindControl("SID");
                             int disid = int.Parse(hf.Value);
                             var subquery = from x in db.DiscussionAs
@@ -293,19 +293,20 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                                                questions = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.qfeedback == "Y").Count()
 
                                            };
-                            //GridView2.GridLines = GridLines.None;
-                            //GridView2.DataSource = subquery.OrderByDescending(c => c.time).ToList();
-                            //GridView2.DataBind();
-                             if (subquery != null && subquery.Count() > 0)
-                             {
-                                 fb.Text += feedbackStart;
-                                 foreach (var sub in subquery.OrderByDescending(c => c.time))
-                                 {
-                                     fb.Text += String.Format(feedback, sub.nickname, sub.topic, sub.disid, sub.selflikes, sub.likes, sub.selfquestions, sub.questions, sub.time);
+                            GridView2.GridLines = GridLines.None;
+                            GridView2.DataSource = subquery.OrderByDescending(c => c.time).ToList();
+                            GridView2.DataBind();
+                             //if (subquery != null && subquery.Count() > 0)
+                             //{
+                             //    fb.Text = "";
+                             //    fb.Text += feedbackStart;
+                             //    foreach (var sub in subquery.OrderByDescending(c => c.time))
+                             //    {
+                             //        fb.Text += String.Format(feedback, sub.nickname, sub.topic, sub.disid, sub.selflikes, sub.likes, sub.selfquestions, sub.questions, sub.time);
 
-                                 }
-                                 fb.Text += feedbackEnd;
-                             }
+                             //    }
+                             //    fb.Text += feedbackEnd;
+                             //}
                         }
 
 

@@ -534,6 +534,18 @@
         margin-right:150px;
 		width: 700px;
 	}
+
+    .reply2
+	{
+		background-color: rgba(237,239,244,1);
+		font-weight: 550;
+		color:#00000;
+		font-size:12pt;
+  		float: right;
+		line-height: 150%;
+        margin-right:150px;
+		width: 570px;
+	}
 	.reply-name
 	{
 		font-weight: 800;
