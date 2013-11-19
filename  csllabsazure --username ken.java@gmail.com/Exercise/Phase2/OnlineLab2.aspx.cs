@@ -36,6 +36,8 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
 
                 if (u.group == "A")
                 {
+                    BackLink.Text = "檢視討論階段內容";
+                    BackLink.NavigateUrl = "javascript:openNewWinA();";
                 }
                 else if (u.group == "B")
                 {
