@@ -67,6 +67,22 @@
         }
 
     }
+
+    function pressCommnets(obj,url){
+        $.ajax({
+            url: "Comments.aspx?feedbackId="+url
+        }).done(function() {
+            //alert("OK")
+        });
+        val = $(obj).parent().find("span")[1].innerHTML;
+        //alert($(obj).parent()[0].nodeName+" => "+val)
+        val = parseInt(val)+num;
+        //alert(num+"+"+val);
+        if(val>=0){
+            $(obj).parent().find("span")[1].innerHTML = val;
+        }
+
+    }
 </script>
 </head>
 <body class='fb'>
@@ -142,7 +158,7 @@
                      <td>
                      <div  align='left' class='fb'>
                      <a href='javascript:void()' onclick='pressLike(this,"<asp:Literal ID="Literal21" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal5" runat="server" Text='<%# Bind("selflikes") %>' ></asp:Literal></a> <img src='like.png' height='20' width='20'> <span class='display'><asp:Literal ID="Literal7" runat="server" Text='<%# Bind("likes") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;
-                     <a href='javascript:void()' onclick='pressQuestions(this,"<asp:Literal ID="Literal22" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal6" runat="server" Text='<%# Bind("selfquestions") %>' ></asp:Literal></a> <img src='question.png' height='16' width='16'> <span class='display'><asp:Literal ID="Literal8" runat="server" Text='<%# Bind("questions") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;<a href='#'>留言</a>&nbsp;&nbsp;&nbsp;<asp:Label ID='Label2' runat='server' Text='<%# Bind("time","{0:tt hh:mm:ss}") %>' Font-Bold='True'></asp:Label>
+                     <a href='javascript:void()' onclick='pressQuestions(this,"<asp:Literal ID="Literal22" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal6" runat="server" Text='<%# Bind("selfquestions") %>' ></asp:Literal></a> <img src='question.png' height='16' width='16'> <span class='display'><asp:Literal ID="Literal8" runat="server" Text='<%# Bind("questions") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;<a href='javascript:void()' onclick='pressComment(this,"<asp:Literal ID="Literal23" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'>留言</>&nbsp;&nbsp;&nbsp;<asp:Label ID='Label2' runat='server' Text='<%# Bind("time","{0:tt hh:mm:ss}") %>' Font-Bold='True'></asp:Label>
                      <p>&nbsp;</p>
                      </td>
                    </tr>
