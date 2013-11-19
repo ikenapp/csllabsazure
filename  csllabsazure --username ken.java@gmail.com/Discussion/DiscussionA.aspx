@@ -7,12 +7,9 @@
 <title></title>
 <meta name='keywords' content='' />
 <meta name='description' content='' />
-<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' />
 <link href='default.css' rel='stylesheet' type='text/css' media='all' />
 <link href='fonts.css' rel='stylesheet' type='text/css' media='all' />
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />  
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>  
-<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<script type="text/javascript" src="jquery-1.10.2.min.js"></script>  
 <!--[if IE 6]><link href='default_ie6.css' rel='stylesheet' type='text/css' /><![endif]-->
 <script type='text/javascript'>
     var minutes, seconds, seconds_left = <%= timeLeft%>;
@@ -68,20 +65,35 @@
 
     }
 
-    function pressCommnets(obj,url){
-        $.ajax({
+    function pressComment(obj,url,idx){
+        /*$.ajax({
             url: "Comments.aspx?feedbackId="+url
         }).done(function() {
             //alert("OK")
+        });*/
+        var leftPos = $(obj).offset().left
+        var topPos = $(obj).offset().top
+        //alert(topPos+","+leftPos);
+        $("#reply")[0].style.display = "block";
+        $("#reply")[0].style.position ='relative';
+        $("#reply").offset({top:topPos+60,left:leftPos});
+        $("#comment").val("");
+        $("#commentBTN").click(function (){
+            var com = $("#comment").val();
+            $("#reply")[0].style.display = "none";
+            $.ajax({
+                url: "Comments.aspx?feedbackId="+url+"&comments="+com
+            }).done(function(html) {
+                
+                if($("#GridView1_GridView2_"+idx).length!=0){
+                    //alert($("#GridView1_GridView2_"+idx).length)
+                    $("#GridView1_GridView2_"+idx+" tr").eq(0).before(html);
+                }else{
+                    //alert(idx+"Reply"+$("#reply"+idx).length)
+                    $("#reply"+idx)[0].innerHTML = ("<table id='GridView1_GridView2_"+idx+"' width='560'border='0'>"+html+"</table>");
+                }
+            });
         });
-        val = $(obj).parent().find("span")[1].innerHTML;
-        //alert($(obj).parent()[0].nodeName+" => "+val)
-        val = parseInt(val)+num;
-        //alert(num+"+"+val);
-        if(val>=0){
-            $(obj).parent().find("span")[1].innerHTML = val;
-        }
-
     }
 </script>
 </head>
@@ -125,6 +137,23 @@
 <div style='overflow-y:auto;min-height:400px;height:600px;width:980px;overflow-style:move;overflow-x:hidden;'>
     <!-- Main block -->
     <asp:Literal ID='Literal1' runat='server' Visible="false" ></asp:Literal>
+     <div id="reply" class="reply2" align="left" style="display:none;border:1px solid #ccc;">
+             <table width="600"border="0">
+               <tr>
+                 <th width="600" scope="col">
+                  <table width="600" border="0" align="left">
+                   <tr>
+                     <td>
+                     <div id="reply-cont" class="" align="left">
+                         <input type="text" id="comment" style="width:500px;"/><input type="button" id="commentBTN" value="儲存" />
+                     </div>
+                     </td>
+                   </tr>
+                 </table></th>
+               </tr>
+             
+             </table>
+           </div>
      <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
             <ContentTemplate>
                     <asp:GridView ID='GridView1' runat='server' AutoGenerateColumns='False'  Width='100%' ShowHeader='False' OnRowDataBound="GridView1_RowDataBound">
@@ -158,7 +187,7 @@
                      <td>
                      <div  align='left' class='fb'>
                      <a href='javascript:void()' onclick='pressLike(this,"<asp:Literal ID="Literal21" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal5" runat="server" Text='<%# Bind("selflikes") %>' ></asp:Literal></a> <img src='like.png' height='20' width='20'> <span class='display'><asp:Literal ID="Literal7" runat="server" Text='<%# Bind("likes") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;
-                     <a href='javascript:void()' onclick='pressQuestions(this,"<asp:Literal ID="Literal22" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal6" runat="server" Text='<%# Bind("selfquestions") %>' ></asp:Literal></a> <img src='question.png' height='16' width='16'> <span class='display'><asp:Literal ID="Literal8" runat="server" Text='<%# Bind("questions") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;<a href='javascript:void()' onclick='pressComment(this,"<asp:Literal ID="Literal23" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'>留言</>&nbsp;&nbsp;&nbsp;<asp:Label ID='Label2' runat='server' Text='<%# Bind("time","{0:tt hh:mm:ss}") %>' Font-Bold='True'></asp:Label>
+                     <a href='javascript:void()' onclick='pressQuestions(this,"<asp:Literal ID="Literal22" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal6" runat="server" Text='<%# Bind("selfquestions") %>' ></asp:Literal></a> <img src='question.png' height='16' width='16'> <span class='display'><asp:Literal ID="Literal8" runat="server" Text='<%# Bind("questions") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;<a href='javascript:void()' onclick='pressComment(this,"<asp:Literal ID="Literal23" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>",<%# Container.DataItemIndex %>)'>留言</>&nbsp;&nbsp;&nbsp;<asp:Label ID='Label2' runat='server' Text='<%# Bind("time","{0:tt hh:mm:ss}") %>' Font-Bold='True'></asp:Label>
                      <p>&nbsp;</p>
                      </td>
                    </tr>
@@ -167,11 +196,47 @@
                </tr>
                </table>
            </div>
-                                    <!--feedbacks-->
+                                    <!--feedbacks
                                     <div class='reply' align='left'><table width='560'border='0'>
                                         <asp:Literal ID="Feedback" runat="server" ></asp:Literal>
-                                        </table></div>
+                                        </table></div>-->
+                                    <div id="reply<%# Container.DataItemIndex %>" class='reply' align='left'>
+                                     <asp:GridView ID='GridView2' runat='server' AutoGenerateColumns='False'  Width='100%' ShowHeader='False'>
+                        <Columns>
+                            <asp:TemplateField HeaderText='topic' SortExpression='topic'>
+                                <EditItemTemplate>
+                                    <asp:TextBox ID='TextBox1' runat='server' Text='<%# Bind("topic") %>'></asp:TextBox>
+                                </EditItemTemplate>
+                                <ItemTemplate>
+                                    <tr>
+                 <th width='90' scope='col' valign='top'><p><img src='icon.jpg' width='80' height='70'/>
+                   <p>&nbsp;</p></th>
+                 <th width='560' scope='col'><table width='560' border='0' align='left'>
+                   <tr >
+                     <th scope='col'>
+                     <div class='reply-name' align='left' ><asp:Literal ID="Literal2" runat="server" Text='<%# Bind("nickname") %>' ></asp:Literal></div>
+                     </th>
+                   </tr>
+                   <tr>
+                     <td>
+                     <div class='reply-cont' align='left' ><asp:Literal ID="Literal3" runat="server" Text='<%# Bind("topic") %>' ></asp:Literal></div>
+                     </td>
+                   </tr>
+                   <tr>
+                      <td align='left'><asp:Literal ID='Label1' runat='server' Text='<%# Bind("time","{0:tt hh:mm:ss}") %>' ></asp:Literal>&nbsp;&nbsp;&nbsp 
+                      <a href='javascript:void()' onclick='pressLike(this,"<asp:Literal ID="Literal21" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal4" runat="server" Text='<%# Bind("selflikes") %>' ></asp:Literal></a> <img src='like.png' height='20' width='20'> <span class='display'><asp:Literal ID="Literal9" runat="server" Text='<%# Bind("likes") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;
+                     <a href='javascript:void()' onclick='pressQuestions(this,"<asp:Literal ID="Literal22" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal10" runat="server" Text='<%# Bind("selfquestions") %>' ></asp:Literal></a> <img src='question.png' height='16' width='16'> <span class='display'><asp:Literal ID="Literal11" runat="server" Text='<%# Bind("questions") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;
+                     </td></tr>
+                 </table></th>
+               </tr>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                           
+                        </Columns>
+                    </asp:GridView>
 
+</div>
+                                    <!--End FB -->
                                 </ItemTemplate>
                             </asp:TemplateField>
                            
