@@ -110,6 +110,13 @@
         }
 
     </script>
+    <script type="text/javascript">
+        function openNewWin(){
+            window.open('Phase1Preview.aspx', '第一階段', config='height=840,width=440')
+
+        }
+
+    </script>
 </head>
 
 <%--         <table width='900px' style='border:1px solid #000;padding:10px;margin: 20px auto; background:white;border-radius:20px;box-shadow:20px 20px 20px gray'>
@@ -169,13 +176,14 @@
 <body class="skype">
     <div id="page" class="container">
         <form id='form1' runat='server'>
-
             <asp:ScriptManager ID='ScriptManager1' runat='server'>
             </asp:ScriptManager>
-            <table align="left" border="0" width="1177">
+            <table align="left" border="0" width="1177" stye="margin:0;">
                  <tr>
-                <td><a href='../Default.aspx'>回首頁</a></td>
-                <td colspan="3">
+                <td colspan="3"><a href='../Default.aspx'>回首頁</a>&nbsp;&nbsp<a href="javascript:void()" onclick="openNewWin()" >
+            檢視上一階段輸入
+        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" />  <asp:Button ID="Button3" runat="server" Text="問題二" OnClick="Button3_Click" /> </td>
+                <td colspan="1">
                     <div>
                         <span style='float: right; color: red; padding-right: 10px;' id='countdownE'></span>
                     </div>
@@ -207,6 +215,7 @@
                         <div style="height: 330px; overflow-x: hidden; overflow-y: auto;vertical-align:top;">
                             <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
                                 <ContentTemplate>
+                                     <asp:HiddenField ID="HiddenField1" runat="server" Value="1" />
                                     <asp:GridView ID='GridView1' runat='server' AutoGenerateColumns='False' Width='100%' ShowHeader='False'>
                                         <Columns>
                                             <asp:TemplateField HeaderText='topic' SortExpression='topic'>

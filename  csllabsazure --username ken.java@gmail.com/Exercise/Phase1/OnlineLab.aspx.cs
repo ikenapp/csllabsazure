@@ -11,6 +11,18 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
     String labid = "";
     public bool isShow = false;
     public String message = "";
+    public String label_rank = "(我對此說法的認同強度為";
+    public String label_rank_end = "分)";
+    public String label_content = "內容:(可以用複製/貼上的功能)";
+    public String label_source = "資料來源(含：作者/網站名稱/網址)";
+    public String label_attributes = "我認為這個說法包含了以下那些屬性(可單選或多選)：";
+    public String option_attr_1 = "具實證基礎";
+    public String option_attr_2 = "專家個人看法";
+    public String option_attr_3 = "個人假設";
+    public String option_attr_4 = "未經查證的資料";
+    public String option_attr_5 = "以上皆非";
+    public String label_opinons = "我對此說法的看法(包括此說法的「優點」與「缺點」，請參考學習單的範例)";
+
     protected void Page_Load(object sender, EventArgs e)
     {
         labid = Request.QueryString["labid"] != null ? Request.QueryString["labid"].ToString() : "";
@@ -74,6 +86,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
         TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
         TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
         TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
+        CheckBoxList attrcb = view.FindControl("AttrList" + idx) as CheckBoxList;
         Label msg = view.FindControl("MsgLabel" + idx) as Label;
         msg.Text = "";
         int rankVal = int.Parse(ddl.SelectedValue);
@@ -85,6 +98,14 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
         {
             int lab_id = int.Parse(labid);
             int survey_id = int.Parse(Request.QueryString["surveyid"]);
+            String attrs = "";
+            foreach (ListItem item in attrcb.Items)
+            {
+                if (item.Selected)
+                {
+                    attrs += item.Value + ",";
+                }
+            }
             using (LabsDBEntities db = new LabsDBEntities())
             {
                 try
@@ -94,6 +115,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
                     answer.contents = contentStr;
                     answer.links = sourceStr;
                     answer.rank = rankVal;
+                    answer.attributes = attrs;
                 }
                 catch (Exception)
                 {
@@ -110,8 +132,8 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
                         opinions = opinionStr,
                         optionid = idx,
                         phase = "PartA",
-                        qid = question1.sid
-
+                        qid = question1.sid,
+                        attributes = attrs
                     };
                     db.Answers.Add(ans);
                 }

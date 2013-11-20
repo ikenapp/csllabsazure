@@ -30,11 +30,11 @@
         seconds_left--;
               
     }
-    function pressLike(obj,url){
+    function pressLike(obj,url,no){
         num = obj.innerHTML=="讚"?1:-1;
         obj.innerHTML = obj.innerHTML=="讚"?"收回讚":"讚";
         $.ajax({
-            url: "Likes.aspx?feedbackId="+url
+            url: "Likes.aspx?feedbackId="+url+"&num="+no
         }).done(function() {
             //alert("OK")
         });
@@ -47,11 +47,11 @@
 
     }
 
-    function pressQuestions(obj,url){
+    function pressQuestions(obj,url,no){
         num = obj.innerHTML=="質疑"?1:-1;
         obj.innerHTML= obj.innerHTML=="質疑"?"不質疑":"質疑";
         $.ajax({
-            url: "Questions.aspx?feedbackId="+url
+            url: "Questions.aspx?feedbackId="+url+"&num="+no
         }).done(function() {
             //alert("OK")
         });
@@ -65,7 +65,7 @@
 
     }
 
-    function pressComment(obj,url,idx){
+    function pressComment(obj,url,idx,no){
         /*$.ajax({
             url: "Comments.aspx?feedbackId="+url
         }).done(function() {
@@ -82,7 +82,7 @@
             var com = $("#comment").val();
             $("#reply")[0].style.display = "none";
             $.ajax({
-                url: "Comments.aspx?feedbackId="+url+"&comments="+com
+                url: "Comments.aspx?feedbackId="+url+"&comments="+com+"&num="+no
             }).done(function(html) {
                 
                 if($("#GridView1_GridView2_"+idx).length!=0){
@@ -96,20 +96,34 @@
         });
     }
 </script>
+     <script type="text/javascript">
+         function openNewWin(){
+             window.open('Phase1Preview.aspx', '第一階段', config='height=840,width=440')
+
+         }
+
+    </script>
 </head>
 <body class='fb'>
     <form id='form1' runat='server'>
-<div>
+<div style="margin:0;">
+    <div><a href='../Default.aspx' style='color:white;'>回首頁</a>&nbsp;&nbsp;<a href="javascript:void()" style='color:white;' onclick="openNewWin()" >
+            檢視上一階段輸入
+        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" />  <asp:Button ID="Button3" runat="server" Text="問題二" OnClick="Button3_Click" /> 
+</div>
+     <asp:ScriptManager ID='ScriptManager1' runat='server'></asp:ScriptManager>
 	<div id='header' class='container'>
-        <a href='../Default.aspx' style='color:white;'>回首頁</a>
+<br>
 		<div id='logo'>
-		  <h1>問題: <asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label>
-          </h1>
+		  <h3>問題: <asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label>
+          </h3>
 			<span style='float:right;color:red;font-weight: 600;' id='countdownE'></span>
 		</div>
 	</div>
 </div>
-        
+         <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
+            <ContentTemplate> 
+                <asp:HiddenField ID="HiddenField1" runat="server" Value="1" />
 <div id='wrapper'>
   <div id='page' class='container' style='vertical-align:top;padding: 0 auto;'>
     <div align='left' >
@@ -133,7 +147,7 @@
       </td>
   </tr>
 </table>
-              <asp:ScriptManager ID='ScriptManager1' runat='server'></asp:ScriptManager>
+             
 <div style='overflow-y:auto;min-height:400px;height:600px;width:980px;overflow-style:move;overflow-x:hidden;'>
     <!-- Main block -->
     <asp:Literal ID='Literal1' runat='server' Visible="false" ></asp:Literal>
@@ -154,8 +168,7 @@
              
              </table>
            </div>
-     <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
-            <ContentTemplate>
+    
                     <asp:GridView ID='GridView1' runat='server' AutoGenerateColumns='False'  Width='100%' ShowHeader='False' OnRowDataBound="GridView1_RowDataBound">
                         <Columns>
                             <asp:TemplateField HeaderText='topic' SortExpression='topic'>
@@ -186,8 +199,8 @@
                    <tr>
                      <td>
                      <div  align='left' class='fb'>
-                     <a href='javascript:void()' onclick='pressLike(this,"<asp:Literal ID="Literal21" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal5" runat="server" Text='<%# Bind("selflikes") %>' ></asp:Literal></a> <img src='like.png' height='20' width='20'> <span class='display'><asp:Literal ID="Literal7" runat="server" Text='<%# Bind("likes") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;
-                     <a href='javascript:void()' onclick='pressQuestions(this,"<asp:Literal ID="Literal22" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal6" runat="server" Text='<%# Bind("selfquestions") %>' ></asp:Literal></a> <img src='question.png' height='16' width='16'> <span class='display'><asp:Literal ID="Literal8" runat="server" Text='<%# Bind("questions") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;<a href='javascript:void()' onclick='pressComment(this,"<asp:Literal ID="Literal23" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>",<%# Container.DataItemIndex %>)'>留言</>&nbsp;&nbsp;&nbsp;<asp:Label ID='Label2' runat='server' Text='<%# Bind("time","{0:tt hh:mm:ss}") %>' Font-Bold='True'></asp:Label>
+                     <a href='javascript:void()' onclick='pressLike(this,"<asp:Literal ID="Literal21" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>",<%= no %>)'><asp:Literal ID="Literal5" runat="server" Text='<%# Bind("selflikes") %>' ></asp:Literal></a> <img src='like.png' height='20' width='20'> <span class='display'><asp:Literal ID="Literal7" runat="server" Text='<%# Bind("likes") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;
+                     <a href='javascript:void()' onclick='pressQuestions(this,"<asp:Literal ID="Literal22" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>",<%= no %>)'><asp:Literal ID="Literal6" runat="server" Text='<%# Bind("selfquestions") %>' ></asp:Literal></a> <img src='question.png' height='16' width='16'> <span class='display'><asp:Literal ID="Literal8" runat="server" Text='<%# Bind("questions") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;<a href='javascript:void()' onclick='pressComment(this,"<asp:Literal ID="Literal23" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>",<%# Container.DataItemIndex %>,<%= no %>)'>留言</>&nbsp;&nbsp;&nbsp;<asp:Label ID='Label2' runat='server' Text='<%# Bind("time","{0:tt hh:mm:ss}") %>' Font-Bold='True'></asp:Label>
                      <p>&nbsp;</p>
                      </td>
                    </tr>
@@ -224,8 +237,8 @@
                    </tr>
                    <tr>
                       <td align='left'><asp:Literal ID='Label1' runat='server' Text='<%# Bind("time","{0:tt hh:mm:ss}") %>' ></asp:Literal>&nbsp;&nbsp;&nbsp 
-                      <a href='javascript:void()' onclick='pressLike(this,"<asp:Literal ID="Literal21" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal4" runat="server" Text='<%# Bind("selflikes") %>' ></asp:Literal></a> <img src='like.png' height='20' width='20'> <span class='display'><asp:Literal ID="Literal9" runat="server" Text='<%# Bind("likes") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;
-                     <a href='javascript:void()' onclick='pressQuestions(this,"<asp:Literal ID="Literal22" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>")'><asp:Literal ID="Literal10" runat="server" Text='<%# Bind("selfquestions") %>' ></asp:Literal></a> <img src='question.png' height='16' width='16'> <span class='display'><asp:Literal ID="Literal11" runat="server" Text='<%# Bind("questions") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;
+                      <a href='javascript:void()' onclick='pressLike(this,"<asp:Literal ID="Literal21" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>",<%= no %>)'><asp:Literal ID="Literal4" runat="server" Text='<%# Bind("selflikes") %>' ></asp:Literal></a> <img src='like.png' height='20' width='20'> <span class='display'><asp:Literal ID="Literal9" runat="server" Text='<%# Bind("likes") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;
+                     <a href='javascript:void()' onclick='pressQuestions(this,"<asp:Literal ID="Literal22" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>",<%= no %>)'><asp:Literal ID="Literal10" runat="server" Text='<%# Bind("selfquestions") %>' ></asp:Literal></a> <img src='question.png' height='16' width='16'> <span class='display'><asp:Literal ID="Literal11" runat="server" Text='<%# Bind("questions") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;
                      </td></tr>
                  </table></th>
                </tr>

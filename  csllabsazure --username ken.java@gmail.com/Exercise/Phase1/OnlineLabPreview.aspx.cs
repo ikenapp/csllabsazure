@@ -32,11 +32,13 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
                     string ln = "<br>";
                     foreach (var ans in answers)
                     {
+
                         sb.Append("看法 : " + ans.optionid + ln);
                         sb.Append("強度 : " + ans.rank + " 分" + ln);
                         sb.Append("內容 : " + ans.contents + ln);
                         sb.Append("出處 : " + ans.links + ln);
-                        sb.Append("看法 : " + ans.opinions + ln);
+                        sb.Append("屬性 : " + ans.attributes + ln);
+                        sb.Append("我的看法 : " + ans.opinions + ln);
                         sb.Append(ln);
 
                     }

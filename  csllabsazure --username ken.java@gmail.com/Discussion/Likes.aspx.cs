@@ -17,10 +17,12 @@ public partial class Discussion_Likes : System.Web.UI.Page
             {
                 int feedbackId = -1;
                 int.TryParse(Request.QueryString["feedbackId"], out feedbackId);
+                int no = 1;
+                int.TryParse(Request.QueryString["num"], out no);
                 try
                 {
 
-                    var feedbackA = db.DiscussionAFeedbacks.Where(c => c.student_id == u.sid && c.discuss_id == feedbackId).First();
+                    var feedbackA = db.DiscussionAFeedbacks.Where(c => c.student_id == u.sid && c.discuss_id == feedbackId && c.num == no).First();
                     if (feedbackA != null)
                     {
                         if (feedbackA.gfeedback == "Y")
@@ -43,7 +45,8 @@ public partial class Discussion_Likes : System.Web.UI.Page
                         {
                             discuss_id = feedbackId,
                             student_id = u.sid,
-                            gfeedback = "Y"
+                            gfeedback = "Y",
+                            num = no
                         };
                         db.DiscussionAFeedbacks.Add(feedback);
                         db.SaveChanges();

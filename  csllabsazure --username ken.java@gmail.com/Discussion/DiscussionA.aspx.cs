@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,6 +12,7 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
 {
     string hln = "<br>";
     public int timeLeft = 89;
+    public int no = 1;
     string maintopic = "<div class='post' align='left'>" +
              "<table width='977' border='0' >" +
                "<tr valign='top'>" +
@@ -91,22 +93,43 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
             {
                 try
                 {
-                    //if (!Page.IsPostBack)
+                    if (!Page.IsPostBack)
+                    {
+                        Button2.ForeColor = Color.Red;
+                    }
+                    if (!String.IsNullOrEmpty(Request.Form[Button3.ClientID]) || Request.Form[HiddenField1.ClientID] == "2" && String.IsNullOrEmpty(Request.Form[Button2.ClientID]))
+                    {
+                        no = 2;
+                        HiddenField1.Value = "2";
+                        Button3.ForeColor = Color.Red;
+                        Button2.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        no = 1;
+                        HiddenField1.Value = "1";
+                        Button2.ForeColor = Color.Red;
+                        Button3.ForeColor = Color.Black;
+                    }
+                    no = int.Parse(HiddenField1.Value);
                     {
                         //From DB?
-                        TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_A_Title"];
+                        TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_A_Title"+no];
                         var users = db.Users.Where(c => c.groupid == u.groupid && c.group == u.group && c.labid == u.labid).Select(c => c.nickname);
                         GroupInfo.Text = "<br>";//"本組成員 : " + hln;
                         foreach (var uu in users)
                         {
                             GroupInfo.Text += "&nbsp;&nbsp;" + uu + hln;
                         }
-
-                        UserDAO.SaveStatusB1(u, db);
+                        if (!Page.IsPostBack)
+                        {
+                            UserDAO.SaveStatusB1(u, db);
+                        }
 
                         isError = false;
                     }
-                    if (String.IsNullOrEmpty(Request.Form[Button1.ClientID]))
+                    
+                    if (String.IsNullOrEmpty(Request.Form[Button1.ClientID]) && String.IsNullOrEmpty(Request.Form[Button2.ClientID]) && String.IsNullOrEmpty(Request.Form[Button3.ClientID]))
                     {
 
                         try
@@ -115,7 +138,7 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                                         let z = db.Users
                                                        .Where(y => y.sid == x.student_id)
                                                        .Select(y => y.nickname).FirstOrDefault()
-                                        where x.labid == u.labid && x.groupid == u.groupid && x.topicid == null
+                                        where x.labid == u.labid && x.groupid == u.groupid && x.topicid == null && x.num == no
                                         select new
                                         {
                                             topic = x.topic,
@@ -210,7 +233,8 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                             student_id = u.sid,
                             topic = input,
                             time = now,
-                            groupid = (int)u.groupid
+                            groupid = (int)u.groupid,
+                            num = no
 
                         };
                         db.DiscussionAs.Add(b);
@@ -222,7 +246,7 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                                         let z = db.Users
                                                        .Where(y => y.sid == x.student_id)
                                                        .Select(y => y.nickname).FirstOrDefault()
-                                        where x.labid == u.labid && x.groupid == u.groupid && x.topicid == null
+                                        where x.labid == u.labid && x.groupid == u.groupid && x.topicid == null && x.num == no
                                         select new
                                         {
                                             topic = x.topic,
@@ -279,7 +303,7 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                                            let z = db.Users
                                                           .Where(y => y.sid == x.student_id)
                                                           .Select(y => y.nickname).FirstOrDefault()
-                                           where x.labid == u.labid && x.groupid == u.groupid && x.topicid == disid
+                                           where x.labid == u.labid && x.groupid == u.groupid && x.topicid == disid && x.num == no
                                            select new
                                            {
                                                topic = x.topic,
@@ -324,5 +348,60 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                 }
             }
         }
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Button2.ForeColor = Color.Red;
+        Button3.ForeColor = Color.Black;
+        no = 1;
+        HiddenField1.Value = "1";
+        Page_Load2(sender, e);
+    }
+
+    private void Page_Load2(object sender, EventArgs e)
+    {
+        User u = UserDAO.GetUserFromSession();
+        if (u != null)
+        {
+            using (LabsDBEntities db = new LabsDBEntities())
+            {
+                try
+                {
+                    var query = from x in db.DiscussionAs
+                                let z = db.Users
+                                               .Where(y => y.sid == x.student_id)
+                                               .Select(y => y.nickname).FirstOrDefault()
+                                where x.labid == u.labid && x.groupid == u.groupid && x.topicid == null && x.num == no
+                                select new
+                                {
+                                    topic = x.topic,
+                                    student_id = x.student_id,
+                                    time = x.time,
+                                    disid = x.sid,
+                                    nickname = z,
+                                    selflikes = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.student_id == u.sid && f.gfeedback == "Y").Count() == 0 ? "讚" : "收回讚",
+                                    likes = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.gfeedback == "Y").Count(),
+                                    selfquestions = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.student_id == u.sid && f.qfeedback == "Y").Count() == 0 ? "質疑" : "不質疑",
+                                    questions = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.qfeedback == "Y").Count()
+                                };
+                    Literal1.Text = "";
+                    GridView1.DataSource = query.OrderByDescending(c => c.time).ToList();
+                    GridView1.DataBind();
+                }
+                catch (Exception)
+                {
+
+
+                }
+            }
+        }
+    }
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        Button3.ForeColor = Color.Red;
+        Button2.ForeColor = Color.Black;
+        no = 2;
+        HiddenField1.Value = "2";
+        Page_Load2(sender, e);
     }
 }
