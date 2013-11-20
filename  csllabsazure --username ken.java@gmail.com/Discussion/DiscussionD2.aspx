@@ -42,7 +42,7 @@
 </style>
     <script type="text/javascript">
         function openNewWin(){
-            window.open('DiscussionDPreview.aspx', '第一部分看法', config='height=840,width=44<asp:Literal runat="server"></asp:Literal>0')
+            window.open('DiscussionDPreview.aspx', '第一部分看法', config='height=840,width=440')
 
         }
 
