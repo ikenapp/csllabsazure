@@ -1,20 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3ff300d601484cc9b49778ca0c04e7bb" Name="圖表1">
-        <EntityTypeShape EntityType="LabsDBModel.Answer" Width="1.5" PointX="7.5" PointY="23.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabsDBModel.DiscussionA" Width="1.5" PointX="5.25" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabsDBModel.DiscussionAFeedback" Width="1.5" PointX="7.5" PointY="28.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabsDBModel.DiscussionB" Width="1.5" PointX="5.25" PointY="20.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabsDBModel.Lab" Width="1.5" PointX="0.75" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabsDBModel.Question" Width="1.5" PointX="5.25" PointY="29.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabsDBModel.ScaleAnswer" Width="1.5" PointX="10.5" PointY="25.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabsDBModel.Status" Width="1.5" PointX="8.25" PointY="20.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabsDBModel.Survey" Width="1.5" PointX="3" PointY="28.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LabsDBModel.User" Width="1.5" PointX="3" PointY="32.75" IsExpanded="true" />
+      <Diagram DiagramId="beec67c7517e45d5926b7e6da5d0d9ba" Name="Diagram1">
+        <EntityTypeShape EntityType="LabsDBModel.Answer" Width="1.5" PointX="7.5" PointY="24" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsDBModel.DiscussionA" Width="1.5" PointX="5.25" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsDBModel.DiscussionAFeedback" Width="1.5" PointX="7.5" PointY="28.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsDBModel.DiscussionB" Width="1.5" PointX="5.25" PointY="20.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsDBModel.Lab" Width="1.5" PointX="0.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsDBModel.Question" Width="1.5" PointX="5.25" PointY="30.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsDBModel.ScaleAnswer" Width="1.5" PointX="10.5" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsDBModel.Status" Width="1.5" PointX="8.25" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsDBModel.Survey" Width="1.5" PointX="3" PointY="29.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsDBModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabsDBModel.User" Width="1.5" PointX="3" PointY="33.625" IsExpanded="true" />
         <AssociationConnector Association="LabsDBModel.FK_Answers_Labs" ManuallyRouted="false" />
         <AssociationConnector Association="LabsDBModel.FK_Answers_Questions" ManuallyRouted="false" />
         <AssociationConnector Association="LabsDBModel.FK_Answers_Survey" ManuallyRouted="false" />

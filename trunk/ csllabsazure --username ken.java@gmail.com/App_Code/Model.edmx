@@ -4,26 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="LabsDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="LabsDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="LabsDBModelStoreContainer">
           <EntitySet Name="Answers" EntityType="LabsDBModel.Store.Answers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DiscussionA" EntityType="LabsDBModel.Store.DiscussionA" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DiscussionAFeedback" EntityType="LabsDBModel.Store.DiscussionAFeedback" store:Type="Tables" store:Schema="dbo" store:Name="DiscussionAFeedback">
-            <DefiningQuery>SELECT 
-      [DiscussionAFeedback].[discuss_id] AS [discuss_id], 
-      [DiscussionAFeedback].[sid] AS [sid], 
-      [DiscussionAFeedback].[student_id] AS [student_id], 
-      [DiscussionAFeedback].[gfeedback] AS [gfeedback], 
-      [DiscussionAFeedback].[qfeedback] AS [qfeedback], 
-      [DiscussionAFeedback].[num] AS [num]
-      FROM [dbo].[DiscussionAFeedback] AS [DiscussionAFeedback]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="DiscussionAFeedback" EntityType="LabsDBModel.Store.DiscussionAFeedback" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="DiscussionB" EntityType="LabsDBModel.Store.DiscussionB" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Labs" EntityType="LabsDBModel.Store.Labs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Questions" EntityType="LabsDBModel.Store.Questions" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="ScaleAnswers" EntityType="LabsDBModel.Store.ScaleAnswers" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Status" EntityType="LabsDBModel.Store.Status" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Survey" EntityType="LabsDBModel.Store.Survey" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="LabsDBModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="LabsDBModel.Store.Users" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Answers_Labs" Association="LabsDBModel.Store.FK_Answers_Labs">
             <End Role="Labs" EntitySet="Labs" />
@@ -132,14 +124,9 @@
           <Property Name="time" Type="datetime" />
           <Property Name="num" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-      warning 6002: The table/view 'LabsDB.dbo.DiscussionAFeedback' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
         <EntityType Name="DiscussionAFeedback">
           <Key>
-            
             <PropertyRef Name="sid" />
-            
           </Key>
           <Property Name="discuss_id" Type="int" Nullable="false" />
           <Property Name="sid" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
@@ -214,6 +201,16 @@
           <Property Name="labid" Type="int" Nullable="false" />
           <Property Name="desc" Type="nvarchar" MaxLength="500" />
           <Property Name="title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -461,11 +458,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LabsDBModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="LabDBEntities" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Answers" EntityType="LabsDBModel.Answer" />
           <EntitySet Name="DiscussionAs" EntityType="LabsDBModel.DiscussionA" />
           <EntitySet Name="DiscussionAFeedbacks" EntityType="LabsDBModel.DiscussionAFeedback" />
@@ -475,6 +473,7 @@
           <EntitySet Name="ScaleAnswers" EntityType="LabsDBModel.ScaleAnswer" />
           <EntitySet Name="Status" EntityType="LabsDBModel.Status" />
           <EntitySet Name="Surveys" EntityType="LabsDBModel.Survey" />
+          <EntitySet Name="sysdiagrams" EntityType="LabsDBModel.sysdiagram" />
           <EntitySet Name="Users" EntityType="LabsDBModel.User" />
           <AssociationSet Name="FK_Answers_Labs" Association="LabsDBModel.FK_Answers_Labs">
             <End Role="Labs" EntitySet="Labs" />
@@ -568,11 +567,11 @@
           <Property Name="links" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
           <Property Name="rank" Type="Int32" />
           <Property Name="optionid" Type="Int32" />
+          <Property Name="attributes" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Lab" Relationship="LabsDBModel.FK_Answers_Labs" FromRole="Answers" ToRole="Labs" />
           <NavigationProperty Name="Question" Relationship="LabsDBModel.FK_Answers_Questions" FromRole="Answers" ToRole="Questions" />
           <NavigationProperty Name="Survey" Relationship="LabsDBModel.FK_Answers_Survey" FromRole="Answers" ToRole="Survey" />
           <NavigationProperty Name="User" Relationship="LabsDBModel.FK_Answers_Users" FromRole="Answers" ToRole="Users" />
-          <Property Type="String" Name="attributes" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DiscussionA">
           <Key>
@@ -585,12 +584,12 @@
           <Property Name="topicid" Type="Int32" />
           <Property Name="student_id" Type="Int32" Nullable="false" />
           <Property Name="time" Type="DateTime" Precision="3" />
+          <Property Name="num" Type="Int32" />
           <NavigationProperty Name="DiscussionA1" Relationship="LabsDBModel.FK_DiscussionA_DiscussionA" FromRole="DiscussionA" ToRole="DiscussionA1" />
           <NavigationProperty Name="DiscussionA2" Relationship="LabsDBModel.FK_DiscussionA_DiscussionA" FromRole="DiscussionA1" ToRole="DiscussionA" />
           <NavigationProperty Name="Lab" Relationship="LabsDBModel.FK_DiscussionA_Labs" FromRole="DiscussionA" ToRole="Labs" />
           <NavigationProperty Name="User" Relationship="LabsDBModel.FK_DiscussionA_Users" FromRole="DiscussionA" ToRole="Users" />
           <NavigationProperty Name="DiscussionAFeedbacks" Relationship="LabsDBModel.FK_DiscussionAFeedback_DiscussionA" FromRole="DiscussionA" ToRole="DiscussionAFeedback" />
-          <Property Type="Int32" Name="num" />
         </EntityType>
         <EntityType Name="DiscussionAFeedback">
           <Key>
@@ -601,8 +600,8 @@
           <Property Name="student_id" Type="Int32" Nullable="false" />
           <Property Name="gfeedback" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
           <Property Name="qfeedback" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
+          <Property Name="num" Type="Int32" />
           <NavigationProperty Name="DiscussionA" Relationship="LabsDBModel.FK_DiscussionAFeedback_DiscussionA" FromRole="DiscussionAFeedback" ToRole="DiscussionA" />
-          <Property Type="Int32" Name="num" />
         </EntityType>
         <EntityType Name="DiscussionB">
           <Key>
@@ -614,9 +613,9 @@
           <Property Name="topic" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
           <Property Name="student_id" Type="Int32" Nullable="false" />
           <Property Name="time" Type="DateTime" Precision="3" />
+          <Property Name="num" Type="Int32" />
           <NavigationProperty Name="Lab" Relationship="LabsDBModel.FK_DiscussionB_Labs" FromRole="DiscussionB" ToRole="Labs" />
           <NavigationProperty Name="User" Relationship="LabsDBModel.FK_DiscussionB_Users" FromRole="DiscussionB" ToRole="Users" />
-          <Property Type="Int32" Name="num" />
         </EntityType>
         <EntityType Name="Lab">
           <Key>
@@ -692,6 +691,16 @@
           <NavigationProperty Name="Lab" Relationship="LabsDBModel.FK_Survey_Labs" FromRole="Survey" ToRole="Labs" />
           <NavigationProperty Name="Questions" Relationship="LabsDBModel.FK_Questions_Questions" FromRole="Survey" ToRole="Questions" />
           <NavigationProperty Name="ScaleAnswers" Relationship="LabsDBModel.FK_ScaleAnswers_Survey" FromRole="Survey" ToRole="ScaleAnswers" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -950,11 +959,10 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="LabsDBModelStoreContainer" CdmEntityContainer="LabDBEntities">
+        <EntityContainerMapping StorageEntityContainer="LabsDBModelStoreContainer" CdmEntityContainer="Entities">
           <EntitySetMapping Name="Answers">
             <EntityTypeMapping TypeName="LabsDBModel.Answer">
               <MappingFragment StoreEntitySet="Answers">
-                <ScalarProperty Name="attributes" ColumnName="attributes" />
                 <ScalarProperty Name="sid" ColumnName="sid" />
                 <ScalarProperty Name="labid" ColumnName="labid" />
                 <ScalarProperty Name="surveyid" ColumnName="surveyid" />
@@ -966,13 +974,13 @@
                 <ScalarProperty Name="links" ColumnName="links" />
                 <ScalarProperty Name="rank" ColumnName="rank" />
                 <ScalarProperty Name="optionid" ColumnName="optionid" />
+                <ScalarProperty Name="attributes" ColumnName="attributes" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DiscussionAs">
             <EntityTypeMapping TypeName="LabsDBModel.DiscussionA">
               <MappingFragment StoreEntitySet="DiscussionA">
-                <ScalarProperty Name="num" ColumnName="num" />
                 <ScalarProperty Name="sid" ColumnName="sid" />
                 <ScalarProperty Name="labid" ColumnName="labid" />
                 <ScalarProperty Name="groupid" ColumnName="groupid" />
@@ -980,31 +988,32 @@
                 <ScalarProperty Name="topicid" ColumnName="topicid" />
                 <ScalarProperty Name="student_id" ColumnName="student_id" />
                 <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="num" ColumnName="num" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DiscussionAFeedbacks">
             <EntityTypeMapping TypeName="LabsDBModel.DiscussionAFeedback">
               <MappingFragment StoreEntitySet="DiscussionAFeedback">
-                <ScalarProperty Name="num" ColumnName="num" />
                 <ScalarProperty Name="discuss_id" ColumnName="discuss_id" />
                 <ScalarProperty Name="sid" ColumnName="sid" />
                 <ScalarProperty Name="student_id" ColumnName="student_id" />
                 <ScalarProperty Name="gfeedback" ColumnName="gfeedback" />
                 <ScalarProperty Name="qfeedback" ColumnName="qfeedback" />
+                <ScalarProperty Name="num" ColumnName="num" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DiscussionBs">
             <EntityTypeMapping TypeName="LabsDBModel.DiscussionB">
               <MappingFragment StoreEntitySet="DiscussionB">
-                <ScalarProperty Name="num" ColumnName="num" />
                 <ScalarProperty Name="sid" ColumnName="sid" />
                 <ScalarProperty Name="labid" ColumnName="labid" />
                 <ScalarProperty Name="groupid" ColumnName="groupid" />
                 <ScalarProperty Name="topic" ColumnName="topic" />
                 <ScalarProperty Name="student_id" ColumnName="student_id" />
                 <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="num" ColumnName="num" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1068,6 +1077,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="LabsDBModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="LabsDBModel.User">
               <MappingFragment StoreEntitySet="Users">
@@ -1101,9 +1121,9 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="無" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
