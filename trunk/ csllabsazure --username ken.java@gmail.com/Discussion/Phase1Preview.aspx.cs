@@ -27,17 +27,27 @@ public partial class Discussion_Phase1Preview : System.Web.UI.Page
                         survey_id = s.sid;
                         break;
                     }
-                    var answers = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartA").OrderBy(c => c.optionid);
+                    var answers = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartA").OrderByDescending(c => c.optionid);
 
                     string ln = "<br>";
                     foreach (var ans in answers)
                     {
-                        sb.Append("看法 : " + ans.optionid + ln);
-                        sb.Append("強度 : " + ans.rank + " 分" + ln);
-                        sb.Append("內容 : " + ans.contents + ln);
-                        sb.Append("出處 : " + ans.links + ln);
-                        sb.Append("屬性 : " + ans.attributes+ln);
-                        sb.Append("看法 : " + ans.opinions + ln);
+                        if (ans.rank != null)
+                        {
+                            sb.Append("看法 : " + ans.optionid + ln);
+                            sb.Append("強度 : " + ans.rank + " 分" + ln);
+                            sb.Append("內容 : " + ans.contents + ln);
+                            sb.Append("出處 : " + ans.links + ln);
+                            sb.Append("屬性 : " + ans.attributes + ln);
+                            sb.Append("看法 : " + ans.opinions + ln);
+                        }
+                        else
+                        {
+                            var q = db.Questions.Where(c => c.sid == ans.qid).First();
+                            sb.Append("題目 : " + q.question1+ln);
+                            sb.Append("內容 : " + ans.contents + ln);
+                        }
+                       
                         sb.Append(ln);
 
                     }

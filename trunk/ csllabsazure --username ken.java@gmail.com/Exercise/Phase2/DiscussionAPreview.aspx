@@ -35,7 +35,9 @@
             <h2 align='left'>本組組員:</h2>
             <p align='left'><asp:Label ID='GroupInfo' runat='server' Text='Label' Font-Bold='True'></asp:Label>
               </p>
-          </div></th>
+          </div>
+              <asp:HiddenField ID="HiddenField1" runat="server" Value="1" />
+            </th>
          
           <th width='967' align='right' valign='top' scope='col'>
           <div id='content' align='left'>

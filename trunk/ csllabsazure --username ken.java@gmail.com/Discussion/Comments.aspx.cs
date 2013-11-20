@@ -38,6 +38,8 @@ public partial class Discussion_Comments : System.Web.UI.Page
             {
                 int feedbackId = -1;
                 int.TryParse(Request.QueryString["feedbackId"], out feedbackId);
+                int no = 1;
+                int.TryParse(Request.QueryString["num"], out no);
                 if (feedbackId != -1)
                 {
 
@@ -56,7 +58,8 @@ public partial class Discussion_Comments : System.Web.UI.Page
                             topic = input,
                             time = now,
                             topicid = feedbackId,
-                            groupid = (int)u.groupid
+                            groupid = (int)u.groupid,
+                            num = no
 
                         };
                         db.DiscussionAs.Add(sub);

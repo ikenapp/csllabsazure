@@ -38,7 +38,7 @@
 		margin-top: 0;
 	}
 	
-	ol, ul
+	.ol, .ul
 	{
 		padding: 0;
 		list-style: none;
@@ -193,7 +193,7 @@
 	#page
 	{
 		overflow: hidden;
-		padding: 6em 0em;
+		padding: 2em 0em;
 	}		
 
 
@@ -357,11 +357,10 @@ text-align:right;
 	}
 	#question
 	{
-		font-size: 20pt;
+		font-size: 14pt;
 		background: #2372DE url(images/bg01.png) repeat;
 		color: #000;
-		font-weight: 800;
-		height: 205px;
+		font-weight: 700;
 		width:900px;
 		font-family: 'Open Sans', sans-serif;
 		border:1px solid #CCC;
