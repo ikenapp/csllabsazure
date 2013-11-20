@@ -26,6 +26,23 @@ public partial class Account_MainLogin : System.Web.UI.Page
                 String oNickname = u.nickname;
                 if (oNickname != nickname)
                 {
+                    using (LabsDBEntities db = new LabsDBEntities())
+                    {
+                        try
+                        {
+                            User others = db.Users.Where(c => c.group == u.group && c.groupid == u.groupid && c.nickname == nickname).First();
+                            if (others != null)
+                            {
+                                MessageLabel.Text = "輸入的暱稱[ "+nickname+" ]與其他人重複!請重新輸入";
+                                Nickname.Text = "";
+                                return;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                           
+                        }
+                    }
                     u.nickname = nickname;
                     UserDAO.UpdateUser(u);
                 }
