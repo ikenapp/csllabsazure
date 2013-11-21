@@ -16,7 +16,7 @@ public partial class Admin_Survey : System.Web.UI.Page
         MsgLabel2.Visible = false;
         PreviewLink.Visible = false;
         Preview.Visible = false;
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             int lab_id = int.Parse(labid);
             using (LabsDBEntities db = new LabsDBEntities())
