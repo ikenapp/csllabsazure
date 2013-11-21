@@ -13,11 +13,13 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
     public string pre = "<pre>";
     public string pre_end = "</pre>";
     public String label_rank = "(我對此說法的認同強度為";
-    public String label_rank_end = "分)";
+    public String label_rank_end = ")";
     public String label_content = "內容:(可以用複製/貼上的功能)";
     public String label_source = "資料來源(含：作者/網站名稱/網址)";
     public String label_attributes = "我認為這個說法包含了以下那些屬性(可單選或多選)：";
     public String label_opinons = "我對此說法的看法(包括此說法的「優點」與「缺點」，請參考學習單的範例)";
+    public String[] ranks = { "","非常不認同","大部分不認同","普通","大部分認同","非常認同"};
+    
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -43,7 +45,12 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
                     {
 
                         sb.Append("看法" + ans.optionid +ln);
-                        sb.Append(label_rank + ans.rank + label_rank_end + ln);
+                        String rank = "";
+                        if (ans.rank != null)
+                        {
+                            rank = ranks[(int)ans.rank];
+                        }
+                        sb.Append(label_rank + " <b style='color:red;'>"+rank + "</b> "+ label_rank_end + ln);
                         sb.Append(label_content + pre + ans.contents + pre_end + ln);
                         sb.Append(label_source + pre + ans.links + pre_end + ln);
                         String attrs = ans.attributes;

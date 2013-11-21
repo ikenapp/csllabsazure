@@ -53,6 +53,14 @@
            openNewWindow('DiscussionBPreview.aspx', '前一堂課我的作答結果')
 
        }
+       function openNewWinC(){
+           window.open('DiscussionCPreview.aspx', '前一堂課我的作答結果', config='height=840,width=400,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+
+       }
+       function openNewWinD(){
+           window.open('DiscussionDPreview.aspx', '前一堂課我的作答結果', config='height=840,width=400,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+
+       }
        function openNewWindow(url,title){
            window.open(url,title, config='height=840,width=980,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
        }
@@ -128,7 +136,7 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     <div style="text-align:center;width:100%">
-            <asp:Button ID="SaveAll" runat="server" Text="全部儲存" CssClass="centerBTN" OnClick="SaveAll_Click" />
+            <asp:Button ID="SaveAll" runat="server" Text="前往學習成效自評>>" CssClass="centerBTN" OnClick="SaveAll_Click" />
             </div>
            <br>
           <script type="text/javascript" language="javascript">

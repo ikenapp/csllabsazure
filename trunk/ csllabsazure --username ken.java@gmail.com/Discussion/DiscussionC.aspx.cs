@@ -149,7 +149,7 @@ public partial class Discussion_DiscussionC : System.Web.UI.Page
                     UserDAO.SaveStatusB1(u,db);
                 }
             }
-            Response.Redirect("~/Exercise/Phase2/Phase2Done.aspx");
+            Response.Redirect("~/Discussion/DiscussionCDone.aspx");
         }
 
     }

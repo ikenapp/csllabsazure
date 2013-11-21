@@ -150,7 +150,7 @@ public partial class Discussion_DiscussioD2 : System.Web.UI.Page
                 {
                     try
                     {
-                        var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartB1D").First();
+                        var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartB1").First();
                         ans.done = true;
 
                     }
@@ -160,7 +160,7 @@ public partial class Discussion_DiscussioD2 : System.Web.UI.Page
                         {
                             labid = lab_id2,
                             studentid = u.sid,
-                            phase = "PartB1D",
+                            phase = "PartB1",
                             done = true
                         };
                         db.Status.Add(ans);
@@ -169,7 +169,7 @@ public partial class Discussion_DiscussioD2 : System.Web.UI.Page
                     db.SaveChanges();
                 }
             }
-            Response.Redirect("~/Exercise/Phase2/Phase2Done.aspx");
+            Response.Redirect("~/Discussion/DiscussionCDone.aspx");
         }
 
     }

@@ -12,7 +12,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
     public bool isShow = false;
     public String message = "";
     public String label_rank = "(我對此說法的認同強度為";
-    public String label_rank_end = "分)";
+    public String label_rank_end = ")";
     public String label_content = "內容:(可以用複製/貼上的功能)";
     public String label_source = "資料來源(含：作者/網站名稱/網址)";
     public String label_attributes = "我認為這個說法包含了以下那些屬性(可單選或多選)：";

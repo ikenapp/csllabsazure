@@ -29,6 +29,7 @@
         border: 1px solid #ccc;
         padding:10px;
         background : #eee;
+        color:black;
      }
      .myarea
      {
@@ -44,15 +45,21 @@
      .Next
     {
         border: 1px solid #CCC;
-        width: 180px;
-        height:80px;
-        font-size : 18px;
         background : pink;
     }
     .MSG
     {
         color:Red;
         font-weight : bold;
+    }
+    .noborder
+    {
+        border:none;
+    }
+    h1,h2,h3,h4,h5
+    {
+        color:black;
+        font-weight:bold;
     }
 </style>
 
@@ -89,29 +96,32 @@
             <asp:Button ID="Button7" runat="server" Text="說法7" 
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
-                    <h3>說法1:</h3> <br>認同強度<asp:DropDownList ID="DropDownList1" runat="server">
-                            <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                    <h3>說法一:</h3><%= label_rank %><asp:DropDownList ID="DropDownList1" runat="server" CssClass="noborder">
+                         <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                         </asp:DropDownList>
-                        分
-                     
+                        <%= label_rank_end %> <br><%= label_content %><br />
+                        <asp:TextBox ID="ContentTB1" runat="server" Height="135px" TextMode="MultiLine" Width="800px"></asp:TextBox>
                         <br />
-                        內容:<br />
-                        <asp:TextBox ID="ContentTB1" runat="server" Height="135px" TextMode="MultiLine" 
-                            Width="800px"></asp:TextBox>
+                        <%= label_source %><br />
+                        <asp:TextBox ID="SourceTB1" runat="server" Height="85px" TextMode="MultiLine" Width="800px"></asp:TextBox>
                         <br />
-                        資料來源(含：作者/網站名稱/網址)<br />
-                        <asp:TextBox ID="SourceTB1" runat="server" Height="85px" TextMode="MultiLine" 
-                            Width="800px"></asp:TextBox>
-                        <br />
-                        我的看法：<br /> 
-                        <asp:TextBox ID="OpinionTB1" runat="server" Height="135px" TextMode="MultiLine" 
-                            Width="800px"></asp:TextBox><asp:Button ID="SaveButton1" runat="server" 
-                            Text="儲存" onclick="SaveButton1_Click" /><br/>
-                        <asp:Label ID="MsgLabel1" runat="server" Text="" CssClass="MSG"></asp:Label>
+                        <%= label_attributes %><br>
+                        <asp:CheckBoxList ID="AttrList1" runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
+                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
+                            <asp:ListItem Value="3">個人假設</asp:ListItem>
+                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
+                            <asp:ListItem Value="5">以上皆非</asp:ListItem>
+                        </asp:CheckBoxList><br />
+                        <%= label_opinons %><br /> 
+                        <asp:TextBox ID="OpinionTB1" runat="server" Height="135px" TextMode="MultiLine" Width="800px"></asp:TextBox>
+                        <asp:Button ID="SaveButton1" runat="server" onclick="SaveButton1_Click" Text="儲存" />
+                        <br/>
+                        <asp:Label ID="MsgLabel1" runat="server" CssClass="MSG" Text=""></asp:Label>
                     </div>
                 </asp:View>
                 <asp:View ID="View2" runat="server">
@@ -130,25 +140,32 @@
             <asp:Button ID="Button14" runat="server" Text="說法7" 
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
-                    <h3>說法2:</h3> <br>認同強度<asp:DropDownList ID="DropDownList2" runat="server">
-                             <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                    <h3>說法二:</h3><%= label_rank %><asp:DropDownList ID="DropDownList2" runat="server">
+                              <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                     </asp:DropDownList>
-                        分
-                     
+                        <%= label_rank_end %>
                         <br />
-                        內容:<br />
+                         <%= label_content %><br />
                         <asp:TextBox ID="ContentTB2" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
                         <br />
-                        資料來源(含：作者/網站名稱/網址)<br />
+                        <%= label_source %><br />
                         <asp:TextBox ID="SourceTB2" runat="server" Height="85px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
                         <br />
-                        我的看法：<br /> 
+                         <%= label_attributes %><br>
+                        <asp:CheckBoxList ID="AttrList2" runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
+                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
+                            <asp:ListItem Value="3">個人假設</asp:ListItem>
+                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
+                            <asp:ListItem Value="5">以上皆非</asp:ListItem>
+                        </asp:CheckBoxList><br />
+                        <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB2" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><asp:Button ID="SaveButton2" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/>
@@ -170,26 +187,34 @@
                 CommandArgument="5" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button54" runat="server" Text="說法7" 
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
-                    <div class="optionPanel">
-                    <h3>說法3:</h3> <br>認同強度<asp:DropDownList ID="DropDownList3" runat="server">
-                             <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                    <div class="optionPanel"> 
+                    <h3>說法三:</h3><%= label_rank %><asp:DropDownList ID="DropDownList3" runat="server">
+                              <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                   </asp:DropDownList>
-                        分
+                        <%= label_rank_end %>
                      
                         <br />
-                        內容:<br />
+                        <%= label_content %><br />
                         <asp:TextBox ID="ContentTB3" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
                         <br />
-                        資料來源(含：作者/網站名稱/網址)<br />
+                        <%= label_source %><br />
                         <asp:TextBox ID="SourceTB3" runat="server" Height="85px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
                         <br />
-                        我的看法：<br /> 
+                         <%= label_attributes %><br>
+                        <asp:CheckBoxList ID="AttrList3" runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
+                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
+                            <asp:ListItem Value="3">個人假設</asp:ListItem>
+                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
+                            <asp:ListItem Value="5">以上皆非</asp:ListItem>
+                        </asp:CheckBoxList><br />
+                        <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB3" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><asp:Button ID="SaveButton3" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/><asp:Label ID="MsgLabel3" runat="server" Text="" CssClass="MSG"></asp:Label>
@@ -211,25 +236,32 @@
             <asp:Button ID="Button46" runat="server" Text="說法7" 
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
-                    <h3>說法4:</h3> <br>認同強度<asp:DropDownList ID="DropDownList4" runat="server">
-                            <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                    <h3>說法四:</h3><%= label_rank %><asp:DropDownList ID="DropDownList4" runat="server">
+                             <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                         </asp:DropDownList>
-                        分
+                        <%= label_rank_end %>
                      
                         <br />
-                        內容:<br />
+                        <%= label_content %><br />
                         <asp:TextBox ID="ContentTB4" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
                         <br />
-                        資料來源(含：作者/網站名稱/網址)<br />
+                        <%= label_source %><br />
                         <asp:TextBox ID="SourceTB4" runat="server" Height="85px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
-                        <br />
-                        我的看法：<br /> 
+                        <br /> <%= label_attributes %><br>
+                        <asp:CheckBoxList ID="AttrList4" runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
+                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
+                            <asp:ListItem Value="3">個人假設</asp:ListItem>
+                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
+                            <asp:ListItem Value="5">以上皆非</asp:ListItem>
+                        </asp:CheckBoxList><br />
+                        <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB4" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><asp:Button ID="SaveButton4" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/><asp:Label ID="MsgLabel4" runat="server" Text="" CssClass="MSG"></asp:Label>
@@ -251,25 +283,33 @@
             <asp:Button ID="Button38" runat="server" Text="說法7" 
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
-                    <h3>說法5:</h3> <br>認同強度<asp:DropDownList ID="DropDownList5" runat="server">
-                            <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                    <h3>說法五:</h3><%= label_rank %><asp:DropDownList ID="DropDownList5" runat="server">
+                             <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                   </asp:DropDownList>
-                        分
+                        <%= label_rank_end %>
                      
                         <br />
-                        內容:<br />
+                        <%= label_content %><br />
                         <asp:TextBox ID="ContentTB5" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
                         <br />
-                        資料來源(含：作者/網站名稱/網址)<br />
+                        <%= label_source %><br />
                         <asp:TextBox ID="SourceTB5" runat="server" Height="85px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
                         <br />
-                        我的看法：<br /> 
+                         <%= label_attributes %><br>
+                        <asp:CheckBoxList ID="AttrList5" runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
+                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
+                            <asp:ListItem Value="3">個人假設</asp:ListItem>
+                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
+                            <asp:ListItem Value="5">以上皆非</asp:ListItem>
+                        </asp:CheckBoxList><br />
+                        <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB5" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><asp:Button ID="SaveButton15" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/><asp:Label ID="MsgLabel5" runat="server" Text="" CssClass="MSG"></asp:Label>
@@ -291,25 +331,33 @@
             <asp:Button ID="Button30" runat="server" Text="說法7" 
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
-                    <h3>說法6:</h3> <br>認同強度<asp:DropDownList ID="DropDownList6" runat="server">
-                           <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                    <h3>說法六:</h3><%= label_rank %><asp:DropDownList ID="DropDownList6" runat="server">
+                           <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                         </asp:DropDownList>
-                        分
+                        <%= label_rank_end %>
                      
                         <br />
-                        內容:<br />
+                        <%= label_content %><br />
                         <asp:TextBox ID="ContentTB6" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
                         <br />
-                        資料來源(含：作者/網站名稱/網址)<br />
+                        <%= label_source %><br />
                         <asp:TextBox ID="SourceTB6" runat="server" Height="85px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
                         <br />
-                        我的看法：<br /> 
+                         <%= label_attributes %><br>
+                        <asp:CheckBoxList ID="AttrList6" runat="server" RepeatDirection="Horizontal">
+                             <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
+                        </asp:CheckBoxList><br />
+                        <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB6" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><asp:Button ID="SaveButton6" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/>
@@ -331,26 +379,38 @@
                 CommandArgument="5" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button22" runat="server" Text="說法7" CssClass="focusView"
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
+                    <asp:Button ID="NextButton" runat="server" Text="進行第二部分 >>"  CssClass="Next"
+                    PostBackUrl="~/Discussion/DiscussionD2.aspx" onclick="NextButton_Click" 
+             />
+       
                     <div class="optionPanel">
-                    <h3>說法7:</h3> <br>認同強度<asp:DropDownList ID="DropDownList7" runat="server">
-                           <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                    <h3>說法七:</h3><%= label_rank %><asp:DropDownList ID="DropDownList7" runat="server">
+                            <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                         </asp:DropDownList>
-                        分
+                        <%= label_rank_end %>
                      
                         <br />
-                        內容:<br />
+                        <%= label_content %><br />
                         <asp:TextBox ID="ContentTB7" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
                         <br />
-                        資料來源(含：作者/網站名稱/網址)<br />
+                         <%= label_source %><br />
                         <asp:TextBox ID="SourceTB7" runat="server" Height="85px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox>
-                        <br />
-                        我的看法：<br /> 
+                        <br /> 
+                        <%= label_attributes %><br>
+                        <asp:CheckBoxList ID="AttrList7" runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
+                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
+                            <asp:ListItem Value="3">個人假設</asp:ListItem>
+                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
+                            <asp:ListItem Value="5">以上皆非</asp:ListItem>
+                        </asp:CheckBoxList><br />
+                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB7" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><asp:Button ID="SaveButton7" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/>
@@ -360,15 +420,10 @@
             </asp:MultiView>
             <br/>
             <div style="text-align:center;width:100%">
-       <asp:Button ID="NextButton" runat="server" Text="第二部分 >>" CssClass="Next" 
-                    PostBackUrl="~/Discussion/Discussion2.aspx" onclick="NextButton_Click" 
-             />
              </div>
         </div>
         <br />
-     <div style="width:100%;height:20px;text-align:center;background:black;vertical-align:bottom">
-                <small style="color:white;font-size:12px">資元科技顧問有限公司 版權所有 © 2013 BIT Tech. All Rights Reserved.</small>
-            </div>
+    
      
             </ContentTemplate>
         </asp:UpdatePanel>
@@ -378,7 +433,5 @@
                  alert('<%= message %>');
     }
     </script>
+    </div>
 </asp:Content>
-
-
-

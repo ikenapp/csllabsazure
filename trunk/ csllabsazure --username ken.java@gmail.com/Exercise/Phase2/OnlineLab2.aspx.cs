@@ -46,10 +46,13 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
                 }
                 else if (u.group == "C")
                 {
+                    BackLink.Text = "前一堂課我的作答結果";
+                    BackLink.NavigateUrl = "javascript:openNewWinC();";
                 }
                 else if (u.group == "D")
                 {
-
+                    BackLink.Text = "前一堂課我的作答結果";
+                    BackLink.NavigateUrl = "javascript:openNewWinD();";
                 }
                 using (LabsDBEntities db = new LabsDBEntities())
                 {
@@ -170,7 +173,8 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
                     UserDAO.SaveStatus(u, db, "PartB2");
                 }
             }
-            Response.Redirect("~/Exercise/Phase2/OnlineLabDone.aspx");
+
+            Server.Transfer("~/Exercise/Phase2/OnlineLabDone.aspx");
         }
 
     }

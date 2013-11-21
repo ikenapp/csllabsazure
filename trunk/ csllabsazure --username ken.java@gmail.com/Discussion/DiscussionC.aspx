@@ -42,7 +42,18 @@
         color:Red;
         font-weight : bold;
     }
+        h3, h4, h2
+        {
+            color:black;
+        }
 </style>
+    <script type="text/javascript">
+        function openNewWin(){
+            window.open('Phase1Preview.aspx', '觀看前一週的作答結果', config='height=840,width=440')
+
+        }
+
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -51,7 +62,9 @@
             <ContentTemplate>
     <div style="text-align:left;width:100%;">
         <%--<asp:HyperLink ID="BackLink" runat="server">返回上一頁</asp:HyperLink>
-        <br />--%>
+        <br />--%><a href="javascript:void()" onclick="openNewWin()" >
+            觀看前一週的作答結果
+        </a>&nbsp;&nbsp;<br>
         <asp:Label ID="LabInfo" runat="server" CssClass="login" Text="Label"></asp:Label>
              <h3><asp:Label ID="Part2Title" runat="server" CssClass="login" Text="Label"></asp:Label>
         </h3>
@@ -68,8 +81,8 @@
                         <ItemTemplate><%--
                             <asp:Label ID="Label2" runat="server" Text='<%# Eval("no") %>'></asp:Label>--%>
                             <div class="myarea">
-                            <%# Container.DataItemIndex + 1 %>
-                            <asp:Label ID="Label1" runat="server" Text='<%# Bind("question") %>'></asp:Label>
+                            <%# Container.DataItemIndex + 1 %>. 
+                            <asp:Literal ID="Label1" runat="server" Text='<%# Bind("question") %>'></asp:Literal>
                             <asp:HiddenField ID="qid" runat="server" Value='<%# Bind("sid") %>' />
                             <br />
                           
@@ -106,17 +119,16 @@
       </ContentTemplate>
         </asp:UpdatePanel>
     <br>
+    完成作答後，請記得：在學習平台儲存您的答案，以做為下一堂課繼續使用。謝謝您！
+     <br> <br>
          <div style="text-align:center;width:100%">
             <asp:Button ID="SaveAll" runat="server" Text="全部儲存" CssClass="centerBTN" 
                  onclick="SaveAll_Click" />
          </div>
          <br>
-     <div style="width:100%;height:20px;text-align:center;background:black;vertical-align:bottom">
-                <small style="color:white;font-size:12px">資元科技顧問有限公司 版權所有 © 2013 BIT Tech. All Rights Reserved.</small>
-            </div>
           <script type="text/javascript" language="javascript">
     if(<%= "'"+isShow+"'" %> == 'True'){
-        alert('<%= message %>');
+        alert('<%= message %>'); 
     }
 </script>
 </asp:Content>
