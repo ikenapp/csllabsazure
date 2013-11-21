@@ -36,7 +36,7 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
                         survey_id = s.sid;
                         break;
                     }
-                    var answers = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartA").OrderBy(c=>c.optionid);
+                    var answers = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartA" && c.rank!=null).OrderBy(c=>c.optionid);
 
                     string ln = "<br>";
                     foreach (var ans in answers)
@@ -47,12 +47,19 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
                         sb.Append(label_content + pre + ans.contents + pre_end + ln);
                         sb.Append(label_source + pre + ans.links + pre_end + ln);
                         String attrs = ans.attributes;
-                        for (int i = 1; i <= 5; i++)
+                        if (attrs != null)
                         {
-                            if (attrs.IndexOf("" + i) != -1)
+                            for (int i = 1; i <= 5; i++)
                             {
-                                attrs=attrs.Replace(""+i,options[i]);
+                                if (attrs.IndexOf("" + i) != -1)
+                                {
+                                    attrs = attrs.Replace("" + i, options[i]);
+                                }
                             }
+                        }
+                        else
+                        {
+                            attrs = "";
                         }
                         sb.Append(label_attributes + pre + attrs + pre_end + ln);
                         sb.Append(label_opinons + pre + ans.opinions + pre_end + ln);

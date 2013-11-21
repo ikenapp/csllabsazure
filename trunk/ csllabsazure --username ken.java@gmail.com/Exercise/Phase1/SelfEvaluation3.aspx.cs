@@ -25,20 +25,21 @@ public partial class Exercise_Phase1_SelfEvaluation3 : System.Web.UI.Page
         //BackLink.NavigateUrl = "~/Exercise/Phase1/SelfEvalution2.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"];
 
         survey_id = int.Parse(Request.QueryString["surveyid"]);
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             bool isError = false;
             int lab_id = int.Parse(this.labid);
             User u = UserDAO.GetUserFromSession();
             if (u != null)
             {
+                String surveyid = Request.QueryString["surveyid"];
+                int svid = int.Parse(surveyid);
                 LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
                 using (LabsDBEntities db = new LabsDBEntities())
                 {
                     try
                     {
-                        var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 21).First();
-                        var question2 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 300).First();
+                        var question2 = db.Questions.Where(c => c.survryid == svid && c.no == 300).First();
                         Part2Title.Text = "三、" + question2.question1;
 
                         isError = false;

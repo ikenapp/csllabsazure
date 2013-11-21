@@ -3,6 +3,9 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-<h1>恭喜你完成了第二階段線上習作,非常感謝您的參與!</h1>
+<div style="margin:0 auto; width:400px;display:block;text-align:center">
+    <h1>恭喜您完成了本週的線上學習。請記得繼續參與下一回的線上學習。謝謝您的參與！
+</h1>
+        </div >
 </asp:Content>
 

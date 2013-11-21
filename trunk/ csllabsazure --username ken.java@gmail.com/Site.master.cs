@@ -31,16 +31,16 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                                 var lab = db.Labs.Where(c => c.sid == labid).First();
                                 if (lab.currentPhase == "INIT" || lab.currentPhase == "PartA")
                                 {
-                                    ShowMenu.Add("首頁/第一階段");
+                                    ShowMenu.Add("首頁/第一階段(第一週)");
                                 }
                                 else if (lab.currentPhase == "PartB1" || lab.currentPhase == "PartB2")
                                 {
-                                    ShowMenu.Add("首頁/第二階段");
+                                    ShowMenu.Add("首頁/第二階段(第二週)");
                                 }
                                 else if (lab.currentPhase == "Final")
                                 {
 
-                                    ShowMenu.Add("首頁/第三階段");
+                                    ShowMenu.Add("首頁/第三階段(第三週)");
                                 }
                             }
                             catch (Exception ex)
@@ -55,9 +55,9 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                     if (u != null && u.group == "admin")
                     {
                         //For Testing
-                        ShowMenu.Add("首頁/第一階段");
-                        ShowMenu.Add("首頁/第二階段");
-                        ShowMenu.Add("首頁/第三階段");
+                        ShowMenu.Add("首頁/第一階段(第一週)");
+                        ShowMenu.Add("首頁/第二階段(第二週)");
+                        ShowMenu.Add("首頁/第三階段(第三週)");
                         ShowMenu.Add("首頁/管理者設定");
                     }
                     

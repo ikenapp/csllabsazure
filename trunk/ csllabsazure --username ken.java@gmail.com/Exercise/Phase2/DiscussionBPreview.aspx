@@ -30,9 +30,7 @@
             </asp:ScriptManager>
             <table align="left" border="0" width="1177" stye="margin:0;">
                  <tr>
-                <td colspan="3"><a href='../Default.aspx'>回首頁</a>&nbsp;&nbsp<a href="javascript:void()" onclick="openNewWin()" >
-            前一堂課我的作答結果
-        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一我的作答" />  <asp:Button ID="Button3" runat="server" Text="問題二我的作答" /> </td>
+                <td colspan="3"><asp:Button ID="Button2" runat="server" Text="問題一我的作答" />  <asp:Button ID="Button3" runat="server" Text="問題二我的作答" /> </td>
                 <td colspan="1">
                     <div>
                         
@@ -44,7 +42,7 @@
             <div id="conlist" align="right">
                 <span style='float: right; color: red; padding-right: 10px;' id='countdownE'></span><br />
                 <div id="post-name">
-                    <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+                    我是: <asp:Literal ID="Literal1" runat="server"></asp:Literal>
                 </div>
                 <asp:Label ID='GroupInfo' runat='server' Text='Label' Font-Bold='True'></asp:Label>
             </div>
@@ -63,7 +61,7 @@
     </tr>
                 <tr align="right">
                     <td colspan="3">
-                        <div style="height: 430px; overflow-x: hidden; overflow-y: auto;vertical-align:top;">
+                        <div style="height: 430px; overflow-x: hidden; overflow-y: auto;vertical-align:top;" id="mydiv">
                             <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
                                 <ContentTemplate>
                                      <asp:HiddenField ID="HiddenField1" runat="server" Value="1" />
@@ -137,3 +135,7 @@
          </div>
 </body>
 </html>
+<script>
+    var objDiv = document.getElementById("mydiv");
+    objDiv.scrollTop = objDiv.scrollHeight;
+</script>

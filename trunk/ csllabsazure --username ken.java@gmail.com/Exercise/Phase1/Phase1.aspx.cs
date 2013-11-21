@@ -23,10 +23,6 @@ public partial class Execise_Phase1 : System.Web.UI.Page
 
             }
 
-
-
-
-
             if (isError)
             {
                 Response.Write("網路發生不可預期錯誤.請重新登入再試!");
@@ -37,13 +33,14 @@ public partial class Execise_Phase1 : System.Web.UI.Page
                 foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 11))
                 {
                     OnlineLab.PostBackUrl += "?surveyid=" + s.sid + "&labid=" + lab_id + "&minid=200";
+                    Server.Transfer(OnlineLab.PostBackUrl);
                     break;
                 }
-                foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 12))
-                {
-                    SelfEval.PostBackUrl += "?surveyid=" + s.sid + "&labid=" + lab_id + "&minid=200";
-                    break;
-                }
+                //foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 12))
+                //{
+                //    SelfEval.PostBackUrl += "?surveyid=" + s.sid + "&labid=" + lab_id + "&minid=200";
+                //    break;
+                //}
             }
 
         }

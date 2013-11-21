@@ -91,7 +91,7 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                                             time = x.time,
                                             nickname = z
                                         };
-                            GridView1.DataSource = query.OrderByDescending(c => c.time).ToList();
+                            GridView1.DataSource = query.OrderBy(c => c.time).ToList();
                             GridView1.DataBind();
                             
                         }
@@ -162,7 +162,7 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                                             time =  x.time ,
                                             nickname = z
                                         };
-                            GridView1.DataSource = query.OrderByDescending(c => c.time).ToList();
+                            GridView1.DataSource = query.OrderBy(c => c.time).ToList();
                             GridView1.DataBind();
 
                         }
@@ -213,7 +213,7 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                                     time = x.time,
                                     nickname = z
                                 };
-                    GridView1.DataSource = query.OrderByDescending(c => c.time).ToList();
+                    GridView1.DataSource = query.OrderBy(c => c.time).ToList();
                     GridView1.DataBind();
                 }
                 catch (Exception)

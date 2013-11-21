@@ -99,12 +99,34 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
             int lab_id = int.Parse(labid);
             int survey_id = int.Parse(Request.QueryString["surveyid"]);
             String attrs = "";
+            bool flag = false;
             foreach (ListItem item in attrcb.Items)
             {
                 if (item.Selected)
                 {
+                    flag = true;
                     attrs += item.Value + ",";
                 }
+            }
+            if (String.IsNullOrEmpty(contentStr))
+            {
+                msg.Text += "內容欄位必填 ";
+            }
+            if (String.IsNullOrEmpty(sourceStr))
+            {
+                msg.Text += "資料來源必填 ";
+            }
+            if (!flag)
+            {
+                msg.Text += "資料屬性至少選一項 ";
+            }
+            if (String.IsNullOrEmpty(opinionStr))
+            {
+                msg.Text += "我的看法必填 ";
+            }
+            if (msg.Text != "")
+            {
+                return;
             }
             using (LabsDBEntities db = new LabsDBEntities())
             {
@@ -148,34 +170,34 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
     protected void NextButton_Click(object sender, EventArgs e)
     {
         //Check all
-        int count = 0;
-        for (int idx = 1; idx <= 7; idx++)
-        {
-            View view = MultiView1.FindControl("View" + idx) as View;
-            TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
-            TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
-            TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
-            String contentStr = content.Text.Trim();
-            String sourceStr = source.Text.Trim();
-            String opinionStr = opinion.Text.Trim();
-            if (contentStr.Length != 0 && sourceStr.Length != 0 && opinionStr.Length != 0)
-            {
-                count++;
-            }
+        //int count = 0;
+        //for (int idx = 1; idx <= 7; idx++)
+        //{
+        //    View view = MultiView1.FindControl("View" + idx) as View;
+        //    TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
+        //    TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
+        //    TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
+        //    String contentStr = content.Text.Trim();
+        //    String sourceStr = source.Text.Trim();
+        //    String opinionStr = opinion.Text.Trim();
+        //    if (contentStr.Length != 0 && sourceStr.Length != 0 && opinionStr.Length != 0)
+        //    {
+        //        count++;
+        //    }
             
-        }
-        if (count < 3)
+        //}
+        //if (count < 3)
+        //{
+        //    isShow = true;
+        //    message = "至少填寫三個想法/意見!";
+        //}
+        //else
         {
-            isShow = true;
-            message = "至少填寫三個想法/意見!";
-        }
-        else
-        {
-            for (int idx = 1; idx <= 7; idx++)
-            {
-                SaveOpinion(idx);
-            }
-            Session["PartA1"]=null;
+            //for (int idx = 1; idx <= 7; idx++)
+            //{
+            //    SaveOpinion(idx);
+            //}
+            //Session["PartA1"]=null;
             Response.Redirect("~/Exercise/Phase1/OnlineLab2.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"] + "&minid=200");
         }
 

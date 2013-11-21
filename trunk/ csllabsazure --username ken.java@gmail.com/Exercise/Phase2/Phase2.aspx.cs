@@ -85,24 +85,25 @@ public partial class Execise_Phase1 : System.Web.UI.Page
                         {
                             var survey = lab.Surveys.Where(c => c.surveyid == 21).First();
                             survey_id = survey.sid;
-                            OnlineLab.PostBackUrl += "?labid=" + lab_id + "&surveyid=" + survey_id; 
+                            OnlineLab.PostBackUrl += "?labid=" + lab_id + "&surveyid=" + survey_id;
+                            Server.Transfer(OnlineLab.PostBackUrl);
                         }
                         catch (Exception)
                         {
                             OnlineLab.Enabled = false;
                             //throw;
                         }
-                        try
-                        {
-                            var survey = lab.Surveys.Where(c => c.surveyid == 22).First();
-                            survey_id = survey.sid;
-                            SelfEval.PostBackUrl += "?labid=" + lab_id + "&surveyid=" + survey_id; ;
-                        }
-                        catch (Exception)
-                        {
-                            SelfEval.Enabled = false;
-                            //throw;
-                        }
+                        //try
+                        //{
+                        //    var survey = lab.Surveys.Where(c => c.surveyid == 22).First();
+                        //    survey_id = survey.sid;
+                        //    SelfEval.PostBackUrl += "?labid=" + lab_id + "&surveyid=" + survey_id; ;
+                        //}
+                        //catch (Exception)
+                        //{
+                        //    SelfEval.Enabled = false;
+                        //    //throw;
+                        //}
                        
                     }
                 }

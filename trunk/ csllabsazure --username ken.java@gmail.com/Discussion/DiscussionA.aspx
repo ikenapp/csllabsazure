@@ -98,7 +98,7 @@
 </script>
      <script type="text/javascript">
          function openNewWin(){
-             window.open('Phase1Preview.aspx', '前一堂課我的作答結果', config='height=840,width=440')
+             window.open('Phase1Preview.aspx', '觀看前一週的作答結果', config='height=840,width=440')
 
          }
 
@@ -108,7 +108,7 @@
     <form id='form1' runat='server'>
 <div style="margin:0;">
     <div><a href='../Default.aspx' style='color:white;'>回首頁</a>&nbsp;&nbsp;<a href="javascript:void()" style='color:white;' onclick="openNewWin()" >
-            前一堂課我的作答結果
+            觀看前一週的作答結果
         </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> 
 </div>
      <asp:ScriptManager ID='ScriptManager1' runat='server'></asp:ScriptManager>
@@ -141,7 +141,7 @@
            
            <table border='0' width=967>
   <tr>
-    <td width='990px' class='all'><div id='type' align='left' class='fb'>在想些什麼 :
+    <td width='990px' class='all'><div id='type' align='left' class='fb'>我的看法 :
         <asp:TextBox ID='TextBox1' runat='server' Width='675px' ></asp:TextBox>
         </div>
         <asp:Button ID='Button1' runat='server' OnClick='Button1_Click' Text='發言' />
