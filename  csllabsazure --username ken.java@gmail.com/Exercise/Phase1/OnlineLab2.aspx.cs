@@ -151,7 +151,7 @@ public partial class Execise_OnlineLab2 : System.Web.UI.Page
                    UserDAO.SaveStatus(u, db, "PartA");
                }
            }
-           Response.Redirect("~/Exercise/Phase1/OnlineLabDone.aspx");
+           Server.Transfer("~/Exercise/Phase1/OnlineLabDone.aspx?labid="+labid);
         }
 
     }

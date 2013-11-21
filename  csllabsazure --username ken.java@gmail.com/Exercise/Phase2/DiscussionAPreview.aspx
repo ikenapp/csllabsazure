@@ -24,7 +24,7 @@
 <body class='fb'>
     <form id='form1' runat='server'>
 <div style="margin:0;">
-    <div><a href='../Default.aspx' style='color:white;'>回首頁</a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一我的作答" />  <asp:Button ID="Button3" runat="server" Text="問題二我的作答"  /> 
+    <div><asp:Button ID="Button2" runat="server" Text="問題一我的作答" />  <asp:Button ID="Button3" runat="server" Text="問題二我的作答"  /> 
 </div>
      <asp:ScriptManager ID='ScriptManager1' runat='server'></asp:ScriptManager>
 	<div id='header' class='container'>
@@ -56,7 +56,7 @@
            
            <table border='0' width=967>
   <tr>
-    <td width='990px' class='all'><div id='type' align='left' class='fb'>在想些什麼 :
+    <td width='990px' class='all'><div id='type' align='left' class='fb'>我的看法 :
         <asp:TextBox ID='TextBox1' runat='server' Width='675px' Enabled="false"></asp:TextBox>
         </div>
         <asp:Button ID='Button1' runat='server' Text='發言' Enabled="false" />

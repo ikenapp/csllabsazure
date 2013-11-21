@@ -36,10 +36,10 @@ public partial class Discussion_Phase1Preview : System.Web.UI.Page
                         survey_id = s.sid;
                         break;
                     }
-                    var answers = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartA").OrderByDescending(c => c.optionid);
+                    var answers = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartA" && c.rank!=null).OrderBy(c => c.optionid);
 
                     string ln = "<br>";
-                    int count = 0;
+                    int count = 1;
                     foreach (var ans in answers)
                     {
                         if (ans.rank != null)
@@ -61,20 +61,35 @@ public partial class Discussion_Phase1Preview : System.Web.UI.Page
                             sb.Append("<hr>");
                             sb.Append(ln);
                         }
-                        else
-                        {
-                            var q = db.Questions.Where(c => c.sid == ans.qid).First();
-                            sb.Append("題目"+count+" :　" + q.question1+ln);
-                            sb.Append(label_content + pre + ans.contents + pre_end + ln);
-                            sb.Append("<hr>");
-                            sb.Append(ln);
-                            count++;
-                        }
+                        //else
+                        //{
+                        //    var q = db.Questions.Where(c => c.sid == ans.qid).First();
+                        //    sb.Append("題目"+count+" :　" + q.question1+ln);
+                        //    sb.Append(label_content + pre + ans.contents + pre_end + ln);
+                        //    sb.Append("<hr>");
+                        //    sb.Append(ln);
+                        //    count++;
+                        //}
                        
                         sb.Append(ln);
 
                     }
 
+                    answers = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartA" && c.rank == null).OrderBy(c => c.qid);
+                    foreach (var ans in answers)
+                    {                   
+                        {
+                            var q = db.Questions.Where(c => c.sid == ans.qid).First();
+                            sb.Append("題目" + count + " :　" + q.question1 + ln);
+                            sb.Append("內容 : " + pre + ans.contents + pre_end + ln);
+                            sb.Append("<hr>");
+                            sb.Append(ln);
+                            count++;
+                        }
+
+                        sb.Append(ln);
+
+                    }
 
                 }
                 Session["PartA"] = sb.ToString();

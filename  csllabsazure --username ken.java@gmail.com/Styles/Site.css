@@ -102,6 +102,7 @@ first child of the left and right table columns */
     padding: 0px;
     background: #4b6c9e;
     width: 100%;
+    display:inline-block;
 }
 
 .header h1
@@ -259,7 +260,7 @@ div.accountInfo
 {
     font-size: 1.1em;
     display: block;
-    text-align: right;
+    text-align: left;
     padding-top: 15px;
     padding-right: 15px;
     color: White;

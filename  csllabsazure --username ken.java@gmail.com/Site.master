@@ -25,10 +25,9 @@
             letter-spacing:2px;
             color:blue;
             font-size:16px;
-            padding:10px;
+            padding:11px;
             border:1px solid black;
             display:inline-block;
-            border-radius:5px;
            
         }
 
@@ -43,10 +42,9 @@
             letter-spacing:2px;
             color:blue;
             font-size:16px;
-            padding:10px;
+            padding:11px;
             border:1px solid black;
             display:inline-block;
-            border-radius:5px;
            
         }
      </style>

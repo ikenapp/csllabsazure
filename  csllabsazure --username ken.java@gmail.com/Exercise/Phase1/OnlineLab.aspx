@@ -45,9 +45,6 @@
      .Next
     {
         border: 1px solid #CCC;
-        width: 180px;
-        height:80px;
-        font-size : 18px;
         background : pink;
     }
     .MSG
@@ -382,6 +379,10 @@
                 CommandArgument="5" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button22" runat="server" Text="說法7" CssClass="focusView"
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
+                    <asp:Button ID="NextButton" runat="server" Text="進行第二部分 >>"  CssClass="Next"
+                    PostBackUrl="~/Exercise/Phase1/OnlineLab2.aspx" onclick="NextButton_Click" 
+             />
+       
                     <div class="optionPanel">
                     <h3>說法七:</h3><%= label_rank %><asp:DropDownList ID="DropDownList7" runat="server">
                            <asp:ListItem>1</asp:ListItem>
@@ -419,9 +420,6 @@
             </asp:MultiView>
             <br/>
             <div style="text-align:center;width:100%">
-       <asp:Button ID="NextButton" runat="server" Text="第二部分 >>" CssClass="Next" 
-                    PostBackUrl="~/Exercise/Phase1/OnlineLab2.aspx" onclick="NextButton_Click" 
-             />
              </div>
         </div>
         <br />

@@ -114,7 +114,7 @@ public partial class Exercise_Phase2_DiscussionAPreview : System.Web.UI.Page
                     }
                     else
                     {
-                        TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_A_Title+no"];
+                        TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_A_Title"+no];
                         GroupInfo.Text = Session["GROUP"+no] as String;
                     }
 
