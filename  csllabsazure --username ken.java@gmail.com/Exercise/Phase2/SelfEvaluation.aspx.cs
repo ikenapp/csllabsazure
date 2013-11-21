@@ -108,7 +108,33 @@ public partial class Execise2_SelfEvaluation : System.Web.UI.Page
                 isShow = false;
                 message = "";
                 db.SaveChanges();
-                Response.Redirect("~/Exercise/Phase2/SelfEvaluation2.aspx?surveyid=" + surveyid + "&labid=" + labid);
+                User u = UserDAO.GetUserFromSession();
+                if (u != null)
+                {
+                    int lab_id2 = int.Parse(labid);
+
+                    try
+                    {
+                        var ans = db.Status.Where(c => c.labid == lab_id2 && c.studentid == u.sid && c.phase == "PartB2E").First();
+                        ans.done = true;
+
+                    }
+                    catch (Exception)
+                    {
+                        Status ans = new Status
+                        {
+                            labid = lab_id2,
+                            studentid = u.sid,
+                            phase = "PartB2E",
+                            done = true
+                        };
+                        db.Status.Add(ans);
+
+                    }
+                    db.SaveChanges();
+
+                }
+                Server.Transfer("~/Exercise/Phase2/SelfEvalDone.aspx?surveyid=" + surveyid + "&labid=" + labid);
             }
         }
     }

@@ -12,6 +12,18 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
     String labid = "";
     public bool isShow = false;
     public String message = "";
+    public String label_rank = "(我對此說法的認同強度為";
+    public String label_rank_end = ")";
+    public String label_content = "內容:(可以用複製/貼上的功能)";
+    public String label_source = "資料來源(含：作者/網站名稱/網址)";
+    public String label_attributes = "我認為這個說法包含了以下那些屬性(可單選或多選)：";
+    public String option_attr_1 = "具實證基礎";
+    public String option_attr_2 = "專家個人看法";
+    public String option_attr_3 = "個人假設";
+    public String option_attr_4 = "未經查證的資料";
+    public String option_attr_5 = "以上皆非";
+    public String label_opinons = "我對此說法的看法(包括此說法的「優點」與「缺點」，請參考學習單的範例)";
+
     protected void Page_Load(object sender, EventArgs e)
     {
         labid = Request.QueryString["labid"] != null ? Request.QueryString["labid"].ToString() : "";
@@ -21,9 +33,9 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
             return;
         }
         //BackLink.Visible = true;
-        //BackLink.NavigateUrl = "~/Exercise/Phase1/Phase1.aspx?labid=" + labid;
+        BackLink.NavigateUrl = "~/Exercise/Phase2.aspx?labid=" + labid;
 
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             bool isError = false;
             int lab_id = int.Parse(this.labid);
@@ -49,6 +61,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
 
 
                     }
+
                 }
             }
             if (isError)
@@ -70,11 +83,13 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
 
     private void SaveOpinion(int idx)
     {
+       
         View view = MultiView1.FindControl("View" + idx) as View;
         DropDownList ddl = view.FindControl("DropDownList" + idx) as DropDownList;
         TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
         TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
         TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
+        CheckBoxList attrcb = view.FindControl("AttrList" + idx) as CheckBoxList;
         Label msg = view.FindControl("MsgLabel" + idx) as Label;
         msg.Text = "";
         int rankVal = int.Parse(ddl.SelectedValue);
@@ -86,6 +101,36 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
         {
             int lab_id = int.Parse(labid);
             int survey_id = int.Parse(Request.QueryString["surveyid"]);
+            String attrs = "";
+            bool flag = false;
+            foreach (ListItem item in attrcb.Items)
+            {
+                if (item.Selected)
+                {
+                    flag = true;
+                    attrs += item.Value + ",";
+                }
+            }
+            if (String.IsNullOrEmpty(contentStr))
+            {
+                msg.Text += "內容欄位必填 ";
+            }
+            if (String.IsNullOrEmpty(sourceStr))
+            {
+                msg.Text += "資料來源必填 ";
+            }
+            if (!flag)
+            {
+                msg.Text += "資料屬性至少選一項 ";
+            }
+            if (String.IsNullOrEmpty(opinionStr))
+            {
+                msg.Text += "我的看法必填 ";
+            }
+            if (msg.Text != "")
+            {
+                return;
+            }
             using (LabsDBEntities db = new LabsDBEntities())
             {
                 try
@@ -95,6 +140,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
                     answer.contents = contentStr;
                     answer.links = sourceStr;
                     answer.rank = rankVal;
+                    answer.attributes = attrs;
                 }
                 catch (Exception)
                 {
@@ -111,8 +157,8 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
                         opinions = opinionStr,
                         optionid = idx,
                         phase = "PartB1D",
-                        qid = question1.sid
-
+                        qid = question1.sid,
+                        attributes = attrs
                     };
                     db.Answers.Add(ans);
                 }
@@ -126,37 +172,17 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
 
     protected void NextButton_Click(object sender, EventArgs e)
     {
-        //Check all
-        int count = 0;
-        for (int idx = 1; idx <= 7; idx++)
+        User u = UserDAO.GetUserFromSession();
+        if (u != null)
         {
-            View view = MultiView1.FindControl("View" + idx) as View;
-            TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
-            TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
-            TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
-            String contentStr = content.Text.Trim();
-            String sourceStr = source.Text.Trim();
-            String opinionStr = opinion.Text.Trim();
-            if (contentStr.Length != 0 && sourceStr.Length != 0 && opinionStr.Length != 0)
+            int lab_id2 = int.Parse(labid);
+            using (LabsDBEntities db = new LabsDBEntities())
             {
-                count++;
+                UserDAO.SaveStatusB1(u, db);
             }
-
         }
-        if (count < 3)
-        {
-            isShow = true;
-            message = "至少填寫三個想法/意見!";
-        }
-        else
-        {
-            for (int idx = 1; idx <= 7; idx++)
-            {
-                SaveOpinion(idx);
-            }
-            Session["PartB1D"] = null;
-            Response.Redirect("~/Discussion/DiscussionD2.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"] + "&minid=200");
-        }
-
+        Session["PartB1D"] = null;
+        Response.Redirect("~/Discussion/DiscussionD2.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"] + "&minid=200");
+       
     }
 }

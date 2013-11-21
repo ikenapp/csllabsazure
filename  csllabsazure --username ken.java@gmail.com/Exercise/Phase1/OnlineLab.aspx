@@ -97,11 +97,11 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法一:</h3><%= label_rank %><asp:DropDownList ID="DropDownList1" runat="server" CssClass="noborder">
-                        <asp:ListItem>1</asp:ListItem>
-                        <asp:ListItem>2</asp:ListItem>
-                        <asp:ListItem>3</asp:ListItem>
-                        <asp:ListItem>4</asp:ListItem>
-                        <asp:ListItem>5</asp:ListItem>
+                         <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                         </asp:DropDownList>
                         <%= label_rank_end %> <br><%= label_content %><br />
                         <asp:TextBox ID="ContentTB1" runat="server" Height="135px" TextMode="MultiLine" Width="800px"></asp:TextBox>
@@ -141,11 +141,11 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法二:</h3><%= label_rank %><asp:DropDownList ID="DropDownList2" runat="server">
-                             <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                              <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                     </asp:DropDownList>
                         <%= label_rank_end %>
                         <br />
@@ -189,11 +189,11 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel"> 
                     <h3>說法三:</h3><%= label_rank %><asp:DropDownList ID="DropDownList3" runat="server">
-                             <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                              <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                   </asp:DropDownList>
                         <%= label_rank_end %>
                      
@@ -237,11 +237,11 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法四:</h3><%= label_rank %><asp:DropDownList ID="DropDownList4" runat="server">
-                            <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                             <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                         </asp:DropDownList>
                         <%= label_rank_end %>
                      
@@ -284,11 +284,11 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法五:</h3><%= label_rank %><asp:DropDownList ID="DropDownList5" runat="server">
-                            <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                             <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                   </asp:DropDownList>
                         <%= label_rank_end %>
                      
@@ -332,11 +332,11 @@
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <div class="optionPanel">
                     <h3>說法六:</h3><%= label_rank %><asp:DropDownList ID="DropDownList6" runat="server">
-                           <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                           <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                         </asp:DropDownList>
                         <%= label_rank_end %>
                      
@@ -351,11 +351,11 @@
                         <br />
                          <%= label_attributes %><br>
                         <asp:CheckBoxList ID="AttrList6" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">以上皆非</asp:ListItem>
+                             <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                         </asp:CheckBoxList><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB6" runat="server" Height="135px" TextMode="MultiLine" 
@@ -385,11 +385,11 @@
        
                     <div class="optionPanel">
                     <h3>說法七:</h3><%= label_rank %><asp:DropDownList ID="DropDownList7" runat="server">
-                           <asp:ListItem>1</asp:ListItem>
-                            <asp:ListItem>2</asp:ListItem>
-                            <asp:ListItem>3</asp:ListItem>
-                            <asp:ListItem>4</asp:ListItem>
-                            <asp:ListItem>5</asp:ListItem>
+                            <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="2">大部分不認同</asp:ListItem>
+                            <asp:ListItem Value="3">普通</asp:ListItem>
+                            <asp:ListItem Value="4">大部分認同</asp:ListItem>
+                            <asp:ListItem Value="5">非常認同</asp:ListItem>
                         </asp:DropDownList>
                         <%= label_rank_end %>
                      

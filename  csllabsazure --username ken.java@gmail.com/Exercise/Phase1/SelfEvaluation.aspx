@@ -34,7 +34,7 @@
         font-weight :bold;
         font-size : 16px;
     }
-    h3
+    h2,h3
     {
         color:black;
     }
@@ -44,8 +44,8 @@
     <asp:Literal ID="LabInfo" runat="server" Text="Label"></asp:Literal><br>
     <div style="width:100%;">
      
-    <h3><asp:Label ID="Tiele" runat="server" Text="第一部分:"></asp:Label></h3>
-    <h3><asp:Label ID="desc" runat="server" Text="Label"></asp:Label></h3>
+    <%--<h3><asp:Label ID="Tiele" runat="server" Text="第一部分:"></asp:Label></h3>--%>
+    <h2><asp:Label ID="desc" runat="server" Text="Label"></asp:Label></h2>
      <div style="text-align:left">
             <asp:GridView ID="GridView1" runat="server" 
                 AutoGenerateColumns="False" CellPadding="4" DataKeyNames="sid" 
@@ -79,24 +79,21 @@
                                 <asp:ListItem>3</asp:ListItem>
                                 <asp:ListItem>4</asp:ListItem>
                                 <asp:ListItem>5</asp:ListItem>
-                                <asp:ListItem>6</asp:ListItem>
                             </asp:RadioButtonList>
                         </ItemTemplate>
                         <HeaderTemplate>
                             <table class="myheader">
                                 <tr>
                                     <td>
-                                        不曾</td>
+                                        非常同意</td>
                                     <td>
-                                        幾乎不曾</td>
+                                        部分同意</td>
                                     <td>
-                                        很少</td>
+                                        普通</td>
                                     <td>
-                                        有時候</td>
+                                        部分不同意</td>
                                     <td>
-                                        常常</td>
-                                    <td>
-                                        總是</td>
+                                        非常不同意</td>
                                 </tr>
                             </table>
                         </HeaderTemplate>
@@ -127,7 +124,7 @@
         </asp:SqlDataSource>
         <br />
         <div style="text-align:center;width:100%">
-        <asp:Button ID="NextButton" runat="server" Text="第二部分 >>" CssClass="Next" 
+        <asp:Button ID="NextButton" runat="server" Text="完成了!!" CssClass="Next" 
             onclick="NextButton_Click" /></div>
     </div>
     <script type="text/javascript" language="javascript">

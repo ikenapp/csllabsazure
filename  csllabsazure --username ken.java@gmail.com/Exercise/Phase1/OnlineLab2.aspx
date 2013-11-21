@@ -126,7 +126,7 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     <div style="text-align:center;width:100%">
-            <asp:Button ID="SaveAll" runat="server" Text="全部儲存" CssClass="centerBTN" OnClick="SaveAll_Click" />
+            <asp:Button ID="SaveAll" runat="server" Text="前往學習成效自評>>" CssClass="centerBTN" OnClick="SaveAll_Click" />
             </div>
            <br>
           <script type="text/javascript" language="javascript">

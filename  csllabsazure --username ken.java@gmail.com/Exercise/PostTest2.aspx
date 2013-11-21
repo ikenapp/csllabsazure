@@ -17,20 +17,27 @@
     
     .Next
     {
-        border: 1px bolid #CCC;
+        border: 1px solid #CCC;
         width: 180px;
         height:80px;
         font-size : 18px;
         background : pink;
     }
-   
+
+        h3
+        {
+            color:black;
+        }
+
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+
+        <asp:Literal ID="LabInfo" runat="server" Text="Label"></asp:Literal><br>
+
    <div style="width:100%;">
-        <asp:Label ID="LabInfo" runat="server" CssClass="login title" Text="Label"></asp:Label><br>
     <h3 ><asp:Label ID="Tiele" runat="server" Text="第二部分:"></asp:Label></h3>
-    <h4 ><asp:Label ID="desc" runat="server" Text="Label"></asp:Label></h4>
+    <h3 ><asp:Label ID="desc" runat="server" Text="Label"></asp:Label></h3>
      <div style="text-align:left">    
          <asp:GridView ID="GridView1" runat="server" 
                 AutoGenerateColumns="False" CellPadding="4" DataKeyNames="sid" 

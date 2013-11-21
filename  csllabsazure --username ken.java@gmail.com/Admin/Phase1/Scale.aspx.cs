@@ -54,7 +54,7 @@ public partial class Admin_Scale : System.Web.UI.Page
         }
         else
         {
-            MsgLabel.Text = "檔案不可超過3M";
+            MsgLabel.Text = "檔案不可超過9M";
         }
 
     }
@@ -80,7 +80,7 @@ public partial class Admin_Scale : System.Web.UI.Page
                     type = "SCALE",
                     labid = int.Parse(labid),
                     surveyid = 12,
-                    scale = "6"
+                    scale = "5"
 
                 };
                 db.Surveys.Add(survey);

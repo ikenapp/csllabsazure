@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Lib;
 
-public partial class Discussion_Phase1Preview : System.Web.UI.Page
+public partial class Discussion_DPreview : System.Web.UI.Page
 {
     public String[] options = { "", "具實證基礎", "專家個人看法", "個人假設", "未經查證的資料", "以上皆非" };
     public string pre = "<pre>";
@@ -26,7 +26,7 @@ public partial class Discussion_Phase1Preview : System.Web.UI.Page
         User u = UserDAO.GetUserFromSession();
         if (u != null)
         {
-            if (Session["PartA"] == null)
+            if (Session["PartB1D2"] == null)
             {
                 StringBuilder sb = new StringBuilder();
                 int lab_id = u.labid;
@@ -38,7 +38,7 @@ public partial class Discussion_Phase1Preview : System.Web.UI.Page
                         survey_id = s.sid;
                         break;
                     }
-                    var answers = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartA" && c.rank!=null).OrderBy(c => c.optionid);
+                    var answers = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartB1D" && c.rank != null).OrderBy(c => c.optionid);
 
                     string ln = "<br>";
                     int count = 1;
@@ -82,7 +82,7 @@ public partial class Discussion_Phase1Preview : System.Web.UI.Page
 
                     }
 
-                    answers = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartA" && c.rank == null).OrderBy(c => c.qid);
+                    answers = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartB1D" && c.rank == null).OrderBy(c => c.qid);
                     foreach (var ans in answers)
                     {                   
                         {
@@ -99,10 +99,10 @@ public partial class Discussion_Phase1Preview : System.Web.UI.Page
                     }
 
                 }
-                Session["PartA"] = sb.ToString();
+                Session["PartB1D2"] = sb.ToString();
             }
 
-            Preview.Text = Session["PartA"].ToString();
+            Preview.Text = Session["PartB1D2"].ToString();
 
         }
     }
