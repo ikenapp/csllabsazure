@@ -80,7 +80,7 @@ public partial class Admin_Scale2 : System.Web.UI.Page
                     type = "SCALE",
                     labid = int.Parse(labid),
                     surveyid = 22,
-                    scale = "6"
+                    scale = "5"
 
                 };
                 db.Surveys.Add(survey);
