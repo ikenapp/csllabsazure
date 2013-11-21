@@ -34,7 +34,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
         //BackLink.Visible = true;
         BackLink.NavigateUrl = "~/Exercise/Phase1/Phase1.aspx?labid=" + labid;
 
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             bool isError = false;
             int lab_id = int.Parse(this.labid);

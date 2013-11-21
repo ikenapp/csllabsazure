@@ -13,7 +13,7 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         lab_id = Request.QueryString["labid"] != null ? Request.QueryString["labid"].ToString() : "";
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             String labid = "?labid=" + lab_id;
             DataImport.PostBackUrl += labid;
@@ -42,7 +42,7 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
             Response.Write("網路發生不可預期錯誤.請重新登入再試!");
             return;
         }
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             int lid = int.Parse(lab_id);
             using (LabsDBEntities db = new LabsDBEntities())

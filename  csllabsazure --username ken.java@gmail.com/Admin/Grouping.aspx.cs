@@ -16,7 +16,7 @@ public partial class Admin_Grouping : System.Web.UI.Page
             LabInfo.Text = "網路發生不可預期錯誤.請重新登入再試!";
             return;
         }
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             if (Request.QueryString["preview"] == null)
             {

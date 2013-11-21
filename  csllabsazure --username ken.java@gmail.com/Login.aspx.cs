@@ -30,7 +30,7 @@ public partial class Account_MainLogin : System.Web.UI.Page
                     {
                         try
                         {
-                            User others = db.Users.Where(c => c.group == u.group && c.groupid == u.groupid && c.nickname == nickname).First();
+                            User others = db.Users.Where(c => c.group == u.group && c.groupid == u.groupid && c.nickname == nickname && c.labid==u.labid).First();
                             if (others != null)
                             {
                                 MessageLabel.Text = "輸入的暱稱[ "+nickname+" ]與其他人重複!請重新輸入";

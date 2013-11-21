@@ -112,7 +112,7 @@
     </script>
     <script type="text/javascript">
         function openNewWin(){
-            window.open('Phase1Preview.aspx', '第一階段', config='height=840,width=440')
+            window.open('Phase1Preview.aspx', '前一堂課我的作答結果', config='height=840,width=440')
 
         }
 
@@ -181,17 +181,18 @@
             <table align="left" border="0" width="1177" stye="margin:0;">
                  <tr>
                 <td colspan="3"><a href='../Default.aspx'>回首頁</a>&nbsp;&nbsp<a href="javascript:void()" onclick="openNewWin()" >
-            檢視上一階段輸入
-        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" />  <asp:Button ID="Button3" runat="server" Text="問題二" OnClick="Button3_Click" /> </td>
+            前一堂課我的作答結果
+        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續作問題二" OnClick="Button3_Click" /> </td>
                 <td colspan="1">
                     <div>
-                        <span style='float: right; color: red; padding-right: 10px;' id='countdownE'></span>
+                        
                     </div>
                 </td>
                 </tr>
     <tr>
-        <td width="262" rowspan="3" valign="top">
-            <div id="conlist" align="left">
+        <td width="162" rowspan="3" valign="top">
+            <div id="conlist" align="right">
+                <span style='float: right; color: red; padding-right: 10px;' id='countdownE'></span><br />
                 <div id="post-name">
                     <asp:Literal ID="Literal1" runat="server"></asp:Literal>
                 </div>

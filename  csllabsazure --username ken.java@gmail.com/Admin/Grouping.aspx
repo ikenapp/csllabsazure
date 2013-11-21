@@ -9,7 +9,7 @@
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
             DataKeyNames="sid" DataSourceID="SqlDataSource1" Width="900px" 
             CellPadding="4" GridLines="None" AllowPaging="True" 
-            PageSize="20" ForeColor="#333333">
+            PageSize="20" ForeColor="#333333" AllowSorting="True">
             <AlternatingRowStyle BackColor="White" />
             <Columns>
                 <asp:CommandField ButtonType="Button" EditText="修改" ShowEditButton="True" />
@@ -21,8 +21,7 @@
                     SortExpression="student_id" ReadOnly="True" />
                 <asp:BoundField DataField="name" HeaderText="姓名" SortExpression="name" 
                     ReadOnly="True" />
-                <asp:BoundField DataField="gender" HeaderText="性別" SortExpression="gender" 
-                    ReadOnly="True" />
+                <asp:BoundField DataField="gender" HeaderText="性別" SortExpression="gender" />
                 <asp:BoundField DataField="nickname" HeaderText="暱稱" 
                     SortExpression="nickname" ReadOnly="True" />
                 <asp:BoundField DataField="passsword" HeaderText="密碼" 
@@ -68,7 +67,7 @@
             DeleteCommand="DELETE FROM [Users] WHERE [sid] = @sid" 
             InsertCommand="INSERT INTO [Users] ([name], [nickname], [passsword], [birthday], [age], [group], [school], [dept], [labid], [student_id], [groupid], [gender]) VALUES (@name, @nickname, @passsword, @birthday, @age, @group, @school, @dept, @labid, @student_id, @groupid, @gender)" 
             SelectCommand="SELECT * FROM [Users] WHERE [labid] = @labid and [group] != 'admin' ORDER BY [group], [groupid]" 
-            UpdateCommand="UPDATE [Users] SET  [group] = @group, [groupid] = @groupid WHERE [sid] = @sid">
+            UpdateCommand="UPDATE [Users] SET  [group] = @group, [groupid] = @groupid, [gender] = @gender WHERE [sid] = @sid">
             <DeleteParameters>
                 <asp:Parameter Name="sid" Type="Int32" />
             </DeleteParameters>
@@ -92,6 +91,7 @@
             <UpdateParameters>
                 <asp:Parameter Name="group" Type="String" />
                 <asp:Parameter Name="groupid" Type="Int32" />
+                <asp:Parameter Name="gender" Type="String" />
             </UpdateParameters>
         </asp:SqlDataSource>
         <br />

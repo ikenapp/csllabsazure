@@ -18,7 +18,7 @@ public partial class Admin_PreviewScale : System.Web.UI.Page
             ScaleInfo.Text = "網路發生不可預期錯誤.請重新登入再試!";
             return;
         }
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             String qStr = "";
             if (Request.QueryString["title"] != null)

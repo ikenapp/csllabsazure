@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using Lib;
 
 public partial class Admin_DataImport : System.Web.UI.Page
 {
@@ -16,20 +17,22 @@ public partial class Admin_DataImport : System.Web.UI.Page
         MsgLabel2.Visible = false;
         GroupingLink.Visible = false;
         Preview.Visible = false;
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             GroupingLink.PostBackUrl += "?labid=" + labid + "&preview=true";
             BackLink.NavigateUrl = "~/Admin/LabsSettings.aspx?labid=" + labid;
             int lab_id = int.Parse(labid);
-            using (LabsDBEntities db = new LabsDBEntities())
-            {
-                foreach (var s in db.Users.Where(c => c.labid == lab_id ))
-                {
-                    Preview.NavigateUrl = "~/Admin/Grouping.aspx?labid=" + labid + "&preview=true";
-                    Preview.Visible = true;
-                    break;
-                }
-            }
+            Preview.NavigateUrl = "~/Admin/Grouping.aspx?labid=" + labid + "&preview=true";
+            Preview.Visible = true;
+            //using (LabsDBEntities db = new LabsDBEntities())
+            //{
+            //    foreach (var s in db.Users.Where(c => c.labid == lab_id ))
+            //    {
+            //        Preview.NavigateUrl = "~/Admin/Grouping.aspx?labid=" + labid + "&preview=true";
+            //        Preview.Visible = true;
+            //        break;
+            //    }
+            //}
         }
 
         GridView1.Visible = false;
@@ -89,10 +92,21 @@ public partial class Admin_DataImport : System.Web.UI.Page
                         String[] userData = data[i].Split(',');
                         if (userData != null && userData.Length == 6)
                         {
+                            
                             String student_idStr = userData[0];
                             String nameStr = userData[1];
                             String birthStr = userData[2];
-                            DateTime birth = DateTime.ParseExact(birthStr,"yyyy/MM/dd",null);
+                            DateTime dateDT = UserDAO.GetNow();
+                            try
+                            {
+                                dateDT = DateTime.ParseExact(birthStr, "yyyy/MM/dd", null);
+                            }
+                            catch (Exception)
+                            {
+
+
+                            }
+                            DateTime birth = dateDT;
                             String genderStr = userData[3];
                             String schoolStr = userData[4];
                             String deptStr = userData[5];

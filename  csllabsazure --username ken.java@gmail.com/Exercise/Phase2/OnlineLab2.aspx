@@ -38,15 +38,19 @@
          color:blue; 
          font-weight :bold;  
      }
+        h3
+        {
+            color:black;
+        }
 </style>
    <script type="text/javascript">
        function openNewWinA(){
-           openNewWindow('DiscussionAPreview.aspx', '討論內容')
+           openNewWindow('DiscussionAPreview.aspx', '前一堂課我的作答結果')
            //window.open('DiscussionAPreview.aspx','討論內容', config='height=840,width=980,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
 
        }
        function openNewWinB(){
-           openNewWindow('DiscussionBPreview.aspx', '討論內容')
+           openNewWindow('DiscussionBPreview.aspx', '前一堂課我的作答結果')
 
        }
        function openNewWindow(url,title){

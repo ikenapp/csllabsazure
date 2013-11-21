@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -10,6 +11,7 @@ using Lib;
 public partial class Exercise_Phase2_DiscussionAPreview : System.Web.UI.Page
 {
     string hln = "<br>";
+    public int no = 1;
     string maintopic = "<div class='post' align='left'>" +
              "<table width='977' border='0' >" +
                "<tr valign='top'>" +
@@ -78,25 +80,42 @@ public partial class Exercise_Phase2_DiscussionAPreview : System.Web.UI.Page
             {
                 try
                 {
+                   
+                    if (!String.IsNullOrEmpty(Request.Form[Button3.ClientID]) || Request.Form[HiddenField1.ClientID] == "2" && String.IsNullOrEmpty(Request.Form[Button2.ClientID]))
+                    {
+                        no = 2;
+                        HiddenField1.Value = "2";
+                        Button3.ForeColor = Color.Red;
+                        Button2.ForeColor = Color.Black;
+                    }
+                    else
+                    {
+                        no = 1;
+                        HiddenField1.Value = "1";
+                        Button2.ForeColor = Color.Red;
+                        Button3.ForeColor = Color.Black;
+                    }
+                    no = int.Parse(HiddenField1.Value);
+                  
 
                     //From DB?
-                    if (Session["GROUP"] == null)
+                    if (Session["GROUP"+no] == null)
                     {
-                        TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_A_Title"];
+                        TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_A_Title"+no];
                         var users = db.Users.Where(c => c.groupid == u.groupid && c.group == u.group && c.labid == u.labid).Select(c => c.nickname);
                         GroupInfo.Text = "<br>";//"本組成員 : " + hln;
                         foreach (var uu in users)
                         {
                             GroupInfo.Text += "&nbsp;&nbsp;" + uu + hln;
                         }
-                        Session["GROUP"] = GroupInfo.Text;
+                        Session["GROUP"+no] = GroupInfo.Text;
                         UserDAO.SaveStatusB1(u, db);
 
                     }
                     else
                     {
-                        TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_A_Title"];
-                        GroupInfo.Text = Session["GROUP"] as String;
+                        TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_A_Title+no"];
+                        GroupInfo.Text = Session["GROUP"+no] as String;
                     }
 
 
@@ -105,13 +124,13 @@ public partial class Exercise_Phase2_DiscussionAPreview : System.Web.UI.Page
 
                     try
                     {
-                        if (Session["DISPLAYTEXT"] == null)
+                        if (Session["DISPLAYTEXT"+no] == null)
                         {
                             var query = from x in db.DiscussionAs
                                         let z = db.Users
                                                        .Where(y => y.sid == x.student_id)
                                                        .Select(y => y.nickname).FirstOrDefault()
-                                        where x.labid == u.labid && x.groupid == u.groupid && x.topicid == null
+                                        where x.labid == u.labid && x.groupid == u.groupid && x.topicid == null && x.num == no
                                         select new
                                         {
                                             topic = x.topic,
@@ -132,7 +151,7 @@ public partial class Exercise_Phase2_DiscussionAPreview : System.Web.UI.Page
                                                let z1 = db.Users
                                                               .Where(y1 => y1.sid == x1.student_id)
                                                               .Select(y1 => y1.nickname).FirstOrDefault()
-                                               where x1.labid == u.labid && x1.groupid == u.groupid && x1.topicid == main.disid
+                                               where x1.labid == u.labid && x1.groupid == u.groupid && x1.topicid == main.disid && x1.num == no
                                                select new
                                                {
                                                    topic = x1.topic,
@@ -155,13 +174,13 @@ public partial class Exercise_Phase2_DiscussionAPreview : System.Web.UI.Page
                                     }
                                     Literal1.Text += feedbackEnd;
                                 }
-                                Session["DISPLAYTEXT"] = Literal1.Text;
+                                Session["DISPLAYTEXT"+no] = Literal1.Text;
                             }
 
                         }
                         else
                         {
-                            Literal1.Text = Session["DISPLAYTEXT"] as String;
+                            Literal1.Text = Session["DISPLAYTEXT"+no] as String;
                         }
 
                     }
@@ -181,11 +200,3 @@ public partial class Exercise_Phase2_DiscussionAPreview : System.Web.UI.Page
 
     }
 }
-                
-
-
-
-
-
-
-   

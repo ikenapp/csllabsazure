@@ -49,7 +49,7 @@
 
     function pressQuestions(obj,url,no){
         num = obj.innerHTML=="質疑"?1:-1;
-        obj.innerHTML= obj.innerHTML=="質疑"?"不質疑":"質疑";
+        obj.innerHTML= obj.innerHTML=="質疑"?"收回質疑":"質疑";
         $.ajax({
             url: "Questions.aspx?feedbackId="+url+"&num="+no
         }).done(function() {
@@ -98,7 +98,7 @@
 </script>
      <script type="text/javascript">
          function openNewWin(){
-             window.open('Phase1Preview.aspx', '第一階段', config='height=840,width=440')
+             window.open('Phase1Preview.aspx', '前一堂課我的作答結果', config='height=840,width=440')
 
          }
 
@@ -108,16 +108,16 @@
     <form id='form1' runat='server'>
 <div style="margin:0;">
     <div><a href='../Default.aspx' style='color:white;'>回首頁</a>&nbsp;&nbsp;<a href="javascript:void()" style='color:white;' onclick="openNewWin()" >
-            檢視上一階段輸入
-        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" />  <asp:Button ID="Button3" runat="server" Text="問題二" OnClick="Button3_Click" /> 
+            前一堂課我的作答結果
+        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> 
 </div>
      <asp:ScriptManager ID='ScriptManager1' runat='server'></asp:ScriptManager>
 	<div id='header' class='container'>
 <br>
 		<div id='logo'>
-		  <h3>問題: <asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label>
+		  <h3><asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label>
           </h3>
-			<span style='float:right;color:red;font-weight: 600;' id='countdownE'></span>
+			
 		</div>
 	</div>
 </div>
@@ -129,7 +129,8 @@
     <div align='left' >
       <table width='1184' border='0' rules='cols' valign='top'>
         <tr>
-          <th width='176' valign='top' scope='col'><div id='sidebar'>
+          <th width='86' valign='top' scope='col'><div id='sidebar'>
+            <span style='float:right;color:red;font-weight: 600;' id='countdownE'></span><br>
             <h2 align='left'>本組組員:</h2>
             <p align='left'><asp:Label ID='GroupInfo' runat='server' Text='Label' Font-Bold='True'></asp:Label>
               </p>
