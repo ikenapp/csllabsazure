@@ -13,7 +13,7 @@ public partial class Execise_Phase1 : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         bool isError = true;
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             User u = UserDAO.GetUserFromSession();
             if (u != null)
@@ -43,18 +43,36 @@ public partial class Execise_Phase1 : System.Web.UI.Page
                             if (CheckGroupC(u, db))
                             {
                                 u.group = "C";
-                                var survey = lab.Surveys.Where(c =>c.labid==u.labid && c.surveyid == 23).First();
-                                survey_id = survey.sid;
-                                //Group C
-                                url = String.Format("~/Discussion/Discussion{0}.aspx?labid={1}&surveyid={2}&minid=100", u.group, lab_id, survey.sid);
+                                try
+                                {
+                                    var survey = lab.Surveys.Where(c => c.labid == u.labid && c.surveyid == 23).First();
+                                    survey_id = survey.sid;
+                                    //Group C
+                                    url = String.Format("~/Discussion/Discussion{0}.aspx?labid={1}&surveyid={2}&minid=100", u.group, lab_id, survey.sid);
+
+                                }
+                                catch (Exception)
+                                {
+
+                                    //throw;
+                                }
                             }
                             else
                             {
                                 u.group = "D";
-                                var survey = lab.Surveys.Where(c => c.labid == u.labid && c.surveyid == 11).First();
-                                survey_id = survey.sid;
-                                //Group D
-                                url = String.Format("~/Discussion/Discussion{0}.aspx?labid={1}&surveyid={2}&minid=100", u.group, lab_id, survey.sid);
+                                try
+                                {
+                                    var survey = lab.Surveys.Where(c => c.labid == u.labid && c.surveyid == 11).First();
+                                    survey_id = survey.sid;
+                                    //Group D
+                                    url = String.Format("~/Discussion/Discussion{0}.aspx?labid={1}&surveyid={2}&minid=100", u.group, lab_id, survey.sid);
+
+                                }
+                                catch (Exception)
+                                {
+
+                                    //throw;
+                                }
                             }
                         }
                         Response.Redirect(url);
@@ -63,14 +81,29 @@ public partial class Execise_Phase1 : System.Web.UI.Page
                     else if (lab.currentPhase == "PartB2")
                     {
                         //習作與自評
-                        var survey = lab.Surveys.Where(c => c.surveyid == 21).First();
-                        survey_id = survey.sid;
-                        ;
-                        OnlineLab.PostBackUrl += "?labid=" + lab_id + "&surveyid=" + survey_id; ;
-                        survey = lab.Surveys.Where(c => c.surveyid == 22).First();
-                        survey_id = survey.sid;
-                        ;
-                        SelfEval.PostBackUrl += "?labid=" + lab_id + "&surveyid=" + survey_id; ;
+                        try
+                        {
+                            var survey = lab.Surveys.Where(c => c.surveyid == 21).First();
+                            survey_id = survey.sid;
+                            OnlineLab.PostBackUrl += "?labid=" + lab_id + "&surveyid=" + survey_id; 
+                        }
+                        catch (Exception)
+                        {
+                            OnlineLab.Enabled = false;
+                            //throw;
+                        }
+                        try
+                        {
+                            var survey = lab.Surveys.Where(c => c.surveyid == 22).First();
+                            survey_id = survey.sid;
+                            SelfEval.PostBackUrl += "?labid=" + lab_id + "&surveyid=" + survey_id; ;
+                        }
+                        catch (Exception)
+                        {
+                            SelfEval.Enabled = false;
+                            //throw;
+                        }
+                       
                     }
                 }
             }

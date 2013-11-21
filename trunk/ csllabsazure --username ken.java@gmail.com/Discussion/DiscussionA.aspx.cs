@@ -148,7 +148,7 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                                             nickname = z,
                                             selflikes = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.student_id == u.sid && f.gfeedback == "Y").Count() == 0 ? "讚" : "收回讚",
                                             likes = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.gfeedback == "Y").Count(),
-                                            selfquestions = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.student_id == u.sid && f.qfeedback == "Y").Count() == 0 ? "質疑" : "不質疑",
+                                            selfquestions = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.student_id == u.sid && f.qfeedback == "Y").Count() == 0 ? "質疑" : "收回質疑",
                                             questions = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.qfeedback == "Y").Count()
                                         };
                             Literal1.Text = "";
@@ -401,6 +401,7 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
         Button3.ForeColor = Color.Red;
         Button2.ForeColor = Color.Black;
         no = 2;
+        (sender as Button).Visible = false;
         HiddenField1.Value = "2";
         Page_Load2(sender, e);
     }

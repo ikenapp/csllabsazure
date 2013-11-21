@@ -31,7 +31,7 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                     timeLeft = timeLeft < 0 ? 0 : timeLeft;
                 }
             }
-            Literal1.Text = u.nickname; 
+            Literal1.Text = u.nickname+"<br>"; 
             using (LabsDBEntities db = new LabsDBEntities())
             {
                 try
@@ -48,6 +48,7 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                             HiddenField1.Value = "2";
                             Button3.ForeColor = Color.Red;
                             Button2.ForeColor = Color.Black;
+                            Button3.Visible = false;
                         }
                         else
                         {
@@ -60,7 +61,7 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                         //From DB?
                         TitleLabel.Text = ConfigurationManager.AppSettings["Discussion_B_Title"+no];
                         var users = db.Users.Where(c => c.groupid == u.groupid && c.group == u.group && c.labid == u.labid).Select(c => c.nickname);
-                        GroupInfo.Text = "聯絡人 : " + hln;
+                        GroupInfo.Text = "<br>本組組員 : " + hln;
                         foreach (var uu in users)
                         {
                             if (uu == u.nickname)
@@ -230,5 +231,6 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
         no = 2;
         HiddenField1.Value = "2";
         Page_Load2(sender, e);
+        (sender as Button).Visible = false;
     }
 }

@@ -25,7 +25,7 @@ public partial class Execise_OnlineLab2 : System.Web.UI.Page
         //BackLink.NavigateUrl = "~/Exercise/Phase1/OnlineLab.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"];
 
         survey_id = int.Parse(Request.QueryString["surveyid"]);
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             bool isError = false;
             int lab_id = int.Parse(this.labid);

@@ -29,6 +29,7 @@
         border: 1px solid #ccc;
         padding:10px;
         background : #eee;
+        color:black;
      }
      .myarea
      {
@@ -58,7 +59,7 @@
     {
         border:none;
     }
-    h3
+    h1,h2,h3,h4,h5
     {
         color:black;
         font-weight:bold;
