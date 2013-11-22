@@ -25,6 +25,7 @@ public partial class Admin_Survey : System.Web.UI.Page
                 {
                     Preview.NavigateUrl = "~/Admin/Phase2/PreviewPostTest.aspx?surveyid=" + s.sid + "&labid=" + labid + "&preview=true";
                     Preview.Visible = true;
+                    break;
                 }
             }
             BackLink.NavigateUrl = "~/Admin/LabsSettings.aspx?labid=" + labid;
