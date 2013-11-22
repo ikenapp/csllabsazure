@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="PostTest1.aspx.cs" Inherits="Exercise_PostTest1"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
-<style type="text/css">
+    <style type="text/css">
     .myheader td
     {
         border : 0px;
@@ -40,6 +40,22 @@
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+    <%--script type="text/javascript" src="gridviewScroll.min.js"></%>
+    <link href="GridviewScroll.css" rel="stylesheet" />
+    <style type="text/css">
+    	BODY,TD
+		{
+		    font-family: 微軟正黑體, Tahoma, Arial, Verdana;
+		    font-weight: normal;
+		    font-size: 12px;
+		    color: #333333;
+		}
+
+        .myheader
+        {
+        }
+    </style>--%>
+
     <asp:Literal ID="LabInfo" runat="server" Text="Label"></asp:Literal><br>
     <div style="width:100%;">
         
@@ -57,6 +73,9 @@
 <ItemStyle HorizontalAlign="Center" Width="8%"></ItemStyle>
                     </asp:BoundField>--%>
                     <asp:TemplateField HeaderText="題號">
+                        <FooterTemplate>
+                            cvsd
+                        </FooterTemplate>
          <ItemTemplate>
                <%# Container.DataItemIndex + 1 %>
          </ItemTemplate>
@@ -144,5 +163,14 @@
     if(<%= "'"+isShow+"'" %> == 'True'){
         alert('<%= message %>');
     }
+      <%--  $(document).ready(function () {
+            gridviewScroll();
+        });
+	
+        function gridviewScroll() {
+            gridView1 = $('#GridView2');
+        }--%>
 </script>
+
+     
 </asp:Content>
