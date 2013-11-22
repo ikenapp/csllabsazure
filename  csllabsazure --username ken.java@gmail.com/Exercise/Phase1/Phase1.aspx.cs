@@ -12,7 +12,7 @@ public partial class Execise_Phase1 : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         bool isError = true;
-        if (!Page.IsPostBack)
+        //if (!Page.IsPostBack)
         {
             User u = UserDAO.GetUserFromSession();
             if (u != null)
@@ -30,17 +30,9 @@ public partial class Execise_Phase1 : System.Web.UI.Page
             }
             using (LabsDBEntities db = new LabsDBEntities())
             {
-                foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 11))
-                {
-                    OnlineLab.PostBackUrl += "?surveyid=" + s.sid + "&labid=" + lab_id + "&minid=200";
-                    Server.Transfer(OnlineLab.PostBackUrl);
-                    break;
-                }
-                //foreach (var s in db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 12))
-                //{
-                //    SelfEval.PostBackUrl += "?surveyid=" + s.sid + "&labid=" + lab_id + "&minid=200";
-                //    break;
-                //}
+                Survey s = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 11).First();
+                OnlineLab.PostBackUrl += "?surveyid=" + s.sid + "&labid=" + lab_id + "&minid=200";
+                Response.Redirect(OnlineLab.PostBackUrl);
             }
 
         }

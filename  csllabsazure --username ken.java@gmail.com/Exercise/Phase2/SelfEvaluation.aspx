@@ -72,11 +72,11 @@
                         <ItemTemplate>
                             <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="center" 
                                 RepeatDirection="Horizontal">
-                                <asp:ListItem>1</asp:ListItem>
-                                <asp:ListItem>2</asp:ListItem>
-                                <asp:ListItem>3</asp:ListItem>
-                                <asp:ListItem>4</asp:ListItem>
                                 <asp:ListItem>5</asp:ListItem>
+                                <asp:ListItem>4</asp:ListItem>
+                                <asp:ListItem>3</asp:ListItem>
+                                <asp:ListItem>2</asp:ListItem>
+                                <asp:ListItem>1</asp:ListItem>
                             </asp:RadioButtonList>
                         </ItemTemplate>
                         <HeaderTemplate>
@@ -121,8 +121,10 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
+        完成作答後，請記得：在學習平台儲存您的答案。謝謝您！
+        <br /><br />
         <div style="text-align:center;width:100%">
-        <asp:Button ID="NextButton" runat="server" Text="完成了!!" CssClass="Next" 
+        <asp:Button ID="NextButton" runat="server" Text="儲存!!" CssClass="Next" 
             onclick="NextButton_Click" /></div>
     </div>
     <script type="text/javascript" language="javascript">

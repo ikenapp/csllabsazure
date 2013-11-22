@@ -357,13 +357,12 @@ text-align:right;
 	}
 	#question
 	{
-		font-size: 14pt;
+		font-size: 12pt;
 		background: #2372DE url(images/bg01.png) repeat;
 		color: #000;
-		font-weight: 700;
+		font-weight: 100;
 		width:900px;
-		font-family: 'Open Sans', sans-serif;
-		border:1px solid #CCC;
+        border:1px solid #CCC;
 	}
 /*********************************************************************************/
 /* content                                                                       */
