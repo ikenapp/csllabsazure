@@ -44,7 +44,7 @@ public partial class Execise_Phase1 : System.Web.UI.Page
             }
             else
             {
-                Server.Transfer(PostTest.PostBackUrl);
+                Response.Redirect(PostTest.PostBackUrl);
             }
                         
 

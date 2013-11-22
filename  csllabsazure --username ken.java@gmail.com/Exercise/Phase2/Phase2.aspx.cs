@@ -86,7 +86,7 @@ public partial class Execise_Phase1 : System.Web.UI.Page
                             var survey = lab.Surveys.Where(c => c.surveyid == 21).First();
                             survey_id = survey.sid;
                             OnlineLab.PostBackUrl += "?labid=" + lab_id + "&surveyid=" + survey_id;
-                            Server.Transfer(OnlineLab.PostBackUrl);
+                            Response.Redirect(OnlineLab.PostBackUrl);
                         }
                         catch (Exception)
                         {

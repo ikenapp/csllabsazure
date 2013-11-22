@@ -134,7 +134,7 @@ public partial class Execise2_SelfEvaluation : System.Web.UI.Page
                     db.SaveChanges();
 
                 }
-                Server.Transfer("~/Exercise/Phase2/SelfEvalDone.aspx?surveyid=" + surveyid + "&labid=" + labid);
+                Response.Redirect("~/Exercise/Phase2/SelfEvalDone.aspx?surveyid=" + surveyid + "&labid=" + labid);
             }
         }
     }
