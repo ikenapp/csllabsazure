@@ -113,15 +113,15 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
             }
             if (String.IsNullOrEmpty(contentStr))
             {
-                msg.Text += "內容欄位必填 ";
+                msg.Text += "內容欄位必填, ";
             }
             if (String.IsNullOrEmpty(sourceStr))
             {
-                msg.Text += "資料來源必填 ";
+                msg.Text += "資料來源必填, ";
             }
             if (!flag)
             {
-                msg.Text += "資料屬性至少選一項 ";
+                msg.Text += "資料屬性至少選一項, ";
             }
             if (String.IsNullOrEmpty(opinionStr))
             {

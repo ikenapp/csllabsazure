@@ -169,7 +169,8 @@
             if(<%= "'"+isShow+"'" %> == 'True'){
                 alert('<%= message %>');
             }
-        }        function check(){
+        }
+        function check(){
             ret = true;
             len = $('.HIDDEN').length;
             //alert(len/2);

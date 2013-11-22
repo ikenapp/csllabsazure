@@ -34,7 +34,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
         //BackLink.Visible = true;
         BackLink.NavigateUrl = "~/Exercise/Phase1/Phase1.aspx?labid=" + labid;
 
-        //if (!Page.IsPostBack)
+        if (!Page.IsPostBack)
         {
             bool isError = false;
             int lab_id = int.Parse(this.labid);
@@ -110,15 +110,15 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
             }
             if (String.IsNullOrEmpty(contentStr))
             {
-                msg.Text += "內容欄位必填 ";
+                msg.Text += "內容欄位必填, ";
             }
             if (String.IsNullOrEmpty(sourceStr))
             {
-                msg.Text += "資料來源必填 ";
+                msg.Text += "資料來源必填, ";
             }
             if (!flag)
             {
-                msg.Text += "資料屬性至少選一項 ";
+                msg.Text += "資料屬性至少選一項, ";
             }
             if (String.IsNullOrEmpty(opinionStr))
             {
@@ -177,14 +177,25 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
         //    TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
         //    TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
         //    TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
+        //    CheckBoxList attrcb = view.FindControl("AttrList" + idx) as CheckBoxList;
         //    String contentStr = content.Text.Trim();
         //    String sourceStr = source.Text.Trim();
         //    String opinionStr = opinion.Text.Trim();
-        //    if (contentStr.Length != 0 && sourceStr.Length != 0 && opinionStr.Length != 0)
+        //    String attrs = "";
+        //    bool flag = false;
+        //    foreach (ListItem item in attrcb.Items)
+        //    {
+        //        if (item.Selected)
+        //        {
+        //            flag = true;
+        //            attrs += item.Value + ",";
+        //        }
+        //    }
+        //    if (contentStr.Length != 0 && sourceStr.Length != 0 && opinionStr.Length != 0 && !flag)
         //    {
         //        count++;
         //    }
-            
+
         //}
         //if (count < 3)
         //{
@@ -197,7 +208,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
             //{
             //    SaveOpinion(idx);
             //}
-            //Session["PartA1"]=null;
+            Session["PartA1"] = null;
             Response.Redirect("~/Exercise/Phase1/OnlineLab2.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"] + "&minid=200");
         }
 
