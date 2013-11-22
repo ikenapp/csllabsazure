@@ -19,6 +19,14 @@
         /*color : white;*/
         font-size :14px;
     }
+    .funButtonStyle2
+    {
+        width : 150px;
+        height : 35px;
+        background : lightblue;
+        /*color : white;*/
+        font-size :14px;
+    }
     
     .cell
     {
@@ -98,16 +106,16 @@
      <fieldset class="login">
                     <legend>實驗資料匯出</legend>
     <span class="cell">
-    <asp:Button ID="ExerciseExport" runat="server" Text="線上習作匯出" CssClass="funButtonStyle" 
-                        Enabled="False" />
+    <asp:Button ID="ExerciseExport" runat="server" Text="第一階段資料匯出" CssClass="funButtonStyle2" 
+                         PostBackUrl="~/Admin/Phase1Export.aspx" />
     </span>
     <span class="cell">
-    <asp:Button ID="SelfEvalExport" runat="server" Text="學習自評匯出" CssClass="funButtonStyle" 
-                        Enabled="False" />
+    <asp:Button ID="SelfEvalExport" runat="server" Text="第二階段資料匯出" CssClass="funButtonStyle2" 
+                         PostBackUrl="~/Admin/Phase2Export.aspx" />
     </span>
     <span class="cell">
-    <asp:Button ID="PostTestExport" runat="server" Text="後測匯出" CssClass="funButtonStyle" 
-                        Enabled="False" />
+    <asp:Button ID="PostTestExport" runat="server" Text="後測匯出" CssClass="funButtonStyle"  Enabled="false"
+                         PostBackUrl="~/Admin/PostTestExport.aspx" />
     </span>
     </fieldset>
 </div>
