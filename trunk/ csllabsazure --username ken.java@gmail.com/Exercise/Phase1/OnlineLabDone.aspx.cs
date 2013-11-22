@@ -17,7 +17,7 @@ public partial class Exercise_OnlineLabDone : System.Web.UI.Page
             {
                 foreach (var s in db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 12))
                 {
-                    Server.Transfer("~/Exercise/Phase1/SelfEvaluation.aspx?surveyid=" + s.sid + "&labid=" + u.labid + "&minid=200");
+                    Response.Redirect("~/Exercise/Phase1/SelfEvaluation.aspx?surveyid=" + s.sid + "&labid=" + u.labid + "&minid=200");
                     break;
                 }
             }

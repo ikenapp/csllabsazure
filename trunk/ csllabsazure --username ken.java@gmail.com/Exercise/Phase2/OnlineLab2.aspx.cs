@@ -174,7 +174,7 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
                 }
             }
 
-            Server.Transfer("~/Exercise/Phase2/OnlineLabDone.aspx");
+            Response.Redirect("~/Exercise/Phase2/OnlineLabDone.aspx");
         }
 
     }
