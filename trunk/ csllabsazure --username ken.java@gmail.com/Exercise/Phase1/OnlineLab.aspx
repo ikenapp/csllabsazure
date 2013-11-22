@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="OnlineLab.aspx.cs" Inherits="Execise_OnlineLab" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="OnlineLab.aspx.cs" Inherits="Execise_OnlineLab" EnableViewState="true" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
