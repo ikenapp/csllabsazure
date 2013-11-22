@@ -113,6 +113,15 @@
                 <asp:Parameter Name="groupid" Type="Int32" />
             </UpdateParameters>
         </asp:SqlDataSource>
+        <link href="superTables.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="jquery-1.3.1.js"></script>
+    <script type="text/javascript" src="superTables.js"></script>
+    <script type="text/javascript" src="jquery.superTable.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#<%=GridView1.ClientID%>").toSuperTable({ width: "950px", height: "480px", cssSkin: "sDefault"});
+        });
+    </script>
         <br />
     </div>
 </asp:Content>
