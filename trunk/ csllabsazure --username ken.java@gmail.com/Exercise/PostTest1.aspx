@@ -128,10 +128,10 @@
                     Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <br />
+        <br /><br />
         <div style="text-align:center;width:100%">
         <asp:Button ID="NextButton" runat="server" Text="第二部分 >>" CssClass="Next" 
-            onclick="NextButton_Click" /></div>
+            onclick="NextButton_Click" /></div><br />
     </div>
     <script type="text/javascript" language="javascript">
 //        var prm = Sys.WebForms.PageRequestManager.getInstance()

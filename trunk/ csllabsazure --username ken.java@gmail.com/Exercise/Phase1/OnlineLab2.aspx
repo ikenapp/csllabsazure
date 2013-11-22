@@ -66,12 +66,10 @@
              </div>
              </span>
     <span style="text-align:left;width:680px;">
-        <a href="javascript:void(0)" class="previewparta1" onclick="openNewWin()" >
-            前一堂課我的作答結果
-        </a>
+        
         <br />
         <asp:Label ID="LabInfo" runat="server" Text="Label"></asp:Label>
-             <h3><asp:Label ID="Part2Title" runat="server" CssClass="login" Text="Label"></asp:Label></h3>
+             <h3><asp:Literal ID="Part2Title" runat="server" Text="Label"></asp:Literal></h3>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
                 CellPadding="4" DataKeyNames="sid" DataSourceID="SqlDataSource1" 
                 ForeColor="#333333" GridLines="None" ShowHeader="False" Width="600px" 

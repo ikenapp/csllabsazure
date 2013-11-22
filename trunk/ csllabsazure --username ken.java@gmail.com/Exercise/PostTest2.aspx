@@ -121,8 +121,10 @@
             </SelectParameters>
         </asp:SqlDataSource>
         <br />
+        完成作答後，請記得：在學習平台儲存您的答案。謝謝您！
+        <br /><br />
         <div style="text-align:center;width:100%">
-        <asp:Button ID="FinishButton" runat="server" Text="完成了!" CssClass="Next" 
+        <asp:Button ID="FinishButton" runat="server" Text="儲存" CssClass="Next" 
             onclick="FinishButton_Click"/>
             </div>
     </div>
