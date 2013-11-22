@@ -13,7 +13,7 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         lab_id = Request.QueryString["labid"] != null ? Request.QueryString["labid"].ToString() : "";
-        //if (!Page.IsPostBack)
+        if (!Page.IsPostBack)
         {
             String labid = "?labid=" + lab_id;
             DataImport.PostBackUrl += labid;
