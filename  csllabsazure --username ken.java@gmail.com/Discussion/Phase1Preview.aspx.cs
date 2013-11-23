@@ -9,15 +9,20 @@ using Lib;
 
 public partial class Discussion_Phase1Preview : System.Web.UI.Page
 {
-    public String[] options = { "", "具實證基礎", "專家個人看法", "個人假設", "未經查證的資料", "以上皆非" };
+    public String[] options = { "", "具實證基礎", "專家個人看法", "個人假設", "未經查證的資料", "無法判斷" };
     public string pre = "<pre>";
     public string pre_end = "</pre>";
-    public String label_rank = "(我對此說法的認同強度為";
-    public String label_rank_end = ")";
-    public String label_content = "內容:(可以用複製/貼上的功能)";
-    public String label_source = "資料來源(含：作者/網站名稱/網址)";
-    public String label_attributes = "我認為這個說法包含了以下那些屬性(可單選或多選)：";
-    public String label_opinons = "我對此說法的看法(包括此說法的「優點」與「缺點」，請參考學習單的範例)";
+    public String label_rank = "3. 請就系統提供的選框選項，選擇您給予該說法的認同強度為 ";
+    public String label_rank_end = "";
+    public String label_content = "1.請摘錄該說法的內容(可以用複製/貼上的功能)：";
+    public String label_source = "2.請標示該說法的資料來源(含：作者/網站名稱/網址)";
+    public String label_attributes = "4. 請判斷這個說法包含了以下那些屬性(可單選或多選)：";
+    public String option_attr_1 = "具實證基礎";
+    public String option_attr_2 = "專家個人看法";
+    public String option_attr_3 = "個人假設";
+    public String option_attr_4 = "未經查證的資料";
+    public String option_attr_5 = "無法判斷";
+    public String label_opinons = "5. 請寫下您對於此說法的看法(包括「優點」與「缺點」，請參考學習單的範例)";
     public String[] ranks = { "", "非常不認同", "大部分不認同", "普通", "大部分認同", "非常認同" };
     
     protected void Page_Load(object sender, EventArgs e)

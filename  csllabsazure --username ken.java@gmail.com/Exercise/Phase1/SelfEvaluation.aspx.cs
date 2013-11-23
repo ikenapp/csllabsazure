@@ -65,16 +65,36 @@ public partial class Execise_SelfEvaluation : System.Web.UI.Page
         {
             foreach (GridViewRow row in GridView1.Rows)
             {
-                RadioButtonList rlist = row.FindControl("RadioButtonList1") as RadioButtonList;
-                HiddenField hf = row.FindControl("questionid") as HiddenField;
-                int q_id = int.Parse(hf.Value);
-                if (rlist.SelectedIndex == -1)
+                Label hf = row.FindControl("questionid") as Label;
+                int q_id = -1;
+                try
+                {
+                    q_id = int.Parse(hf.Text);
+                }
+                catch
+                {
+                    q_id = int.Parse(hf.Text.Split(',')[0]);
+                }
+                bool flag = false;
+                int idx = -1;
+                for (int i = 1; i <= 6; i++)
+                {
+                    RadioButton rb = row.FindControl("RadioButton" + i) as RadioButton;
+                    if (rb != null && rb.Checked)
+                    {
+                        flag = true;
+                        idx = int.Parse(rb.Text);
+                        break;
+                    }
+
+                }
+                if (!flag)
                 {
                     sb.Append(no + ", ");
                 }
                 else
                 {
-                    int val = int.Parse(rlist.SelectedValue);
+                    int val = idx;
 
                     try
                     {

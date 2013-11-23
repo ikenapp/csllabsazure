@@ -185,7 +185,8 @@
             if(<%= "'"+isShow+"'" %> == 'True'){
                 alert('<%= message %>');
            }
-        }        function check(){
+        }
+        function check(){
             ret = true;
             len = $('.HIDDEN').length;
             //alert(len/2);
@@ -207,7 +208,7 @@
             if(!ret){
                 alert("題號 : " + msg + " 請記得填寫!");
             }
-            return ret;;
+            return ret;
         }
 </script>
 
