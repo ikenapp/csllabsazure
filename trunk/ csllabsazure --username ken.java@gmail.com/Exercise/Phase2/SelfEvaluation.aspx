@@ -38,9 +38,22 @@
     {
         color:black;
     }
+      .HIDDEN
+        {
+            display:none;
+        }
 </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
+      <link href="../superTables.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="../jquery-1.3.1.js"></script>
+    <script type="text/javascript" src="../superTables.js"></script>
+    <script type="text/javascript" src="../jquery.superTable.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $("#<%=GridView1.ClientID%>").toSuperTable({ width: "900px", height: "480px",cssSkin: "sDefault",fixedCols: 1  });
+        });
+    </script>
     <asp:Literal ID="LabInfo" runat="server" Text="Label"></asp:Literal><br>
     <div style="width:100%;">
     <h2><asp:Label ID="desc" runat="server" Text="Label"></asp:Label></h2>
@@ -56,46 +69,60 @@
                <%# Container.DataItemIndex + 1 %>
          </ItemTemplate>
      </asp:TemplateField>
-                    <asp:TemplateField ItemStyle-Width="30%" HeaderText="題目" 
+                    <asp:TemplateField ItemStyle-Width="400px" HeaderText="題目" 
                         SortExpression="question">
                         <ItemTemplate >
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("question") %>'></asp:Label>
-                            <asp:HiddenField ID="questionid" runat="server" Value='<%# Bind("sid") %>' />
+                           <asp:Label ID="questionid" runat="server" Text='<%# Bind("sid") %>' CssClass="HIDDEN"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("question") %>'></asp:TextBox>
                         </EditItemTemplate>
-
-<ItemStyle Width="92%"></ItemStyle>
+                    </asp:TemplateField>
+                     <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:RadioButton ID="RadioButton1" runat="server" CausesValidation="False" GroupName="Values" Text="5" />
+                        </ItemTemplate>
+                        <HeaderTemplate>
+                            非<br>常<br>同<br>意
+                        </HeaderTemplate>
+                   
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="center" 
-                                RepeatDirection="Horizontal">
-                                <asp:ListItem>5</asp:ListItem>
-                                <asp:ListItem>4</asp:ListItem>
-                                <asp:ListItem>3</asp:ListItem>
-                                <asp:ListItem>2</asp:ListItem>
-                                <asp:ListItem>1</asp:ListItem>
-                            </asp:RadioButtonList>
+                            <asp:RadioButton ID="RadioButton2" runat="server" CausesValidation="False" GroupName="Values" Text="4" />
                         </ItemTemplate>
                         <HeaderTemplate>
-                            <table class="myheader">
-                                 <tr>
-                                    <td>
-                                        非常同意</td>
-                                    <td>
-                                        部分同意</td>
-                                    <td>
-                                        普通</td>
-                                    <td>
-                                        部分不同意</td>
-                                    <td>
-                                        非常不同意</td>
-                                </tr>
-                            </table>
+                           部分同意
                         </HeaderTemplate>
-                        <ItemStyle Width="30%" />
+                       
+                    </asp:TemplateField>
+                     <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:RadioButton ID="RadioButton3" runat="server" CausesValidation="False" GroupName="Values" Text="3" />
+                        </ItemTemplate>
+                        <HeaderTemplate>
+                            普通
+                        </HeaderTemplate>
+                        
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:RadioButton ID="RadioButton4" runat="server" CausesValidation="False" GroupName="Values" Text="2" />
+                        </ItemTemplate>
+                        <HeaderTemplate>
+                            部分不同意
+                        </HeaderTemplate>
+                        
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:RadioButton ID="RadioButton5" runat="server" CausesValidation="False" GroupName="Values" Text="1" />
+                        </ItemTemplate>
+                        <HeaderTemplate>
+                            非常不同意
+                        </HeaderTemplate>
+                       
                     </asp:TemplateField>
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
@@ -124,12 +151,42 @@
         完成作答後，請記得：在學習平台儲存您的答案。謝謝您！
         <br /><br />
         <div style="text-align:center;width:100%">
-        <asp:Button ID="NextButton" runat="server" Text="儲存!!" CssClass="Next" 
+        <asp:Button ID="NextButton" runat="server" Text="儲存!!" CssClass="Next" OnClientClick="return check();"
             onclick="NextButton_Click" /></div>
     </div>
     <script type="text/javascript" language="javascript">
-        if(<%= "'"+isShow+"'" %> == 'True'){
-            alert('<%= message %>');
-   }
+        $(document).ready(function () {
+            gridviewScroll();
+        });
+	
+        function gridviewScroll() {
+            if(<%= "'"+isShow+"'" %> == 'True'){
+                alert('<%= message %>');
+            }
+        }
+        function check(){
+            ret = true;
+            len = $('.HIDDEN').length;
+            //alert(len/2);
+            msg = "";
+            for(i = 0; i<len/2;i++){
+                k = i+2;
+                if(i<8){
+                    k = "0"+k;
+                }
+                key = "ctl00$MainContent$GridView1$ctl"+k+"$Values";
+                //console.log(key+":"+$('input[name='+key+']:checked').val());
+                //console.log(key+":"+$('input[name='+key+']:checked')[0].checked);
+                if(typeof($('input[name='+key+']:checked').val())=="undefined"){
+                    msg += (i+1)+","
+                    ret = false;
+                }
+                
+            }
+            if(!ret){
+                alert("題號 : " + msg + " 請記得填寫!");
+            }
+            return ret;
+        }
 </script>
 </asp:Content>

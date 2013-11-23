@@ -10,7 +10,7 @@ using Lib;
 public partial class DiscussionDPreview : System.Web.UI.Page
 {
     
-    public String[] options = { "", "具實證基礎", "專家個人看法", "個人假設", "未經查證的資料", "以上皆非" };
+    public String[] options = { "", "具實證基礎", "專家個人看法", "個人假設", "未經查證的資料", "無法判斷" };
     public string pre = "<pre>";
     public string pre_end = "</pre>";
     public String label_rank = "(我對此說法的認同強度為";
