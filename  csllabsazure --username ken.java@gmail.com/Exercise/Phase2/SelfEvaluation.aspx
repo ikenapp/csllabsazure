@@ -49,11 +49,20 @@
     <script type="text/javascript" src="../jquery-1.3.1.js"></script>
     <script type="text/javascript" src="../superTables.js"></script>
     <script type="text/javascript" src="../jquery.superTable.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            $("#<%=GridView1.ClientID%>").toSuperTable({ width: "900px", height: "480px",cssSkin: "sDefault",fixedCols: 1  });
+   <script type="text/javascript">
+       $(function() {
+           $("#<%=GridView1.ClientID%>").toSuperTable({ width: "980px", height: "480px",cssSkin: "sDefault",fixedCols: 1  });
         });
     </script>
+    <style>
+        .sDefault {
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	font-family: Verdana, Arial, sans serif;
+	font-size: 1.1em; 
+}
+    </style>
     <asp:Literal ID="LabInfo" runat="server" Text="Label"></asp:Literal><br>
     <div style="width:100%;">
     <h2><asp:Label ID="desc" runat="server" Text="Label"></asp:Label></h2>
@@ -93,7 +102,7 @@
                             <asp:RadioButton ID="RadioButton2" runat="server" CausesValidation="False" GroupName="Values" Text="4" />
                         </ItemTemplate>
                         <HeaderTemplate>
-                           部分同意
+                           部<br>分<br>同<br>意
                         </HeaderTemplate>
                        
                     </asp:TemplateField>
@@ -102,7 +111,7 @@
                             <asp:RadioButton ID="RadioButton3" runat="server" CausesValidation="False" GroupName="Values" Text="3" />
                         </ItemTemplate>
                         <HeaderTemplate>
-                            普通
+                            普<br>通
                         </HeaderTemplate>
                         
                     </asp:TemplateField>
@@ -111,7 +120,7 @@
                             <asp:RadioButton ID="RadioButton4" runat="server" CausesValidation="False" GroupName="Values" Text="2" />
                         </ItemTemplate>
                         <HeaderTemplate>
-                            部分不同意
+                            部<br>分<br>不<br>同<br>意
                         </HeaderTemplate>
                         
                     </asp:TemplateField>
@@ -120,7 +129,7 @@
                             <asp:RadioButton ID="RadioButton5" runat="server" CausesValidation="False" GroupName="Values" Text="1" />
                         </ItemTemplate>
                         <HeaderTemplate>
-                            非常不同意
+                            非<br>常<br>不<br>同<br>意
                         </HeaderTemplate>
                        
                     </asp:TemplateField>
