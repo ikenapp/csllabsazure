@@ -51,15 +51,24 @@
     <script type="text/javascript" src="../jquery.superTable.js"></script>
     <script type="text/javascript">
         $(function() {
-            $("#<%=GridView1.ClientID%>").toSuperTable({ width: "900px", height: "480px",cssSkin: "sDefault",fixedCols: 1  });
+            $("#<%=GridView1.ClientID%>").toSuperTable({ width: "980px", height: "480px",cssSkin: "sDefault",fixedCols: 1  });
         });
     </script>
+    <style>
+        .sDefault {
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	font-family: Verdana, Arial, sans serif;
+	font-size: 1.1em; 
+}
+    </style>
     <asp:Literal ID="LabInfo" runat="server" Text="Label"></asp:Literal><br>
     <div style="width:100%;">
      
     <%--<h3><asp:Label ID="Tiele" runat="server" Text="第一部分:"></asp:Label></h3>--%>
     <h2><asp:Label ID="desc" runat="server" Text="Label"></asp:Label></h2>
-     <div style="text-align:left">
+     <div style="text-align:left;padding-left:-30px">
             <asp:GridView ID="GridView1" runat="server" 
                 AutoGenerateColumns="False" CellPadding="4" DataKeyNames="sid" 
                 DataSourceID="SqlDataSource1" ForeColor="#333333" GridLines="None" 
@@ -75,39 +84,56 @@
                         SortExpression="question">
                         <ItemTemplate >
                             <asp:Label ID="Label1" runat="server" Text='<%# Bind("question") %>'></asp:Label>
-                            <asp:Label ID="questionid" runat="server" Text='<%# Bind("sid") %>' CssClass="HIDDEN"></asp:Label>
+                           <asp:Label ID="questionid" runat="server" Text='<%# Bind("sid") %>' CssClass="HIDDEN"></asp:Label>
                         </ItemTemplate>
                         <EditItemTemplate>
                             <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("question") %>'></asp:TextBox>
                         </EditItemTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField>
+                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:RadioButtonList ID="RadioButtonList1" runat="server" CssClass="center" 
-                                RepeatDirection="Horizontal">
-                                <asp:ListItem>5</asp:ListItem>
-                                <asp:ListItem>4</asp:ListItem>
-                                <asp:ListItem>3</asp:ListItem>
-                                <asp:ListItem>2</asp:ListItem>
-                                <asp:ListItem>1</asp:ListItem>
-                            </asp:RadioButtonList>
+                            <asp:RadioButton ID="RadioButton1" runat="server" CausesValidation="False" GroupName="Values" Text="5" />
                         </ItemTemplate>
                         <HeaderTemplate>
-                            <table class="myheader">
-                                <tr>
-                                    <td>
-                                        非常同意</td>
-                                    <td>
-                                        部分同意</td>
-                                    <td>
-                                        普通</td>
-                                    <td>
-                                        部分不同意</td>
-                                    <td>
-                                        非常不同意</td>
-                                </tr>
-                            </table>
+                            非<br>常<br>同<br>意
                         </HeaderTemplate>
+                   
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:RadioButton ID="RadioButton2" runat="server" CausesValidation="False" GroupName="Values" Text="4" />
+                        </ItemTemplate>
+                        <HeaderTemplate>
+                           部<br>分<br>同<br>意
+                        </HeaderTemplate>
+                       
+                    </asp:TemplateField>
+                     <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:RadioButton ID="RadioButton3" runat="server" CausesValidation="False" GroupName="Values" Text="3" />
+                        </ItemTemplate>
+                        <HeaderTemplate>
+                            普<br>通
+                        </HeaderTemplate>
+                        
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:RadioButton ID="RadioButton4" runat="server" CausesValidation="False" GroupName="Values" Text="2" />
+                        </ItemTemplate>
+                        <HeaderTemplate>
+                            部<br>分<br>不<br>同<br>意
+                        </HeaderTemplate>
+                        
+                    </asp:TemplateField>
+                    <asp:TemplateField>
+                        <ItemTemplate>
+                            <asp:RadioButton ID="RadioButton5" runat="server" CausesValidation="False" GroupName="Values" Text="1" />
+                        </ItemTemplate>
+                        <HeaderTemplate>
+                            非<br>常<br>不<br>同<br>意
+                        </HeaderTemplate>
+                       
                     </asp:TemplateField>
                 </Columns>
                 <EditRowStyle BackColor="#2461BF" />
