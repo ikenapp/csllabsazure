@@ -78,9 +78,16 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
         Session["PartA1"] = null;
         
     }
-
     private void SaveOpinion(int idx)
     {
+        bool s;
+        SaveOpinion(idx, out s);
+    }
+
+    private void SaveOpinion(int idx, out bool result)
+    {
+
+        result = true;
         View view = MultiView1.FindControl("View" + idx) as View;
         DropDownList ddl = view.FindControl("DropDownList" + idx) as DropDownList;
         TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
@@ -108,26 +115,41 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
                     attrs += item.Value + ",";
                 }
             }
+            int count = 0;
             if (String.IsNullOrEmpty(contentStr))
             {
                 msg.Text += "內容欄位必填, ";
+                count++;
             }
             if (String.IsNullOrEmpty(sourceStr))
             {
                 msg.Text += "資料來源必填, ";
+                count++;
             }
             if (!flag)
             {
                 msg.Text += "資料屬性至少選一項, ";
+                count++;
             }
             if (String.IsNullOrEmpty(opinionStr))
             {
                 msg.Text += "我的看法必填 ";
+                count++;
             }
             if (msg.Text != "")
             {
+                if (count != 4)
+                {
+                    result = false;
+                }
+                else
+                {
+                    result = true;
+                }
+
                 return;
             }
+           
             using (LabsDBEntities db = new LabsDBEntities())
             {
                 try
@@ -162,8 +184,9 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
                 db.SaveChanges();
                 msg.Text = "儲存成功";
             }
+            
         }
-
+        //result = true;
     }
 
 
@@ -204,12 +227,13 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
         //}
         //else
         {
-            //for (int idx = 1; idx <= 7; idx++)
-            //{
-            //    SaveOpinion(idx);
-            //}
-            Session["PartA1"] = null;
-            Response.Redirect("~/Exercise/Phase1/OnlineLab2.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"] + "&minid=200");
+            bool status;
+            SaveOpinion(7, out status);
+            if (status)
+            {
+                Session["PartA1"] = null;
+                Response.Redirect("~/Exercise/Phase1/OnlineLab2.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"] + "&minid=200");
+            }
         }
 
     }

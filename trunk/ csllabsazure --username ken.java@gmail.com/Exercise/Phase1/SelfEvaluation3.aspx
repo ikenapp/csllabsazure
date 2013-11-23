@@ -110,8 +110,10 @@
             </div>
            <br>
           <script type="text/javascript" language="javascript">
-              if(<%= "'"+isShow+"'" %> == 'True'){
-                  alert('<%= message %>');
+              window.onload = function(){
+                  if(<%= "'"+isShow+"'" %> == 'True'){
+                      alert('<%= message %>');
+                  }
               }
               </script>
 </asp:Content>

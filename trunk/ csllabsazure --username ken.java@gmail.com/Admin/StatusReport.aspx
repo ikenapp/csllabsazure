@@ -117,9 +117,18 @@
     <script type="text/javascript" src="jquery-1.3.1.js"></script>
     <script type="text/javascript" src="superTables.js"></script>
     <script type="text/javascript" src="jquery.superTable.js"></script>
+        <style>
+            .sDefault {
+	margin: 0px;
+	padding: 0px;
+	border: none;
+	font-family: Verdana, Arial, sans serif;
+	font-size: 1.15em;
+}
+        </style>
     <script type="text/javascript">
         $(function () {
-            $("#<%=GridView1.ClientID%>").toSuperTable({ width: "950px", height: "480px", cssSkin: "sDefault"});
+            $("#<%=GridView1.ClientID%>").toSuperTable({ width: "970px", height: "480px", cssSkin: "sDefault", fixedCols: 4 });
         });
     </script>
         <br />
