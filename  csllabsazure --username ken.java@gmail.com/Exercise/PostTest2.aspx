@@ -41,7 +41,7 @@
     <script type="text/javascript" src="jquery.superTable.js"></script>
     <script type="text/javascript">
         $(function() {
-            $("#<%=GridView1.ClientID%>").toSuperTable({ width: "900px", height: "480px",cssSkin: "sDefault",fixedCols: 1  });
+            $("#<%=GridView1.ClientID%>").toSuperTable({ width: "890px", height: "480px",cssSkin: "sDefault",fixedCols: 1  });
         });
     </script>
         <asp:Literal ID="LabInfo" runat="server" Text="Label"></asp:Literal><br>
@@ -151,13 +151,13 @@
                     Type="Int32" />
             </SelectParameters>
         </asp:SqlDataSource>
-        <br />
-        完成作答後，請記得：在學習平台儲存您的答案。謝謝您！
+        <h3>完成作答後，請記得：在學習平台儲存您的答案。謝謝您！</h3>
         <br />
         <div style="text-align:center;width:100%">
         <asp:Button ID="FinishButton" runat="server" Text="儲存" CssClass="Next"  OnClientClick="return check();"
             onclick="FinishButton_Click"/>
             </div>
+       <br />
     </div>
     <script type="text/javascript" language="javascript">
         

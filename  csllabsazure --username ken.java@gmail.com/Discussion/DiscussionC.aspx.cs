@@ -42,7 +42,7 @@ public partial class Discussion_DiscussionC : System.Web.UI.Page
                         //Part1Title.Text = "一、" + question1.question1;
 
                         var question2 = db.Questions.Where(c => c.survryid == survey_id && c.no == 100).First();
-                        Part2Title.Text = "一、" + question2.question1;
+                        Part2Title.Text = "一、" + question2.question1+"<a href='javascript:void()' onclick='openNewWin()' >觀看前一週的作答</a>";
 
                         isError = false;
 

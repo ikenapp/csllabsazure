@@ -46,6 +46,11 @@
         {
             color:black;
         }
+
+        ol
+        {
+            list-style-type: upper-roman;
+        }
 </style>
     <script type="text/javascript">
         function openNewWin(){
@@ -62,11 +67,9 @@
             <ContentTemplate>
     <div style="text-align:left;width:100%;">
         <%--<asp:HyperLink ID="BackLink" runat="server">返回上一頁</asp:HyperLink>
-        <br />--%><a href="javascript:void()" onclick="openNewWin()" >
-            觀看前一週的作答結果
-        </a>&nbsp;&nbsp;<br>
+        <br />--%>
         <asp:Label ID="LabInfo" runat="server" CssClass="login" Text="Label"></asp:Label>
-             <h3><asp:Label ID="Part2Title" runat="server" CssClass="login" Text="Label"></asp:Label>
+             <h3><asp:Literal ID="Part2Title" runat="server" Text="Label"></asp:Literal>
         </h3>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
                 CellPadding="4" DataKeyNames="sid" DataSourceID="SqlDataSource1" 
@@ -127,9 +130,11 @@
          </div>
          <br>
           <script type="text/javascript" language="javascript">
-    if(<%= "'"+isShow+"'" %> == 'True'){
-        alert('<%= message %>'); 
-    }
+              window.onload = function(){
+                  if(<%= "'"+isShow+"'" %> == 'True'){
+                      alert('<%= message %>'); 
+                  }
+              }
 </script>
 </asp:Content>
 
