@@ -59,10 +59,6 @@
              </div>
              </span>
     <span style="text-align:left;width:680px;">
-        <a href="javascript:void" class="previewparta1" onclick="openNewWin()" >
-            檢視上一頁輸入
-        </a>
-        <br />
         <asp:Label ID="LabInfo" runat="server" CssClass="login" Text="Label"></asp:Label>
              <h3><asp:Label ID="Part2Title" runat="server" CssClass="login" Text="Label"></asp:Label></h3>
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 

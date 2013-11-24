@@ -16,6 +16,14 @@
             padding:10px;
             font-size:12px;
         }
+         .questionLabel
+        {
+            color:black;
+        }
+        .answerLabel
+        {
+            color:blue;
+        }
     </style>
     <script>
 

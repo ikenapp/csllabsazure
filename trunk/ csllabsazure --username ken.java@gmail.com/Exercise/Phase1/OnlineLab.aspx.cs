@@ -193,40 +193,42 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
     protected void NextButton_Click(object sender, EventArgs e)
     {
         //Check all
-        //int count = 0;
-        //for (int idx = 1; idx <= 7; idx++)
-        //{
-        //    View view = MultiView1.FindControl("View" + idx) as View;
-        //    TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
-        //    TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
-        //    TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
-        //    CheckBoxList attrcb = view.FindControl("AttrList" + idx) as CheckBoxList;
-        //    String contentStr = content.Text.Trim();
-        //    String sourceStr = source.Text.Trim();
-        //    String opinionStr = opinion.Text.Trim();
-        //    String attrs = "";
-        //    bool flag = false;
-        //    foreach (ListItem item in attrcb.Items)
-        //    {
-        //        if (item.Selected)
-        //        {
-        //            flag = true;
-        //            attrs += item.Value + ",";
-        //        }
-        //    }
-        //    if (contentStr.Length != 0 && sourceStr.Length != 0 && opinionStr.Length != 0 && !flag)
-        //    {
-        //        count++;
-        //    }
-
-        //}
-        //if (count < 3)
-        //{
-        //    isShow = true;
-        //    message = "至少填寫三個想法/意見!";
-        //}
-        //else
+        int count = 0;
+        for (int idx = 1; idx <= 7; idx++)
         {
+            View view = MultiView1.FindControl("View" + idx) as View;
+            TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
+            TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
+            TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
+            CheckBoxList attrcb = view.FindControl("AttrList" + idx) as CheckBoxList;
+            String contentStr = content.Text.Trim();
+            String sourceStr = source.Text.Trim();
+            String opinionStr = opinion.Text.Trim();
+            String attrs = "";
+            bool flag = false;
+            foreach (ListItem item in attrcb.Items)
+            {
+                if (item.Selected)
+                {
+                    flag = true;
+                    attrs += item.Value + ",";
+                }
+            }
+            if (contentStr.Length != 0 && sourceStr.Length != 0 && opinionStr.Length != 0 && flag)
+            {
+                SaveOpinion(idx);
+                count++;
+            }
+
+        }
+        if (count < 2)
+        {
+            isShow = true;
+            message = "至少填寫兩個想法/意見!";
+        }
+        else
+        {
+            isShow = false;
             bool status;
             SaveOpinion(7, out status);
             if (status)

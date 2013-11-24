@@ -35,7 +35,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
         //BackLink.Visible = true;
         BackLink.NavigateUrl = "~/Exercise/Phase2.aspx?labid=" + labid;
 
-        //if (!Page.IsPostBack)
+        if (!Page.IsPostBack)
         {
             bool isError = false;
             int lab_id = int.Parse(this.labid);
@@ -80,10 +80,15 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
         Session["PartB1D"] = null;
 
     }
-
     private void SaveOpinion(int idx)
     {
-       
+        bool s;
+        SaveOpinion(idx, out s);
+    }
+
+    private void SaveOpinion(int idx, out bool result)
+    {
+        result = true;
         View view = MultiView1.FindControl("View" + idx) as View;
         DropDownList ddl = view.FindControl("DropDownList" + idx) as DropDownList;
         TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
@@ -111,24 +116,38 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
                     attrs += item.Value + ",";
                 }
             }
+            int count = 0;
             if (String.IsNullOrEmpty(contentStr))
             {
                 msg.Text += "內容欄位必填, ";
+                count++;
             }
             if (String.IsNullOrEmpty(sourceStr))
             {
                 msg.Text += "資料來源必填, ";
+                count++;
             }
             if (!flag)
             {
                 msg.Text += "資料屬性至少選一項, ";
+                count++;
             }
             if (String.IsNullOrEmpty(opinionStr))
             {
                 msg.Text += "我的看法必填 ";
+                count++;
             }
             if (msg.Text != "")
             {
+                if (count != 4)
+                {
+                    result = false;
+                }
+                else
+                {
+                    result = true;
+                }
+
                 return;
             }
             using (LabsDBEntities db = new LabsDBEntities())
@@ -172,17 +191,51 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
 
     protected void NextButton_Click(object sender, EventArgs e)
     {
-        User u = UserDAO.GetUserFromSession();
-        if (u != null)
+        int count = 0;
+        for (int idx = 1; idx <= 7; idx++)
         {
-            int lab_id2 = int.Parse(labid);
-            using (LabsDBEntities db = new LabsDBEntities())
+            View view = MultiView1.FindControl("View" + idx) as View;
+            TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
+            TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
+            TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
+            CheckBoxList attrcb = view.FindControl("AttrList" + idx) as CheckBoxList;
+            String contentStr = content.Text.Trim();
+            String sourceStr = source.Text.Trim();
+            String opinionStr = opinion.Text.Trim();
+            String attrs = "";
+            bool flag = false;
+            foreach (ListItem item in attrcb.Items)
             {
-                UserDAO.SaveStatusB1(u, db);
+                if (item.Selected)
+                {
+                    flag = true;
+                    attrs += item.Value + ",";
+                }
             }
+            if (contentStr.Length != 0 && sourceStr.Length != 0 && opinionStr.Length != 0 && flag)
+            {
+                SaveOpinion(idx);
+                count++;
+            }
+
         }
-        Session["PartB1D"] = null;
-        Response.Redirect("~/Discussion/DiscussionD2.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"] + "&minid=200");
+        if (count < 2)
+        {
+            isShow = true;
+            message = "至少填寫兩個想法/意見!";
+        }
+        else
+        {
+            bool status;
+            SaveOpinion(7, out status);
+            if (status)
+            {
+                 Session["PartB1D"] = null;
+                Response.Redirect("~/Discussion/DiscussionD2.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"] + "&minid=200");
+               
+            }
+            
+        }
        
     }
 }

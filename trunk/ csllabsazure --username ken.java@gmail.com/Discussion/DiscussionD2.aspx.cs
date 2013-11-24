@@ -42,7 +42,8 @@ public partial class Discussion_DiscussioD2 : System.Web.UI.Page
                         //var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
                         //Part1Title.Text = "一、" + question1.question1;
                         var question2 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 200).First();
-                        Part2Title.Text = "二、" + question2.question1;
+                        Part2Title.Text = "二、" + question2.question1 +" 點開<a href='javascript:void(0)' class='previewparta1' onclick='openNewWin()' >前一頁我的作答結果</a>";
+
 
                         isError = false;
 

@@ -21,8 +21,8 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
             LabInfo.Text = "網路發生不可預期錯誤.請重新登入再試!";
             return;
         }
-        BackLink.Visible = true;
-        BackLink.NavigateUrl = "javascript:void(0);";
+        //BackLink.Visible = true;
+        //BackLink.NavigateUrl = "javascript:void(0);";
 
         survey_id = int.Parse(Request.QueryString["surveyid"]);
         if (!Page.IsPostBack)
@@ -62,7 +62,8 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
                         //var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
                         //Part1Title.Text = "一、" + question1.question1;
                         var question2 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 200).First();
-                        Part2Title.Text = "一、" + question2.question1;
+                        Part2Title.Text = "一、" + question2.question1 + " 點開<a href='javascript:void(0)' class='previewparta1' onclick='openNewWin" + u.group + "()' >前一堂課我的作答結果</a>";
+
                         
                         isError = false;
 

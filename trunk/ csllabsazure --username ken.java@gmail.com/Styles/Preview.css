@@ -1,0 +1,36 @@
+﻿div.preview
+{
+    width: 400px;
+    height: 800px;
+    background: white;
+    color: black;
+    overflow: auto;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.questionLabel
+{
+    color: black;
+    font-weight: lighter;
+}
+
+.answerLabel
+{
+    color: blue;
+    font-weight: bold;
+}
+
+.titleLabel
+{
+    font-size: 14px;
+    color: green;
+    font-weight: bold;
+}
+
+.focusLabel
+{
+    color: red;
+    font-weight: bold;
+}
+

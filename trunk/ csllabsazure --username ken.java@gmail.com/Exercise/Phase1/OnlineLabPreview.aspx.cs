@@ -10,7 +10,7 @@ using Lib;
 public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
 {
     public String[] options = { "","具實證基礎","專家個人看法","個人假設","未經查證的資料","無法判斷"};
-    public string pre = "<pre>";
+    public string pre = "<pre class='answerLabel'>";
     public string pre_end = "</pre>"; 
     public String label_rank = "3. 您給予該說法的認同強度為 ";
     public String label_rank_end = "";
@@ -24,7 +24,11 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
     public String option_attr_5 = "無法判斷";
     public String label_opinons = "5. 您對於此說法的看法(包括「優點」與「缺點」，請參考學習單的範例)";
     public String[] ranks = { "","非常不認同","大部分不認同","普通","大部分認同","非常認同"};
-    
+    public String question_start = "<b class='questionLabel'>";
+    public String question_end = "</b>";
+    public String title_start = "<b class='titleLabel'>";
+    public String title_end = "</b>";
+
     protected void Page_Load(object sender, EventArgs e)
     {
 
@@ -49,15 +53,15 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
                     foreach (var ans in answers)
                     {
 
-                        sb.Append("看法" + ans.optionid +ln);
+                        sb.Append(title_start + "看法" + ans.optionid + title_end + ln);
                         String rank = "";
                         if (ans.rank != null)
                         {
                             rank = ranks[(int)ans.rank];
                         }
-                        sb.Append(label_content + pre + ans.contents + pre_end + ln);
-                        sb.Append(label_source + pre + ans.links + pre_end + ln);
-                        sb.Append(label_rank + " <b style='color:red;'>" + rank + "</b> " + label_rank_end + ln);
+                        sb.Append(question_start + label_content + question_end + pre + ans.contents + pre_end + ln);
+                        sb.Append(question_start + label_source + question_end + pre + ans.links + pre_end + ln);
+                        sb.Append(question_start + label_rank + question_end + " <b style='color:red;'>" + rank + "</b> " + label_rank_end + ln);
                         String attrs = ans.attributes;
                         if (attrs != null)
                         {
@@ -73,8 +77,8 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
                         {
                             attrs = "";
                         }
-                        sb.Append(label_attributes + pre + attrs + pre_end + ln);
-                        sb.Append(label_opinons + pre + ans.opinions + pre_end + ln);
+                        sb.Append(question_start + label_attributes + question_end + pre + attrs + pre_end + ln);
+                        sb.Append(question_start + label_opinons + question_end + pre + ans.opinions + pre_end + ln);
                         sb.Append("<hr>");
                         sb.Append(ln);
 
@@ -82,7 +86,12 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
                     
 
                 }
-                Session["PartA1"] = sb.ToString();
+                String msg = sb.ToString();
+                if (msg.Trim() == "")
+                {
+                    msg = "<b style='color:red;'>查無資料!</b>";
+                }
+                Session["PartA1"] = msg; 
             }
             
             Preview.Text = Session["PartA1"].ToString();
