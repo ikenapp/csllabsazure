@@ -380,7 +380,7 @@
             <asp:Button ID="Button22" runat="server" Text="說法7" CssClass="focusView"
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
                     <asp:Button ID="NextButton" runat="server" Text="進行第二部分 >>"  CssClass="Next"
-                    PostBackUrl="~/Exercise/Phase1/OnlineLab2.aspx" onclick="NextButton_Click" 
+                    onclick="NextButton_Click" 
              />
        
                     <div class="optionPanel">

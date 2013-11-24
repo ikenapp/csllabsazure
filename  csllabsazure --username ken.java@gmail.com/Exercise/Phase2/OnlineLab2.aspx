@@ -84,8 +84,7 @@
                     </div>
                 </span>
                 <span style="text-align: left; width: 680px;">
-                    <asp:HyperLink ID="BackLink" runat="server">返回上一頁</asp:HyperLink>
-                    <br />
+                    <asp:HyperLink ID="BackLink" runat="server" Visible="false">返回上一頁</asp:HyperLink>
                     <asp:Label ID="LabInfo" runat="server" CssClass="login" Text="Label"></asp:Label>
                     <h3>
                         <asp:Label ID="Part2Title" runat="server" CssClass="login" Text="Label"></asp:Label></h3>
