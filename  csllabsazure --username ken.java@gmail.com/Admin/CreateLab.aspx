@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     
-<style type="text/css">
+    <style type="text/css">
     #createPanel
     {
         width:360px;
@@ -21,7 +21,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     
- <div id="createPanel"><asp:HyperLink ID="BackLink" runat="server">返回上一頁</asp:HyperLink>
+    <div id="createPanel"><asp:HyperLink ID="BackLink" runat="server">返回上一頁</asp:HyperLink>
             <asp:ValidationSummary ID="LoginUserValidationSummary" runat="server" CssClass="failureNotification" 
                  ValidationGroup="LoginUserValidationGroup" ShowMessageBox="True" ShowSummary="False" />
             <div class="acctinfo" >
