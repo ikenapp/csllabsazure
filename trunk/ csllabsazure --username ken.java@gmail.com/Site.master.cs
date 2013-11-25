@@ -21,57 +21,58 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                 if (Session["USER_DATA"] != null)
                 {
                     User u = Session["USER_DATA"] as User;
-                    if (u != null)
-                    {
-                        int labid = u.labid;
-                        using (LabsDBEntities db = new LabsDBEntities())
-                        {
-                            try
-                            {
-                                var lab = db.Labs.Where(c => c.sid == labid).First();
-                                if (lab.currentPhase == "INIT" || lab.currentPhase == "PartA")
-                                {
-                                    ShowMenu.Add("首頁/第一階段(第一週)");
-                                }
-                                else if (lab.currentPhase == "PartB1" || lab.currentPhase == "PartB2")
-                                {
-                                    ShowMenu.Add("首頁/第二階段(第二週)");
-                                }
-                                else if (lab.currentPhase == "Final")
-                                {
 
-                                    ShowMenu.Add("首頁/第三階段(第三週)");
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-
-
-                            }
-
-
-                        }
-                    }
                     if (u != null && u.group == "admin")
                     {
-                        //For Testing
-                        ShowMenu.Add("首頁/第一階段(第一週)");
-                        ShowMenu.Add("首頁/第二階段(第二週)");
-                        ShowMenu.Add("首頁/第三階段(第三週)");
                         ShowMenu.Add("首頁/管理者設定");
                     }
-                    
+                    else
+                    {
+                        if (u != null)
+                        {
+                            int labid = u.labid;
+                            using (LabsDBEntities db = new LabsDBEntities())
+                            {
+                                try
+                                {
+                                    var lab = db.Labs.Where(c => c.sid == labid).First();
+                                    if (lab.currentPhase == "INIT" || lab.currentPhase == "PartA")
+                                    {
+                                        ShowMenu.Add("首頁/第一階段(第一週)");
+                                    }
+                                    else if (lab.currentPhase == "PartB1" || lab.currentPhase == "PartB2")
+                                    {
+                                        ShowMenu.Add("首頁/第二階段(第二週)");
+                                    }
+                                    else if (lab.currentPhase == "Final")
+                                    {
+
+                                        ShowMenu.Add("首頁/第三階段(第三週)");
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+
+
+                                }
+
+
+                            }
+                        }
+
+
+                    }
+                    LoginLink.Visible = false;
+                    LogoutLink.Visible = true;
                 }
-                LoginLink.Visible = false;
-                LogoutLink.Visible = true;
+                else
+                {
+                    LoginLink.Visible = true;
+                    LogoutLink.Visible = false;
+                }
+
+
             }
-            else
-            {
-                LoginLink.Visible = true;
-                LogoutLink.Visible = false;
-            }
-           
-            
         }
     }
     protected void NavigationMenu_MenuItemDataBound(object sender, MenuEventArgs e)
