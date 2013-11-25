@@ -38,7 +38,10 @@ public partial class Admin_CreateLab : System.Web.UI.Page
                     int labid = lab.sid;
                     try
                     {
-                        initSettings(labid);
+                        if (initCB.Checked)
+                        {
+                            initSettings(labid);
+                        }
                     }
                     catch
                     {
