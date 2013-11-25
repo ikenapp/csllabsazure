@@ -5,6 +5,10 @@
 <head runat="server">
     <title></title>
     <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <style type="text/css">
          #blockui
@@ -48,10 +52,7 @@
            
         }
      </style>
-    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
-    </asp:ContentPlaceHolder>
-</head>
-<body>
+    
     <form runat="server">
     <div class="page">
         <div class="header">

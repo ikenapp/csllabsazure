@@ -13,78 +13,7 @@
             overflow: auto;
             margin: 10px auto;
         }
-        /*#discussionBoard
-        {
-            display: block;
-            border: 1px solid #ccc;
-            width: 850px;
-            height: 350px;
-            overflow: auto;
-            background: white;
-        }
-        #sendPanel
-        {
-            display:block;
-            border: 1px solid #ccc;
-            width:900px;
-            height:60px;
-            overflow:auto;
-            background:white;
-            margin: 20px auto;
-            padding:20px;
-        }
-        #title
-        {
-            display:block;
-            border: 1px solid #ccc;
-            width:920px;
-            height:40px;
-            background:white;
-            margin: 20px auto;
-            padding:10px;
-        }
-        #mainPanel
-        {
-            display:inline-block;
-        }
-        #memberPanel
-        {
-            border: 1px solid #ccc;
-            width: 100%;
-            height: 350px;
-            
-        }
-        
-        body
-        {
-            font-size: .80em;
-            font-family: 'Helvetica Neue', 'Lucida Grande', 'Segoe UI', Arial, Helvetica, Verdana, sans-serif;
-            margin: 10px auto;
-            padding: 0px;
-        }
-        .rightPanel
-        {
-            width:50%;
 
-            display:inline-block;
-            text-align:right;
-        }
-        .leftPanel
-        {
-            width:50%;
-            display:inline-block;
-            float:left;
-        }
-        .Panel
-        {
-            width:100%;
-            display:block;
-            float:left;
-        }
-        div.disCell:nth-of-type(even)
-        {
-            background:#ccc;
-        }*/
     </style>
     <script type='text/javascript'>
         var minutes, seconds, seconds_left = <%= timeLeft%>
@@ -182,7 +111,7 @@
                  <tr>
                 <td colspan="3"><a href='../Default.aspx'>回首頁</a>&nbsp;&nbsp<a href="javascript:void()" onclick="openNewWin()" >
             觀看前一週的作答結果
-        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> </td>
+        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> <b style="color:red">(進行討論前)請先與同組同學確定發言順序!</b></td>
                 <td colspan="1">
                     <div>
                         

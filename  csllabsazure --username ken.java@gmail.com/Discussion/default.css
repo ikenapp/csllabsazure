@@ -50,7 +50,7 @@
 	
 	a:hover
 	{
-		text-decoration: none;
+		/*text-decoration: none;*/
 	}
 	
 	.container
@@ -430,7 +430,7 @@
 	#page
 	{
 		overflow: hidden;
-		padding: 6em 0em;
+		padding: 10px 0em;
 	}
 
 /*********************************************************************************/
