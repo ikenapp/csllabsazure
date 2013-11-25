@@ -56,8 +56,9 @@
                     </asp:CalendarExtender>--%>
                         <asp:RequiredFieldValidator ID="EndDateRequired" runat="server" ControlToValidate="EndDate" 
                              CssClass="failureNotification" ErrorMessage="結束時間必填" ToolTip="End Date is required." 
-                             ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator>
-              
+                             ValidationGroup="LoginUserValidationGroup">*</asp:RequiredFieldValidator><br>
+                     <asp:CheckBox ID="initCB" runat="server" Checked="True" />使用範本初始化資料
+                       
                     <br />
                     <br />
                     <p class="submitButton">
