@@ -23,7 +23,7 @@ public partial class _Default : System.Web.UI.Page
         }
         else
         {
-            NicknameLabel.Text = "請用帳號(學號)/密碼(學號)登入!";
+            NicknameLabel.Text = "請用帳號(學號)/密碼(學號)<a id='LoginLink2' href='Login.aspx'>登入</a>!";
         }
 
     }

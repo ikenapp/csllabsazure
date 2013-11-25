@@ -6,7 +6,7 @@
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
     <div style="margin:0 auto; width:300px;display:block">
     <h2>
-        <asp:Label ID="NicknameLabel" runat="server" Text="Label"></asp:Label>
+        <asp:Literal ID="NicknameLabel" runat="server" Text="Label"></asp:Literal>
     </h2>
     <p>
         請您點選左上角選單”粗體字”的頁籤，進入本週線上學習的畫面。

@@ -107,7 +107,7 @@
 <body class='fb'>
     <form id='form1' runat='server'>
 <div style="margin:0;">
-    <div><a href='../Default.aspx' style='color:white;'>回首頁</a>&nbsp;&nbsp;<a href="javascript:void()" style='color:white;' onclick="openNewWin()" >
+    <div><a href='../Default.aspx' style='color:white;text-decoration:underline'>回首頁</a>&nbsp;&nbsp;<a href="javascript:void()" style='color:white;text-decoration:underline' onclick="openNewWin()" >
             觀看前一週的作答結果
         </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> 
 </div>
@@ -125,7 +125,7 @@
             <ContentTemplate> 
                 <asp:HiddenField ID="HiddenField1" runat="server" Value="1" />
 <div id='wrapper'>
-  <div id='page' class='container' style='vertical-align:top;padding: 0 auto;'>
+  <div id='page' class='container' style='vertical-align:top;padding: 0'>
     <div align='left' >
       <table width='1184' border='0' rules='cols' valign='top'>
         <tr>

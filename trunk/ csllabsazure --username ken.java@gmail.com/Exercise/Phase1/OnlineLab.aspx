@@ -119,7 +119,7 @@
                             <asp:ListItem Value="5">無法判斷</asp:ListItem>
                         </asp:CheckBoxList><br />
                         <%= label_opinons %><br /> 
-                        <asp:TextBox ID="OpinionTB1" runat="server" Height="135px" TextMode="MultiLine" Width="800px"></asp:TextBox>
+                        <asp:TextBox ID="OpinionTB1" runat="server" Height="135px" TextMode="MultiLine" Width="800px"></asp:TextBox><br /> 
                         <asp:Button ID="SaveButton1" runat="server" onclick="SaveButton1_Click" Text="儲存" />
                         <br/>
                         <asp:Label ID="MsgLabel1" runat="server" CssClass="MSG" Text=""></asp:Label>
@@ -169,7 +169,7 @@
                         </asp:CheckBoxList><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB2" runat="server" Height="135px" TextMode="MultiLine" 
-                            Width="800px"></asp:TextBox><asp:Button ID="SaveButton2" runat="server" 
+                            Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton2" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/>
                             <asp:Label ID="MsgLabel2" runat="server" Text="" CssClass="MSG"></asp:Label>
                   </div>
@@ -218,7 +218,7 @@
                         </asp:CheckBoxList><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB3" runat="server" Height="135px" TextMode="MultiLine" 
-                            Width="800px"></asp:TextBox><asp:Button ID="SaveButton3" runat="server" 
+                            Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton3" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/><asp:Label ID="MsgLabel3" runat="server" Text="" CssClass="MSG"></asp:Label>
                     </div>
                 </asp:View>
@@ -265,7 +265,7 @@
                         </asp:CheckBoxList><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB4" runat="server" Height="135px" TextMode="MultiLine" 
-                            Width="800px"></asp:TextBox><asp:Button ID="SaveButton4" runat="server" 
+                            Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton4" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/><asp:Label ID="MsgLabel4" runat="server" Text="" CssClass="MSG"></asp:Label>
                     </div>
                 </asp:View>
@@ -312,7 +312,7 @@
                         </asp:CheckBoxList><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB5" runat="server" Height="135px" TextMode="MultiLine" 
-                            Width="800px"></asp:TextBox><asp:Button ID="SaveButton15" runat="server" 
+                            Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton15" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/><asp:Label ID="MsgLabel5" runat="server" Text="" CssClass="MSG"></asp:Label>
                     </div>
                 </asp:View>
@@ -359,7 +359,7 @@
                         </asp:CheckBoxList>
                          <br /><%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB6" runat="server" Height="135px" TextMode="MultiLine" 
-                            Width="800px"></asp:TextBox><asp:Button ID="SaveButton6" runat="server" 
+                            Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton6" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/>
                             <asp:Label ID="MsgLabel6" runat="server" Text=""></asp:Label>
                     </div>
@@ -410,7 +410,7 @@
                         </asp:CheckBoxList><br />
                           <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB7" runat="server" Height="135px" TextMode="MultiLine" 
-                            Width="800px"></asp:TextBox><asp:Button ID="SaveButton7" runat="server" 
+                            Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton7" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/>
                             <asp:Label ID="MsgLabel7" runat="server" Text="" CssClass="MSG"></asp:Label>
                     </div>
@@ -432,6 +432,15 @@
                      alert('<%= message %>');
                  }
              };
+    </script>
+        <script>
+            window.onbeforeunload = function (e) {
+
+                var confirmationMessage = "關閉前請確認資料是否儲存!!!";
+
+                (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
+                return confirmationMessage;
+            }
     </script>
     </div>
 </asp:Content>
