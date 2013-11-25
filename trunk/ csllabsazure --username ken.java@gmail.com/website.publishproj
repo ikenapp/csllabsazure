@@ -18,12 +18,10 @@ Copyright (C) Microsoft Corporation. 著作權所有，並保留一切權利。
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{17ac40dc-ffd2-4984-b0a4-e3c9c0d5dca0}</ProjectGuid>
     <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
-    <SourceWebVirtualPath>/csllabsazure</SourceWebVirtualPath>
+    <SourceWebVirtualPath>/AzureDemo</SourceWebVirtualPath>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <SourceWebProject>
-    </SourceWebProject>
-    <SourceWebMetabasePath>
-    </SourceWebMetabasePath>
+    <SourceWebProject>http://localhost:2362</SourceWebProject>
+    <SourceWebMetabasePath>/IISExpress/7.5/LM/W3SVC/7/ROOT</SourceWebMetabasePath>
   </PropertyGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
