@@ -50,24 +50,46 @@
     </style>
     <script type="text/javascript">
         function openNewWinA(){
+            window.onbeforeunload = function (e) {
+                //do nothing!
+            }
             openNewWindow('DiscussionAPreview.aspx', '前一堂課我的作答結果')
             //window.open('DiscussionAPreview.aspx','討論內容', config='height=840,width=980,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
-
+            closeHandler();
         }
         function openNewWinB(){
-            openNewWindow('DiscussionBPreview.aspx', '前一堂課我的作答結果')
 
+            window.onbeforeunload = function (e) {
+                //do nothing!
+            }
+            openNewWindow('DiscussionBPreview.aspx', '前一堂課我的作答結果')
+            closeHandler();
         }
         function openNewWinC(){
+            window.onbeforeunload = function (e) {
+                //do nothing!
+            }
             window.open('DiscussionCPreview.aspx', '前一堂課我的作答結果', config='height=840,width=400,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
-
+            closeHandler();
         }
         function openNewWinD(){
+            window.onbeforeunload = function (e) {
+                //do nothing!
+            }
             window.open('DiscussionDPreview.aspx', '前一堂課我的作答結果', config='height=840,width=400,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
-
+            closeHandler();
         }
         function openNewWindow(url,title){
             window.open(url,title, config='height=840,width=980,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
+        }
+        function closeHandler(){
+            window.onbeforeunload = function (e) {
+
+                var confirmationMessage = "關閉前請確認資料是否儲存!!!";
+
+                (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
+                return confirmationMessage;
+            }
         }
 
 
@@ -152,13 +174,7 @@
               }
     </script>
     <script>
-        window.onbeforeunload = function (e) {
-
-            var confirmationMessage = "關閉前請確認資料是否儲存!!!";
-
-            (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
-            return confirmationMessage;
-        }
+        closeHandler();
     </script>
 </asp:Content>
 

@@ -45,12 +45,26 @@
 </style>
     <script type="text/javascript">
         function openNewWin(){
+            window.onbeforeunload = function (e) {
+                    //do nothing!
+            }
             openNewWindow('OnlineLabPreview.aspx', '第一部分看法')
+            closeHandler();
 
         }
         function openNewWindow(url,title){
             window.open(url,title, config='height=840,width=440,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
 
+        }
+
+        function closeHandler(){
+            window.onbeforeunload = function (e) {
+
+                var confirmationMessage = "關閉前請確認資料是否儲存!!!";
+
+                (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
+                return confirmationMessage;
+            }
         }
 
     </script>
@@ -135,13 +149,7 @@
               }
               </script>
     <script>
-        window.onbeforeunload = function (e) {
-
-            var confirmationMessage = "關閉前請確認資料是否儲存!!!";
-
-            (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
-            return confirmationMessage;
-        }
+        closeHandler();
     </script>
 </asp:Content>
 

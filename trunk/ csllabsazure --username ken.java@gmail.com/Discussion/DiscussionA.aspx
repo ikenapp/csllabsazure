@@ -101,7 +101,6 @@
              window.open('Phase1Preview.aspx', '觀看前一週的作答結果', config='height=840,width=440')
 
          }
-
     </script>
 </head>
 <body class='fb'>

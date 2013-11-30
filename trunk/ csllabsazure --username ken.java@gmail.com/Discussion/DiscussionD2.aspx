@@ -42,10 +42,21 @@
 </style>
     <script type="text/javascript">
         function openNewWin(){
+            window.onbeforeunload = function (e) {
+                //do nothing!
+            }
             window.open('DiscussionDPreview.aspx', '第一部分看法', config='height=840,width=440')
-
+            closeHandler();
         }
+        function closeHandler(){
+            window.onbeforeunload = function (e) {
 
+                var confirmationMessage = "關閉前請確認資料是否儲存!!!";
+
+                (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
+                return confirmationMessage;
+            }
+        }
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
@@ -126,13 +137,7 @@
            }
               </script>
     <script>
-        window.onbeforeunload = function (e) {
-
-            var confirmationMessage = "關閉前請確認資料是否儲存!!!";
-
-            (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
-            return confirmationMessage;
-        }
+        closeHandler();
     </script>
 </asp:Content>
 
