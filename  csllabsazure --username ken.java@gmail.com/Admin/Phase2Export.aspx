@@ -29,7 +29,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div id="buttonArea">
     <fieldset>
-    <legend>討論群組資料匯出</legend>
+    <legend>第二階段討論群組資料匯出</legend>
      <span class="cell">
     <asp:Button ID="FBExport" runat="server" Text="FB討論群組匯出" CssClass="funButtonStyle" 
                         Enabled="False" />
@@ -44,13 +44,13 @@
     </span>
         <span class="cell">
     <asp:Button ID="Button3" runat="server" Text="群組D資料匯出" CssClass="funButtonStyle" 
-                        Enabled="False" />
+                        Visible="False" />
     </span>
     
     
     </fieldset>
         <fieldset>
-    <legend>線上習作與自評資料匯出</legend>
+    <legend>第二階段線上習作與自評資料匯出</legend>
      <span class="cell">
     <asp:Button ID="OnlineExport" runat="server" Text="線上習作匯出" CssClass="funButtonStyle" 
                          />
@@ -62,5 +62,13 @@
     
     </fieldset>
         </div>
+
+     <script>
+         function openNewWindow(labid) {
+             window.open("LabPhase2Export.aspx?labid=" + labid, "第二階段習作匯出", config = 'height=840,width=1024,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+
+         }
+
+    </script>
 </asp:Content>
 

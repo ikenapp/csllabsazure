@@ -32,7 +32,7 @@
     <legend>第一階段資料匯出</legend>
     <span class="cell">
     <asp:Button ID="ExerciseExport" runat="server" Text="線上習作匯出" CssClass="funButtonStyle" 
-                        OnClick="ExerciseExport_Click" />
+                         />
     </span>
     <span class="cell">
     <asp:Button ID="SelfEvalExport" runat="server" Text="學習自評匯出" CssClass="funButtonStyle" 
@@ -40,5 +40,13 @@
     </span>
     </fieldset> 
       </div>
+
+    <script>
+        function openNewWindow(labid) {
+            window.open("LabPhase1Export.aspx?labid="+labid, "第一階段習作匯出", config = 'height=840,width=1024,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+
+        }
+
+    </script>
 </asp:Content>
 

@@ -10,7 +10,11 @@ public partial class Admin_Phase1Export : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        String labid = Request.QueryString["labid"];
+        if (!String.IsNullOrEmpty(labid))
+        {
+            ExerciseExport.OnClientClick = "openNewWindow("+labid+");";
+        }
     }
     protected void ExerciseExport_Click(object sender, EventArgs e)
     {
