@@ -114,7 +114,7 @@
                          PostBackUrl="~/Admin/Phase2Export.aspx" />
     </span>
     <span class="cell">
-    <asp:Button ID="PostTestExport" runat="server" Text="後測匯出" CssClass="funButtonStyle"  Enabled="false"
+    <asp:Button ID="PostTestExport" runat="server" Text="後測匯出" CssClass="funButtonStyle" 
                          PostBackUrl="~/Admin/PostTestExport.aspx" />
     </span>
     </fieldset>

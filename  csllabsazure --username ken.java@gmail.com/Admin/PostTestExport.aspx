@@ -29,7 +29,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div id="buttonArea">
      
-      <asp:Button ID="PostTestExportBTN" runat="server" Text="後測匯出" CssClass="funButtonStyle" />
+      <asp:Button ID="PostTestExportBTN" runat="server" Text="後測匯出" CssClass="funButtonStyle" OnClick="PostTestExportBTN_Click" />
     
         <br />
         <asp:GridView ID="GridView1" runat="server" Width="900px">

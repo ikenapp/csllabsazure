@@ -53,11 +53,11 @@
     <legend>線上習作與自評資料匯出</legend>
      <span class="cell">
     <asp:Button ID="OnlineExport" runat="server" Text="線上習作匯出" CssClass="funButtonStyle" 
-                        Enabled="False" />
+                         />
     </span>
     <span class="cell">
     <asp:Button ID="SelfEvalExport" runat="server" Text="學習自評匯出" CssClass="funButtonStyle" 
-                        Enabled="False" />
+                         OnClick="SelfEvalExport_Click" />
     </span>
     
     </fieldset>
