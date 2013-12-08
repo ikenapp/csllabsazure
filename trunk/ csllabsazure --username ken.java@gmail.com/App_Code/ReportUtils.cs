@@ -80,4 +80,60 @@ public class ReportUtils
             }
         }
     }
+
+
+    public static void genLabReport(String title,int surveyid, String fileName)
+    {
+        String labid = HttpContext.Current.Request.QueryString["labid"];
+        if (!String.IsNullOrEmpty(labid))
+        {
+            int lab_id = int.Parse(labid);
+            using (LabsDBEntities db = new LabsDBEntities())
+            {
+                Lab lab = db.Labs.Where(c => c.sid == lab_id).First();
+                Survey s = db.Surveys.Where(c => c.labid == lab_id && c.surveyid == surveyid).First();
+                var dataTable = s;
+                StringBuilder builder = new StringBuilder();
+                List<int> qids = new List<int>();
+                List<int> qid2s = new List<int>();
+                for (int i = 0; i < s.Questions.Count; i++)
+                {
+                    Question q = s.Questions.ElementAt(i);
+                    if (q.no % 100 != 0)
+                    {
+                        qids.Add(q.sid);
+                    }
+                }
+
+                builder.Append(title).Append("\n");
+                var Users = db.Users.Where(c => c.labid == lab_id);
+                foreach (User u in Users)
+                {
+                    builder.Append("學號: ").Append(u.student_id).Append("\n");
+                    foreach (int qid in qids)
+                    {
+                        String answer;
+                        try
+                        {
+                            ScaleAnswer ans = db.ScaleAnswers.Where(c => c.labid == lab_id && c.qid == qid && c.studentid == u.sid && c.surveyid == s.sid).First();
+                            answer = (int)ans.rank + "";
+                        }
+                        catch (Exception)
+                        {
+                            answer = "0";
+                        }
+                    }
+                    builder.Append("".PadLeft(50,'-')).Append(u.student_id).Append(" End \n");
+
+                }
+
+                HttpContext.Current.Response.Clear();
+                HttpContext.Current.Response.ContentType = "text/plain";
+                HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment;filename=" + fileName + ".text");
+                HttpContext.Current.Response.Write(builder.ToString());
+                HttpContext.Current.Response.End();
+
+            }
+        }
+    }
 }
