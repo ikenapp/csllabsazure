@@ -28,12 +28,14 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
     <div id="buttonArea">
-     
-      <asp:Button ID="PostTestExportBTN" runat="server" Text="後測匯出" CssClass="funButtonStyle" OnClick="PostTestExportBTN_Click" />
+      
+        <fieldset>
+    <legend>第二階段後測資料匯出</legend>
+     <span class="cell">
+    <asp:Button ID="PostTestExportBTN" runat="server" Text="後測匯出" CssClass="funButtonStyle" OnClick="PostTestExportBTN_Click" />
     
-        <br />
-        <asp:GridView ID="GridView1" runat="server" Width="900px">
-        </asp:GridView>
+    </span>
+    </fieldset>
     
     </div>
 </asp:Content>
