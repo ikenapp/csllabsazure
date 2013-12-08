@@ -10,49 +10,71 @@ public partial class PostTestExport : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        
+        
+    }
+    protected void PostTestExportBTN_Click(object sender, EventArgs e)
+    {
         String labid = Request.QueryString["labid"];
         if (!String.IsNullOrEmpty(labid))
         {
             int lab_id = int.Parse(labid);
             using (LabsDBEntities db = new LabsDBEntities())
             {
+                Lab lab = db.Labs.Where(c => c.sid == lab_id).First();
                 Survey s = db.Surveys.Where(c => c.labid == lab_id && c.surveyid == 24).First();
                 var dataTable = s;
                 StringBuilder builder = new StringBuilder();
                 List<string> columnNames = new List<string>();
                 List<string> rows = new List<string>();
+                List<int> qids = new List<int>();
+                columnNames.Add("Student");
+                columnNames.Add("Gender");
+                int count = 0;
+                for (int i = 0; i < s.Questions.Count; i++)
+                {
+                    Question q = s.Questions.ElementAt(i);
+                    if (q.no % 100 != 0)
+                    {
+                        count++;
+                        columnNames.Add("Q" + count);
+                        qids.Add(q.sid);
+                    }
+                }
 
-                //foreach (DataColumn column in dataTable.Columns)
-                //{
-                //    columnNames.Add(column.ColumnName);
-                //}
+                builder.Append(string.Join(",", columnNames.ToArray())).Append("\n");
+                var Users = db.Users.Where(c => c.labid == lab_id);
+                foreach (User u in Users)
+                {
+                    rows = new List<string>();
+                    rows.Add(u.student_id);
+                    rows.Add(u.gender);
+                    foreach (int qid in qids)
+                    {
+                        String answer;
+                        try
+                        {
+                            ScaleAnswer ans = db.ScaleAnswers.Where(c => c.labid == lab_id && c.qid == qid && c.studentid == u.sid && c.surveyid == s.sid).First();
+                            answer = (int)ans.rank + "";
+                        }
+                        catch (Exception)
+                        {
+                            answer = "0";
+                        }
+                        rows.Add(answer);
+                    }
 
-                //builder.Append(string.Join(",", columnNames.ToArray())).Append("\n");
+                    builder.Append(string.Join(",", rows.ToArray())).Append("\n");
 
-                //foreach (DataRow row in dataTable.Rows)
-                //{
-                //    List<string> currentRow = new List<string>();
-
-                //    foreach (DataColumn column in dataTable.Columns)
-                //    {
-                //        object item = row[column];
-
-                //        currentRow.Add(item.ToString());
-                //    }
-
-                //    rows.Add(string.Join(",", currentRow.ToArray()));
-                //}
-
-                builder.Append(string.Join("\n", rows.ToArray()));
+                }
 
                 Response.Clear();
                 Response.ContentType = "text/csv";
-                Response.AddHeader("Content-Disposition", "attachment;filename=myfilename.csv");
+                Response.AddHeader("Content-Disposition", "attachment;filename=POSTTest_" + lab.name + "_" + lab_id + ".csv");
                 Response.Write(builder.ToString());
                 Response.End();
 
             }
         }
-        
     }
 }
