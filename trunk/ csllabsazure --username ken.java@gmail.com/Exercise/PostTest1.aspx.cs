@@ -57,6 +57,7 @@ public partial class Exercise_PostTest1 : System.Web.UI.Page
         String surveyid = Request.QueryString["surveyid"];
         int svid = int.Parse(surveyid);
         int lab_id = int.Parse(labid);
+        User u = UserDAO.GetUserFromSession();
         using (LabsDBEntities db = new LabsDBEntities())
         {
             foreach (GridViewRow row in GridView1.Rows)
@@ -96,7 +97,7 @@ public partial class Exercise_PostTest1 : System.Web.UI.Page
                     try
                     {
                        
-                        var answer = db.ScaleAnswers.Where(c => c.labid == lab_id && c.qid == q_id && c.surveyid == svid).First();
+                        var answer = db.ScaleAnswers.Where(c => c.labid == lab_id && c.qid == q_id && c.surveyid == svid && c.studentid==u.sid).First();
                         answer.rank = val;
                     }
                     catch (Exception ex)
@@ -106,12 +107,12 @@ public partial class Exercise_PostTest1 : System.Web.UI.Page
                         {
                             labid = lab_id,
                             surveyid = svid,
-                            studentid = student_id,
+                            studentid = u.sid,
                             qid = q_id,
                             rank = val
                         };
                         db.ScaleAnswers.Add(ans);
-                        //db.SaveChanges();
+                        db.SaveChanges();
                     }
                 }
                 no++;
