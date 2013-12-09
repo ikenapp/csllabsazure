@@ -83,13 +83,13 @@
             window.open(url,title, config='height=840,width=980,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no');
         }
         function closeHandler(){
-            window.onbeforeunload = function (e) {
+            /*window.onbeforeunload = function (e) {
 
                 var confirmationMessage = "關閉前請確認資料是否儲存!!!";
 
                 (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
                 return confirmationMessage;
-            }
+            }*/
         }
 
 
