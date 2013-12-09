@@ -61,6 +61,7 @@ public partial class Execise_SelfEvaluation : System.Web.UI.Page
         String surveyid = Request.QueryString["surveyid"];
         int svid = int.Parse(surveyid);
         int lab_id = int.Parse(labid);
+        User u = UserDAO.GetUserFromSession();
         using (LabsDBEntities db = new LabsDBEntities())
         {
             foreach (GridViewRow row in GridView1.Rows)
@@ -99,7 +100,7 @@ public partial class Execise_SelfEvaluation : System.Web.UI.Page
                     try
                     {
 
-                        var answer = db.ScaleAnswers.Where(c => c.labid == lab_id && c.qid == q_id && c.surveyid == svid).First();
+                        var answer = db.ScaleAnswers.Where(c => c.labid == lab_id && c.qid == q_id && c.surveyid == svid && c.studentid == u.sid).First();
                         answer.rank = val;
                     }
                     catch (Exception ex)
@@ -109,12 +110,12 @@ public partial class Execise_SelfEvaluation : System.Web.UI.Page
                         {
                             labid = lab_id,
                             surveyid = svid,
-                            studentid = student_id,
+                            studentid = u.sid,
                             qid = q_id,
                             rank = val
                         };
                         db.ScaleAnswers.Add(ans);
-                        //db.SaveChanges();
+                        db.SaveChanges();
                     }
                 }
                 no++;
@@ -129,7 +130,6 @@ public partial class Execise_SelfEvaluation : System.Web.UI.Page
                 isShow = false;
                 message = "";
                 db.SaveChanges();
-                User u = UserDAO.GetUserFromSession();
                 if (u != null)
                 {
                     int lab_id2 = int.Parse(labid);
