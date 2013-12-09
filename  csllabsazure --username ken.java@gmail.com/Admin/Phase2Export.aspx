@@ -65,7 +65,7 @@
 
      <script>
          function openNewWindow(labid) {
-             window.open("LabPhase2Export.aspx?labid=" + labid, "第二階段習作匯出", config = 'height=840,width=1024,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+             window.open("LabPhase2Export.aspx?labid=" + labid, "第二階段習作匯出", config = 'height=840,width=800,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
 
          }
 
