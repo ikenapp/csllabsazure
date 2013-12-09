@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>第一階段資料匯出</title>
-    <link rel="stylesheet" href="../../Styles/Preview.css" /> 
+    <link rel="stylesheet" href="../Styles/Preview.css" /> 
 </head>
 <body>
     <form id="form1" runat="server">
