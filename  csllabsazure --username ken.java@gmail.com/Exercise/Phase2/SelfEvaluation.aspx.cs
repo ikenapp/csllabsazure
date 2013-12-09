@@ -129,7 +129,6 @@ public partial class Execise2_SelfEvaluation : System.Web.UI.Page
                 isShow = false;
                 message = "";
                 db.SaveChanges();
-                User u = UserDAO.GetUserFromSession();
                 if (u != null)
                 {
                     int lab_id2 = int.Parse(labid);

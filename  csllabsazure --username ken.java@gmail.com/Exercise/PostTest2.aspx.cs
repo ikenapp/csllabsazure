@@ -126,7 +126,6 @@ public partial class Exercise_PostTest2 : System.Web.UI.Page
             {
                 isShow = false;
                 message = "";
-                User u = UserDAO.GetUserFromSession();
                 if (u != null)
                 {
                     UserDAO.SaveStatus(u, db, "Final");
