@@ -140,8 +140,8 @@
            
            <table border='0' width=967>
   <tr>
-    <td width='990px' class='all'><div id='type' align='left' class='fb'>我的看法 :
-        <asp:TextBox ID='TextBox1' runat='server' Width='675px' ></asp:TextBox>
+    <td width='990px' class='all'><div id='type' align='left' class='fb' style="vertical-align: top;">我的看法 :
+        <asp:TextBox ID='TextBox1' runat='server' Width='675px' TextMode="MultiLine" Height="40px"></asp:TextBox>
         </div>
         <asp:Button ID='Button1' runat='server' OnClick='Button1_Click' Text='發言' />
       </td>
