@@ -13,7 +13,11 @@ public partial class Admin_Phase2Export : System.Web.UI.Page
         String labid = Request.QueryString["labid"];
         if (!String.IsNullOrEmpty(labid))
         {
-            OnlineExport.OnClientClick = "openNewWindow(" + labid + ");";
+            OnlineExport.OnClientClick = "return openNewWindow(" + labid + ");";
+
+            GCExport.OnClientClick = "return openGroupCExport(" + labid + ");";
+
+            SkypeExport.OnClientClick = "return openGroupBExport(" + labid + ");";
         }
     }
     protected void SelfEvalExport_Click(object sender, EventArgs e)
