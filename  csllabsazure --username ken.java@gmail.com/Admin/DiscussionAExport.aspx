@@ -1,9 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DiscussionBExport.aspx.cs" Inherits="DiscussionBExport" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DiscussionAExport.aspx.cs" Inherits="Phase2_DiscussionAExport" %>
+
 
 <!DOCTYPE html>
 <html>
 <head id="Head1" runat="server">
-    <title>Skype群組匯出</title>
+    <title>Facebook群組匯出</title>
     <link rel="stylesheet" href="../Styles/Preview.css" /> 
     <script>
 
