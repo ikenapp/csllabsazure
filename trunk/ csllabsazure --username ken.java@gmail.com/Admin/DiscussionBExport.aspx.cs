@@ -26,8 +26,6 @@ public partial class DiscussionBExport : System.Web.UI.Page
             {
 
                 var skyegroups = db.Users.Where(c => c.labid == lab_id && c.group == "B").Select(c => c.groupid).OrderBy(c => c).Distinct();
-
-                //int count = 1;
                 foreach (int gid in skyegroups)
                 {
                     var users = db.Users.Where(c => c.groupid == gid && c.group == "B" && c.labid == lab_id).Select(c => c.student_id);

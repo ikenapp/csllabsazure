@@ -32,7 +32,7 @@
     <legend>第二階段討論群組資料匯出</legend>
      <span class="cell">
     <asp:Button ID="FBExport" runat="server" Text="FB討論群組匯出" CssClass="funButtonStyle" 
-                        Enabled="False" />
+                         />
     </span>
         <span class="cell">
     <asp:Button ID="SkypeExport" runat="server" Text="Skype討論群組匯出" CssClass="funButtonStyle" 
@@ -82,6 +82,12 @@
          function openGroupBExport(labid) {
              path = "DiscussionBExport";
              title = "Skype群組匯出";
+             return openExport(path, title, labid);
+         }
+
+         function openGroupAExport(labid) {
+             path = "DiscussionAExport";
+             title = "FaceBook群組匯出";
              return openExport(path, title, labid);
          }
 

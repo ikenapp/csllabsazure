@@ -18,6 +18,8 @@ public partial class Admin_Phase2Export : System.Web.UI.Page
             GCExport.OnClientClick = "return openGroupCExport(" + labid + ");";
 
             SkypeExport.OnClientClick = "return openGroupBExport(" + labid + ");";
+            
+            FBExport.OnClientClick = "return openGroupAExport(" + labid + ");";
         }
     }
     protected void SelfEvalExport_Click(object sender, EventArgs e)
