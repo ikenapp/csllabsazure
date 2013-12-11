@@ -1,15 +1,19 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="LabPhase1Export.aspx.cs" Inherits="Lab_Phase1_OnlineLabExport" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DiscussionBExport.aspx.cs" Inherits="DiscussionBExport" %>
 
+<!DOCTYPE html>
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>第一階段線上習作資料匯出</title>
+<head id="Head1" runat="server">
+    <title>Skype群組匯出</title>
     <link rel="stylesheet" href="../Styles/Preview.css" /> 
+    <script>
+
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
-      <div class="export">
+      <div class="preview">
        <asp:Literal ID="Preview" runat="server" Text="Data"></asp:Literal>  
             
       </div>    

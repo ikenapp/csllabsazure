@@ -35,12 +35,12 @@
                         Enabled="False" />
     </span>
         <span class="cell">
-    <asp:Button ID="Button1" runat="server" Text="Skype討論群組匯出" CssClass="funButtonStyle" 
-                        Enabled="False" />
+    <asp:Button ID="SkypeExport" runat="server" Text="Skype討論群組匯出" CssClass="funButtonStyle" 
+                        />
     </span>
             <span class="cell">
-    <asp:Button ID="Button2" runat="server" Text="自我反思群組匯出" CssClass="funButtonStyle" 
-                        Enabled="False" />
+    <asp:Button ID="GCExport" runat="server" Text="自我反思群組匯出" CssClass="funButtonStyle" 
+                         />
     </span>
         <span class="cell">
     <asp:Button ID="Button3" runat="server" Text="群組D資料匯出" CssClass="funButtonStyle" 
@@ -65,10 +65,30 @@
 
      <script>
          function openNewWindow(labid) {
-             window.open("LabPhase2Export.aspx?labid=" + labid, "第二階段習作匯出", config = 'height=840,width=800,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
-
+             //window.open("LabPhase2Export.aspx?labid=" + labid, "第二階段習作匯出", config = 'height=840,width=800,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+             //return false;
+             path = "LabPhase2Export";
+             title = "第二階段習作匯出";
+             return openExport(path, title, labid);
          }
 
+         function openGroupCExport(labid) {
+             //window.open("DiscussionCExport.aspx?labid=" + labid, "自我反思群組匯出", config = 'height=840,width=800,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+             path = "DiscussionCExport";
+             title = "自我反思群組匯出";
+             return openExport(path, title, labid);
+         }
+
+         function openGroupBExport(labid) {
+             path = "DiscussionBExport";
+             title = "Skype群組匯出";
+             return openExport(path, title, labid);
+         }
+
+         function openExport(path,title,labid) {
+             window.open(path+".aspx?labid=" + labid, title, config = 'height=840,width=800,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+             return false;
+         }
     </script>
 </asp:Content>
 
