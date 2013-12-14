@@ -92,7 +92,7 @@
          }
 
          function openExport(path,title,labid) {
-             window.open(path+".aspx?labid=" + labid, title, config = 'height=840,width=800,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+             window.open(path+".aspx?labid=" + labid, title, config = 'height=840,width=800,toolbar=yes, menubar=yes, scrollbars=no, resizable=no,location=no, status=no')
              return false;
          }
     </script>
