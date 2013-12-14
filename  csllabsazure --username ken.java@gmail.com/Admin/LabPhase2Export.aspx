@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="servevr">
+<head runat="server">
     <title>第二階段線上習作資料匯出</title>
     <link rel="stylesheet" href="../Styles/Preview.css" /> 
 </head>
