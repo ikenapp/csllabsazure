@@ -15,7 +15,7 @@ public partial class Exercise2_OnlineLabDone : System.Web.UI.Page
             User u = UserDAO.GetUserFromSession();
             if (u != null)
             {
-                foreach (var s in db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 12))
+                foreach (var s in db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 22))
                 {
                     Response.Redirect("~/Exercise/Phase2/SelfEvaluation.aspx?surveyid=" + s.sid + "&labid=" + u.labid + "&minid=200");
                     break;
