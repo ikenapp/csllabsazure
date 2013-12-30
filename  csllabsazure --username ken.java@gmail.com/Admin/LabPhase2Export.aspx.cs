@@ -46,7 +46,7 @@ public partial class Lab_Phase2_OnlineLabExport : System.Web.UI.Page
                     break;
                 }
 
-                var users = db.Users.Where(c => c.labid == lab_id);
+                var users = db.Users.Where(c => c.labid == lab_id).OrderBy(c => c.student_id);
                 foreach (User u in users)
                 {
                     
