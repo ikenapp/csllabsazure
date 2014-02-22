@@ -19,6 +19,14 @@
         /*color : white;*/
         font-size :14px;
     }
+    .funButtonStyle1
+    {
+        width : 90px;
+        height : 35px;
+        background : lightblue;
+        /*color : white;*/
+        font-size :14px;
+    }
     .funButtonStyle2
     {
         width : 150px;
@@ -62,7 +70,10 @@
     <asp:Button ID="SelfEvalSettings" runat="server" Text="學習自評設定" CssClass="funButtonStyle" 
                         PostBackUrl="~/Admin/Phase1/Scale.aspx" />
     </span>
-    
+    <span class="cell">
+        <asp:Button ID="PostTestSettings" runat="server" Text="前/後測設定" CssClass="funButtonStyle" 
+                        PostBackUrl="~/Admin/Phase2/PostTest.aspx" />
+    </span>
     </fieldset>
         <fieldset class="login">
                     <legend>第二階段設定</legend> 
@@ -78,27 +89,28 @@
    <asp:Button ID="GroupCSettings" runat="server" Text="C組 Q&A 設定" CssClass="funButtonStyle" 
                         PostBackUrl="~/Admin/Phase2/GroupCSettings.aspx"  />
     </span>
-            <span class="cell">
-    <asp:Button ID="PostTestSettings" runat="server" Text="後測設定" CssClass="funButtonStyle" 
-                        PostBackUrl="~/Admin/Phase2/PostTest.aspx" />
-    </span>
+         
     </fieldset>
      <fieldset class="login">
                     <legend>實驗階段切換</legend> 
     <span class="cell">
-    <asp:Button ID="FirstPhase" runat="server" Text="第一階段" CssClass="funButtonStyle" 
-                        onclick="FirstPhase_Click" />
+    <asp:Button ID="PreTest" runat="server" Text="前測" CssClass="funButtonStyle1" 
+                        onclick="FirstPhase_Click" TabIndex="0" />
+        </span>
+         <span class="cell">
+    <asp:Button ID="FirstPhase" runat="server" Text="習作1" CssClass="funButtonStyle1" 
+                        onclick="FirstPhase_Click" TabIndex="1"/>
     </span>
     <span class="cell">
-    <asp:Button ID="SecondPhase1" runat="server" Text="第二階段-1" CssClass="funButtonStyle" 
+    <asp:Button ID="SecondPhase1" runat="server" Text="分組2" CssClass="funButtonStyle1" 
                         onclick="FirstPhase_Click" TabIndex="11" />
     </span>
     <span class="cell">
-    <asp:Button ID="SecondPhase2" runat="server" Text="第二階段-2" CssClass="funButtonStyle" 
+    <asp:Button ID="SecondPhase2" runat="server" Text="習作2" CssClass="funButtonStyle1" 
                         onclick="FirstPhase_Click" TabIndex="12" />
     </span>
     <span class="cell">
-    <asp:Button ID="ThirdPhase" runat="server" Text="第三階段-後測" CssClass="funButtonStyle" 
+    <asp:Button ID="ThirdPhase" runat="server" Text="後測" CssClass="funButtonStyle1" 
                         onclick="FirstPhase_Click" TabIndex="2" />
     </span>
     </fieldset>

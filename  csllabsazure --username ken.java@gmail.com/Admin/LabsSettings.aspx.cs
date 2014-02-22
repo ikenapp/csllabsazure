@@ -23,9 +23,9 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
             ExerciseSettings2.PostBackUrl += labid;
             SelfEvalSettings2.PostBackUrl += labid;
             String paras = "&title=Post&phase=Final";
-            //paras = Server.UrlEncode(paras);
             PostTestSettings.PostBackUrl += labid+paras;
             GroupCSettings.PostBackUrl += labid;
+            PreTest.PostBackUrl += labid;
             FirstPhase.PostBackUrl += labid;
             SecondPhase1.PostBackUrl += labid;
             SecondPhase2.PostBackUrl += labid;
@@ -68,27 +68,39 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
         String phase = "前置作業";
         if (lab.currentPhase == "INIT")
         {
-            FirstPhase.Enabled = true;
+            PreTest.Enabled = true;
+            FirstPhase.Enabled = false;
             SecondPhase1.Enabled = false;
             SecondPhase2.Enabled = false;
             ThirdPhase.Enabled = false;
 
+        }else if (lab.currentPhase == "Part0")
+        {
+            PreTest.Enabled = false;
+            FirstPhase.Enabled = true;
+            SecondPhase1.Enabled = false;
+            SecondPhase2.Enabled = false;
+            ThirdPhase.Enabled = false;
+            phase = "前測";
+
         }
         else if (lab.currentPhase == "PartA")
         {
+            PreTest.Enabled = true;
             FirstPhase.Enabled = false;
             SecondPhase1.Enabled = true;
             SecondPhase2.Enabled = false;
             ThirdPhase.Enabled = false;
-            phase = "第一階段 : 習作與自評";
+            phase = "習作1";
         }
         else if (lab.currentPhase == "PartB1")
         {
+            PreTest.Enabled = false;
             FirstPhase.Enabled = true;
             SecondPhase1.Enabled = false;
             SecondPhase2.Enabled = true;
             ThirdPhase.Enabled = false;
-            phase = "第二階段-A : 討論";
+            phase = "分組2";
             String minStr = ConfigurationManager.AppSettings["Discussion_Time"];
             int min = 30;
             try
@@ -104,19 +116,22 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
         }
         else if (lab.currentPhase == "PartB2")
         {
+
+            PreTest.Enabled = false;
             FirstPhase.Enabled = false;
             SecondPhase1.Enabled = true;
             SecondPhase2.Enabled = false;
             ThirdPhase.Enabled = true　;
-            phase = "第二階段-B : 習作與自評";
+            phase = "習作2";
         }
         else if (lab.currentPhase == "Final")
         {
+            PreTest.Enabled = false;
             FirstPhase.Enabled = false;
             SecondPhase1.Enabled = false;
             SecondPhase2.Enabled = true;
             ThirdPhase.Enabled = false;
-            phase = "第三階段 : 後測";
+            phase = "後測";
         }
 
         LabsInfo.Text = String.Format("場次 : {0} [ {1} ] , 時間 : {2:yyyy-MM-dd} ~ {3:yyyy-MM-dd}. 目前階段 => {4}", lab.name, lab.desc, lab.begin, lab.end, phase);
@@ -141,6 +156,9 @@ public partial class Admin_AdminSettings : System.Web.UI.Page
                 switch (idx)
                 {
                     case 0:
+                        lab.currentPhase = "Part0";
+                        break;
+                    case 1:
                         lab.currentPhase = "PartA";
                         break;
                     case 11:

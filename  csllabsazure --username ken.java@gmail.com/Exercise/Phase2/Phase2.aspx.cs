@@ -37,30 +37,23 @@ public partial class Execise_Phase1 : System.Web.UI.Page
                         {
                             url = String.Format("~/Discussion/Discussion{0}.aspx?labid={1}&groupid={2}", u.group, lab_id, u.groupid);
                         }
-                        else
+                        else if (u.group == "C")
                         {
-                            //Check Status
-                            if (CheckGroupC(u, db))
+                            try
                             {
-                                u.group = "C";
-                                try
-                                {
-                                    var survey = lab.Surveys.Where(c => c.labid == u.labid && c.surveyid == 23).First();
-                                    survey_id = survey.sid;
-                                    //Group C
-                                    url = String.Format("~/Discussion/Discussion{0}.aspx?labid={1}&surveyid={2}&minid=100", u.group, lab_id, survey.sid);
+                                var survey = lab.Surveys.Where(c => c.labid == u.labid && c.surveyid == 23).First();
+                                survey_id = survey.sid;
+                                //Group C
+                                url = String.Format("~/Discussion/Discussion{0}.aspx?labid={1}&surveyid={2}&minid=100", u.group, lab_id, survey.sid);
 
-                                }
-                                catch (Exception)
-                                {
-
-                                    //throw;
-                                }
                             }
-                            else
+                            catch (Exception)
                             {
-                                u.group = "D";
-                                try
+
+                                //throw;
+                            }
+                        }else{
+                            try
                                 {
                                     var survey = lab.Surveys.Where(c => c.labid == u.labid && c.surveyid == 11).First();
                                     survey_id = survey.sid;
@@ -73,8 +66,42 @@ public partial class Execise_Phase1 : System.Web.UI.Page
 
                                     //throw;
                                 }
-                            }
                         }
+                            ////Check Status
+                            //if (CheckGroupC(u, db))
+                            //{
+                            //    u.group = "C";
+                            //    try
+                            //    {
+                            //        var survey = lab.Surveys.Where(c => c.labid == u.labid && c.surveyid == 23).First();
+                            //        survey_id = survey.sid;
+                            //        //Group C
+                            //        url = String.Format("~/Discussion/Discussion{0}.aspx?labid={1}&surveyid={2}&minid=100", u.group, lab_id, survey.sid);
+
+                            //    }
+                            //    catch (Exception)
+                            //    {
+
+                            //        //throw;
+                            //    }
+                            //}
+                            //else
+                            //{
+                            //    u.group = "D";
+                            //    try
+                            //    {
+                            //        var survey = lab.Surveys.Where(c => c.labid == u.labid && c.surveyid == 11).First();
+                            //        survey_id = survey.sid;
+                            //        //Group D
+                            //        url = String.Format("~/Discussion/Discussion{0}.aspx?labid={1}&surveyid={2}&minid=100", u.group, lab_id, survey.sid);
+
+                            //    }
+                            //    catch (Exception)
+                            //    {
+
+                            //        //throw;
+                            //    }
+                            //}
                         Response.Redirect(url);
                         return;
                     }
