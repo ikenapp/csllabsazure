@@ -17,7 +17,7 @@ public partial class SiteMaster : System.Web.UI.MasterPage
             ShowMenu.Add("首頁");
             if (Session["isLogin"] != null && Session["isLogin"].ToString() == "Y")
             {
-                //ShowMenu.Add("首頁/個人設定");
+                //ShowMenu.Add("首頁/前測");
                 if (Session["USER_DATA"] != null)
                 {
                     User u = Session["USER_DATA"] as User;
@@ -36,18 +36,26 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                                 try
                                 {
                                     var lab = db.Labs.Where(c => c.sid == labid).First();
-                                    if (lab.currentPhase == "INIT" || lab.currentPhase == "PartA")
+                                    if (lab.currentPhase == "INIT" || lab.currentPhase == "Part0")
                                     {
-                                        ShowMenu.Add("首頁/第一階段(第一週)");
+                                        ShowMenu.Add("首頁/前測");
+                                    }
+                                    else if (lab.currentPhase == "PartA")
+                                    {
+                                        ShowMenu.Add("首頁/習作1");
+                                    }
+                                    else if (lab.currentPhase == "PartB1" )
+                                    {
+                                        ShowMenu.Add("首頁/分組2");
                                     }
                                     else if (lab.currentPhase == "PartB1" || lab.currentPhase == "PartB2")
                                     {
-                                        ShowMenu.Add("首頁/第二階段(第二週)");
+                                        ShowMenu.Add("首頁/習作2");
                                     }
                                     else if (lab.currentPhase == "Final")
                                     {
 
-                                        ShowMenu.Add("首頁/第三階段(第三週)");
+                                        ShowMenu.Add("首頁/後測");
                                     }
                                 }
                                 catch (Exception ex)

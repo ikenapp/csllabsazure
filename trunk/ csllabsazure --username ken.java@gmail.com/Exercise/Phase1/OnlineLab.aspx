@@ -111,13 +111,17 @@
                         </asp:DropDownList>
                         <%= label_rank_end %> <br><br>
                         <%= label_attributes %><br>
-                        <asp:CheckBoxList ID="AttrList1" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:CheckBoxList><br />
+                        <asp:RadioButtonList ID="AttrList1" runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem>1++</asp:ListItem>
+<asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+<asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB1" runat="server" Height="135px" TextMode="MultiLine" Width="800px"></asp:TextBox><br /> 
                         <asp:Button ID="SaveButton1" runat="server" onclick="SaveButton1_Click" Text="儲存" />
@@ -152,7 +156,7 @@
                         <br />
                         <br /> 
                         <%= label_rank %><asp:DropDownList ID="DropDownList2" runat="server">
-                              <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="1">非常不認同</asp:ListItem>
                             <asp:ListItem Value="2">大部分不認同</asp:ListItem>
                             <asp:ListItem Value="3">普通</asp:ListItem>
                             <asp:ListItem Value="4">大部分認同</asp:ListItem>
@@ -160,13 +164,17 @@
                     </asp:DropDownList>
                         <%= label_rank_end %>
                         <br /><br /><%= label_attributes %><br>
-                        <asp:CheckBoxList ID="AttrList2" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:CheckBoxList><br />
+                        <asp:RadioButtonList ID="AttrList2" runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem>1++</asp:ListItem>
+<asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+<asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB2" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton2" runat="server" 
@@ -209,13 +217,17 @@
                      
                         <br />
                         <br /> <%= label_attributes %><br>
-                        <asp:CheckBoxList ID="AttrList3" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:CheckBoxList><br />
+                        <asp:RadioButtonList ID="AttrList3" runat="server" RepeatDirection="Horizontal">
+                           <asp:ListItem>1++</asp:ListItem>
+<asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+<asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB3" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton3" runat="server" 
@@ -256,13 +268,17 @@
                         </asp:DropDownList>
                         <%= label_rank_end %>
                         <br /><br /> <%= label_attributes %><br>
-                        <asp:CheckBoxList ID="AttrList4" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:CheckBoxList><br />
+                        <asp:RadioButtonList ID="AttrList4" runat="server" RepeatDirection="Horizontal">
+                           <asp:ListItem>1++</asp:ListItem>
+<asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+<asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB4" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton4" runat="server" 
@@ -303,13 +319,17 @@
                   </asp:DropDownList>
                         <%= label_rank_end %> <br /> <br />
                          <%= label_attributes %><br>
-                        <asp:CheckBoxList ID="AttrList5" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:CheckBoxList><br />
+                        <asp:RadioButtonList ID="AttrList5" runat="server" RepeatDirection="Horizontal">
+                           <asp:ListItem>1++</asp:ListItem>
+<asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+<asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB5" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton15" runat="server" 
@@ -350,13 +370,17 @@
                         <%= label_rank_end %>
                         
                         <br /> <br /><%= label_attributes %><br>
-                        <asp:CheckBoxList ID="AttrList6" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:CheckBoxList>
+                        <asp:RadioButtonList ID="AttrList6" runat="server" RepeatDirection="Horizontal">
+                          <asp:ListItem>1++</asp:ListItem>
+<asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+<asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList>
                          <br /><%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB6" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton6" runat="server" 
@@ -401,13 +425,17 @@
                         </asp:DropDownList>
                         <%= label_rank_end %>
                          <br /><br /><%= label_attributes %><br>
-                        <asp:CheckBoxList ID="AttrList7" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:CheckBoxList><br />
+                        <asp:RadioButtonList ID="AttrList7" runat="server" RepeatDirection="Horizontal">
+                           <asp:ListItem>1++</asp:ListItem>
+<asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+<asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList><br />
                           <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB7" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton7" runat="server" 

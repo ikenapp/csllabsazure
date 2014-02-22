@@ -94,7 +94,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
         TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
         TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
         TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
-        CheckBoxList attrcb = view.FindControl("AttrList" + idx) as CheckBoxList;
+        RadioButtonList attrcb = view.FindControl("AttrList" + idx) as RadioButtonList;
         Label msg = view.FindControl("MsgLabel" + idx) as Label;
         msg.Text = "";
         int rankVal = int.Parse(ddl.SelectedValue);
@@ -198,7 +198,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
             TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
             TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
             TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
-            CheckBoxList attrcb = view.FindControl("AttrList" + idx) as CheckBoxList;
+            RadioButtonList attrcb = view.FindControl("AttrList" + idx) as RadioButtonList;
             String contentStr = content.Text.Trim();
             String sourceStr = source.Text.Trim();
             String opinionStr = opinion.Text.Trim();
