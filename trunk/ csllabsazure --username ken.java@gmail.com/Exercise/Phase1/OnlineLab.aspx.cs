@@ -134,7 +134,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
             }
             else if (attrcb.SelectedIndex == 0)
             {
-                attrs += " --> " + attrlevel.SelectedValue;
+                attrs += " "+attrlevel.SelectedValue;
             }
             if (String.IsNullOrEmpty(opinionStr))
             {
