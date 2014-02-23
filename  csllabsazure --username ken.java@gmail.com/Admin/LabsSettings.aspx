@@ -21,7 +21,7 @@
     }
     .funButtonStyle1
     {
-        width : 90px;
+        width : 80px;
         height : 35px;
         background : lightblue;
         /*color : white;*/
@@ -29,7 +29,16 @@
     }
     .funButtonStyle2
     {
-        width : 150px;
+        width : 128px;
+        height : 35px;
+        background : lightblue;
+        /*color : white;*/
+        font-size :14px;
+    }
+
+    .funButtonStyle3
+    {
+        width : 90px;
         height : 35px;
         background : lightblue;
         /*color : white;*/
@@ -89,7 +98,11 @@
    <asp:Button ID="GroupCSettings" runat="server" Text="C組 Q&A 設定" CssClass="funButtonStyle" 
                         PostBackUrl="~/Admin/Phase2/GroupCSettings.aspx"  />
     </span>
-         
+         <span class="cell">
+   <asp:Button ID="SatificationSettings" runat="server" Text="滿意度設定" CssClass="funButtonStyle" 
+                        PostBackUrl="~/Admin/Phase2/SatisfySettings.aspx"  />
+    </span>
+
     </fieldset>
      <fieldset class="login">
                     <legend>實驗階段切換</legend> 
@@ -113,10 +126,18 @@
     <asp:Button ID="ThirdPhase" runat="server" Text="後測" CssClass="funButtonStyle1" 
                         onclick="FirstPhase_Click" TabIndex="2" />
     </span>
+    <span class="cell">
+    <asp:Button ID="Satisfication" runat="server" Text="滿意度" CssClass="funButtonStyle1" 
+                        onclick="FirstPhase_Click" TabIndex="3" />
+    </span>
     </fieldset>
 
      <fieldset class="login">
                     <legend>實驗資料匯出</legend>
+         <span class="cell">
+    <asp:Button ID="PreTestExport" runat="server" Text="前測匯出" CssClass="funButtonStyle3" 
+                         PostBackUrl="~/Admin/PreTestExport.aspx" />
+    </span>
     <span class="cell">
     <asp:Button ID="ExerciseExport" runat="server" Text="第一階段資料匯出" CssClass="funButtonStyle2" 
                          PostBackUrl="~/Admin/Phase1Export.aspx" />
@@ -126,8 +147,12 @@
                          PostBackUrl="~/Admin/Phase2Export.aspx" />
     </span>
     <span class="cell">
-    <asp:Button ID="PostTestExport" runat="server" Text="後測匯出" CssClass="funButtonStyle" 
+    <asp:Button ID="PostTestExport" runat="server" Text="後測匯出" CssClass="funButtonStyle3" 
                          PostBackUrl="~/Admin/PostTestExport.aspx" />
+    </span>
+         <span class="cell">
+    <asp:Button ID="SatisfyExport" runat="server" Text="滿意度匯出" CssClass="funButtonStyle3" 
+                         PostBackUrl="~/Admin/SatisficationExport.aspx" />
     </span>
     </fieldset>
 </div>

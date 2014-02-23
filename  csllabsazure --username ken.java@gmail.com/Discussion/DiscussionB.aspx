@@ -41,7 +41,12 @@
     </script>
     <script type="text/javascript">
         function openNewWin(){
-            window.open('Phase1Preview.aspx', '觀看前一週的作答結果', config='height=840,width=440')
+            window.open('Phase1Preview.aspx', '觀看前一週的作答結果', config='height=840,width=440,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+
+        }
+
+        function openTasks(url){
+            window.open(url, '討論活動', config='height=400,width=440,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
 
         }
 
@@ -109,13 +114,10 @@
             </asp:ScriptManager>
             <table align="left" border="0" width="1177" stye="margin:0;">
                  <tr>
-                <td colspan="3"><a href='../Default.aspx'>回首頁</a>&nbsp;&nbsp<a href="javascript:void()" onclick="openNewWin()" >
+                <td colspan="5"><a href='../Default.aspx'>回首頁</a>&nbsp;&nbsp<a href="javascript:void()" onclick="openNewWin()" >
             觀看前一週的作答結果
-        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> <b style="color:red">(進行討論前)請先與同組同學確定發言順序!</b></td>
+        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> <b style="color:red">首先請與您的小組同學確定發言討論的順序，接著進行以下兩段習作討論，請注意討論應控制在70分鐘內完成喔。</b></td>
                 <td colspan="1">
-                    <div>
-                        
-                    </div>
                 </td>
                 </tr>
     <tr>
@@ -134,15 +136,15 @@
             <p>&nbsp;</p>
             <p>&nbsp;</p>
         </td>
-        <th height="50" colspan="3" scope="col">
+        <th height="30" colspan="3" scope="col" valign="top">
             <div id="question" align="left">
-                <asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label>
+                <asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label><a href="javascript:void()" style='color:red;' onclick="openTasks('SkypeTask<%=no %>.aspx')" >
+            討論活動</a>
             </div>
-        </th>
-    </tr>
+            <table>
                 <tr align="right">
                     <td colspan="3">
-                        <div style="height: 330px; overflow-x: hidden; overflow-y: auto;vertical-align:top;" id="mydiv">
+                        <div style="height: 480px; overflow-x: hidden; overflow-y: auto;vertical-align:top; margin-top:0;" id="mydiv">
                             <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
                                 <ContentTemplate>
                                      <asp:HiddenField ID="HiddenField1" runat="server" Value="1" />
@@ -206,7 +208,7 @@
                         </td>
                 </tr>
                 <tr>
-                    <td width="132" height="140">&nbsp;</td>
+                    <td width="132" height="50">&nbsp;</td>
                     <td width="606" valign="top">
                         <div id="type1">
                             &nbsp;發送訊息<br />
@@ -219,6 +221,11 @@
                     <td width="159" valign="top">
                         <asp:ImageButton ID="Button1" runat="server" Width="53" Height="24" ImageUrl="images/send.png" OnClick="Button1_Click" /></td>
                 </tr>
+                </table>
+        </th>
+        </tr>
+    
+
             </table>
             <p>&nbsp;</p>
     </div>

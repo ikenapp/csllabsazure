@@ -44,11 +44,11 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                                     {
                                         ShowMenu.Add("首頁/習作1");
                                     }
-                                    else if (lab.currentPhase == "PartB1" )
+                                    else if (lab.currentPhase == "PartB1")
                                     {
                                         ShowMenu.Add("首頁/分組2");
                                     }
-                                    else if (lab.currentPhase == "PartB1" || lab.currentPhase == "PartB2")
+                                    else if (lab.currentPhase == "PartB2")
                                     {
                                         ShowMenu.Add("首頁/習作2");
                                     }
@@ -56,6 +56,11 @@ public partial class SiteMaster : System.Web.UI.MasterPage
                                     {
 
                                         ShowMenu.Add("首頁/後測");
+                                    }
+                                    else if (lab.currentPhase == "Satisfy")
+                                    {
+
+                                        ShowMenu.Add("首頁/滿意度");
                                     }
                                 }
                                 catch (Exception ex)
