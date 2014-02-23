@@ -25,7 +25,7 @@ public partial class Admin_PreviewSatisfy : System.Web.UI.Page
                 try
                 {
                     var lab = db.Labs.Where(c => c.sid == lab_id).First();
-                    LabInfo.Text = String.Format("場次 : {0} [ {1} ] , 時間 : {2:yyyy-MM-dd} ~ {3:yyyy-MM-dd} {4}.<br> Group C 線上引導題", lab.name, lab.desc, lab.begin, lab.end,lab.currentPhase);
+                    LabInfo.Text = String.Format("場次 : {0} [ {1} ] , 時間 : {2:yyyy-MM-dd} ~ {3:yyyy-MM-dd} {4}.<br> 滿意度", lab.name, lab.desc, lab.begin, lab.end,lab.currentPhase);
                 }
                 catch (Exception ex)
                 {

@@ -67,20 +67,20 @@ public partial class Lab_Phase1_OnlineLabExport : System.Web.UI.Page
                         sb.Append(question_start + label_source + question_end + pre + ans.links + pre_end + ln);
                         sb.Append(question_start + label_rank + question_end + " <b style='color:red;'>" + rank + "</b> " + label_rank_end + ln);
                         String attrs = ans.attributes;
-                        if (attrs != null)
-                        {
-                            for (int i = 1; i <= 5; i++)
-                            {
-                                if (attrs.IndexOf("" + i) != -1)
-                                {
-                                    attrs = attrs.Replace("" + i, options[i]);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            attrs = "";
-                        }
+                        //if (attrs != null)
+                        //{
+                        //    for (int i = 1; i <= 5; i++)
+                        //    {
+                        //        if (attrs.IndexOf("" + i) != -1)
+                        //        {
+                        //            attrs = attrs.Replace("" + i, options[i]);
+                        //        }
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    attrs = "";
+                        //}
                         sb.Append(question_start + label_attributes + question_end + pre + attrs + pre_end + ln);
                         sb.Append(question_start + label_opinons + question_end + pre + ans.opinions + pre_end + ln);
                        

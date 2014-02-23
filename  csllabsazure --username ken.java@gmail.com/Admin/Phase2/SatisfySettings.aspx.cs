@@ -73,12 +73,14 @@ public partial class Admin_SatisfySettings : System.Web.UI.Page
                 //讀取文字檔
                 string txt = sr.ReadToEnd().Trim();
                 string[] data = txt.Split('\n');
+                int lab_id = int.Parse(labid);
                 Survey survey = new Survey
                 {
                     name = "滿意度",
                     phase = "Satisfy",
-                    type = "SURVEY",
-                    labid = int.Parse(labid),
+                    type = "SCALE",
+                    scale = "5",
+                    labid = lab_id,
                     surveyid = 25
 
                 };
