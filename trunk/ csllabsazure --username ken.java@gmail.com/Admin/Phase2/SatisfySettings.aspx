@@ -10,7 +10,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
 &nbsp;&nbsp;<asp:HyperLink ID="BackLink" runat="server">返回上一頁</asp:HyperLink><br>
-   &nbsp;&nbsp;Group C 線上習作題目匯入
+   &nbsp;&nbsp;滿意度題目匯入
     
     <asp:HyperLink ID="Preview" runat="server" 
         NavigateUrl="~/Admin/Phase2/PreviewSurveyC.aspx">已設定資料</asp:HyperLink>

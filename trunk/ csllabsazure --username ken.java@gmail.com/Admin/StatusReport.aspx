@@ -101,7 +101,7 @@
             ConnectionString="<%$ ConnectionStrings:LabsDBConnectionString %>" 
             DeleteCommand="DELETE FROM [Users] WHERE [sid] = @sid" 
             InsertCommand="INSERT INTO [Users] ([name], [nickname], [passsword], [birthday], [age], [group], [school], [dept], [labid], [student_id], [groupid], [gender]) VALUES (@name, @nickname, @passsword, @birthday, @age, @group, @school, @dept, @labid, @student_id, @groupid, @gender)" 
-            SelectCommand="select sid ,school,dept,student_id,name,(select s.done from Status As S where s.studentid = u.sid and labid = @labid and phase='Part0') as Phase0 ,(select s.done from Status As S where s.studentid = u.sid and labid = @labid and phase='PartA') as Phase1 ,(select s.done from Status As S where s.studentid = u.sid and labid = @labid and phase='PartAE') as Phase1E ,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='PartB1') as Phase21 ,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='PartB2') as Phase22,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='PartB2E') as Phase22E,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='Final') as Phase23,(select s.done from Status As S where s.studentid = u.sid and labid = @labid and phase='Satisfy') as Satisfy , from Users As U where [group]!='admin' and labid= @labid order by student_id" 
+            SelectCommand="select sid ,school,dept,student_id,name,(select s.done from Status As S where s.studentid = u.sid and labid = @labid and phase='Part0') as Phase0 ,(select s.done from Status As S where s.studentid = u.sid and labid = @labid and phase='PartA') as Phase1 ,(select s.done from Status As S where s.studentid = u.sid and labid = @labid and phase='PartAE') as Phase1E ,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='PartB1') as Phase21 ,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='PartB2') as Phase22,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='PartB2E') as Phase22E,(select s.done from Status As S where s.studentid = u.sid and labid =  @labid and phase='Final') as Phase23,(select s.done from Status As S where s.studentid = u.sid and labid = @labid and phase='Satisfy') as Satisfy from Users As U where [group]!='admin' and labid= @labid order by student_id" 
             UpdateCommand="UPDATE [Users] SET  [group] = @group, [groupid] = @groupid, [gender] = @gender WHERE [sid] = @sid">
             <DeleteParameters>
                 <asp:Parameter Name="sid" Type="Int32" />
@@ -143,7 +143,7 @@
         </style>
     <script type="text/javascript">
         $(function () {
-            $("#<%=GridView1.ClientID%>").toSuperTable({ width: "950px", height: "480px", cssSkin: "sDefault", fixedCols: 4 });
+            $("#<%=GridView1.ClientID%>").toSuperTable({ width: "960px", height: "480px", cssSkin: "sDefault", fixedCols: 4 });
         });
     </script>
         <br />

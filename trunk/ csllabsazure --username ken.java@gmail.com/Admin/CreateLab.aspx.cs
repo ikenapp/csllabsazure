@@ -452,6 +452,63 @@ public partial class Admin_CreateLab : System.Web.UI.Page
                 }
                 db.SaveChanges();
             }
+
+            //25
+            using (StreamReader sr = new StreamReader(Server.MapPath(@"~/INITTemplate/init25_satisfy.csv"), System.Text.Encoding.Default))
+            {
+                //讀取文字檔
+                string txt = sr.ReadToEnd().Trim();
+                string[] data = txt.Split('\n');
+                Survey survey = new Survey
+                {
+                    name = "滿意度",
+                    phase = "Satisfy",
+                    type = "SCALE",
+                    scale = "5",
+                    labid = labid,
+                    surveyid = 25
+
+                };
+                db.Surveys.Add(survey);
+                db.SaveChanges();
+                surveyId = survey.sid;
+                for (int i = 1; i < data.Length; i++)
+                {
+                    try
+                    {
+                        if (data[i].IndexOf(",") != -1)
+                        {
+                            int idx = data[i].IndexOf(",");
+                            String noStr = data[i].Substring(0, idx);
+                            String questionStr = data[i].Substring(idx + 1);
+                            questionStr = questionStr.Trim();
+                            if (questionStr.StartsWith("\""))
+                            {
+                                questionStr = questionStr.Substring(1);
+                            }
+                            if (questionStr.EndsWith("\""))
+                            {
+                                questionStr = questionStr.Substring(0, questionStr.Length - 1);
+                            }
+
+                            Question q = new Question
+                            {
+                                no = int.Parse(noStr),
+                                question1 = questionStr,
+                                survryid = survey.sid
+
+                            };
+                            db.Questions.Add(q);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        //Response.Write(ex.Message+"<BR>");
+                        //isError = true;
+                    }
+                }
+                db.SaveChanges();
+            }
         }
     }
 }

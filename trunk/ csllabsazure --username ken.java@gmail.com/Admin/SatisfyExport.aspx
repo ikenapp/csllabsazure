@@ -1,11 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DiscussionCExport.aspx.cs" Inherits="Discussion_CExport" %>
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DiscussionCExport.aspx.cs" Inherits="Discussion_CExport" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="SatisfyExport.aspx.cs" Inherits="Discussion_SatisfyExport" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>自我反思群組匯出</title>
+    <title>滿意度匯出</title>
     <link rel="stylesheet" href="../Styles/Preview.css" /> 
     <script>
 
