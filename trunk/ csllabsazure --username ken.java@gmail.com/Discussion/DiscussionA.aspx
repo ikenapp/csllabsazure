@@ -98,7 +98,11 @@
 </script>
      <script type="text/javascript">
          function openNewWin(){
-             window.open('Phase1Preview.aspx', '觀看前一週的作答結果', config='height=840,width=440')
+             window.open('Phase1Preview.aspx', '觀看前一週的作答結果', config='height=840,width=440,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
+
+         }
+         function openTasks(url){
+             window.open(url, '討論活動', config='height=400,width=440,toolbar=no, menubar=no, scrollbars=no, resizable=no,location=no, status=no')
 
          }
     </script>
@@ -114,7 +118,8 @@
 	<div id='header' class='container'>
 <br>
 		<div id='logo'>
-		  <h3><asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label>
+		  <h3><asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label><a href="javascript:void()" style='color:red;' onclick="openTasks('FBTask<%=no %>.aspx')" >
+            討論活動</a>
           </h3>
 			
 		</div>

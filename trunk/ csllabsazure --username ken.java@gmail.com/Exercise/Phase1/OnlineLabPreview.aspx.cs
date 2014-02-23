@@ -12,18 +12,19 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
     public String[] options = { "","具實證基礎","專家個人看法","個人假設","未經查證的資料","無法判斷"};
     public string pre = "<pre class='answerLabel'>";
     public string pre_end = "</pre>"; 
-    public String label_rank = "3. 您給予該說法的認同強度為 ";
+    public String label_opinons = "5. 您對於此說法的看法(包括「優點」與「缺點」，請參考學習單的範例)";
+    public String[] ranks = { "","非常不認同","大部分不認同","普通","大部分認同","非常認同"};
+    public String label_rank = "3. 請就系統提供的選框選項，選擇您給予該說法的認同強度為 ";
     public String label_rank_end = "";
-    public String label_content = "1.摘錄該說法的內容(可以用複製/貼上的功能)：";
-    public String label_source = "2.該說法的資料來源(含：作者/網站名稱/網址)";
-    public String label_attributes = "4. 這個說法包含了以下那些屬性(可單選或多選)：";
+    public String label_content = "1.請扼要摘錄該說法的論點內容(500字為上限，可以用複製/貼上的功能)：";
+    public String label_source = "2.請標示該說法的資料來源(含：作者/網站名稱/網址)";
+    public String label_attributes = "4.請參考Levels of Evidence (SIGN)的標準，判斷該論點資料的實證強度：";
     public String option_attr_1 = "具實證基礎";
     public String option_attr_2 = "專家個人看法";
     public String option_attr_3 = "個人假設";
     public String option_attr_4 = "未經查證的資料";
     public String option_attr_5 = "無法判斷";
-    public String label_opinons = "5. 您對於此說法的看法(包括「優點」與「缺點」，請參考學習單的範例)";
-    public String[] ranks = { "","非常不認同","大部分不認同","普通","大部分認同","非常認同"};
+    public String label_opinons = "5. 請寫下您對於此說法的看法(包括「優點」與「缺點」，請參考學習單的範例)";
     public String question_start = "<b class='questionLabel'>";
     public String question_end = "</b>";
     public String title_start = "<b class='titleLabel'>";
@@ -63,20 +64,20 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
                         sb.Append(question_start + label_source + question_end + pre + ans.links + pre_end + ln);
                         sb.Append(question_start + label_rank + question_end + " <b style='color:red;'>" + rank + "</b> " + label_rank_end + ln);
                         String attrs = ans.attributes;
-                        if (attrs != null)
-                        {
-                            for (int i = 1; i <= 5; i++)
-                            {
-                                if (attrs.IndexOf("" + i) != -1)
-                                {
-                                    attrs = attrs.Replace("" + i, options[i]);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            attrs = "";
-                        }
+                        //if (attrs != null)
+                        //{
+                        //    for (int i = 1; i <= 5; i++)
+                        //    {
+                        //        if (attrs.IndexOf("" + i) != -1)
+                        //        {
+                        //            attrs = attrs.Replace("" + i, options[i]);
+                        //        }
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    attrs = "";
+                        //}
                         sb.Append(question_start + label_attributes + question_end + pre + attrs + pre_end + ln);
                         sb.Append(question_start + label_opinons + question_end + pre + ans.opinions + pre_end + ln);
                         sb.Append("<hr>");

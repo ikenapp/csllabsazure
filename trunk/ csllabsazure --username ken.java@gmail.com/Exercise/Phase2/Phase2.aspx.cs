@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Lib;
 
-public partial class Execise_Phase1 : System.Web.UI.Page
+public partial class Execise_Phase2 : System.Web.UI.Page
 {
     int lab_id;
     int survey_id;

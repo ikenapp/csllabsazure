@@ -5,9 +5,13 @@
     </siteMapNode>
     <siteMapNode url="~/Exercise/Phase1/Phase1.aspx" title="習作1"  description="習作1" >
     </siteMapNode>
-    <siteMapNode url="~/Exercise/Phase2/Phase2.aspx" title="分組/習作2"  description="分組/習作2" >
+    <siteMapNode url="~/Exercise/Phase2/Phase2.aspx" title="分組2"  description="分組2" >
+    </siteMapNode>
+    <siteMapNode url="~/Exercise/Phase2/Phase21.aspx" title="習作2"  description="習作2" >
     </siteMapNode>
     <siteMapNode url="~/Exercise/Phase3/Phase3.aspx" title="後測"  description="後測" >
+    </siteMapNode>
+    <siteMapNode url="~/Exercise/Phase4/Phase4.aspx" title="滿意度"  description="滿意度" >
     </siteMapNode>
     <siteMapNode url="~/PersonalSettings.aspx" title="個人設定"  description="個人設定" >
     </siteMapNode>
