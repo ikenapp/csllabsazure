@@ -22,15 +22,6 @@ public partial class DiscussionBPreview : System.Web.UI.Page
         bool isError = true;
         if (u != null)
         {
-            if (Application[u.labid + "_limit"] != null)
-            {
-                DateTime limit = (DateTime)Application[u.labid + "_limit"];
-                if (limit != null)
-                {
-                    timeLeft = (int)((limit - UserDAO.GetNow()).TotalSeconds);
-                    timeLeft = timeLeft < 0 ? 0 : timeLeft;
-                }
-            }
             Literal1.Text = u.nickname + "<br>";
             using (LabsDBEntities db = new LabsDBEntities())
             {

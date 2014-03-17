@@ -24,7 +24,6 @@ public partial class Exercise_Phase1_OnlineLabPreview : System.Web.UI.Page
     public String option_attr_3 = "個人假設";
     public String option_attr_4 = "未經查證的資料";
     public String option_attr_5 = "無法判斷";
-    public String label_opinons = "5. 請寫下您對於此說法的看法(包括「優點」與「缺點」，請參考學習單的範例)";
     public String question_start = "<b class='questionLabel'>";
     public String question_end = "</b>";
     public String title_start = "<b class='titleLabel'>";

@@ -13,36 +13,29 @@
             overflow: auto;
             margin: 10px auto;
         }
-       
-    </style>
-    <script type="text/javascript">
-        function openNewWin(){
-            window.open('Phase1Preview.aspx', '前一堂課我的作答結果', config = 'height=840,width=440');
-        }
 
-    </script>
+    </style>
+    
 </head>
+
 
 <body class="skype">
     <div id="page" class="container">
         <form id='form1' runat='server'>
             <asp:ScriptManager ID='ScriptManager1' runat='server'>
             </asp:ScriptManager>
-            <table align="left" border="0" width="1177" stye="margin:0;">
+            <table align="left" border="0" width="900" stye="margin:0;">
                  <tr>
-                <td colspan="3"><asp:Button ID="Button2" runat="server" Text="問題一我的作答" />  <asp:Button ID="Button3" runat="server" Text="問題二我的作答" /> </td>
+                <td colspan="5">&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" />  <asp:Button ID="Button3" runat="server" Text="問題二" /></td>
                 <td colspan="1">
-                    <div>
-                        
-                    </div>
                 </td>
                 </tr>
     <tr>
-        <td width="162" rowspan="3" valign="top">
+        <td width="80px" rowspan="3" valign="top">
             <div id="conlist" align="right">
                 <span style='float: right; color: red; padding-right: 10px;' id='countdownE'></span><br />
                 <div id="post-name">
-                    我是: <asp:Literal ID="Literal1" runat="server"></asp:Literal>
+                    我是:<asp:Literal ID="Literal1" runat="server"></asp:Literal>
                 </div>
                 <asp:Label ID='GroupInfo' runat='server' Text='Label' Font-Bold='True'></asp:Label>
             </div>
@@ -53,15 +46,14 @@
             <p>&nbsp;</p>
             <p>&nbsp;</p>
         </td>
-        <th height="50" colspan="3" scope="col">
+        <th height="30" colspan="3" scope="col" valign="top">
             <div id="question" align="left">
                 <asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label>
             </div>
-        </th>
-    </tr>
+            <table>
                 <tr align="right">
                     <td colspan="3">
-                        <div style="height: 430px; overflow-x: hidden; overflow-y: auto;vertical-align:top;" id="mydiv">
+                        <div style="height: 480px; overflow-x: hidden; overflow-y: auto;vertical-align:top; margin-top:0;" id="mydiv">
                             <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
                                 <ContentTemplate>
                                      <asp:HiddenField ID="HiddenField1" runat="server" Value="1" />
@@ -124,7 +116,25 @@
                             </asp:UpdatePanel>
                         </td>
                 </tr>
-                
+                <tr>
+                    <td width="132" height="50">&nbsp;</td>
+                    <td width="606" valign="top">
+                        <div id="type1">
+                            &nbsp;發送訊息<br />
+                            <asp:TextBox ID='TextBox1' runat='server' CssClass='ta' TextMode='MultiLine' Height="98px" Width="590px" Enabled="false"></asp:TextBox>
+                        </div>
+
+                       
+      <p>&nbsp;</p>
+                    </td>
+                    <td width="159" valign="top">
+                        <asp:ImageButton ID="Button1" runat="server" Width="53" Height="24" ImageUrl="images/send.png"  Enabled="false"/></td>
+                </tr>
+                </table>
+        </th>
+        </tr>
+    
+
             </table>
             <p>&nbsp;</p>
     </div>
