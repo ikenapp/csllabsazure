@@ -80,7 +80,7 @@
             closeHandler();
         }
         function openNewWindow(url,title){
-            window.open(url,title, config='height=840,width=1024,toolbar=no, menubar=no, scrollbars=no, resizable=yes,location=no, status=no');
+            window.open(url,title, config='height=840,width=1080,toolbar=no, menubar=no, scrollbars=yes, resizable=yes,location=no, status=no');
         }
         function closeHandler(){
             /*window.onbeforeunload = function (e) {

@@ -14,9 +14,9 @@ public partial class Discussion_Phase1Preview : System.Web.UI.Page
     public string pre_end = "</pre>";
     public String label_rank = "3. 請就系統提供的選框選項，選擇您給予該說法的認同強度為 ";
     public String label_rank_end = "";
-    public String label_content = "1. 請摘錄該說法的內容(可以用複製/貼上的功能)：";
-    public String label_source = "2. 請標示該說法的資料來源(含：作者/網站名稱/網址)";
-    public String label_attributes = "4. 請判斷這個說法包含了以下那些屬性(可單選或多選)：";
+    public String label_content = "1.請扼要摘錄該說法的論點內容(500字為上限，可以用複製/貼上的功能)：";
+    public String label_source = "2.請標示該說法的資料來源(含：作者/網站名稱/網址)";
+    public String label_attributes = "4.請參考Levels of Evidence (SIGN)的標準，判斷該論點資料的實證強度：";
     public String option_attr_1 = "具實證基礎";
     public String option_attr_2 = "專家個人看法";
     public String option_attr_3 = "個人假設";
@@ -28,6 +28,8 @@ public partial class Discussion_Phase1Preview : System.Web.UI.Page
     public String question_end = "</b>";
     public String title_start = "<b class='titleLabel'>";
     public String title_end = "</b>";
+    public String message = "";
+    
     protected void Page_Load(object sender, EventArgs e)
     {
 
