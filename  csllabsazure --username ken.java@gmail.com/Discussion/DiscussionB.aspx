@@ -114,8 +114,8 @@
             </asp:ScriptManager>
             <table align="left" border="0" width="1177" stye="margin:0;">
                  <tr>
-                <td colspan="5"><asp:Button ID="backHome" runat="server" Text="回首頁" PostBackUrl="~/Default.aspx" />&nbsp;<asp:Button ID="viewPreResult" runat="server" Text="觀看前一週的作答結果" OnClientClick="openNewWin();return false;" />
-        <asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> <b style="color:red">首先請與您的小組同學確定發言討論的順序，接著進行以下兩段習作討論，請注意討論應控制在70分鐘內完成喔。</b></td>
+                <td colspan="5" ><div class="skypebg"><asp:Button ID="backHome" runat="server" Text="回首頁" PostBackUrl="~/Default.aspx" />&nbsp;<asp:Button ID="viewPreResult" runat="server" Text="觀看前一週的作答結果" OnClientClick="openNewWin();return false;" />
+        <asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> <b style="color:red">首先請與您的小組同學確定發言討論的順序，接著進行以下兩段習作討論，請注意討論應控制在70分鐘內完成喔。</b></div></td>
                 <td colspan="1">
                 </td>
                 </tr>
