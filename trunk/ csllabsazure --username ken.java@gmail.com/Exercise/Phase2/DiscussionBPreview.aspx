@@ -26,7 +26,7 @@
             </asp:ScriptManager>
             <table align="left" border="0" width="900" style="margin:0;">
                  <tr>
-                <td colspan="5">&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" />  <asp:Button ID="Button3" runat="server" Text="問題二" /></td>
+                <td colspan="5"><div class="skypebgpreview"><asp:Button ID="Button2" runat="server" Text="問題一" />  <asp:Button ID="Button3" runat="server" Text="問題二" /></div></td>
                 <td colspan="1">
                 </td>
                 </tr>

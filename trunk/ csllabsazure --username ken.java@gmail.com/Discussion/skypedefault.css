@@ -18,13 +18,30 @@
 	{
 		margin: 0px;
 		padding: 0px;
-		background: #2372DE url(images/bg01.png) repeat;
+		/*background: #2372DE url(images/bg01.png) repeat;*/
 		font-family: 'Open Sans', sans-serif;
 		font-size: 11pt;
 		font-weight: 300;
 		color: #6c6c6c;
 	}
-	
+    div.skypebg
+    {
+		background: #2372DE url(images/bg01.png) repeat;
+		font-weight: 100;
+        border:1px solid #CCC;
+        height:50px;
+        width:1117px;
+        padding:5px;
+	}
+    div.skypebgpreview
+    {
+		background: #2372DE url(images/bg01.png) repeat;
+		font-weight: 100;
+        border:1px solid #CCC;
+        height:50px;
+        width:948px;
+        padding:5px;
+	}
 	
 	h1, h2, h3
 	{
