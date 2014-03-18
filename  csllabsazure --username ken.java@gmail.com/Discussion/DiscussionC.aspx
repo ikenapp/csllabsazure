@@ -50,6 +50,8 @@
         ol
         {
             list-style-type: upper-roman;
+            margin-bottom:-15px;
+            margin-top:0px;
         }
 </style>
     <script type="text/javascript">
