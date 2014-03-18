@@ -110,16 +110,15 @@
 <body class='fb'>
     <form id='form1' runat='server'>
 <div style="margin:0;">
-    <div><a href='../Default.aspx' style='color:white;'>回首頁</a>&nbsp;&nbsp;<a href="javascript:void()" style='color:white;' onclick="openNewWin()" >
-            觀看前一週的作答結果
-        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> 
+    <div><asp:Button ID="backHome" runat="server" Text="回首頁" PostBackUrl="~/Default.aspx" />&nbsp;<asp:Button ID="viewPreResult" runat="server" Text="觀看前一週的作答結果" OnClientClick="openNewWin();return false;" />
+        <asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> 
 </div>
      <asp:ScriptManager ID='ScriptManager1' runat='server'></asp:ScriptManager>
 	<div id='header' class='container'>
 <br>
 		<div id='logo'>
-		  <h3><asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label><a href="javascript:void()" style='color:red;' onclick="openTasks('FBTask<%=no %>.aspx')" >
-            討論活動</a>
+		  <h3><asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label><button onclick="openTasks('FBTask<%=no %>.aspx')" >
+            討論活動</button>
           </h3>
 			
 		</div>
@@ -131,7 +130,7 @@
 <div id='wrapper'>
   <div id='page' class='container' style='vertical-align:top;padding: 0 auto;'>
     <div align='left' >
-      <table width='1184' border='0' rules='cols' valign='top'>
+      <table width='1000' border='0' rules='cols' valign='top'>
         <tr>
           <th width='86' valign='top' scope='col'><div id='sidebar'>
             <span style='float:right;color:red;font-weight: 600;' id='countdownE'></span><br>
@@ -145,10 +144,14 @@
            
            <table border='0' width=967>
   <tr>
-    <td width='990px' class='all'><div id='type' align='left' class='fb' style="vertical-align: top;">我的看法 :
-        <asp:TextBox ID='TextBox1' runat='server' Width='675px' TextMode="MultiLine" Height="40px"></asp:TextBox>
+    <td width='100%' class='all'><div id='type' class='fb' style="width:100%;">
+        <table >
+        <td valign="top">我的看法:</td>
+        <td valign="top"><asp:TextBox ID='TextBox1' runat='server' Width='800px' TextMode="MultiLine" Height="80px"></asp:TextBox></td>
+        <td valign="top"> <asp:Button ID='Button1' runat='server' OnClick='Button1_Click' Text='發言' /></td>
+        </table>
         </div>
-        <asp:Button ID='Button1' runat='server' OnClick='Button1_Click' Text='發言' />
+       
       </td>
   </tr>
 </table>

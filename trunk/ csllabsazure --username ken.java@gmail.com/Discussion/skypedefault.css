@@ -1,6 +1,7 @@
 	html, body
 	{
 		height: 100%;
+        
 	}
 	
 	body.fb
@@ -17,7 +18,7 @@
 	{
 		margin: 0px;
 		padding: 0px;
-		background: rgba(255,255,255,1) repeat;
+		background: #2372DE url(images/bg01.png) repeat;
 		font-family: 'Open Sans', sans-serif;
 		font-size: 11pt;
 		font-weight: 300;
@@ -338,13 +339,13 @@ text-align:right;
   		float: left;
 		line-height: 150%;
 	    height:136px;
-		width:600px;
+		width:800px;
 		border:1px solid #CCC;
 	}
 	#conlist
 	{
 		float: left;
-		width: 170px;
+		width: 220px;
 		font-weight: 800;
 		background-color: rgba(255,255,255,1);
 		color:#00000;
@@ -352,7 +353,19 @@ text-align:right;
   		float: left;
 		line-height: 150%;
 	    height:680px;
-		width:255px;
+		border:1px solid #CCC;
+	}
+    #conlistpreview
+	{
+		float: left;
+		width: 150px;
+		font-weight: 800;
+		background-color: rgba(255,255,255,1);
+		color:#00000;
+		font-size:12pt;
+  		float: left;
+		line-height: 150%;
+	    height:680px;
 		border:1px solid #CCC;
 	}
 	#question
@@ -362,6 +375,15 @@ text-align:right;
 		color: #000;
 		font-weight: 100;
 		width:900px;
+        border:1px solid #CCC;
+	}
+    #questionpreview
+	{
+		font-size: 12pt;
+		background: #2372DE url(images/bg01.png) repeat;
+		color: #000;
+		font-weight: 100;
+		width:800px;
         border:1px solid #CCC;
 	}
 /*********************************************************************************/

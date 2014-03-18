@@ -24,7 +24,7 @@
         <form id='form1' runat='server'>
             <asp:ScriptManager ID='ScriptManager1' runat='server'>
             </asp:ScriptManager>
-            <table align="left" border="0" width="900" stye="margin:0;">
+            <table align="left" border="0" width="900" style="margin:0;">
                  <tr>
                 <td colspan="5">&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" />  <asp:Button ID="Button3" runat="server" Text="問題二" /></td>
                 <td colspan="1">
@@ -32,7 +32,7 @@
                 </tr>
     <tr>
         <td width="80px" rowspan="3" valign="top">
-            <div id="conlist" align="right">
+            <div id="conlistpreview" align="right">
                 <span style='float: right; color: red; padding-right: 10px;' id='countdownE'></span><br />
                 <div id="post-name">
                     我是:<asp:Literal ID="Literal1" runat="server"></asp:Literal>
@@ -47,7 +47,7 @@
             <p>&nbsp;</p>
         </td>
         <th height="30" colspan="3" scope="col" valign="top">
-            <div id="question" align="left">
+            <div id="questionpreview" align="left">
                 <asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label>
             </div>
             <table>
@@ -57,7 +57,7 @@
                             <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
                                 <ContentTemplate>
                                      <asp:HiddenField ID="HiddenField1" runat="server" Value="1" />
-                                    <asp:GridView ID='GridView1' runat='server' AutoGenerateColumns='False' Width='100%' ShowHeader='False'>
+                                    <asp:GridView ID='GridView1' runat='server' AutoGenerateColumns='False' Width='800' ShowHeader='False'>
                                         <Columns>
                                             <asp:TemplateField HeaderText='topic' SortExpression='topic'>
                                                 <AlternatingItemTemplate>
@@ -116,33 +116,17 @@
                             </asp:UpdatePanel>
                         </td>
                 </tr>
-                <tr>
-                    <td width="132" height="50">&nbsp;</td>
-                    <td width="606" valign="top">
-                        <div id="type1">
-                            &nbsp;發送訊息<br />
-                            <asp:TextBox ID='TextBox1' runat='server' CssClass='ta' TextMode='MultiLine' Height="98px" Width="590px" Enabled="false"></asp:TextBox>
-                        </div>
-
-                       
-      <p>&nbsp;</p>
-                    </td>
-                    <td width="159" valign="top">
-                        <asp:ImageButton ID="Button1" runat="server" Width="53" Height="24" ImageUrl="images/send.png"  Enabled="false"/></td>
-                </tr>
+               
                 </table>
         </th>
         </tr>
     
 
             </table>
-            <p>&nbsp;</p>
+           
     </div>
-    <p>&nbsp;</p>
     </form>
-         <div style='width: 100%; height: 20px; text-align: center; background: black; vertical-align: bottom'>
-             <small style='color: white; font-size: 12px'>資元科技顧問有限公司 版權所有 © 2013 BIT Tech. All Rights Reserved.</small>
-         </div>
+     
 </body>
 </html>
 <script>

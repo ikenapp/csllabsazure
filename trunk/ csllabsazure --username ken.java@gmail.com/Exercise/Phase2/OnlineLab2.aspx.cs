@@ -62,7 +62,7 @@ public partial class Execise2_OnlineLab2 : System.Web.UI.Page
                         //var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
                         //Part1Title.Text = "一、" + question1.question1;
                         var question2 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 200).First();
-                        Part2Title.Text = "一、" + question2.question1 + " 點開<a href='javascript:void(0)' class='previewparta1' onclick='openNewWin" + u.group + "()' >前一堂課我的作答結果</a>";
+                        Part2Title.Text = "一、" + question2.question1 + " <button onclick='openNewWin" + u.group + "()' >前一堂課我的作答結果</button>";
 
                         
                         isError = false;

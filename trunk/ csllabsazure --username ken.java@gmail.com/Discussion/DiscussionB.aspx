@@ -114,14 +114,13 @@
             </asp:ScriptManager>
             <table align="left" border="0" width="1177" stye="margin:0;">
                  <tr>
-                <td colspan="5"><a href='../Default.aspx'>回首頁</a>&nbsp;&nbsp<a href="javascript:void()" onclick="openNewWin()" >
-            觀看前一週的作答結果
-        </a>&nbsp;&nbsp;<asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> <b style="color:red">首先請與您的小組同學確定發言討論的順序，接著進行以下兩段習作討論，請注意討論應控制在70分鐘內完成喔。</b></td>
+                <td colspan="5"><asp:Button ID="backHome" runat="server" Text="回首頁" PostBackUrl="~/Default.aspx" />&nbsp;<asp:Button ID="viewPreResult" runat="server" Text="觀看前一週的作答結果" OnClientClick="openNewWin();return false;" />
+        <asp:Button ID="Button2" runat="server" Text="問題一" OnClick="Button2_Click" Visible="false" />  <asp:Button ID="Button3" runat="server" Text="續做問題二" OnClick="Button3_Click" /> <b style="color:red">首先請與您的小組同學確定發言討論的順序，接著進行以下兩段習作討論，請注意討論應控制在70分鐘內完成喔。</b></td>
                 <td colspan="1">
                 </td>
                 </tr>
     <tr>
-        <td width="162" rowspan="3" valign="top">
+        <td width="100" rowspan="3" valign="top">
             <div id="conlist" align="right">
                 <span style='float: right; color: red; padding-right: 10px;' id='countdownE'></span><br />
                 <div id="post-name">
@@ -138,17 +137,17 @@
         </td>
         <th height="30" colspan="3" scope="col" valign="top">
             <div id="question" align="left">
-                <asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label><a href="javascript:void()" style='color:red;' onclick="openTasks('SkypeTask<%=no %>.aspx')" >
-            討論活動</a>
+                <asp:Label ID='TitleLabel' runat='server' Text='Label'></asp:Label><button onclick="openTasks('SkypeTask<%=no %>.aspx')" >
+            討論活動</button>
             </div>
             <table>
-                <tr align="right">
+                <tr align="left">
                     <td colspan="3">
                         <div style="height: 480px; overflow-x: hidden; overflow-y: auto;vertical-align:top; margin-top:0;" id="mydiv">
                             <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
                                 <ContentTemplate>
                                      <asp:HiddenField ID="HiddenField1" runat="server" Value="1" />
-                                    <asp:GridView ID='GridView1' runat='server' AutoGenerateColumns='False' Width='100%' ShowHeader='False'>
+                                    <asp:GridView ID='GridView1' runat='server' AutoGenerateColumns='False' Width='900px' ShowHeader='False'>
                                         <Columns>
                                             <asp:TemplateField HeaderText='topic' SortExpression='topic'>
                                                 <AlternatingItemTemplate>
@@ -208,15 +207,12 @@
                         </td>
                 </tr>
                 <tr>
-                    <td width="132" height="50">&nbsp;</td>
-                    <td width="606" valign="top">
+                    <td width="10" height="50">&nbsp;</td>
+                    <td width="750" valign="top">
                         <div id="type1">
                             &nbsp;發送訊息<br />
-                            <asp:TextBox ID='TextBox1' runat='server' CssClass='ta' TextMode='MultiLine' Height="98px" Width="590px"></asp:TextBox>
+                            <asp:TextBox ID='TextBox1' runat='server' CssClass='ta' TextMode='MultiLine' Height="98px" Width="780px"></asp:TextBox>
                         </div>
-
-                       
-      <p>&nbsp;</p>
                     </td>
                     <td width="159" valign="top">
                         <asp:ImageButton ID="Button1" runat="server" Width="53" Height="24" ImageUrl="images/send.png" OnClick="Button1_Click" /></td>
