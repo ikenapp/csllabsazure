@@ -16,6 +16,7 @@
     body
     {
         /*background: rgba(59,89,152,1);*/    
+        background: #2372DE url(images/bg01.png) repeat;
     }
     </style>
 </head>
