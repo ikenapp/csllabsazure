@@ -431,6 +431,15 @@ text-align:right;
 		width:800px;
         border:1px solid #CCC;
 	}
+    #question
+	{
+		font-size: 12pt;
+		background: #2372DE url(images/bg01.png) repeat;
+		color: #000;
+		font-weight: 100;
+		width:900px;
+        border:1px solid #CCC;
+	}
 /*********************************************************************************/
 /* content                                                                       */
 /*********************************************************************************/
