@@ -86,7 +86,7 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                                         where x.labid==u.labid && x.groupid==u.groupid && x.num == no
                                         select new
                                         {
-                                            topic = "<pre>" + x.topic + "</pre>",
+                                            topic = x.topic,//"<pre>" + x.topic.Replace("\r\n","<br>") + "</pre>",
                                             student_id = x.student_id,
                                             time = x.time,
                                             nickname = z
@@ -157,7 +157,7 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                                         where x.labid == u.labid && x.groupid == u.groupid && x.num == no
                                         select new
                                         {
-                                            topic = "<pre>" + x.topic + "</pre>",
+                                            topic = x.topic,
                                             student_id = x.student_id,
                                             time =  x.time ,
                                             nickname = z
@@ -208,7 +208,7 @@ public partial class Discussion_DiscussionB : System.Web.UI.Page
                                 where x.labid == u.labid && x.groupid == u.groupid && x.num == no
                                 select new
                                 {
-                                    topic = "<pre>" + x.topic + "</pre>",
+                                    topic = x.topic,
                                     student_id = x.student_id,
                                     time = x.time,
                                     nickname = z

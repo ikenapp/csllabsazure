@@ -318,17 +318,33 @@ text-align:right;
 	{
 		text-align:right;
 		color: rgba(0,153,255,1);
-		font-size: 12pt;
+		font-size: 11pt;
 		float: left;
 		width: 125px;
+	}
+    .teamnamepre
+	{
+		text-align:right;
+		color: rgba(0,153,255,1);
+		font-size: 11pt;
+		float: left;
+		width: 110px;
 	}
 	.time
 	{
 		text-align:left;
 		color: rgba(153,153,153,1);
-		font-size: 12pt;
+		font-size: 11pt;
 		float: left;
 		width: 130px;
+	}
+    .timepre
+	{
+		text-align:left;
+		color: rgba(153,153,153,1);
+		font-size: 11pt;
+		float: left;
+		width: 110px;
 	}
 	/*.dislog
 	{
@@ -343,9 +359,21 @@ text-align:right;
 	{
 		font-weight: 300;
 		color: rgba(0,0,0,1);
-		font-size: 12pt;
+		font-size: 11pt;
 		float: left;
-		width: 130px;
+        text-align:left;
+		width: 630px;
+        margin:5px;
+	}
+    .dislogpre
+	{
+		font-weight: 300;
+		color: rgba(0,0,0,1);
+		font-size: 11pt;
+		float: left;
+        text-align:left;
+		width: 500px;
+        margin:5px;
 	}
 	#type1
 	{
@@ -385,7 +413,7 @@ text-align:right;
 	    height:680px;
 		border:1px solid #CCC;
 	}
-	#question
+	#dislog
 	{
 		font-size: 12pt;
 		background: #2372DE url(images/bg01.png) repeat;
@@ -407,7 +435,8 @@ text-align:right;
 /* content                                                                       */
 /*********************************************************************************/
 	hr.b{
-	border:1; height:0px; 
+	border:1;
+    height:0px; 
 	background-color:#000;
 	color:#000000;
 	}
