@@ -53,7 +53,7 @@
             <table>
                 <tr align="right">
                     <td colspan="3">
-                        <div style="height: 480px; overflow-x: hidden; overflow-y: auto;vertical-align:top; margin-top:0;" id="mydiv">
+                        <div style="height: 580px; overflow-x: hidden; overflow-y: auto;vertical-align:top; margin-top:0;" id="mydiv">
                             <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
                                 <ContentTemplate>
                                      <asp:HiddenField ID="HiddenField1" runat="server" Value="1" />
@@ -64,17 +64,17 @@
                                                     <table style="background: white; width: 100%">
                                                         <tr align="right">
                                                             <td scope="col" valign="top" width="70px">
-                                                                <div class="teamname">
+                                                                <div class="teamnamepre">
                                                                     <asp:Literal ID='Label3' runat='server' Text='<%# Bind("nickname") %>'></asp:Literal>
                                                                 </div>
                                                             </td>
                                                             <td scope="col" valign="top">
-                                                                <div class="dislog">
+                                                                <div class="dislogpre">
                                                                     <asp:Literal ID='Label1' runat='server' Text='<%# Bind("topic") %>'></asp:Literal>
                                                                 </div>
                                                             </td>
                                                             <td scope="col" valign="top" width="70px">
-                                                                <div class="time" align="left">
+                                                                <div class="timepre" align="left">
                                                                     <asp:Literal ID='Label2' runat='server' Text='<%# Bind("time","{0:tt hh:mm:ss}") %>'></asp:Literal>
                                                                 </div>
                                                             </td>
@@ -88,17 +88,17 @@
                                                     <table style="background: #CCC; width: 100%">
                                                         <tr align="right">
                                                             <td scope="col" valign="top" width="70px">
-                                                                <div class="teamname">
+                                                                <div class="teamnamepre">
                                                                     <asp:Literal ID='Label3' runat='server' Text='<%# Bind("nickname") %>'></asp:Literal>
                                                                 </div>
                                                             </td>
                                                             <td scope="col" valign="top">
-                                                                <div class="dislog">
+                                                                <div class="dislogpre">
                                                                     <asp:Literal ID='Label1' runat='server' Text='<%# Bind("topic") %>'></asp:Literal>
                                                                 </div>
                                                             </td>
                                                             <td scope="col" valign="top" width="70px">
-                                                                <div class="time" align="left">
+                                                                <div class="timepre" align="left">
                                                                     <asp:Literal ID='Label2' runat='server' Text='<%# Bind("time","{0:tt hh:mm:ss}") %>'></asp:Literal>
                                                                 </div>
                                                             </td>

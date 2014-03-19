@@ -68,7 +68,7 @@ public partial class DiscussionBPreview : System.Web.UI.Page
                                         where x.labid == u.labid && x.groupid == u.groupid && x.num == no
                                         select new
                                         {
-                                            topic = "<pre>" + x.topic + "</pre>",
+                                            topic =  x.topic ,
                                             student_id = x.student_id,
                                             time = x.time,
                                             nickname = z
