@@ -49,7 +49,49 @@ public partial class Exercise_PreTest1 : System.Web.UI.Page
 
 
         }
+        
+        if (!Page.IsPostBack)
+        {
+            //Keep State
+            String surveyid = Request.QueryString["surveyid"];
+            int svid = int.Parse(surveyid);
+            int lab_id = int.Parse(labid);
+            User u = UserDAO.GetUserFromSession();
+            StringBuilder sb = new StringBuilder();
+            using (LabsDBEntities db = new LabsDBEntities())
+            {
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+
+                    Label hf = row.FindControl("questionid") as Label;
+                    int q_id = -1;
+                    try
+                    {
+                        q_id = int.Parse(hf.Text);
+                    }
+                    catch
+                    {
+                        q_id = int.Parse(hf.Text.Split(',')[0]);
+                    }
+                    try
+                    {
+
+                        var answer = db.ScaleAnswers.Where(c => c.labid == lab_id && c.qid == q_id && c.surveyid == svid && c.studentid == u.sid).First();
+                        sb.Append("," + answer.rank);
+                    }
+                    catch (Exception ex)
+                    {
+                        sb.Append("," + 0);
+
+                    }
+                }
+
+            }
+            Session["PreTest1"] = "[" + sb.ToString().Substring(1) + "]";
+        }
     }
+
+    
     protected void NextButton_Click(object sender, EventArgs e)
     {
         StringBuilder sb = new StringBuilder();
