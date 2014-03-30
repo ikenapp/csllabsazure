@@ -49,7 +49,11 @@ public partial class Execise2_SelfEvaluation : System.Web.UI.Page
 
         }
 
-
+        if (!Page.IsPostBack)
+        {
+            //Keep State
+            UserDAO.setInputsToSession("SelfEval2", GridView1, labid);
+        }
 
 
     }

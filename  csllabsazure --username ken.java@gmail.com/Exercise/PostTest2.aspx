@@ -161,8 +161,18 @@
     </div>
     <script type="text/javascript" language="javascript">
         
+        array = '<%= Session["PostTest2"]%>';
         $(document).ready(function () {
             gridviewScroll();
+           <% if(!Page.IsPostBack){%>
+            //alert(array)
+            array = eval(array);
+            for(i = 0; i<array.length;i++){
+                var fieldName = "MainContent_GridView1_RadioButton"+array[i]+"_"+i;
+                //console.log(fieldName)
+                $('input:radio[id="'+fieldName+'"]').attr('checked', true);
+            }
+            <%}%>
         });
 	
         function gridviewScroll() {

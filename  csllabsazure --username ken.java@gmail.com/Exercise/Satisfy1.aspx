@@ -176,18 +176,19 @@
             onclick="NextButton_Click" OnClientClick="return check();" /></div><br />
     </div>
     <script type="text/javascript" language="javascript">
-//        var prm = Sys.WebForms.PageRequestManager.getInstance()
-//        prm.add_endRequest(EndRequestHandler);
-//        function EndRequestHandler(sender, args) {
-
-//            tables = $('table')
-//            $(tables[0]).toSuperTable({ width: "100%", height: "400px", headerRows: 1, cssSkin: "sDefault" }).find("tr:even").addClass("altRow");
-//        }
-    
-       $(document).ready(function () {
+        array = '<%= Session["Satisfy1"]%>';
+        $(document).ready(function () {
             gridviewScroll();
-        });
-	
+           <% if(!Page.IsPostBack){%>
+            //alert(array)
+            array = eval(array);
+            for(i = 0; i<array.length;i++){
+                var fieldName = "MainContent_GridView1_RadioButton"+array[i]+"_"+i;
+                //console.log(fieldName)
+                $('input:radio[id="'+fieldName+'"]').attr('checked', true);
+            }
+            <%}%>
+        });	
         function gridviewScroll() {
             if(<%= "'"+isShow+"'" %> == 'True'){
                 alert('<%= message %>');

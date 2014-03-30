@@ -90,7 +90,7 @@
                     </asp:TemplateField>
                      <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:RadioButton ID="RadioButton1" runat="server" CausesValidation="False" GroupName="Values" Text="5" />
+                            <asp:RadioButton ID="RadioButton5" runat="server" CausesValidation="False" GroupName="Values" Text="5" />
                         </ItemTemplate>
                         <HeaderTemplate>
                             非<br>常<br>同<br>意
@@ -99,7 +99,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:RadioButton ID="RadioButton2" runat="server" CausesValidation="False" GroupName="Values" Text="4" />
+                            <asp:RadioButton ID="RadioButton4" runat="server" CausesValidation="False" GroupName="Values" Text="4" />
                         </ItemTemplate>
                         <HeaderTemplate>
                            部<br>分<br>同<br>意
@@ -117,7 +117,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:RadioButton ID="RadioButton4" runat="server" CausesValidation="False" GroupName="Values" Text="2" />
+                            <asp:RadioButton ID="RadioButton2" runat="server" CausesValidation="False" GroupName="Values" Text="2" />
                         </ItemTemplate>
                         <HeaderTemplate>
                             部<br>分<br>不<br>同<br>意
@@ -126,7 +126,7 @@
                     </asp:TemplateField>
                     <asp:TemplateField>
                         <ItemTemplate>
-                            <asp:RadioButton ID="RadioButton5" runat="server" CausesValidation="False" GroupName="Values" Text="1" />
+                            <asp:RadioButton ID="RadioButton1" runat="server" CausesValidation="False" GroupName="Values" Text="1" />
                         </ItemTemplate>
                         <HeaderTemplate>
                             非<br>常<br>不<br>同<br>意
@@ -164,8 +164,18 @@
             onclick="NextButton_Click" /></div>
     </div>
     <script type="text/javascript" language="javascript">
+        array = '<%= Session["SelfEval2"]%>';
         $(document).ready(function () {
             gridviewScroll();
+           <% if(!Page.IsPostBack){%>
+            //alert(array)
+            array = eval(array);
+            for(i = 0; i<array.length;i++){
+                var fieldName = "MainContent_GridView1_RadioButton"+array[i]+"_"+i;
+                //console.log(fieldName)
+                $('input:radio[id="'+fieldName+'"]').attr('checked', true);
+            }
+            <%}%>
         });
 	
         function gridviewScroll() {

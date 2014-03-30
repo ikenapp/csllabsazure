@@ -47,9 +47,13 @@ public partial class Execise_SelfEvaluation : System.Web.UI.Page
                 return;
             }
 
-
         }
 
+        if (!Page.IsPostBack)
+        {
+            //Keep State
+            UserDAO.setInputsToSession("SelfEval",GridView1,labid);
+        }
 
 
 
