@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="PreTest1.aspx.cs" Inherits="Exercise_PreTest1"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="PreTest1.aspx.cs" Inherits="Exercise_PreTest1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" Runat="Server">
     <style type="text/css">
@@ -177,8 +177,18 @@
 //            $(tables[0]).toSuperTable({ width: "100%", height: "400px", headerRows: 1, cssSkin: "sDefault" }).find("tr:even").addClass("altRow");
 //        }
     
+        array = '<%= Session["PreTest1"]%>';
        $(document).ready(function () {
-            gridviewScroll();
+           gridviewScroll();
+           <% if(!Page.IsPostBack){%>
+           //alert(array)
+           array = eval(array);
+           for(i = 0; i<array.length;i++){
+               var fieldName = "MainContent_GridView1_RadioButton"+array[i]+"_"+i;
+               //console.log(fieldName)
+               $('input:radio[id="'+fieldName+'"]').attr('checked', true);
+           }
+           <%}%>
         });
 	
         function gridviewScroll() {
