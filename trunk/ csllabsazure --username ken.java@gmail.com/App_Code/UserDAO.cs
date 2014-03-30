@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.SessionState;
+using System.Web.UI.WebControls;
 
 /// <summary>
 /// Summary description for UserDAO
@@ -106,6 +108,51 @@ namespace Lib
             }
         }
 
+
+        public static void setInputsToSession(String key, GridView GridView1, String labid)
+        {
+                //Keep State
+                String surveyid = HttpContext.Current.Request.QueryString["surveyid"];
+                int svid = int.Parse(surveyid);
+                int lab_id = int.Parse(labid);
+                User u = UserDAO.GetUserFromSession();
+                StringBuilder sb = new StringBuilder();
+                using (LabsDBEntities db = new LabsDBEntities())
+                {
+                    foreach (GridViewRow row in GridView1.Rows)
+                    {
+
+                        Label hf = row.FindControl("questionid") as Label;
+                        int q_id = -1;
+                        try
+                        {
+                            q_id = int.Parse(hf.Text);
+                        }
+                        catch
+                        {
+                            q_id = int.Parse(hf.Text.Split(',')[0]);
+                        }
+                        try
+                        {
+
+                            var answer = db.ScaleAnswers.Where(c => c.labid == lab_id && c.qid == q_id && c.surveyid == svid && c.studentid == u.sid).First();
+                            sb.Append("," + answer.rank);
+                        }
+                        catch (Exception ex)
+                        {
+                            sb.Append("," + 0);
+
+                        }
+                    }
+
+                }
+                if (sb.ToString().Length >= 1)
+                {
+                    HttpContext.Current.Session[key] = "[" + sb.ToString().Substring(1) + "]";
+                }
+
+        }
+           
     }
 
 }

@@ -158,7 +158,7 @@
                         </SelectParameters>
                     </asp:SqlDataSource>
             </div>
-            <br />
+            <br /> 
             </span> 
         </ContentTemplate>
     </asp:UpdatePanel>
@@ -167,11 +167,23 @@
     </div>
     <br>
     <script type="text/javascript" language="javascript">
+        array = "<%= Session["PartB2"]%>";
         window.onload = function(){
             if(<%= "'"+isShow+"'" %> == 'True'){
-                      alert('<%= message %>');
-                  }
-              }
+                alert('<%= message %>');
+            }
+
+            <% if(!Page.IsPostBack){%>
+            //alert(array)
+            array = eval(array);
+            for(i = 0; i<array.length;i++){
+                var fieldName = "MainContent_GridView1_Answer_"+i;
+                console.log(fieldName)
+                document.getElementById(fieldName).value = array[i].replace(/<br>/ig, "\r\n");
+            }
+            <%}%>
+        }
+
     </script>
     <script>
         closeHandler();

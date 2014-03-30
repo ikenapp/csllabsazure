@@ -120,14 +120,24 @@
     </div>
     <br>
     <script type="text/javascript" language="javascript">
+        array = "<%= Session["Satisfy2"]%>";
         window.onload = function(){
             if(<%= "'"+isShow+"'" %> == 'True'){
                       alert('<%= message %>');
-                  }
-              }
+            }
+
+            <% if(!Page.IsPostBack){%>
+            //alert(array)
+            array = eval(array);
+            for(i = 0; i<array.length;i++){
+                var fieldName = "MainContent_GridView1_Answer_"+i;
+                console.log(fieldName)
+                document.getElementById(fieldName).value = array[i];
+            }
+            <%}%>
+        }
+
     </script>
-    <script>
-        closeHandler();
-    </script>
+    
 </asp:Content>
 

@@ -49,6 +49,12 @@ public partial class Exercise_PostTest1 : System.Web.UI.Page
 
 
         }
+
+        if (!Page.IsPostBack)
+        {
+            //Keep State
+            UserDAO.setInputsToSession("PostTest1", GridView1, labid);
+        }
     }
     protected void NextButton_Click(object sender, EventArgs e)
     {

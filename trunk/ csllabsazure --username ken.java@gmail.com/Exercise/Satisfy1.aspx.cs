@@ -49,6 +49,12 @@ public partial class Exercise_Satisfy1 : System.Web.UI.Page
 
 
         }
+
+        if (!Page.IsPostBack)
+        {
+            //Keep State
+            UserDAO.setInputsToSession("Satisfy1", GridView1, labid);
+        }
     }
     protected void NextButton_Click(object sender, EventArgs e)
     {
@@ -102,7 +108,6 @@ public partial class Exercise_Satisfy1 : System.Web.UI.Page
                     }
                     catch (Exception ex)
                     {
-
                         ScaleAnswer ans = new ScaleAnswer
                         {
                             labid = lab_id,
