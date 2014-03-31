@@ -132,7 +132,7 @@
             for(i = 0; i<array.length;i++){
                 var fieldName = "MainContent_GridView1_Answer_"+i;
                 console.log(fieldName)
-                document.getElementById(fieldName).value = array[i];
+                document.getElementById(fieldName).value = array[i].replace(/<br>/ig, "\r\n");
             }
             <%}%>
         }

@@ -9,13 +9,13 @@ using Lib;
 
 public partial class Discussion_DiscussioD2 : System.Web.UI.Page
 {
-    String labid = "";
+    //String labid = "";
     int survey_id;
     public bool isShow = false;
     public String message = "";
     protected void Page_Load(object sender, EventArgs e)
     {
-        labid = Request.QueryString["labid"] != null ? Request.QueryString["labid"].ToString() : "";
+        String labid = Request.QueryString["labid"] != null ? Request.QueryString["labid"].ToString() : "";
         if (String.IsNullOrEmpty(labid))
         {
             LabInfo.Text = "網路發生不可預期錯誤.請重新登入再試!";
@@ -28,7 +28,7 @@ public partial class Discussion_DiscussioD2 : System.Web.UI.Page
         if (!Page.IsPostBack)
         {
             bool isError = false;
-            int lab_id = int.Parse(this.labid);
+            int lab_id = int.Parse(labid);
 
             User u = UserDAO.GetUserFromSession();
             if (u != null)
@@ -42,7 +42,7 @@ public partial class Discussion_DiscussioD2 : System.Web.UI.Page
                         //var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
                         //Part1Title.Text = "一、" + question1.question1;
                         var question2 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 200).First();
-                        Part2Title.Text = "二、" + question2.question1 +" 點開<a href='javascript:void(0)' class='previewparta1' onclick='openNewWin()' >前一頁我的作答結果</a>";
+                        Part2Title.Text = "二、" + question2.question1 + " <button onclick='openNewWin()' >前一堂課我的作答結果</button>";
 
 
                         isError = false;
@@ -61,6 +61,7 @@ public partial class Discussion_DiscussioD2 : System.Web.UI.Page
                 Response.Write("網路發生不可預期錯誤.請重新登入再試!");
                 return;
             }
+            UserDAO.setInputsToSession("PartB1D_", "PartB1D", GridView1, labid);
         }
 
     }
@@ -90,7 +91,7 @@ public partial class Discussion_DiscussioD2 : System.Web.UI.Page
             int q_id = int.Parse(hf.Value);
             TextBox answerTB = gRow.FindControl("Answer") as TextBox;
             string answerText = HttpUtility.HtmlEncode(answerTB.Text);
-            int lab_id = int.Parse(labid);
+            int lab_id = u.labid;
             using (LabsDBEntities db = new LabsDBEntities())
             {
                 try
@@ -146,7 +147,7 @@ public partial class Discussion_DiscussioD2 : System.Web.UI.Page
             User u = UserDAO.GetUserFromSession();
             if (u != null)
             {
-                int lab_id2 = int.Parse(labid);
+                int lab_id2 = u.labid;
                 using (LabsDBEntities db = new LabsDBEntities())
                 {
                     try

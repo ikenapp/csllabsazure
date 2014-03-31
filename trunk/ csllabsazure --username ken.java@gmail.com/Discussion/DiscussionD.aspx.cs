@@ -14,15 +14,16 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
     public String message = "";
     public String label_rank = "3. 請就系統提供的選框選項，選擇您給予該說法的認同強度為 ";
     public String label_rank_end = "";
-    public String label_content = "1.請摘錄該說法的內容(可以用複製/貼上的功能)：";
+    public String label_content = "1.請扼要摘錄該說法的論點內容(500字為上限，可以用複製/貼上的功能)：";
     public String label_source = "2.請標示該說法的資料來源(含：作者/網站名稱/網址)";
-    public String label_attributes = "4. 請判斷這個說法包含了以下那些屬性(可單選或多選)：";
+    public String label_attributes = "4.請參考Levels of Evidence (SIGN)的標準，判斷該論點資料的實證強度：";
     public String option_attr_1 = "具實證基礎";
     public String option_attr_2 = "專家個人看法";
     public String option_attr_3 = "個人假設";
     public String option_attr_4 = "未經查證的資料";
     public String option_attr_5 = "無法判斷";
     public String label_opinons = "5. 請寫下您對於此說法的看法(包括「優點」與「缺點」，請參考學習單的範例)";
+
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -95,6 +96,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
         TextBox source = view.FindControl("SourceTB" + idx) as TextBox;
         TextBox opinion = view.FindControl("OpinionTB" + idx) as TextBox;
         RadioButtonList attrcb = view.FindControl("AttrList" + idx) as RadioButtonList;
+        RadioButtonList attrlevel = view.FindControl("AttrLevel" + idx) as RadioButtonList;
         Label msg = view.FindControl("MsgLabel" + idx) as Label;
         msg.Text = "";
         int rankVal = int.Parse(ddl.SelectedValue);
@@ -108,14 +110,14 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
             int survey_id = int.Parse(Request.QueryString["surveyid"]);
             String attrs = "";
             bool flag = false;
-            foreach (ListItem item in attrcb.Items)
-            {
-                if (item.Selected)
-                {
-                    flag = true;
-                    attrs += item.Value + ",";
-                }
-            }
+            //foreach (ListItem item in attrcb.Items)
+            //{
+            //    if (item.Selected)
+            //    {
+            //        flag = true;
+            //        attrs += item.Value + ",";
+            //    }
+            //}
             int count = 0;
             if (String.IsNullOrEmpty(contentStr))
             {
@@ -127,10 +129,14 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
                 msg.Text += "資料來源必填, ";
                 count++;
             }
-            if (!flag)
+            if (attrcb.SelectedIndex == -1)
             {
-                msg.Text += "資料屬性至少選一項, ";
+                msg.Text += "實證強度必填, ";
                 count++;
+            }
+            else if (attrcb.SelectedIndex == 0)
+            {
+                attrs += " " + attrlevel.SelectedValue;
             }
             if (String.IsNullOrEmpty(opinionStr))
             {
@@ -150,6 +156,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
 
                 return;
             }
+           
             using (LabsDBEntities db = new LabsDBEntities())
             {
                 try
@@ -192,7 +199,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
     protected void NextButton_Click(object sender, EventArgs e)
     {
         int count = 0;
-        for (int idx = 1; idx <= 7; idx++)
+        for (int idx = 1; idx <= 5; idx++)
         {
             View view = MultiView1.FindControl("View" + idx) as View;
             TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
@@ -227,7 +234,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
         else
         {
             bool status;
-            SaveOpinion(7, out status);
+            SaveOpinion(5, out status);
             if (status)
             {
                  Session["PartB1D"] = null;
