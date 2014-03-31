@@ -1,5 +1,4 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DiscussionCExport.aspx.cs" Inherits="Discussion_CExport" %>
-<%@ Page Language="C#" AutoEventWireup="true" CodeFile="DiscussionCExport.aspx.cs" Inherits="Discussion_CExport" %>
 
 <!DOCTYPE html>
 

@@ -492,11 +492,11 @@
         </asp:UpdatePanel>
 
          <script type="text/javascript">
-             window.onload = function () {
-                 if ('<%= isShow %>' == 'True') {
+             window.onload = function(){
+                 if(<%= "'"+isShow+"'" %> == 'True'){
                      alert('<%= message %>');
                  }
-             };
+             }
     </script>
       
     </div>

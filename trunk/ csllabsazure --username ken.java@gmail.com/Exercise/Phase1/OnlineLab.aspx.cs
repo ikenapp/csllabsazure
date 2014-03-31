@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -39,6 +40,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
             bool isError = false;
             int lab_id = int.Parse(this.labid);
             User u = UserDAO.GetUserFromSession();
+            String surveyid = Request.QueryString["surveyid"];
             if (u != null)
             {
                 LabInfo.Text = String.Format("姓名 : {0} 學號 : {1} 學校 : {2} 系所 : {3}", u.name, u.student_id, u.school, u.dept);
@@ -49,7 +51,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
                         var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 11).First();
                         var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
                         Part1Title.Text = "一、" + question1.question1;
-                        String surveyid = Request.QueryString["surveyid"];
+                       
 
                         NextButton.PostBackUrl += "?surveyid=" + surveyid + "&labid=" + labid + "&minid=200";
                         isError = false;
@@ -62,10 +64,49 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
                     }
                 }
             }
-           if (isError)
+            if (isError)
             {
-                  Response.Write("網路發生不可預期錯誤.請重新登入再試!");
+                Response.Write("網路發生不可預期錯誤.請重新登入再試!");
                 return;
+            }
+            int survey_id = int.Parse(surveyid);
+            for (int i = 1; i <= 5; i++)
+            {
+                using (LabsDBEntities db = new LabsDBEntities())
+                {
+                    try
+                    {
+                        var answer = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartA" && c.optionid == i).First();
+                        View view = MultiView1.FindControl("View" + i) as View;
+                        DropDownList ddl = view.FindControl("DropDownList" + i) as DropDownList;
+                        TextBox content = view.FindControl("ContentTB" + i) as TextBox;
+                        TextBox source = view.FindControl("SourceTB" + i) as TextBox;
+                        TextBox opinion = view.FindControl("OpinionTB" + i) as TextBox;
+                        RadioButtonList attrcb = view.FindControl("AttrList" + i) as RadioButtonList;
+                        RadioButtonList attrlevel = view.FindControl("AttrLevel" + i) as RadioButtonList;
+                        String attr1="",attr2="";
+                        if (answer.attributes.IndexOf(" ") != -1)
+                        {
+                            String[] data = answer.attributes.Split(' ');
+                            attr1 = data[0];
+                            attr2 = data[1];
+                        }
+                        else
+                        {
+                            attr1 = answer.attributes;
+                            attr2 = "1++";
+                        }
+                        ddl.SelectedValue = answer.rank.ToString();
+                        content.Text = answer.contents;
+                        source.Text = answer.links;
+                        opinion.Text = answer.opinions;
+                        attrcb.SelectedValue = attr1;
+                        attrlevel.SelectedValue =attr2;
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
             }
         }
 
