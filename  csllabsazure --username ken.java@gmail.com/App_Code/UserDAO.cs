@@ -108,7 +108,40 @@ namespace Lib
             }
         }
 
+        public static void setInputsToSession(String key, String phase, GridView GridView1, String labid)
+        {
+            String surveyid = HttpContext.Current.Request.QueryString["surveyid"];
+            int survey_id = int.Parse(surveyid);
+            int lab_id = int.Parse(labid);
+            User u = UserDAO.GetUserFromSession();
+            StringBuilder sb = new StringBuilder();
+            int rows = GridView1.Rows.Count;
+            for (int i = 0; i < rows; i++)
+            {
+                GridViewRow gRow = GridView1.Rows[i];
+                HiddenField hf = gRow.FindControl("qid") as HiddenField;
+                int q_id = int.Parse(hf.Value);
+                using (LabsDBEntities db = new LabsDBEntities())
+                {
+                    try
+                    {
+                        var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == phase).First();
+                        sb.Append(",'" + ans.contents.Replace("\r\n", "<br>") + "'");
+                    }
+                    catch (Exception ex)
+                    {
+                        sb.Append(",''");
 
+                    }
+
+
+                }
+                if (sb.ToString().Length >= 1)
+                {
+                    HttpContext.Current.Session[key] = "[" + sb.ToString().Substring(1) + "]";
+                }
+            }
+}
         public static void setInputsToSession(String key, GridView GridView1, String labid)
         {
                 //Keep State

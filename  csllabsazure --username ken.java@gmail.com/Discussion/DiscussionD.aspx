@@ -91,10 +91,10 @@
                 CommandArgument="3" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button5" runat="server" Text="說法5" 
                 CommandArgument="4" CommandName="SwitchViewByIndex" />
-            <asp:Button ID="Button6" runat="server" Text="說法6" 
+<%--            <asp:Button ID="Button6" runat="server" Text="說法6" 
                 CommandArgument="5" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button7" runat="server" Text="說法7" 
-                CommandArgument="6" CommandName="SwitchViewByIndex" />
+                CommandArgument="6" CommandName="SwitchViewByIndex" />--%>
                     <div class="optionPanel">
                     <h3>說法一:</h3><%= label_content %><br />
                         <asp:TextBox ID="ContentTB1" runat="server" Height="135px" TextMode="MultiLine" Width="800px"></asp:TextBox>
@@ -111,13 +111,24 @@
                         </asp:DropDownList>
                         <%= label_rank_end %> <br><br>
                         <%= label_attributes %><br>
-                        <asp:RadioButtonList ID="AttrList1" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:RadioButtonList><br />
+                        <table style="border:none;">
+                            <tr>
+                                <td valign="top" style="border:none;">
+                         <asp:RadioButtonList ID="AttrList1" runat="server" RepeatDirection="Vertical" RepeatLayout="Flow">
+                           <asp:ListItem>實證資料--></asp:ListItem>
+                           <asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList>
+                                </td><td valign="top" style="border:none;">
+                        <asp:RadioButtonList ID="AttrLevel1"  runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Selected>1++</asp:ListItem>
+                        <asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+                        </asp:RadioButtonList></td></tr></table><br/>
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB1" runat="server" Height="135px" TextMode="MultiLine" Width="800px"></asp:TextBox><br /> 
                         <asp:Button ID="SaveButton1" runat="server" onclick="SaveButton1_Click" Text="儲存" />
@@ -136,10 +147,10 @@
                 CommandArgument="3" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button12" runat="server" Text="說法5" 
                 CommandArgument="4" CommandName="SwitchViewByIndex" />
-            <asp:Button ID="Button13" runat="server" Text="說法6" 
+<%--            <asp:Button ID="Button13" runat="server" Text="說法6" 
                 CommandArgument="5" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button14" runat="server" Text="說法7" 
-                CommandArgument="6" CommandName="SwitchViewByIndex" />
+                CommandArgument="6" CommandName="SwitchViewByIndex" />--%>
                     <div class="optionPanel">
                     <h3>說法二:</h3>
                          <%= label_content %><br />
@@ -152,7 +163,7 @@
                         <br />
                         <br /> 
                         <%= label_rank %><asp:DropDownList ID="DropDownList2" runat="server">
-                              <asp:ListItem Value="1">非常不認同</asp:ListItem>
+                            <asp:ListItem Value="1">非常不認同</asp:ListItem>
                             <asp:ListItem Value="2">大部分不認同</asp:ListItem>
                             <asp:ListItem Value="3">普通</asp:ListItem>
                             <asp:ListItem Value="4">大部分認同</asp:ListItem>
@@ -160,13 +171,24 @@
                     </asp:DropDownList>
                         <%= label_rank_end %>
                         <br /><br /><%= label_attributes %><br>
-                        <asp:RadioButtonList ID="AttrList2" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:RadioButtonList><br />
+                        <table style="border:none;">
+                            <tr>
+                                <td valign="top" style="border:none;">
+                         <asp:RadioButtonList ID="AttrList2" runat="server" RepeatDirection="Vertical" RepeatLayout="Flow">
+                           <asp:ListItem>實證資料--></asp:ListItem>
+                           <asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList>
+                                </td><td valign="top" style="border:none;">
+                        <asp:RadioButtonList ID="AttrLevel2"  runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Selected>1++</asp:ListItem>
+                        <asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+                        </asp:RadioButtonList></td></tr></table><br/>
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB2" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton2" runat="server" 
@@ -185,10 +207,10 @@
                 CommandArgument="3" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button52" runat="server" Text="說法5" 
                 CommandArgument="4" CommandName="SwitchViewByIndex" />
-            <asp:Button ID="Button53" runat="server" Text="說法6" 
+<%--            <asp:Button ID="Button53" runat="server" Text="說法6" 
                 CommandArgument="5" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button54" runat="server" Text="說法7" 
-                CommandArgument="6" CommandName="SwitchViewByIndex" />
+                CommandArgument="6" CommandName="SwitchViewByIndex" />--%>
                     <div class="optionPanel"> 
                     <h3>說法三:</h3><%= label_content %><br />
                         <asp:TextBox ID="ContentTB3" runat="server" Height="135px" TextMode="MultiLine" 
@@ -209,13 +231,24 @@
                      
                         <br />
                         <br /> <%= label_attributes %><br>
-                        <asp:RadioButtonList ID="AttrList3" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:RadioButtonList><br />
+                        <table style="border:none;">
+                            <tr>
+                                <td valign="top" style="border:none;">
+                         <asp:RadioButtonList ID="AttrList3" runat="server" RepeatDirection="Vertical" RepeatLayout="Flow">
+                           <asp:ListItem>實證資料--></asp:ListItem>
+                           <asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList>
+                                </td><td valign="top" style="border:none;">
+                        <asp:RadioButtonList ID="AttrLevel3"  runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Selected>1++</asp:ListItem>
+                        <asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+                        </asp:RadioButtonList></td></tr></table><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB3" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton3" runat="server" 
@@ -233,10 +266,10 @@
                 CommandArgument="3" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button44" runat="server" Text="說法5" 
                 CommandArgument="4" CommandName="SwitchViewByIndex" />
-            <asp:Button ID="Button45" runat="server" Text="說法6" 
+<%--            <asp:Button ID="Button45" runat="server" Text="說法6" 
                 CommandArgument="5" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button46" runat="server" Text="說法7" 
-                CommandArgument="6" CommandName="SwitchViewByIndex" />
+                CommandArgument="6" CommandName="SwitchViewByIndex" />--%>
                     <div class="optionPanel">
                     <h3>說法四:</h3>
                      
@@ -256,16 +289,27 @@
                         </asp:DropDownList>
                         <%= label_rank_end %>
                         <br /><br /> <%= label_attributes %><br>
-                        <asp:RadioButtonList ID="AttrList4" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:RadioButtonList><br />
+                       <table style="border:none;">
+                            <tr>
+                                <td valign="top" style="border:none;">
+                        <asp:RadioButtonList ID="AttrList4" runat="server" RepeatDirection="Vertical" RepeatLayout="Flow">
+                           <asp:ListItem>實證資料--></asp:ListItem>
+                           <asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList>
+                                </td><td valign="top" style="border:none;">
+                        <asp:RadioButtonList ID="AttrLevel4"  runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Selected>1++</asp:ListItem>
+                        <asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+                        </asp:RadioButtonList></td></tr></table><br/>
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB4" runat="server" Height="135px" TextMode="MultiLine" 
-                            Width="800px"></asp:TextBox><asp:Button ID="SaveButton4" runat="server" 
+                            Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton4" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/><asp:Label ID="MsgLabel4" runat="server" Text="" CssClass="MSG"></asp:Label>
                     </div>
                 </asp:View>
@@ -280,10 +324,12 @@
                 CommandArgument="3" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button36" runat="server" Text="說法5" CssClass="focusView"
                 CommandArgument="4" CommandName="SwitchViewByIndex" />
-            <asp:Button ID="Button37" runat="server" Text="說法6" 
+<%--            <asp:Button ID="Button37" runat="server" Text="說法6" 
                 CommandArgument="5" CommandName="SwitchViewByIndex" />
-            <asp:Button ID="Button38" runat="server" Text="說法7" 
-                CommandArgument="6" CommandName="SwitchViewByIndex" />
+            <asp:Button ID="Button38" runat="server" Text="說法7"
+                CommandArgument="6" CommandName="SwitchViewByIndex" /> --%>
+                    <asp:Button ID="NextButton" runat="server" Text="進行第二部分 >>"  CssClass="Next"
+                     onclick="NextButton_Click" />
                     <div class="optionPanel">
                     <h3>說法五:</h3>
                         <%= label_content %><br />
@@ -303,13 +349,24 @@
                   </asp:DropDownList>
                         <%= label_rank_end %> <br /> <br />
                          <%= label_attributes %><br>
-                        <asp:RadioButtonList ID="AttrList5" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
-                        </asp:RadioButtonList><br />
+                        <table style="border:none;">
+                            <tr>
+                                <td valign="top" style="border:none;">
+                        <asp:RadioButtonList ID="AttrList5" runat="server" RepeatDirection="Vertical" RepeatLayout="Flow">
+                           <asp:ListItem>實證資料--></asp:ListItem>
+                           <asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
+                        </asp:RadioButtonList>
+                                </td><td valign="top" style="border:none;">
+                        <asp:RadioButtonList ID="AttrLevel5"  runat="server" RepeatDirection="Horizontal">
+                            <asp:ListItem Selected>1++</asp:ListItem>
+                        <asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+                        </asp:RadioButtonList></td></tr></table><br />
                         <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB5" runat="server" Height="135px" TextMode="MultiLine" 
                             Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton15" runat="server" 
@@ -351,15 +408,19 @@
                         
                         <br /> <br /><%= label_attributes %><br>
                         <asp:RadioButtonList ID="AttrList6" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
+                          <asp:ListItem>1++</asp:ListItem>
+<asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+<asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
                         </asp:RadioButtonList>
                          <br /><%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB6" runat="server" Height="135px" TextMode="MultiLine" 
-                            Width="800px"></asp:TextBox><asp:Button ID="SaveButton6" runat="server" 
+                            Width="800px"></asp:TextBox><br /> <asp:Button ID="SaveButton6" runat="server" 
                             Text="儲存" onclick="SaveButton1_Click" /><br/>
                             <asp:Label ID="MsgLabel6" runat="server" Text=""></asp:Label>
                     </div>
@@ -379,8 +440,8 @@
                 CommandArgument="5" CommandName="SwitchViewByIndex" />
             <asp:Button ID="Button22" runat="server" Text="說法7" CssClass="focusView"
                 CommandArgument="6" CommandName="SwitchViewByIndex" />
-                    <asp:Button ID="NextButton" runat="server" Text="進行第二部分 >>"  CssClass="Next"
-                    onclick="NextButton_Click" 
+                    <asp:Button ID="NextButton2" runat="server" Text="進行第二部分 >>"  CssClass="Next"
+                     onclick="NextButton_Click" />
              />
        
                     <div class="optionPanel">
@@ -402,11 +463,15 @@
                         <%= label_rank_end %>
                          <br /><br /><%= label_attributes %><br>
                         <asp:RadioButtonList ID="AttrList7" runat="server" RepeatDirection="Horizontal">
-                            <asp:ListItem Value="1">具實證基礎</asp:ListItem>
-                            <asp:ListItem Value="2">專家個人看法</asp:ListItem>
-                            <asp:ListItem Value="3">個人假設</asp:ListItem>
-                            <asp:ListItem Value="4">未經查證的資料</asp:ListItem>
-                            <asp:ListItem Value="5">無法判斷</asp:ListItem>
+                           <asp:ListItem>1++</asp:ListItem>
+<asp:ListItem>1+</asp:ListItem>
+<asp:ListItem>1-</asp:ListItem>
+<asp:ListItem>2++</asp:ListItem>
+<asp:ListItem>2+</asp:ListItem>
+<asp:ListItem>3</asp:ListItem>
+<asp:ListItem>4</asp:ListItem>
+<asp:ListItem>非實證資料</asp:ListItem>
+<asp:ListItem>無法判斷</asp:ListItem>
                         </asp:RadioButtonList><br />
                           <%= label_opinons %><br /> 
                         <asp:TextBox ID="OpinionTB7" runat="server" Height="135px" TextMode="MultiLine" 
@@ -435,14 +500,6 @@
 
     </script>
 
-        <script>
-            /*window.onbeforeunload = function (e) {
-
-                var confirmationMessage = "關閉前請確認資料是否儲存!!!";
-
-                (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
-                return confirmationMessage;
-            }*/
-    </script>
+       
     </div>
 </asp:Content>

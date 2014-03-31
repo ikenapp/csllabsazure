@@ -60,6 +60,34 @@ public partial class Execise_OnlineLab2 : System.Web.UI.Page
                 Response.Write("網路發生不可預期錯誤.請重新登入再試!");
                 return;
             }
+            //StringBuilder sb = new StringBuilder();
+            //int rows = GridView1.Rows.Count;
+            //for (int i = 0; i < rows; i++)
+            //{
+            //    GridViewRow gRow = GridView1.Rows[i];
+            //    HiddenField hf = gRow.FindControl("qid") as HiddenField;
+            //    int q_id = int.Parse(hf.Value);
+            //    using (LabsDBEntities db = new LabsDBEntities())
+            //    {
+            //        try
+            //        {
+            //            var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == "PartA").First();
+            //            sb.Append(",'" + ans.contents + "'");
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            sb.Append(",''");
+
+            //        }
+
+
+            //    }
+            //    if (sb.ToString().Length >= 1)
+            //    {
+            //        Session["PartA"] = "[" + sb.ToString().Substring(1) + "]";
+            //    }
+            //}
+            UserDAO.setInputsToSession("PartA", "PartA", GridView1, labid);
         }
 
     }

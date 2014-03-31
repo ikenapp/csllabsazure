@@ -498,15 +498,7 @@
                  }
              };
     </script>
-        <script>
-            /*window.onbeforeunload = function (e) {
-
-                var confirmationMessage = "關閉前請確認資料是否儲存!!!";
-
-                (e || window.event).returnValue = confirmationMessage;     //Gecko + IE
-                return confirmationMessage;
-            }*/
-    </script>
+      
     </div>
 </asp:Content>
 

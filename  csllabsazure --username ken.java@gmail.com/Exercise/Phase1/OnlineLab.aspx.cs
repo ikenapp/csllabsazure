@@ -199,7 +199,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
     {
         //Check all
         int count = 0;
-        for (int idx = 1; idx <= 7; idx++)
+        for (int idx = 1; idx <= 5; idx++)
         {
             View view = MultiView1.FindControl("View" + idx) as View;
             TextBox content = view.FindControl("ContentTB" + idx) as TextBox;
@@ -235,7 +235,7 @@ public partial class Execise_OnlineLab : System.Web.UI.Page
         {
             isShow = false;
             bool status;
-            SaveOpinion(7, out status);
+            SaveOpinion(5, out status);
             if (status)
             {
                 Session["PartA1"] = null;

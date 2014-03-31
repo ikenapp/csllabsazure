@@ -132,7 +132,7 @@
          </div>
          <br>
           <script type="text/javascript" language="javascript">
-              array = "<%= Session["PartB1"]%>";
+              array = "<%= Session["PartB1C_"]%>";
               window.onload = function(){
                   if(<%= "'"+isShow+"'" %> == 'True'){
                 alert('<%= message %>');
