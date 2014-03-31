@@ -38,6 +38,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
 
         if (!Page.IsPostBack)
         {
+            String surveyid = Request.QueryString["surveyid"];
             bool isError = false;
             int lab_id = int.Parse(this.labid);
             User u = UserDAO.GetUserFromSession();
@@ -51,7 +52,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
                         var survey = db.Surveys.Where(c => c.labid == u.labid && c.surveyid == 11).First();
                         var question1 = db.Questions.Where(c => c.survryid == survey.sid && c.no == 100).First();
                         Part1Title.Text = "一、" + question1.question1;
-                        String surveyid = Request.QueryString["surveyid"];
+                        
 
                         NextButton.PostBackUrl += "?surveyid=" + surveyid + "&labid=" + labid + "&minid=200";
                         isError = false;
@@ -69,6 +70,46 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
             {
                 Response.Write("網路發生不可預期錯誤.請重新登入再試!");
                 return;
+            }
+
+            int survey_id = int.Parse(surveyid);
+            for (int i = 1; i <= 5; i++)
+            {
+                using (LabsDBEntities db = new LabsDBEntities())
+                {
+                    try
+                    {
+                        var answer = db.Answers.Where(c => c.surveyid == survey_id && c.labid == lab_id && c.studentid == u.sid && c.phase == "PartB1D" && c.optionid == i).First();
+                        View view = MultiView1.FindControl("View" + i) as View;
+                        DropDownList ddl = view.FindControl("DropDownList" + i) as DropDownList;
+                        TextBox content = view.FindControl("ContentTB" + i) as TextBox;
+                        TextBox source = view.FindControl("SourceTB" + i) as TextBox;
+                        TextBox opinion = view.FindControl("OpinionTB" + i) as TextBox;
+                        RadioButtonList attrcb = view.FindControl("AttrList" + i) as RadioButtonList;
+                        RadioButtonList attrlevel = view.FindControl("AttrLevel" + i) as RadioButtonList;
+                        String attr1 = "", attr2 = "";
+                        if (answer.attributes.IndexOf(" ") != -1)
+                        {
+                            String[] data = answer.attributes.Split(' ');
+                            attr1 = data[0];
+                            attr2 = data[1];
+                        }
+                        else
+                        {
+                            attr1 = answer.attributes;
+                            attr2 = "1++";
+                        }
+                        ddl.SelectedValue = answer.rank.ToString();
+                        content.Text = answer.contents;
+                        source.Text = answer.links;
+                        opinion.Text = answer.opinions;
+                        attrcb.SelectedValue = attr1;
+                        attrlevel.SelectedValue = attr2;
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
             }
         }
 
@@ -110,14 +151,6 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
             int survey_id = int.Parse(Request.QueryString["surveyid"]);
             String attrs = "";
             bool flag = false;
-            //foreach (ListItem item in attrcb.Items)
-            //{
-            //    if (item.Selected)
-            //    {
-            //        flag = true;
-            //        attrs += item.Value + ",";
-            //    }
-            //}
             int count = 0;
             if (String.IsNullOrEmpty(contentStr))
             {
@@ -209,17 +242,7 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
             String contentStr = content.Text.Trim();
             String sourceStr = source.Text.Trim();
             String opinionStr = opinion.Text.Trim();
-            String attrs = "";
-            bool flag = false;
-            foreach (ListItem item in attrcb.Items)
-            {
-                if (item.Selected)
-                {
-                    flag = true;
-                    attrs += item.Value + ",";
-                }
-            }
-            if (contentStr.Length != 0 && sourceStr.Length != 0 && opinionStr.Length != 0 && flag)
+            if (attrcb.SelectedIndex!=-1 && contentStr.Length != 0 && sourceStr.Length != 0 && opinionStr.Length != 0)
             {
                 SaveOpinion(idx);
                 count++;
@@ -233,11 +256,12 @@ public partial class Discussion_DiscussionD : System.Web.UI.Page
         }
         else
         {
+            isShow = false;
             bool status;
             SaveOpinion(5, out status);
             if (status)
             {
-                 Session["PartB1D"] = null;
+                Session["PartB1D"] = null;
                 Response.Redirect("~/Discussion/DiscussionD2.aspx?labid=" + labid + "&surveyid=" + Request.QueryString["surveyid"] + "&minid=200");
                
             }

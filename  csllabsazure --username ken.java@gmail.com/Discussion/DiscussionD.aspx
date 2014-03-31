@@ -496,7 +496,7 @@
                  if ('<%= isShow %>' == 'True') {
                      alert('<%= message %>');
                  }
-             }}
+             }
 
     </script>
 

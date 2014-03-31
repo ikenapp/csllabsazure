@@ -126,7 +126,7 @@ namespace Lib
                     try
                     {
                         var ans = db.Answers.Where(c => c.labid == lab_id && c.surveyid == survey_id && c.studentid == u.sid && c.qid == q_id && c.phase == phase).First();
-                        sb.Append(",'" + ans.contents.Replace("\r\n", "<br>") + "'");
+                        sb.Append(",'" + ans.contents.Replace("\r\n", "<br>").Replace("\n", "<br>") + "'");
                     }
                     catch (Exception ex)
                     {
