@@ -25,7 +25,7 @@
         countdownE.innerHTML = '剩餘時間 : '+((minutes < 10) ? '0' : '') + minutes + ' : ' + ((seconds < 10) ? '0' : '') + seconds;
         if (seconds_left == 0) {
             clearInterval(refreshIntervalId);
-            alert('時間到!!')
+            //alert('時間到!!')
         }
         seconds_left--;
               
