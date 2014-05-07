@@ -200,7 +200,7 @@
                                         </Columns>
                                     </asp:GridView>
 
-                                    <asp:Timer ID='Timer1' runat='server' Interval='5000'>
+                                    <asp:Timer ID='Timer1' runat='server' Interval='60000'>
                                     </asp:Timer>
                                 </ContentTemplate>
                             </asp:UpdatePanel>
