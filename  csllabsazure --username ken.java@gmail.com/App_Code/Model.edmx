@@ -580,7 +580,7 @@
           <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="labid" Type="Int32" Nullable="false" />
           <Property Name="groupid" Type="Int32" Nullable="false" />
-          <Property Name="topic" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="topic" Type="String" Nullable="false" Unicode="true" FixedLength="false" MaxLength="800" />
           <Property Name="topicid" Type="Int32" />
           <Property Name="student_id" Type="Int32" Nullable="false" />
           <Property Name="time" Type="DateTime" Precision="3" />
@@ -610,7 +610,7 @@
           <Property Name="sid" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="labid" Type="Int32" Nullable="false" />
           <Property Name="groupid" Type="Int32" Nullable="false" />
-          <Property Name="topic" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="topic" Type="String" Nullable="false" MaxLength="800" Unicode="true" FixedLength="false" />
           <Property Name="student_id" Type="Int32" Nullable="false" />
           <Property Name="time" Type="DateTime" Precision="3" />
           <Property Name="num" Type="Int32" />
