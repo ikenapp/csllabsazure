@@ -124,8 +124,7 @@
 		</div>
 	</div>
 </div>
-         <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
-            <ContentTemplate> 
+         
                 <asp:HiddenField ID="HiddenField1" runat="server" Value="1" />
 <div id='wrapper'>
   <div id='page' class='container' style='vertical-align:top;padding: 0 auto;'>
@@ -141,7 +140,8 @@
          
           <th width='967' align='right' valign='top' scope='col'>
           <div id='content' align='left'>
-           
+           <asp:UpdatePanel ID='UpdatePanel1' runat='server'>
+            <ContentTemplate> 
            <table border='0' width=967>
   <tr>
     <td width='100%' class='all'><div id='type' class='fb' style="width:100%;">
