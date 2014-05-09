@@ -151,7 +151,7 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                                             selfquestions = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.student_id == u.sid && f.qfeedback == "Y").Count() == 0 ? "質疑" : "收回質疑",
                                             questions = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.qfeedback == "Y").Count()
                                         };
-                            Literal1.Text = "";
+                            //Literal1.Text = "";
                             GridView1.DataSource = query.OrderByDescending(c => c.time).ToList();
                             GridView1.DataBind();
                             //foreach(var main in query.OrderByDescending(c => c.time)){
@@ -384,7 +384,7 @@ public partial class Discussion_DiscussionA : System.Web.UI.Page
                                     selfquestions = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.student_id == u.sid && f.qfeedback == "Y").Count() == 0 ? "質疑" : "不質疑",
                                     questions = db.DiscussionAFeedbacks.Where(f => f.discuss_id == x.sid && f.qfeedback == "Y").Count()
                                 };
-                    Literal1.Text = "";
+                    //Literal1.Text = "";
                     GridView1.DataSource = query.OrderByDescending(c => c.time).ToList();
                     GridView1.DataBind();
                 }
