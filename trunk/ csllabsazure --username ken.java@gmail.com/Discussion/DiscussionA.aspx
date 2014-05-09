@@ -71,16 +71,16 @@
         }).done(function() {
             //alert("OK")
         });*/
-        var leftPos = $(obj).offset().left
-        var topPos = $(obj).offset().top
+        var leftPos = $(obj).parent().offset().left
+        var topPos = $(obj).parent().offset().top
         //alert(topPos+","+leftPos);
-        $("#reply")[0].style.display = "block";
+        $("#reply")[0].style.visibility = "visible";
         $("#reply")[0].style.position ='relative';
-        $("#reply").offset({top:topPos+30,left:leftPos-150});
+        $("#reply").offset({top:topPos+30,left:leftPos});
         $("#comment").val("");
         $("#commentBTN").click(function (){
             var com = $("#comment").val();
-            $("#reply")[0].style.display = "none";
+            $("#reply")[0].style.visibility = "hidden";
             $.ajax({
                 url: "Comments.aspx?feedbackId="+url+"&comments="+com+"&num="+no
             }).done(function(html) {
@@ -144,22 +144,23 @@
             <ContentTemplate> 
            <table border='0' width=967>
   <tr>
-    <td width='100%' class='all'><div id='type' class='fb' style="width:100%;">
+    <th width='100%' class='all'><div id='type' class='fb' style="width:100%;">
         <table >
         <td valign="top">我的看法:</td>
         <td valign="top"><asp:TextBox ID='TextBox1' runat='server' Width='800px' TextMode="MultiLine" Height="80px"></asp:TextBox></td>
         <td valign="top"> <asp:Button ID='Button1' runat='server' OnClick='Button1_Click' Text='發言' /></td>
+            </tr>
         </table>
+               
         </div>
        
-      </td>
+      </th>
   </tr>
 </table>
              
 <div style='overflow-y:auto;min-height:400px;height:600px;width:980px;overflow-style:move;overflow-x:hidden;'>
     <!-- Main block -->
-    <asp:Literal ID='Literal1' runat='server' Visible="false" ></asp:Literal>
-     <div id="reply" class="reply2" align="left" style="display:none;border:1px solid #ccc;">
+     <div id="reply" class="reply2" align="left" style="visibility:hidden;border:1px solid #ccc;">
              <table width="600"border="0">
                <tr>
                  <th width="600" scope="col">
@@ -176,7 +177,7 @@
              
              </table>
            </div>
-    
+   
                     <asp:GridView ID='GridView1' runat='server' AutoGenerateColumns='False'  Width='100%' ShowHeader='False' OnRowDataBound="GridView1_RowDataBound">
                         <Columns>
                             <asp:TemplateField HeaderText='topic' SortExpression='topic'>
@@ -206,10 +207,11 @@
                    </tr>
                    <tr>
                      <td>
-                     <div  align='left' class='fb'>
+                     <div align='left' class='fb'>
                      <a href='javascript:void()' onclick='pressLike(this,"<asp:Literal ID="Literal21" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>",<%= no %>)'><asp:Literal ID="Literal5" runat="server" Text='<%# Bind("selflikes") %>' ></asp:Literal></a> <img src='like.png' height='20' width='20'> <span class='display'><asp:Literal ID="Literal7" runat="server" Text='<%# Bind("likes") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;
                      <a href='javascript:void()' onclick='pressQuestions(this,"<asp:Literal ID="Literal22" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>",<%= no %>)'><asp:Literal ID="Literal6" runat="server" Text='<%# Bind("selfquestions") %>' ></asp:Literal></a> <img src='question.png' height='16' width='16'> <span class='display'><asp:Literal ID="Literal8" runat="server" Text='<%# Bind("questions") %>' ></asp:Literal></span>&nbsp;&nbsp;&nbsp;<a href='javascript:void()' onclick='pressComment(this,"<asp:Literal ID="Literal23" runat="server" Text='<%# Bind("disid") %>' ></asp:Literal>",<%# Container.DataItemIndex %>,<%= no %>)'>留言</a>&nbsp;&nbsp;&nbsp;<asp:Label ID='Label2' runat='server' Text='<%# Bind("time","{0:tt hh:mm:ss}") %>' Font-Bold='True'></asp:Label>
                      <p>&nbsp;</p>
+                         </div>
                      </td>
                    </tr>
                  </table>
@@ -269,7 +271,7 @@
 
                      </ContentTemplate>
         </asp:UpdatePanel>
-           </div>
+         
             
           </div></th>
         </tr>
