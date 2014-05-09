@@ -76,7 +76,7 @@
         //alert(topPos+","+leftPos);
         $("#reply")[0].style.display = "block";
         $("#reply")[0].style.position ='relative';
-        $("#reply").offset({top:topPos+30,left:leftPos});
+        $("#reply").offset({top:topPos+30,left:leftPos-150});
         $("#comment").val("");
         $("#commentBTN").click(function (){
             var com = $("#comment").val();
