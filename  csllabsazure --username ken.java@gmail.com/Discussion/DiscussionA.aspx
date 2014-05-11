@@ -147,7 +147,8 @@
     <th width='100%' class='all'><div id='type' class='fb' style="width:100%;">
         <table >
         <td valign="top">我的看法:</td>
-        <td valign="top"><asp:TextBox ID='TextBox1' runat='server' Width='800px' TextMode="MultiLine" Height="80px"></asp:TextBox></td>
+        <td valign="top"><asp:TextBox ID='TextBox1' runat='server' Width='800px' TextMode="MultiLine" Height="80px"></asp:TextBox>
+        </td>
         <td valign="top"> <asp:Button ID='Button1' runat='server' OnClick='Button1_Click' Text='發言' /></td>
             </tr>
         </table>
@@ -161,14 +162,17 @@
 <div style='overflow-y:auto;min-height:400px;height:600px;width:980px;overflow-style:move;overflow-x:hidden;'>
     <!-- Main block -->
      <div id="reply" class="reply2" align="left" style="visibility:hidden;border:1px solid #ccc;">
-             <table width="600"border="0">
+             <table width="600"border="0" style="margin-top:-5px;padding:0px;">
                <tr>
                  <th width="600" scope="col">
-                  <table width="600" border="0" align="left">
+                  <table width="600" border="0" align="left"  style="margin:0px;padding:0px;">
                    <tr>
                      <td>
-                     <div id="reply-cont" class="" align="left">
-                         <input type="text" id="comment" style="width:500px;"/><input type="button" id="commentBTN" value="儲存" />
+                     <div id="reply-cont" class="" align="left" valign="center">
+                         <table style="margin:0px;padding:0px;"><tr>
+                             <td><textarea id="comment" style="width:500px;height:20px;margin-top:4px"></textarea></td>
+                             <td><input type="button" id="commentBTN" value="儲存"/></td>
+                                </tr></table>
                      </div>
                      </td>
                    </tr>
